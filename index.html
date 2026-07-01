@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>House Hunt 2026</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<style>
+:root {
+  --navy: #1F4E79;
+  --green: #1E7145;
+  --amber: #7F4F00;
+  --red: #9C0006;
+  --grey: #555;
+  --bg: #f0f2f5;
+  --card-bg: #fff;
+  --border: #dde1e7;
+  --text: #1a1a2e;
+  --muted: #666;
+  --confirmed: #C6EFCE;
+  --potential: #FFEB9C;
+  --rank1: #1F4E79;
+  --rank-top: #375623;
+  --rank-mid: #7F4F00;
+  --rank-low: #555;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  background: var(--bg); color: var(--text); font-size: 14px; }
+
+/* ── HEADER ── */
+#header { background: var(--navy); color: #fff; padding: 12px 20px;
+  display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,.3); }
+#header h1 { font-size: 16px; font-weight: 700; flex: 1; }
+#header-stats { font-size: 11px; opacity: .8; display: flex; gap: 12px; }
+#token-btn { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3);
+  color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 11px; cursor: pointer; }
+#token-btn:hover { background: rgba(255,255,255,.25); }
+#token-btn.set { background: rgba(30,113,69,.6); border-color: var(--green); }
+
+/* ── LAYOUT ── */
+#app { display: grid; grid-template-columns: 320px 1fr; height: calc(100vh - 48px); }
+#sidebar { overflow-y: auto; background: var(--card-bg); border-right: 1px solid var(--border); display: flex; flex-direction: column; }
+#main { overflow: hidden; display: flex; flex-direction: column; }
+
+/* ── FILTERS ── */
+#filters { padding: 12px; border-bottom: 1px solid var(--border); background: #f8f9fb; }
+#filters h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-bottom: 8px; }
+.filter-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }
+.filter-btn { font-size: 11px; padding: 3px 8px; border-radius: 12px; border: 1px solid var(--border);
+  background: #fff; cursor: pointer; white-space: nowrap; transition: all .15s; }
+.filter-btn:hover { border-color: var(--navy); color: var(--navy); }
+.filter-btn.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+.filter-btn.active.green { background: var(--green); border-color: var(--green); }
+.filter-btn.active.amber { background: var(--amber); border-color: var(--amber); }
+select.filter-select { font-size: 12px; padding: 4px 8px; border: 1px solid var(--border);
+  border-radius: 4px; background: #fff; width: 100%; margin-bottom: 6px; }
+#search-box { width: 100%; padding: 6px 10px; border: 1px solid var(--border); border-radius: 4px;
+  font-size: 12px; margin-bottom: 6px; }
+#result-count { font-size: 11px; color: var(--muted); }
+
+/* ── PROPERTY LIST ── */
+#prop-list { flex: 1; overflow-y: auto; }
+.prop-card { padding: 12px; border-bottom: 1px solid var(--border); cursor: pointer;
+  transition: background .1s; display: flex; gap: 10px; align-items: flex-start; }
+.prop-card:hover { background: #f0f4f8; }
+.prop-card.selected { background: #e8f0fb; border-left: 3px solid var(--navy); }
+.rank-badge { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center;
+  justify-content: center; font-weight: 700; font-size: 11px; color: #fff; flex-shrink: 0; }
+.prop-card-body { flex: 1; min-width: 0; }
+.prop-card-name { font-weight: 600; font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.prop-card-meta { font-size: 11px; color: var(--muted); margin-top: 2px; display: flex; gap: 8px; flex-wrap: wrap; }
+.prop-card-price { font-weight: 700; color: var(--navy); }
+.annexe-pill { font-size: 10px; padding: 1px 6px; border-radius: 8px; font-weight: 600; }
+.annexe-pill.confirmed { background: var(--confirmed); color: #1E7145; }
+.annexe-pill.potential { background: var(--potential); color: #7F4F00; }
+.caveat-pill { font-size: 10px; padding: 1px 6px; border-radius: 8px; background: #FFE4E4; color: var(--red); font-weight: 600; }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+
+/* ── MAP + DETAIL ── */
+#map-container { flex: 1; position: relative; }
+#map { width: 100%; height: 100%; }
+#detail-panel { position: absolute; top: 0; right: 0; width: 440px; height: 100%;
+  background: #fff; border-left: 1px solid var(--border); overflow-y: auto;
+  transform: translateX(100%); transition: transform .25s ease; z-index: 500;
+  box-shadow: -4px 0 16px rgba(0,0,0,.1); }
+#detail-panel.open { transform: translateX(0); }
+#detail-close { position: absolute; top: 10px; right: 12px; background: none; border: none;
+  font-size: 20px; cursor: pointer; color: var(--muted); z-index: 1; }
+#detail-close:hover { color: var(--text); }
+
+/* ── DETAIL CONTENT ── */
+.detail-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 0; }
+.detail-photos img { width: 100%; height: 120px; object-fit: cover; cursor: pointer; }
+.detail-photos img:first-child { grid-column: 1 / -1; height: 200px; }
+.detail-body { padding: 16px; }
+.detail-rank { display: inline-block; padding: 2px 8px; border-radius: 3px; color: #fff;
+  font-weight: 700; font-size: 12px; margin-bottom: 8px; }
+.detail-name { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.detail-location { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+.detail-price { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+.detail-pills { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.detail-pill { font-size: 11px; padding: 3px 9px; border-radius: 10px; font-weight: 600; }
+.detail-pill.cluster { background: #e8f0fb; color: var(--navy); }
+.detail-pill.annexe-confirmed { background: var(--confirmed); color: var(--green); }
+.detail-pill.annexe-potential { background: var(--potential); color: var(--amber); }
+.detail-pill.caveat { background: #FFE4E4; color: var(--red); }
+.detail-section { margin-bottom: 14px; }
+.detail-section h3 { font-size: 10px; text-transform: uppercase; letter-spacing: .05em;
+  color: var(--muted); margin-bottom: 6px; border-bottom: 1px solid var(--border); padding-bottom: 4px; }
+.detail-desc { font-size: 12.5px; line-height: 1.6; color: #333; }
+.detail-agent { font-size: 12px; color: var(--muted); }
+.detail-links { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.detail-link { font-size: 12px; padding: 5px 12px; border-radius: 4px; text-decoration: none;
+  font-weight: 600; display: inline-block; }
+.detail-link.primary { background: var(--navy); color: #fff; }
+.detail-link.secondary { background: #f0f4f8; color: var(--navy); border: 1px solid var(--border); }
+.detail-link:hover { opacity: .85; }
+
+/* ── STATUS SELECTOR ── */
+.status-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.status-btn { font-size: 11px; padding: 4px 10px; border-radius: 4px; border: 1px solid var(--border);
+  background: #fff; cursor: pointer; }
+.status-btn.active-status { color: #fff; border-color: transparent; }
+.status-btn[data-s="active"].active-status { background: var(--green); }
+.status-btn[data-s="viewing-booked"].active-status { background: var(--navy); }
+.status-btn[data-s="offer-made"].active-status { background: var(--amber); }
+.status-btn[data-s="rejected"].active-status { background: var(--grey); }
+
+/* ── NOTES ── */
+#notes-area { width: 100%; min-height: 80px; border: 1px solid var(--border); border-radius: 4px;
+  padding: 8px; font-family: inherit; font-size: 12.5px; resize: vertical; }
+#save-note-btn { margin-top: 6px; background: var(--navy); color: #fff; border: none;
+  padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: 600; }
+#save-note-btn:hover { opacity: .85; }
+#save-note-btn:disabled { background: var(--grey); cursor: default; }
+.note-saved { font-size: 11px; color: var(--green); margin-left: 8px; }
+.existing-note { background: #f8f9fb; border: 1px solid var(--border); border-radius: 4px;
+  padding: 8px 10px; font-size: 12.5px; line-height: 1.6; margin-bottom: 8px; white-space: pre-wrap; }
+.note-meta { font-size: 10px; color: var(--muted); margin-bottom: 4px; }
+
+/* ── PHOTO UPLOAD ── */
+.photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 10px; }
+.photo-thumb { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 4px;
+  cursor: pointer; border: 1px solid var(--border); }
+.upload-zone { border: 2px dashed var(--border); border-radius: 6px; padding: 16px;
+  text-align: center; font-size: 12px; color: var(--muted); cursor: pointer; transition: all .15s; }
+.upload-zone:hover, .upload-zone.drag { border-color: var(--navy); color: var(--navy); background: #f0f4f8; }
+#file-input { display: none; }
+.upload-progress { font-size: 11px; color: var(--navy); margin-top: 6px; }
+
+/* ── TOKEN MODAL ── */
+#token-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 9999;
+  align-items: center; justify-content: center; }
+#token-modal.show { display: flex; }
+.modal-box { background: #fff; border-radius: 8px; padding: 24px; width: 480px; max-width: 95vw; }
+.modal-box h2 { font-size: 15px; margin-bottom: 8px; }
+.modal-box p { font-size: 12.5px; color: var(--muted); margin-bottom: 16px; line-height: 1.5; }
+.modal-box input { width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 4px;
+  font-family: monospace; font-size: 12px; margin-bottom: 12px; }
+.modal-btns { display: flex; gap: 8px; }
+.modal-btn { padding: 7px 16px; border-radius: 4px; border: none; cursor: pointer; font-size: 13px; font-weight: 600; }
+.modal-btn.primary { background: var(--navy); color: #fff; }
+.modal-btn.secondary { background: #f0f4f8; color: var(--text); }
+
+/* ── PHOTO LIGHTBOX ── */
+#lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.9); z-index: 9998;
+  align-items: center; justify-content: center; cursor: pointer; }
+#lightbox.show { display: flex; }
+#lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+
+/* ── MAP MARKERS ── */
+.map-label { font-size: 11px; font-weight: 700; color: #fff; text-align: center; line-height: 1.1; }
+.leaflet-popup-content { font-size: 12px; min-width: 160px; }
+.leaflet-popup-content strong { display: block; margin-bottom: 4px; }
+.popup-link { font-size: 11px; color: var(--navy); text-decoration: none; }
+.popup-link:hover { text-decoration: underline; }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #aaa; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  #app { grid-template-columns: 1fr; grid-template-rows: 50vh 1fr; }
+  #main { grid-row: 1; }
+  #sidebar { grid-row: 2; max-height: 50vh; }
+  #detail-panel { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<div id="header">
+  <h1>🏡 House Hunt 2026</h1>
+  <div id="header-stats">
+    <span id="stat-active">— active</span>
+    <span id="stat-viewing">— viewing</span>
+    <span id="stat-offer">— offer</span>
+  </div>
+  <button id="token-btn" onclick="showTokenModal()">⚙ GitHub Token</button>
+</div>
+
+<div id="app">
+  <div id="sidebar">
+    <div id="filters">
+      <h2>Filters</h2>
+      <input id="search-box" type="text" placeholder="Search by name, location, agent…" oninput="applyFilters()">
+      <div class="filter-row" id="cluster-filters"></div>
+      <div class="filter-row">
+        <button class="filter-btn active" data-filter="annexe" data-val="all" onclick="toggleFilter(this)">All annexe</button>
+        <button class="filter-btn green" data-filter="annexe" data-val="confirmed" onclick="toggleFilter(this)">Confirmed ✓</button>
+        <button class="filter-btn amber" data-filter="annexe" data-val="potential" onclick="toggleFilter(this)">Potential</button>
+      </div>
+      <div class="filter-row">
+        <button class="filter-btn active" data-filter="status" data-val="all" onclick="toggleFilter(this)">All status</button>
+        <button class="filter-btn" data-filter="status" data-val="active" onclick="toggleFilter(this)">Active</button>
+        <button class="filter-btn" data-filter="status" data-val="viewing-booked" onclick="toggleFilter(this)">Viewing booked</button>
+        <button class="filter-btn" data-filter="status" data-val="offer-made" onclick="toggleFilter(this)">Offer made</button>
+        <button class="filter-btn" data-filter="status" data-val="rejected" onclick="toggleFilter(this)">Rejected</button>
+      </div>
+      <div class="filter-row">
+        <button class="filter-btn active" data-filter="caveat" data-val="all" onclick="toggleFilter(this)">All</button>
+        <button class="filter-btn" data-filter="caveat" data-val="none" onclick="toggleFilter(this)">No caveats</button>
+        <button class="filter-btn" data-filter="caveat" data-val="has" onclick="toggleFilter(this)">Has caveat ⚠</button>
+      </div>
+      <div id="result-count"></div>
+    </div>
+    <div id="prop-list"></div>
+  </div>
+
+  <div id="main">
+    <div id="map-container">
+      <div id="map"></div>
+      <div id="detail-panel">
+        <button id="detail-close" onclick="closeDetail()">✕</button>
+        <div id="detail-content"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Token Modal -->
+<div id="token-modal">
+  <div class="modal-box">
+    <h2>GitHub Personal Access Token</h2>
+    <p>Enter your fine-grained GitHub token for <strong>its-not-rocket-science/house</strong>. 
+    It's stored only in your browser's localStorage and is used to save notes and photos back to the repo.</p>
+    <input type="password" id="token-input" placeholder="github_pat_…">
+    <div class="modal-btns">
+      <button class="modal-btn primary" onclick="saveToken()">Save token</button>
+      <button class="modal-btn secondary" onclick="hideTokenModal()">Cancel</button>
+      <button class="modal-btn secondary" onclick="clearToken()">Clear saved</button>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+// ── CONFIG ──────────────────────────────────────────────────────────────────
+const REPO_OWNER = 'its-not-rocket-science';
+const REPO_NAME  = 'house';
+const NOTES_PATH = 'data/notes.json';
+const PHOTOS_DIR = 'data/photos';
+
+// ── STATE ────────────────────────────────────────────────────────────────────
+let properties = [];
+let notes      = { notes: {}, visits: {}, photos: {} };
+let filtered   = [];
+let selected   = null;
+let map        = null;
+let markers    = {};
+let activeFilters = { cluster: 'all', annexe: 'all', status: 'all', caveat: 'all' };
+
+// ── RANK COLOURS ─────────────────────────────────────────────────────────────
+function rankColour(rank) {
+  if (rank <= 2)  return '#1F4E79';
+  if (rank <= 6)  return '#375623';
+  if (rank <= 12) return '#7F4F00';
+  if (rank <= 20) return '#555';
+  return '#888';
+}
+
+// ── INIT ─────────────────────────────────────────────────────────────────────
+async function init() {
+  // Load properties
+  const r = await fetch('data/properties.json');
+  properties = await r.json();
+
+  // Load notes from GitHub (or localStorage fallback)
+  await loadNotes();
+
+  // Merge statuses from localStorage
+  const saved = JSON.parse(localStorage.getItem('prop_statuses') || '{}');
+  properties.forEach(p => { if (saved[p.ref]) p.status = saved[p.ref]; });
+
+  // Build cluster filters
+  buildClusterFilters();
+
+  // Init map
+  initMap();
+
+  // Render
+  applyFilters();
+  updateStats();
+
+  // Token indicator
+  updateTokenBtn();
+}
+
+function buildClusterFilters() {
+  const clusters = ['all', ...new Set(properties.map(p => p.cluster))].sort();
+  const container = document.getElementById('cluster-filters');
+  clusters.forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn' + (c === 'all' ? ' active' : '');
+    btn.dataset.filter = 'cluster';
+    btn.dataset.val = c;
+    btn.textContent = c === 'all' ? 'All areas' : c;
+    btn.onclick = () => toggleFilter(btn);
+    container.appendChild(btn);
+  });
+}
+
+function initMap() {
+  map = L.map('map').setView([51.2, -2.5], 7);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors', maxZoom: 18
+  }).addTo(map);
+  properties.forEach(addMarker);
+}
+
+function addMarker(p) {
+  const colour = rankColour(p.rank);
+  const icon = L.divIcon({
+    html: `<div style="background:${colour};width:28px;height:28px;border-radius:50%;
+      border:2px solid #fff;display:flex;align-items:center;justify-content:center;
+      box-shadow:0 1px 4px rgba(0,0,0,.4)">
+      <span style="color:#fff;font-size:10px;font-weight:700">${p.rank}</span></div>`,
+    iconSize: [28, 28], iconAnchor: [14, 14], className: ''
+  });
+  const m = L.marker([p.lat, p.lng], { icon }).addTo(map);
+  m.bindPopup(`<strong>${p.name}</strong><br>${p.price_display}<br>
+    <a class="popup-link" href="#" onclick="event.preventDefault();selectProperty('${p.ref}')">View details →</a>`);
+  m.on('click', () => selectProperty(p.ref));
+  markers[p.ref] = m;
+}
+
+// ── FILTERS ──────────────────────────────────────────────────────────────────
+function toggleFilter(btn) {
+  const filter = btn.dataset.filter;
+  const val    = btn.dataset.val;
+  activeFilters[filter] = val;
+  // Update button states in group
+  document.querySelectorAll(`[data-filter="${filter}"]`).forEach(b => {
+    b.classList.toggle('active', b.dataset.val === val);
+  });
+  applyFilters();
+}
+
+function applyFilters() {
+  const q = document.getElementById('search-box').value.toLowerCase();
+  filtered = properties.filter(p => {
+    if (activeFilters.cluster !== 'all' && p.cluster !== activeFilters.cluster) return false;
+    if (activeFilters.annexe  !== 'all' && p.annexe  !== activeFilters.annexe)  return false;
+    if (activeFilters.status  !== 'all' && p.status  !== activeFilters.status)  return false;
+    if (activeFilters.caveat === 'none' && p.caveat)  return false;
+    if (activeFilters.caveat === 'has'  && !p.caveat) return false;
+    if (q && !`${p.name} ${p.location} ${p.agent} ${p.cluster}`.toLowerCase().includes(q)) return false;
+    return true;
+  });
+  renderList();
+  updateMapMarkers();
+  document.getElementById('result-count').textContent =
+    `Showing ${filtered.length} of ${properties.length} properties`;
+}
+
+function renderList() {
+  const list = document.getElementById('prop-list');
+  list.innerHTML = '';
+  filtered.forEach(p => {
+    const hasNote = notes.notes[p.ref];
+    const photoCount = (notes.photos[p.ref] || []).length;
+    const card = document.createElement('div');
+    card.className = 'prop-card' + (selected === p.ref ? ' selected' : '');
+    card.dataset.ref = p.ref;
+    card.onclick = () => selectProperty(p.ref);
+    card.innerHTML = `
+      <div class="rank-badge" style="background:${rankColour(p.rank)}">${p.rank}</div>
+      <div class="prop-card-body">
+        <div class="prop-card-name">${p.name}</div>
+        <div class="prop-card-meta">
+          <span class="prop-card-price">${p.price_display}</span>
+          <span class="annexe-pill ${p.annexe}">${p.annexe === 'confirmed' ? '✓ Annexe' : '~ Potential'}</span>
+          ${p.caveat ? `<span class="caveat-pill">⚠ ${p.caveat}</span>` : ''}
+          ${hasNote ? '<span style="font-size:10px">📝</span>' : ''}
+          ${photoCount ? `<span style="font-size:10px">📷 ${photoCount}</span>` : ''}
+        </div>
+        <div class="prop-card-meta" style="margin-top:2px">
+          <span>${p.cluster}</span>
+          <span style="color:${statusColour(p.status)};font-weight:600">${statusLabel(p.status)}</span>
+        </div>
+      </div>
+      <div class="status-dot" style="background:${statusColour(p.status)}"></div>`;
+    list.appendChild(card);
+  });
+}
+
+function updateMapMarkers() {
+  properties.forEach(p => {
+    const m = markers[p.ref];
+    if (!m) return;
+    const inFilter = filtered.find(f => f.ref === p.ref);
+    m.setOpacity(inFilter ? 1 : 0.25);
+  });
+}
+
+// ── SELECT PROPERTY ──────────────────────────────────────────────────────────
+function selectProperty(ref) {
+  selected = ref;
+  const p = properties.find(x => x.ref === ref);
+  if (!p) return;
+
+  // Highlight card
+  document.querySelectorAll('.prop-card').forEach(c =>
+    c.classList.toggle('selected', c.dataset.ref === ref));
+
+  // Pan map
+  map.panTo([p.lat, p.lng]);
+  markers[ref]?.openPopup();
+
+  // Show detail
+  renderDetail(p);
+  document.getElementById('detail-panel').classList.add('open');
+}
+
+function closeDetail() {
+  document.getElementById('detail-panel').classList.remove('open');
+  selected = null;
+  document.querySelectorAll('.prop-card').forEach(c => c.classList.remove('selected'));
+}
+
+// ── DETAIL PANEL ─────────────────────────────────────────────────────────────
+function renderDetail(p) {
+  const photoList = notes.photos[p.ref] || [];
+  const existingNote = notes.notes[p.ref];
+  const visitDate = notes.visits[p.ref];
+  const colour = rankColour(p.rank);
+
+  // Rightmove image URLs (hotlinked — may break if RM blocks referrer)
+  const rmImages = [1,2,3,4,5].map(n =>
+    `https://media.rightmove.co.uk/dir/crop/10:9-16:9/${p.ref.padStart(9,'0')}_img_${n}.jpg`);
+
+  document.getElementById('detail-content').innerHTML = `
+    <div class="detail-photos" id="rm-photos-${p.ref}">
+      ${rmImages.slice(0,3).map((src,i) =>
+        `<img src="${src}" alt="Photo ${i+1}" onerror="this.style.display='none'"
+          onclick="openLightbox('${src}')">`).join('')}
+    </div>
+    <div class="detail-body">
+      <div class="detail-rank" style="background:${colour}">Rank #${p.rank}</div>
+      <div class="detail-name">${p.name}</div>
+      <div class="detail-location">📍 ${p.location} · ${p.cluster}</div>
+      <div class="detail-price">${p.price_display}</div>
+      <div class="detail-pills">
+        <span class="detail-pill cluster">${p.cluster}</span>
+        <span class="detail-pill annexe-${p.annexe}">
+          ${p.annexe === 'confirmed' ? '✓ Confirmed annexe' : '~ Annexe potential'}
+        </span>
+        ${p.caveat ? `<span class="detail-pill caveat">⚠ ${p.caveat}</span>` : ''}
+      </div>
+
+      <div class="detail-links">
+        <a class="detail-link primary" href="${p.rightmove_url}" target="_blank">View on Rightmove ↗</a>
+        <a class="detail-link secondary" href="${p.contact_url}" target="_blank">Contact agent ↗</a>
+      </div>
+
+      <div class="detail-section">
+        <h3>Status</h3>
+        <div class="status-row">
+          ${['active','viewing-booked','offer-made','rejected'].map(s =>
+            `<button class="status-btn ${p.status === s ? 'active-status' : ''}"
+              data-s="${s}" onclick="setStatus('${p.ref}','${s}')">${statusLabel(s)}</button>`
+          ).join('')}
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h3>About</h3>
+        <div class="detail-desc">${p.short_desc}</div>
+        <div class="detail-agent" style="margin-top:8px">Agent: ${p.agent}</div>
+      </div>
+
+      <div class="detail-section">
+        <h3>Notes</h3>
+        ${existingNote ? `
+          <div class="note-meta">Last updated: ${existingNote.date}</div>
+          <div class="existing-note">${escHtml(existingNote.text)}</div>` : ''}
+        <textarea id="notes-area" placeholder="Add notes about this property — what you noticed, questions for the agent, impressions from the viewing…">${existingNote ? existingNote.text : ''}</textarea>
+        <div style="display:flex;align-items:center">
+          <button id="save-note-btn" onclick="saveNote('${p.ref}')">Save note</button>
+          <span class="note-saved" id="note-saved-msg"></span>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h3>Visit photos (${photoList.length})</h3>
+        ${photoList.length ? `
+          <div class="photo-grid">
+            ${photoList.map(ph => `<img class="photo-thumb" src="${ph.url}" alt="${ph.name}"
+              onclick="openLightbox('${ph.url}')">`).join('')}
+          </div>` : ''}
+        <div class="upload-zone" id="upload-zone-${p.ref}"
+          onclick="document.getElementById('file-input').click()"
+          ondragover="event.preventDefault();this.classList.add('drag')"
+          ondragleave="this.classList.remove('drag')"
+          ondrop="handleDrop(event,'${p.ref}')">
+          📷 Click to upload or drag photos here
+        </div>
+        <input type="file" id="file-input" accept="image/*" multiple
+          onchange="handleFileInput(event,'${p.ref}')">
+        <div class="upload-progress" id="upload-progress-${p.ref}"></div>
+      </div>
+
+      <div class="detail-section">
+        <h3>Viewing</h3>
+        <div style="display:flex;gap:8px;align-items:center">
+          <input type="date" id="visit-date-${p.ref}" value="${visitDate || ''}"
+            style="padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:12px">
+          <button onclick="saveVisitDate('${p.ref}')"
+            style="padding:5px 12px;background:var(--navy);color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:12px">
+            Save date
+          </button>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ── STATUS ────────────────────────────────────────────────────────────────────
+function statusLabel(s) {
+  return { active: 'Active', 'viewing-booked': 'Viewing booked',
+    'offer-made': 'Offer made', rejected: 'Rejected' }[s] || s;
+}
+function statusColour(s) {
+  return { active: '#1E7145', 'viewing-booked': '#1F4E79',
+    'offer-made': '#7F4F00', rejected: '#888' }[s] || '#ccc';
+}
+
+function setStatus(ref, status) {
+  const p = properties.find(x => x.ref === ref);
+  if (!p) return;
+  p.status = status;
+  // Persist to localStorage
+  const saved = JSON.parse(localStorage.getItem('prop_statuses') || '{}');
+  saved[ref] = status;
+  localStorage.setItem('prop_statuses', JSON.stringify(saved));
+  // Re-render
+  renderList();
+  renderDetail(p);
+  updateStats();
+}
+
+function updateStats() {
+  document.getElementById('stat-active').textContent =
+    properties.filter(p => p.status === 'active').length + ' active';
+  document.getElementById('stat-viewing').textContent =
+    properties.filter(p => p.status === 'viewing-booked').length + ' viewing';
+  document.getElementById('stat-offer').textContent =
+    properties.filter(p => p.status === 'offer-made').length + ' offer';
+}
+
+// ── NOTES ─────────────────────────────────────────────────────────────────────
+async function loadNotes() {
+  const token = getToken();
+  if (token) {
+    try {
+      const r = await ghGet(NOTES_PATH);
+      if (r.ok) {
+        const data = await r.json();
+        notes = JSON.parse(atob(data.content));
+        return;
+      }
+    } catch(e) {}
+  }
+  // Fallback: localStorage
+  const local = localStorage.getItem('house_notes');
+  if (local) { try { notes = JSON.parse(local); } catch(e) {} }
+}
+
+async function saveNote(ref) {
+  const text = document.getElementById('notes-area').value.trim();
+  if (!text) return;
+  notes.notes[ref] = { text, date: new Date().toLocaleDateString('en-GB') };
+  localStorage.setItem('house_notes', JSON.stringify(notes));
+  await pushNotesFile('Update note for ' + ref);
+  const msg = document.getElementById('note-saved-msg');
+  msg.textContent = 'Saved ✓';
+  setTimeout(() => msg.textContent = '', 2500);
+  // Refresh list to show note indicator
+  renderList();
+}
+
+async function saveVisitDate(ref) {
+  const date = document.getElementById('visit-date-' + ref)?.value;
+  if (!date) return;
+  notes.visits[ref] = date;
+  localStorage.setItem('house_notes', JSON.stringify(notes));
+  await pushNotesFile('Save visit date for ' + ref);
+}
+
+// ── PHOTOS ────────────────────────────────────────────────────────────────────
+function handleFileInput(event, ref) {
+  uploadFiles([...event.target.files], ref);
+}
+function handleDrop(event, ref) {
+  event.preventDefault();
+  document.getElementById('upload-zone-' + ref)?.classList.remove('drag');
+  uploadFiles([...event.dataTransfer.files].filter(f => f.type.startsWith('image/')), ref);
+}
+
+async function uploadFiles(files, ref) {
+  const token = getToken();
+  if (!token) { showTokenModal(); return; }
+  const progress = document.getElementById('upload-progress-' + ref);
+  if (!notes.photos[ref]) notes.photos[ref] = [];
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
+    progress.textContent = `Uploading ${i+1} of ${files.length}: ${file.name}…`;
+    try {
+      const base64 = await fileToBase64(file);
+      const path = `${PHOTOS_DIR}/${ref}/${Date.now()}_${file.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`;
+      await ghPut(path, base64, `Add photo for ${ref}: ${file.name}`);
+      const url = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${path}`;
+      notes.photos[ref].push({ url, name: file.name, date: new Date().toLocaleDateString('en-GB') });
+    } catch(e) {
+      progress.textContent = `Error uploading ${file.name}: ${e.message}`;
+      continue;
+    }
+  }
+  await pushNotesFile('Update photos for ' + ref);
+  localStorage.setItem('house_notes', JSON.stringify(notes));
+  progress.textContent = `✓ ${files.length} photo${files.length>1?'s':''} uploaded`;
+  setTimeout(() => { if (progress) progress.textContent = ''; }, 3000);
+  // Re-render detail
+  const p = properties.find(x => x.ref === ref);
+  if (p) renderDetail(p);
+  renderList();
+}
+
+function fileToBase64(file) {
+  return new Promise((res, rej) => {
+    const r = new FileReader();
+    r.onload = () => res(r.result.split(',')[1]);
+    r.onerror = () => rej(new Error('Read failed'));
+    r.readAsDataURL(file);
+  });
+}
+
+// ── GITHUB API ────────────────────────────────────────────────────────────────
+function getToken() { return localStorage.getItem('gh_token'); }
+
+function ghHeaders() {
+  return {
+    'Authorization': `Bearer ${getToken()}`,
+    'Accept': 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28',
+  };
+}
+
+async function ghGet(path) {
+  return fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`,
+    { headers: ghHeaders() });
+}
+
+async function ghPut(path, base64content, message) {
+  // Check if file exists to get SHA
+  let sha = null;
+  const existing = await ghGet(path);
+  if (existing.ok) {
+    const d = await existing.json();
+    sha = d.sha;
+  }
+  const body = { message, content: base64content };
+  if (sha) body.sha = sha;
+  const r = await fetch(
+    `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`,
+    { method: 'PUT', headers: { ...ghHeaders(), 'Content-Type': 'application/json' },
+      body: JSON.stringify(body) });
+  if (!r.ok) throw new Error(`GitHub API error: ${r.status} ${r.statusText}`);
+  return r;
+}
+
+async function pushNotesFile(message) {
+  const token = getToken();
+  if (!token) return; // silently skip if no token — already saved to localStorage
+  try {
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(notes, null, 2))));
+    await ghPut(NOTES_PATH, content, message);
+  } catch(e) {
+    console.warn('Notes push failed (saved locally):', e);
+  }
+}
+
+// ── TOKEN MODAL ───────────────────────────────────────────────────────────────
+function showTokenModal() { document.getElementById('token-modal').classList.add('show'); }
+function hideTokenModal() { document.getElementById('token-modal').classList.remove('show'); }
+function saveToken() {
+  const t = document.getElementById('token-input').value.trim();
+  if (!t) return;
+  localStorage.setItem('gh_token', t);
+  updateTokenBtn();
+  hideTokenModal();
+}
+function clearToken() {
+  localStorage.removeItem('gh_token');
+  document.getElementById('token-input').value = '';
+  updateTokenBtn();
+  hideTokenModal();
+}
+function updateTokenBtn() {
+  const btn = document.getElementById('token-btn');
+  const has = !!getToken();
+  btn.textContent = has ? '✓ GitHub Connected' : '⚙ GitHub Token';
+  btn.classList.toggle('set', has);
+}
+
+// ── LIGHTBOX ──────────────────────────────────────────────────────────────────
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('show');
+}
+function closeLightbox() { document.getElementById('lightbox').classList.remove('show'); }
+
+// ── UTILS ─────────────────────────────────────────────────────────────────────
+function escHtml(t) {
+  return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+}
+
+// ── START ─────────────────────────────────────────────────────────────────────
+init();
+</script>
+</body>
+</html>
