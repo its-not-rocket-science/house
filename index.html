@@ -644,6 +644,16 @@ async function init() {
   applyFilters();
   updateStats();
   updateTokenBtn();
+
+  // Event delegation for card vote buttons — handles dynamically rendered cards
+  document.getElementById('prop-list').addEventListener('click', function(e) {
+    const btn = e.target.closest('.card-vote-btn');
+    if (!btn) return;
+    e.stopPropagation();
+    const ref = btn.dataset.ref;
+    const type = btn.dataset.type;
+    if (ref && type) quickVote(e, ref, type);
+  });
 }
 
 function buildClusterFilters() {
@@ -763,20 +773,16 @@ function renderList() {
     div.dataset.ref=p.ref;
     div.onclick=()=>selectProp(p.ref);
     div.innerHTML=`
-      <div class="rank-badge-col" onclick="event.stopPropagation()">
+      <div class="rank-badge-col">
         <div class="rank-badge" style="background:${rc(p.rank)}">${p.rank}</div>
-        ${(()=>{
-          const pv=votes[p.ref]||[];
-          const net=pv.reduce((s,v)=>s+(v.type==='like'?1:-1),0);
-          const myV=localStorage.getItem('vote_'+p.ref);
-          return '<div class="card-vote-btns">'
-            +'<button class="card-vote-btn like '+(myV==='like'?'voted':'')+'" '
-            +'onclick="quickVote(event,\''+p.ref+'\',\'like\')" title="Like">👍</button>'
-            +'<button class="card-vote-btn dislike '+(myV==='dislike'?'voted':'')+'" '
-            +'onclick="quickVote(event,\''+p.ref+'\',\'dislike\')" title="Dislike">👎</button>'
-            +'</div>'
-            +(net!==0?'<div class="card-vote-net" style="color:'+(net>0?'var(--green)':'var(--red)')+'">'+( net>0?'+':'')+net+'</div>':'');
-        })()}
+        <div class="card-vote-btns">
+          <button class="card-vote-btn like ${localStorage.getItem('vote_'+p.ref)==='like'?'voted':''}"
+            data-ref="${p.ref}" data-type="like" title="Like">👍</button>
+          <button class="card-vote-btn dislike ${localStorage.getItem('vote_'+p.ref)==='dislike'?'voted':''}"
+            data-ref="${p.ref}" data-type="dislike" title="Dislike">👎</button>
+        </div>
+        ${(()=>{const net=(votes[p.ref]||[]).reduce((s,v)=>s+(v.type==='like'?1:-1),0);
+          return net!==0?'<div class="card-vote-net" style="color:'+(net>0?'var(--green)':'var(--red)')+'">'+(net>0?'+':'')+net+'</div>':'';})()}
       </div>
       <div class="prop-card-body">
         <div class="prop-card-name">${p.name}</div>
@@ -1196,8 +1202,26 @@ function quickVote(event, ref, type) {
   }
   localStorage.setItem('house_votes', JSON.stringify(votes));
   pushVotesFile('Quick vote on '+ref);
-  renderList();
-  // If detail panel is open for this ref, refresh votes section
+  // Update just the affected card's vote buttons — no full re-render needed
+  document.querySelectorAll(`.card-vote-btn[data-ref="${ref}"]`).forEach(btn => {
+    const myV = localStorage.getItem('vote_'+ref);
+    btn.classList.toggle('voted', btn.dataset.type === myV);
+  });
+  // Update net score display
+  const col = document.querySelector(`.rank-badge-col:has([data-ref="${ref}"])`);
+  if (col) {
+    const existing = col.querySelector('.card-vote-net');
+    if (existing) existing.remove();
+    const net = (votes[ref]||[]).reduce((s,v)=>s+(v.type==='like'?1:-1),0);
+    if (net !== 0) {
+      const d = document.createElement('div');
+      d.className = 'card-vote-net';
+      d.style.color = net > 0 ? 'var(--green)' : 'var(--red)';
+      d.textContent = (net > 0 ? '+' : '') + net;
+      col.appendChild(d);
+    }
+  }
+  // Refresh detail panel votes section if open
   if (selected === ref) {
     const p = properties.find(x=>x.ref===ref);
     if (p) renderDetail(p);
