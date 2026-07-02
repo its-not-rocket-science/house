@@ -817,6 +817,7 @@ function renderDetail(p) {
               <button class="pz-btn" onclick="pzIn('listing-wrap')" title="Zoom in">+</button>
               <button class="pz-btn" onclick="pzOut('listing-wrap')" title="Zoom out">−</button>
               <button class="pz-btn" onclick="pzReset('listing-wrap')" title="Reset">⤢</button>
+              <button class="pz-btn" onclick="openImgNewTab('gallery-main-img')" title="Open in new tab">↗</button>
             </div>
           </div>
           <div class="gallery-thumbs">
@@ -840,6 +841,7 @@ function renderDetail(p) {
               <button class="pz-btn" onclick="pzIn('floor-wrap')" title="Zoom in">+</button>
               <button class="pz-btn" onclick="pzOut('floor-wrap')" title="Zoom out">−</button>
               <button class="pz-btn" onclick="pzReset('floor-wrap')" title="Reset">⤢</button>
+              <button class="pz-btn" onclick="openImgNewTab('gallery-floor-main')" title="Open in new tab">↗</button>
             </div>
           </div>
           ${rmFloors.length > 1 ? `<div class="gallery-thumbs">
@@ -997,10 +999,11 @@ function getPz(wrapId) {
   if (!pzInstances[wrapId]) {
     const img = el.querySelector('img');
     if (!img) return null;
-    pzInstances[wrapId] = Panzoom(img, {
-      maxScale: 5, minScale: 1, contain: 'outside',
-      cursor: 'zoom-in',
-    });
+    if (typeof Panzoom === 'undefined') {
+      console.warn('Panzoom not loaded');
+      return null;
+    }
+    pzInstances[wrapId] = Panzoom(img, { maxScale: 5, minScale: 1, contain: 'outside' });
     el.addEventListener('wheel', e => { e.preventDefault(); pzInstances[wrapId].zoomWithWheel(e); });
   }
   return pzInstances[wrapId];
@@ -1008,6 +1011,10 @@ function getPz(wrapId) {
 function pzIn(wrapId)    { getPz(wrapId)?.zoomIn(); }
 function pzOut(wrapId)   { getPz(wrapId)?.zoomOut(); }
 function pzReset(wrapId) { getPz(wrapId)?.reset(); }
+function openImgNewTab(imgId) {
+  const img = document.getElementById(imgId);
+  if (img && img.src) window.open(img.src, '_blank');
+}
 
 // ── AGENT STATUS ──────────────────────────────────────────────────────────────
 function agentStatusLabel(s) {
@@ -1201,7 +1208,7 @@ function renderJourneys(p) {
   const j = p.journeys;
   if (!j || !j.london_car_mins) return '';
 
-  const fmtTime = mins => mins >= 60 ? `${Math.floor(mins/60)}h${mins%60?` ${mins%60}m`:''}` : `${mins}m`;
+  const fmtTime = mins => { if (mins >= 60) { const h=Math.floor(mins/60); const m=mins%60; return h+'h'+(m?' '+m+'m':''); } return mins+'m'; };
 
   return `
     <div class="ds"><h3>Journey times</h3></div>
