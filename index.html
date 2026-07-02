@@ -632,37 +632,37 @@ function renderDetail(p) {
           <img class="gallery-main" id="gallery-main-img"
             src="${rmImgs[0]}" alt="Photo 1"
             onerror="this.style.display='none'"
-            onclick="openLb(galleryImgSet,null,galleryImgSet[0])">
-          <div class="gallery-thumbs" id="gallery-thumbs">
-            ${rmImgs.map((src,i)=>`<img src="${src}" class="${i===0?'active-thumb':''}"
+            onclick="galleryLb(0)">
+          <div class="gallery-thumbs">
+            ${rmImgs.map((src,i)=>`<img src="${src}" data-idx="${i}" class="${i===0?'active-thumb':''}"
               onerror="this.style.display='none'"
-              onclick="setGalleryMain(this,'${src}',galleryImgSet)" alt="Photo ${i+1}">`).join('')}
+              onclick="pickPhoto(this,${i})" alt="Photo ${i+1}">`).join('')}
           </div>` :
           `<div class="gallery-empty">
-            Photos not yet downloaded — run rightmove_image_scraper.py then push to repo.<br>
+            Photos not yet downloaded — run scripts/rightmove_image_scraper.py then push to repo.<br>
             <a href="${p.rightmove_url}" target="_blank" style="color:#4d9fff">View on Rightmove ↗</a>
           </div>`}
       </div>
-            <div id="gtab-floor" style="display:none">
+      <div id="gtab-floor" style="display:none">
         ${rmFloors.length ? `
           <img class="gallery-main" id="gallery-floor-main"
             src="${rmFloors[0]}" alt="Floorplan"
             onerror="this.style.display='none'"
-            onclick="openLb(floorImgSet,null,floorImgSet[0])">
+            onclick="floorLb(0)">
           ${rmFloors.length > 1 ? `<div class="gallery-thumbs">
-            ${rmFloors.map((src,i)=>`<img src="${src}" class="${i===0?'active-thumb':''}"
+            ${rmFloors.map((src,i)=>`<img src="${src}" data-idx="${i}" class="${i===0?'active-thumb':''}"
               onerror="this.style.display='none'"
-              onclick="setFloorMain(this,'${src}')" alt="Floorplan ${i+1}">`).join('')}
+              onclick="pickFloor(this,${i})" alt="Floorplan ${i+1}">`).join('')}
           </div>` : ''}` :
           `<div class="gallery-empty">
             No floorplan available — <a href="${p.rightmove_url}" target="_blank" style="color:#4d9fff">view on Rightmove ↗</a>
           </div>`}
       </div>
       <div id="gtab-visit" style="display:none">
-        ${visitPhotos.length?`<div style="padding:6px"><div class="photo-grid">
-          ${visitPhotos.map(ph=>`<img class="photo-thumb" src="${ph.url}"
-            onclick="openLbSingle('${ph.url}')" alt="${ph.name}">`).join('')}
-        </div></div>`:`<div class="gallery-empty">No visit photos yet</div>`}
+        ${visitPhotos.length ? `<div style="padding:6px"><div class="photo-grid">
+          ${visitPhotos.map((ph,i)=>`<img class="photo-thumb" src="${ph.url}"
+            onclick="visitLb(${i})" alt="${ph.name}">`).join('')}
+        </div></div>` : `<div class="gallery-empty">No visit photos yet</div>`}
       </div>
     </div>
 
@@ -754,10 +754,10 @@ function renderDetail(p) {
       </div>
     </div>`;
 
-  // Set up gallery image set for lightbox navigation
-  window.galleryImgSet = rmImgs;
-  window.floorImgSet   = rmFloors;
-  // Check floorplan images — show fallback if none load
+  // Store image sets as globals for lightbox access
+  window._gImgs   = rmImgs;
+  window._fImgs   = rmFloors;
+  window._vPhotos = notes.photos[p.ref] || [];
 }
 
 
@@ -770,16 +770,21 @@ function switchGalleryTab(btn, tab) {
   });
 }
 
-function setGalleryMain(thumb, src, imgSet) {
-  const main=document.getElementById('gallery-main-img');
-  if(main) { main.src=src; main.onclick=()=>openLb(imgSet,null,src); }
+// Gallery helpers — all use window._gImgs / _fImgs / _vPhotos set in renderDetail
+function galleryLb(i)  { openLb(window._gImgs,   i); }
+function floorLb(i)    { openLb(window._fImgs,    i); }
+function visitLb(i)    { openLb(window._vPhotos.map(p=>p.url), i); }
+
+function pickPhoto(thumb, i) {
+  const main = document.getElementById('gallery-main-img');
+  if (main) { main.src = window._gImgs[i]; main.onclick = ()=>galleryLb(i); }
   document.querySelectorAll('#gtab-listing .gallery-thumbs img').forEach(t=>t.classList.remove('active-thumb'));
   thumb.classList.add('active-thumb');
 }
 
-function setFloorMain(thumb, src) {
-  const main=document.getElementById('gallery-floor-main');
-  if(main) { main.src=src; main.onclick=()=>openLb(window.floorImgSet,null,src); main.style.display=''; }
+function pickFloor(thumb, i) {
+  const main = document.getElementById('gallery-floor-main');
+  if (main) { main.src = window._fImgs[i]; main.style.display=''; main.onclick = ()=>floorLb(i); }
   document.querySelectorAll('#gtab-floor .gallery-thumbs img').forEach(t=>t.classList.remove('active-thumb'));
   thumb.classList.add('active-thumb');
 }
@@ -1031,23 +1036,14 @@ function updateTokenBtn(){
 }
 
 // ── LIGHTBOX ──────────────────────────────────────────────────────────────────
-function openLb(imgSrcs, triggerImgEl, forceSrc) {
-  lbImages=imgSrcs;
-  if(forceSrc){
-    lbIndex=imgSrcs.indexOf(forceSrc);
-    if(lbIndex<0) lbIndex=0;
-  } else if(triggerImgEl){
-    lbIndex=0;
-  }
-  document.getElementById('lightbox-img').src=lbImages[lbIndex]||'';
+// openLb(srcsArray, startIndex)  — startIndex defaults to 0
+function openLb(srcs, startIndex) {
+  lbImages = (srcs||[]).filter(Boolean);
+  lbIndex  = (typeof startIndex === 'number' && startIndex >= 0) ? startIndex : 0;
+  if (!lbImages.length) return;
+  document.getElementById('lightbox-img').src = lbImages[lbIndex];
   document.getElementById('lightbox').classList.add('show');
-  document.getElementById('lightbox-nav').style.display=lbImages.length>1?'flex':'none';
-}
-function openLbSingle(src){
-  lbImages=[src]; lbIndex=0;
-  document.getElementById('lightbox-img').src=src;
-  document.getElementById('lightbox').classList.add('show');
-  document.getElementById('lightbox-nav').style.display='none';
+  document.getElementById('lightbox-nav').style.display = lbImages.length > 1 ? 'flex' : 'none';
 }
 function closeLightbox(){document.getElementById('lightbox').classList.remove('show');}
 function handleLightboxClick(e){if(e.target===document.getElementById('lightbox')) closeLightbox();}
