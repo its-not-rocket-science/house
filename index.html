@@ -207,6 +207,43 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   color:#fff;padding:6px 18px;border-radius:4px;cursor:pointer;font-size:14px}
 .lb-nav-btn:hover{background:rgba(255,255,255,.25)}
 
+
+/* SCORECARD */
+.sc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.sc-overall{display:flex;align-items:center;gap:10px}
+.sc-ring{width:52px;height:52px;flex-shrink:0}
+.sc-ring circle{fill:none;stroke-width:6;stroke-linecap:round}
+.sc-ring .bg{stroke:#e8edf2}
+.sc-ring .fill{stroke:#1E7145;transition:stroke-dashoffset .4s ease;transform:rotate(-90deg);transform-origin:50% 50%}
+.sc-pct{font-size:13px;font-weight:700;color:var(--navy)}
+.sc-cats{display:flex;flex-direction:column;gap:3px;margin-bottom:12px}
+.sc-row{display:grid;grid-template-columns:110px 1fr 60px;gap:6px;align-items:center;
+  font-size:11.5px;padding:4px 0;border-bottom:1px solid #f0f2f5}
+.sc-row:last-child{border-bottom:none}
+.sc-cat-label{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;
+  color:var(--muted);margin-top:8px;margin-bottom:2px;padding-top:4px;
+  border-top:1px solid var(--border);grid-column:1/-1}
+.sc-label{color:#333;font-size:11.5px}
+.sc-note{font-size:11px;color:var(--muted)}
+.sc-badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px;text-align:center;white-space:nowrap}
+.sc-badge.green{background:#C6EFCE;color:#1E7145}
+.sc-badge.amber{background:#FFEB9C;color:#7F4F00}
+.sc-badge.red{background:#FFE4E4;color:#9C0006}
+.sc-badge.grey{background:#f0f2f5;color:#888}
+.sc-flags{margin-bottom:10px}
+.sc-flag{display:flex;gap:6px;align-items:flex-start;font-size:12px;color:#9C0006;
+  background:#FFF0F0;border-left:3px solid #9C0006;padding:6px 8px;
+  border-radius:0 4px 4px 0;margin-bottom:5px;line-height:1.4}
+.sc-flag-icon{flex-shrink:0;margin-top:1px}
+.sc-qs{margin-bottom:4px}
+.sc-q{display:flex;gap:6px;align-items:flex-start;font-size:12px;
+  background:#EBF3FB;border-left:3px solid var(--navy);padding:6px 8px;
+  border-radius:0 4px 4px 0;margin-bottom:5px;line-height:1.4;color:#1a3a5c}
+.sc-q-icon{flex-shrink:0;font-weight:700;color:var(--navy);margin-top:1px}
+.copy-qs-btn{font-size:11px;background:#f0f4f8;border:1px solid var(--border);
+  color:var(--navy);padding:4px 10px;border-radius:4px;cursor:pointer;margin-bottom:8px}
+.copy-qs-btn:hover{background:#e0eaf8}
+
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-thumb{background:#ccc;border-radius:3px}
@@ -405,7 +442,7 @@ const PROPS_PATH = 'data/properties.json', NOTES_PATH = 'data/notes.json';
 const PHOTOS_DIR = 'data/photos';
 
 // ── STATE ─────────────────────────────────────────────────────────────────────
-let properties = [], notes = {notes:{},visits:{},photos:{}};
+let properties = [], notes = {notes:{},visits:{},photos:{}}, scorecards = {};
 let filtered = [], selected = null, currentSort = 'rank';
 let activeF = {cluster:'all',annexe:'all',status:'all',caveat:'all'};
 let map = null, markers = {};
@@ -441,6 +478,7 @@ function localFloorplans(ref) {
 // ── INIT ──────────────────────────────────────────────────────────────────────
 async function init() {
   await loadManifest();
+  try { const sc = await fetch('data/scorecards.json'); scorecards = await sc.json(); } catch(e) {}
   const r = await fetch('data/properties.json');
   properties = await r.json();
   await loadNotes();
@@ -711,6 +749,9 @@ function renderDetail(p) {
           </button>`;
       })()}
       <div class="detail-agent" style="margin-top:8px">Agent: ${p.agent}</div>
+
+      <!-- SCORECARD -->
+      ${renderScorecard(p.ref)}
 
       <!-- NOTES -->
       <div class="ds"><h3>Notes</h3></div>
@@ -1054,6 +1095,91 @@ function lbNav(dir){
 
 const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
   .replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+
+
+// ── SCORECARD ────────────────────────────────────────────────────────────────
+function renderScorecard(ref) {
+  const sc = scorecards[ref];
+  if (!sc) return '';
+
+  const pct = sc.overall_pct;
+  const ringR = 20, ringC = 26;
+  const circ = 2 * Math.PI * ringR;
+  const offset = circ * (1 - pct / 100);
+  const ringCol = pct >= 70 ? '#1E7145' : pct >= 45 ? '#7F4F00' : '#9C0006';
+
+  // Group scores by category
+  const cats = {};
+  for (const s of sc.scores) {
+    if (!cats[s.cat]) cats[s.cat] = [];
+    cats[s.cat].push(s);
+  }
+
+  const badgeClass = score => score === 3 ? 'green' : score >= 2 ? 'amber' : score === 1 ? 'amber' : 'red';
+  const badgeText  = score => score === 3 ? '✓ Good' : score === 2 ? '~ Check' : score === 1 ? '~ Partial' : '✗ Unknown';
+
+  const scRows = Object.entries(cats).map(([cat, items]) => {
+    const rows = items.map(s => `
+      <div class="sc-row">
+        <div class="sc-label">${s.label}</div>
+        <div class="sc-note">${s.note}</div>
+        <div><span class="sc-badge ${badgeClass(s.score)}">${badgeText(s.score)}</span></div>
+      </div>`).join('');
+    return `<div class="sc-cat-label">${cat}</div>${rows}`;
+  }).join('');
+
+  const flagsHtml = sc.red_flags.length ? `
+    <div class="ds"><h3>⚠ Red flags</h3></div>
+    <div class="sc-flags">
+      ${sc.red_flags.map(f => `
+        <div class="sc-flag"><span class="sc-flag-icon">⚠</span><span>${f}</span></div>`).join('')}
+    </div>` : '';
+
+  const qsHtml = sc.questions.length ? `
+    <div class="ds"><h3>Questions to ask the agent</h3></div>
+    <button class="copy-qs-btn" onclick="copyQuestions('${ref}')">📋 Copy all questions</button>
+    <div class="sc-qs">
+      ${sc.questions.map((q,i) => `
+        <div class="sc-q"><span class="sc-q-icon">${i+1}.</span><span>${q}</span></div>`).join('')}
+    </div>` : '<div style="font-size:12px;color:var(--green);margin-bottom:12px">✓ No outstanding questions</div>';
+
+  return `
+    <div class="ds"><h3>Scorecard</h3></div>
+    <div class="sc-header">
+      <div class="sc-overall">
+        <svg class="sc-ring" viewBox="0 0 ${ringC*2} ${ringC*2}">
+          <circle class="bg" cx="${ringC}" cy="${ringC}" r="${ringR}" stroke-dasharray="${circ}"/>
+          <circle class="fill" cx="${ringC}" cy="${ringC}" r="${ringR}"
+            stroke="${ringCol}"
+            stroke-dasharray="${circ}"
+            stroke-dashoffset="${offset.toFixed(1)}"/>
+        </svg>
+        <div>
+          <div class="sc-pct">${pct}% fit</div>
+          <div style="font-size:11px;color:var(--muted)">${sc.scores.length} criteria assessed</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--muted);text-align:right">
+        <span style="color:var(--green);font-weight:600">${sc.scores.filter(s=>s.score===3).length} resolved ✓</span><br>
+        <span style="color:var(--amber);font-weight:600">${sc.scores.filter(s=>s.score>0&&s.score<3).length} partial ~</span><br>
+        <span style="color:var(--red);font-weight:600">${sc.scores.filter(s=>s.score===0).length} unknown ✗</span>
+      </div>
+    </div>
+    <div class="sc-cats">${scRows}</div>
+    ${flagsHtml}
+    ${qsHtml}`;
+}
+
+function copyQuestions(ref) {
+  const sc = scorecards[ref];
+  if (!sc || !sc.questions.length) return;
+  const text = sc.questions.map((q,i) => `${i+1}. ${q}`).join('\n');
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.target;
+    btn.textContent = '✓ Copied';
+    setTimeout(() => btn.textContent = '📋 Copy all questions', 2000);
+  });
+}
 
 function toggleDesc(ref) {
   const s = document.getElementById('desc-short-'+ref);
