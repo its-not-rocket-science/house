@@ -2163,14 +2163,28 @@
   },
   "89767338": {
     "ref": "89767338",
-    "overall_pct": 42,
+    "overall_pct": 48,
     "scores": [
       {
         "cat": "Annexe",
-        "label": "Annexe status",
-        "score": 1,
-        "note": "No confirmed annexe — creation needed",
+        "label": "Independent entrance",
+        "score": 0,
+        "note": "Not confirmed in listing",
         "resolved": false
+      },
+      {
+        "cat": "Annexe",
+        "label": "Shower / wetroom",
+        "score": 0,
+        "note": "Shower in annexe not confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Annexe",
+        "label": "Kitchen/kitchenette",
+        "score": 3,
+        "note": "Kitchen in annexe confirmed",
+        "resolved": true
       },
       {
         "cat": "Annexe",
@@ -2182,9 +2196,9 @@
       {
         "cat": "Smoke separation",
         "label": "Physical separation",
-        "score": 0,
-        "note": "No annexe yet — separation depends on what is created",
-        "resolved": false
+        "score": 3,
+        "note": "Detached annexe — excellent smoke separation",
+        "resolved": true
       },
       {
         "cat": "Mobility",
@@ -2251,13 +2265,13 @@
       }
     ],
     "questions": [
-      "What is the realistic scope for creating a self-contained annexe — outbuilding, garage conversion or extension?",
-      "Is there a ground floor bedroom accessible without stairs, for a person with limited mobility?",
-      "Is there a walk-in or level-access shower — no step — accessible from the ground floor?",
+      "Does the annexe have its own completely separate external entrance?",
+      "Does the annexe have a walk-in shower or wet room? If not, is there space to add one?",
+      "Is there a walk-in or level-access shower accessible from the ground floor?",
       "What is the heating fuel — oil, gas, LPG, heat pump or electric? What are approximate annual costs?",
       "Is the drainage mains or private (septic tank / sewage treatment plant)?",
       "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
+      "Is there an onward chain on the vendor's side?"
     ],
     "red_flags": []
   },

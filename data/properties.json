@@ -264,7 +264,7 @@
   {
     "ref": "88185459",
     "name": "Pantygyfelia Farm, Bonymaen, Swansea",
-    "rank": 14,
+    "rank": 15,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Bonymaen, Swansea",
@@ -284,7 +284,7 @@
   {
     "ref": "89701968",
     "name": "Loders, Bridport — Det Character",
-    "rank": 15,
+    "rank": 16,
     "price": 470000,
     "price_display": "£470,000",
     "location": "Loders, Dorset",
@@ -304,7 +304,7 @@
   {
     "ref": "174415073",
     "name": "Killara, Piddletrenthide",
-    "rank": 16,
+    "rank": 17,
     "price": 400000,
     "price_display": "£400,000",
     "location": "Piddletrenthide, Dorset",
@@ -324,7 +324,7 @@
   {
     "ref": "174472451",
     "name": "Arch View, Tatworth / South Chard",
-    "rank": 17,
+    "rank": 18,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Tatworth, Somerset",
@@ -344,7 +344,7 @@
   {
     "ref": "88791255",
     "name": "Park Shaw, Sedlescombe",
-    "rank": 18,
+    "rank": 19,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Sedlescombe, East Sussex",
@@ -364,7 +364,7 @@
   {
     "ref": "168243473",
     "name": "Stroud Park Ave, Christchurch — Bungalow",
-    "rank": 19,
+    "rank": 20,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Christchurch, Dorset",
@@ -384,15 +384,15 @@
   {
     "ref": "89767338",
     "name": "Bibury Rd, Old Walcot, Swindon",
-    "rank": 20,
+    "rank": 14,
     "price": 440000,
     "price_display": "£440,000",
     "location": "Swindon, Wiltshire",
     "cluster": "Wiltshire / Swindon",
     "agent": "Charles Harding, Swindon",
-    "annexe": "potential",
+    "annexe": "confirmed",
     "caveat": null,
-    "short_desc": "An extended semi detached bay fronted home situated in the ever popular Old Walcot area.",
+    "short_desc": "Extended semi-detached bay-fronted home in Old Walcot, Swindon. 4/5 bedrooms, en-suite to master, modern family bathroom, two reception rooms, large kitchen/breakfast room. Detached annexe in enclosed rear garden. Gas CH, uPVC double glazing, front parking.",
     "rightmove_url": "https://www.rightmove.co.uk/properties/89767338",
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F89767338&propertyId=89767338",
     "lat": 51.5512,

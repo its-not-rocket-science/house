@@ -244,6 +244,39 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   color:var(--navy);padding:4px 10px;border-radius:4px;cursor:pointer;margin-bottom:8px}
 .copy-qs-btn:hover{background:#e0eaf8}
 
+
+/* AGENT CONTACT STATUS */
+.agent-status-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.agent-sbtn{font-size:11px;padding:3px 9px;border-radius:10px;
+  border:1px solid var(--border);background:#fff;cursor:pointer;transition:all .1s}
+.agent-sbtn.on{color:#fff;border-color:transparent}
+.agent-sbtn[data-as="not-contacted"].on{background:#888}
+.agent-sbtn[data-as="contacted"].on{background:var(--navy)}
+.agent-sbtn[data-as="replied"].on{background:var(--amber)}
+.agent-sbtn[data-as="viewing-arranged"].on{background:var(--green)}
+.agent-sbtn[data-as="not-proceeding"].on{background:var(--red)}
+/* QUESTIONS POPUP */
+.qs-popup{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);
+  z-index:6000;align-items:center;justify-content:center}
+.qs-popup.show{display:flex}
+.qs-box{background:#fff;border-radius:8px;padding:20px;width:520px;max-width:95vw;
+  max-height:85vh;overflow-y:auto}
+.qs-box h2{font-size:14px;margin-bottom:12px;color:var(--navy)}
+.qs-item{display:flex;gap:8px;align-items:flex-start;padding:7px 0;
+  border-bottom:1px solid var(--border);font-size:12.5px;line-height:1.5}
+.qs-item:last-child{border-bottom:none}
+.qs-num{font-weight:700;color:var(--navy);flex-shrink:0;width:18px}
+.qs-btns{display:flex;gap:8px;margin-top:14px}
+/* PANZOOM CONTROLS */
+.pz-controls{display:flex;gap:4px;padding:4px 6px;background:rgba(0,0,0,.5);
+  position:absolute;bottom:8px;right:8px;border-radius:4px;z-index:10}
+.pz-btn{background:rgba(255,255,255,.85);border:none;width:26px;height:26px;
+  border-radius:3px;cursor:pointer;font-size:14px;display:flex;align-items:center;
+  justify-content:center;font-weight:700;color:#333}
+.pz-btn:hover{background:#fff}
+.gallery-main-wrap{position:relative;overflow:hidden;background:#000;line-height:0}
+.gallery-main{cursor:zoom-in}
+
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-thumb{background:#ccc;border-radius:3px}
@@ -329,8 +362,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
     <div class="modal-grid">
       <div class="modal-field full">
         <label>Rightmove URL or ref number</label>
-        <input id="add-ref" placeholder="https://www.rightmove.co.uk/properties/12345678 or 12345678"
-          oninput="inferFromRef()">
+        <div style="display:flex;gap:8px">
+          <input id="add-ref" placeholder="https://www.rightmove.co.uk/properties/12345678 or 12345678"
+            oninput="inferFromRef()" style="flex:1">
+          <button class="mbtn p" onclick="fetchRmDetails()" id="fetch-rm-btn"
+            style="white-space:nowrap;flex-shrink:0">
+            🔍 Fetch details
+          </button>
+        </div>
+        <div id="fetch-rm-status" style="font-size:11px;color:var(--muted);margin-top:4px"></div>
       </div>
       <div class="modal-field full">
         <label>Property name / title</label>
@@ -435,6 +475,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/panzoom/9.4.3/panzoom.min.js"></script>
 <script>
 // ── CONFIG ────────────────────────────────────────────────────────────────────
 const OWNER = 'its-not-rocket-science', REPO = 'house';
@@ -482,8 +523,14 @@ async function init() {
   const r = await fetch('data/properties.json');
   properties = await r.json();
   await loadNotes();
+  // Merge statuses: notes.statusOverrides (synced) takes priority over localStorage
   const savedS = JSON.parse(localStorage.getItem('prop_statuses')||'{}');
-  properties.forEach(p=>{ if(savedS[p.ref]) p.status=savedS[p.ref]; });
+  properties.forEach(p=>{
+    const synced = (notes.statusOverrides||{})[p.ref];
+    const local  = savedS[p.ref];
+    if (synced) p.status = synced;
+    else if (local) p.status = local;
+  });
   buildClusterFilters();
   populateClusterDatalist();
   initMap();
@@ -614,6 +661,8 @@ function renderList() {
         <div class="prop-card-meta" style="margin-top:2px">
           <span>${p.cluster}</span>
           <span style="color:${sCol(p.status)};font-weight:600">${sLabel(p.status)}</span>
+          ${(()=>{const as=(notes.agentStatus||{})[p.ref];return as&&as!=='not-contacted'?
+            `<span style="font-size:10px;color:var(--navy)">📧 ${agentStatusLabel(as)}</span>`:''})()}
         </div>
       </div>
       <div class="status-dot" style="background:${sCol(p.status)}"></div>
@@ -667,10 +716,17 @@ function renderDetail(p) {
       </div>
       <div id="gtab-listing">
         ${rmImgs.length ? `
-          <img class="gallery-main" id="gallery-main-img"
-            src="${rmImgs[0]}" alt="Photo 1"
-            onerror="this.style.display='none'"
-            onclick="galleryLb(0)">
+          <div class="gallery-main-wrap" id="listing-wrap">
+            <img class="gallery-main" id="gallery-main-img"
+              src="${rmImgs[0]}" alt="Photo 1"
+              onerror="this.style.display='none'"
+              onclick="galleryLb(0)">
+            <div class="pz-controls">
+              <button class="pz-btn" onclick="pzIn('listing-wrap')" title="Zoom in">+</button>
+              <button class="pz-btn" onclick="pzOut('listing-wrap')" title="Zoom out">−</button>
+              <button class="pz-btn" onclick="pzReset('listing-wrap')" title="Reset">⤢</button>
+            </div>
+          </div>
           <div class="gallery-thumbs">
             ${rmImgs.map((src,i)=>`<img src="${src}" data-idx="${i}" class="${i===0?'active-thumb':''}"
               onerror="this.style.display='none'"
@@ -683,10 +739,17 @@ function renderDetail(p) {
       </div>
       <div id="gtab-floor" style="display:none">
         ${rmFloors.length ? `
-          <img class="gallery-main" id="gallery-floor-main"
-            src="${rmFloors[0]}" alt="Floorplan"
-            onerror="this.style.display='none'"
-            onclick="floorLb(0)">
+          <div class="gallery-main-wrap" id="floor-wrap">
+            <img class="gallery-main" id="gallery-floor-main"
+              src="${rmFloors[0]}" alt="Floorplan"
+              onerror="this.style.display='none'"
+              onclick="floorLb(0)">
+            <div class="pz-controls">
+              <button class="pz-btn" onclick="pzIn('floor-wrap')" title="Zoom in">+</button>
+              <button class="pz-btn" onclick="pzOut('floor-wrap')" title="Zoom out">−</button>
+              <button class="pz-btn" onclick="pzReset('floor-wrap')" title="Reset">⤢</button>
+            </div>
+          </div>
           ${rmFloors.length > 1 ? `<div class="gallery-thumbs">
             ${rmFloors.map((src,i)=>`<img src="${src}" data-idx="${i}" class="${i===0?'active-thumb':''}"
               onerror="this.style.display='none'"
@@ -721,16 +784,29 @@ function renderDetail(p) {
       <div class="detail-links">
         <a class="dl p" href="${p.rightmove_url}" target="_blank">Rightmove ↗</a>
         <a class="dl s" href="${p.contact_url}" target="_blank">Contact agent ↗</a>
+        <a class="dl s" href="#" onclick="event.preventDefault();showQuestions('${p.ref}')">❓ Questions to ask</a>
         ${dupRefs.map(dr=>`<a class="dl d" href="https://www.rightmove.co.uk/properties/${dr}" target="_blank">
           Duplicate listing ${dr} ↗</a>`).join('')}
       </div>
 
-      <!-- STATUS -->
-      <div class="ds"><h3>Status</h3></div>
+      <!-- PROPERTY STATUS -->
+      <div class="ds"><h3>Property status</h3></div>
       <div class="status-row">
         ${['active','viewing-booked','offer-made','rejected'].map(s=>
           `<button class="sbtn ${p.status===s?'on':''}" data-s="${s}"
             onclick="setStatus('${p.ref}','${s}')">${sLabel(s)}</button>`).join('')}
+      </div>
+
+      <!-- AGENT CONTACT STATUS -->
+      <div class="ds"><h3>Agent contact</h3></div>
+      <div class="agent-status-row">
+        ${['not-contacted','contacted','replied','viewing-arranged','not-proceeding'].map(as=>
+          `<button class="agent-sbtn ${(notes.agentStatus||{})[p.ref]===as?'on':''}" data-as="${as}"
+            onclick="setAgentStatus('${p.ref}','${as}')">${agentStatusLabel(as)}</button>`
+        ).join('')}
+      </div>
+      <div id="agent-status-note-${p.ref}" style="font-size:11px;color:var(--muted);margin-bottom:8px">
+        ${(notes.agentStatus||{})[p.ref] ? 'Last updated: ' + ((notes.agentStatusDate||{})[p.ref]||'') : ''}
       </div>
 
       <!-- ABOUT -->
@@ -811,6 +887,83 @@ function switchGalleryTab(btn, tab) {
   });
 }
 
+
+// ── PANZOOM ───────────────────────────────────────────────────────────────────
+const pzInstances = {};
+function getPz(wrapId) {
+  const el = document.getElementById(wrapId);
+  if (!el) return null;
+  if (!pzInstances[wrapId]) {
+    const img = el.querySelector('img');
+    if (!img) return null;
+    pzInstances[wrapId] = Panzoom(img, {
+      maxScale: 5, minScale: 1, contain: 'outside',
+      cursor: 'zoom-in',
+    });
+    el.addEventListener('wheel', e => { e.preventDefault(); pzInstances[wrapId].zoomWithWheel(e); });
+  }
+  return pzInstances[wrapId];
+}
+function pzIn(wrapId)    { getPz(wrapId)?.zoomIn(); }
+function pzOut(wrapId)   { getPz(wrapId)?.zoomOut(); }
+function pzReset(wrapId) { getPz(wrapId)?.reset(); }
+
+// ── AGENT STATUS ──────────────────────────────────────────────────────────────
+function agentStatusLabel(s) {
+  return {'not-contacted':'Not contacted','contacted':'Contacted','replied':'Replied',
+    'viewing-arranged':'Viewing arranged','not-proceeding':'Not proceeding'}[s] || s;
+}
+
+function setAgentStatus(ref, status) {
+  if (!notes.agentStatus)     notes.agentStatus     = {};
+  if (!notes.agentStatusDate) notes.agentStatusDate = {};
+  notes.agentStatus[ref]     = status;
+  notes.agentStatusDate[ref] = new Date().toLocaleDateString('en-GB');
+  localStorage.setItem('house_notes', JSON.stringify(notes));
+  pushNotesFile('Update agent status for ' + ref);
+  // Update button states inline without full re-render
+  document.querySelectorAll('.agent-sbtn').forEach(b =>
+    b.classList.toggle('on', b.dataset.as === status));
+  const noteEl = document.getElementById('agent-status-note-' + ref);
+  if (noteEl) noteEl.textContent = 'Last updated: ' + notes.agentStatusDate[ref];
+  renderList(); // update card indicators
+}
+
+// ── QUESTIONS POPUP ──────────────────────────────────────────────────────────
+let currentQsRef = null;
+function showQuestions(ref) {
+  const sc = scorecards[ref];
+  const p  = properties.find(x => x.ref === ref);
+  currentQsRef = ref;
+  document.getElementById('qs-popup-title').textContent =
+    `Questions to ask — ${p ? p.name : ref}`;
+  const qs = sc?.questions || [];
+  document.getElementById('qs-popup-body').innerHTML = qs.length
+    ? qs.map((q,i) => `<div class="qs-item"><span class="qs-num">${i+1}.</span><span>${q}</span></div>`).join('')
+    : '<p style="color:var(--muted);font-size:12px">No outstanding questions for this property.</p>';
+  document.getElementById('qs-popup').classList.add('show');
+}
+function hideQuestions() {
+  document.getElementById('qs-popup').classList.remove('show');
+  currentQsRef = null;
+}
+function copyQsFromPopup() {
+  const sc = currentQsRef ? scorecards[currentQsRef] : null;
+  if (!sc?.questions?.length) return;
+  const text = sc.questions.map((q,i) => `${i+1}. ${q}`).join('\n');
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.target;
+    btn.textContent = '✓ Copied';
+    setTimeout(() => btn.textContent = '📋 Copy all', 2000);
+  });
+}
+
+// Close popup on backdrop click
+document.getElementById('qs-popup')?.addEventListener('click', e => {
+  if (e.target === document.getElementById('qs-popup')) hideQuestions();
+});
+
+
 // Gallery helpers — all use window._gImgs / _fImgs / _vPhotos set in renderDetail
 function galleryLb(i)  { openLb(window._gImgs,   i); }
 function floorLb(i)    { openLb(window._fImgs,    i); }
@@ -838,11 +991,16 @@ function setStatus(ref,status) {
   const p=properties.find(x=>x.ref===ref);
   if(!p) return;
   p.status=status;
+  // Persist to localStorage
   const saved=JSON.parse(localStorage.getItem('prop_statuses')||'{}');
   saved[ref]=status;
   localStorage.setItem('prop_statuses',JSON.stringify(saved));
+  // Also push into notes so it syncs across devices via GitHub
+  if(!notes.statusOverrides) notes.statusOverrides={};
+  notes.statusOverrides[ref]=status;
+  localStorage.setItem('house_notes',JSON.stringify(notes));
+  pushNotesFile('Update status for '+ref);
   renderList(); renderDetail(p); updateStats();
-  pushPropsFile('Update status for '+ref);
 }
 
 function updateStats() {
@@ -866,9 +1024,101 @@ function inferFromRef() {
   const val=document.getElementById('add-ref').value.trim();
   const m=val.match(/(\d{8,9})/);
   if(!m) return;
-  const ref=m[1];
-  // Pre-fill URLs — user still needs to fill in the rest
-  document.getElementById('add-ref').value=ref;
+  document.getElementById('add-ref').value=m[1];
+}
+
+async function fetchRmDetails() {
+  const val = document.getElementById('add-ref').value.trim();
+  const m = val.match(/(\d{8,9})/);
+  if (!m) { alert('Enter a Rightmove URL or ref number first'); return; }
+  const ref = m[1];
+  const btn = document.getElementById('fetch-rm-btn');
+  const status = document.getElementById('fetch-rm-status');
+  btn.textContent = '⏳ Fetching…'; btn.disabled = true;
+  status.textContent = '';
+
+  // Check if we already have this in the scraped data
+  // We use the GitHub raw content API to check data/properties.json first
+  // Then try to get Open Graph / meta data from Rightmove via a CORS proxy
+  // allorigins.win strips CORS headers and lets us read Rightmove HTML
+  const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent('https://www.rightmove.co.uk/properties/'+ref)}`;
+  try {
+    const r = await fetch(proxyUrl, {signal: AbortSignal.timeout(15000)});
+    if (!r.ok) throw new Error('Proxy error ' + r.status);
+    const data = await r.json();
+    const html = data.contents || '';
+
+    // Extract meta tags
+    const getMeta = (name) => {
+      const m = html.match(new RegExp(`<meta[^>]*(?:name|property)=["']${name}["'][^>]*content=["']([^"']+)["']`, 'i'))
+               || html.match(new RegExp(`content=["']([^"']+)["'][^>]*(?:name|property)=["']${name}["']`, 'i'));
+      return m ? m[1].replace(/&amp;/g,'&').replace(/&#039;/g,"'") : '';
+    };
+
+    const title    = getMeta('og:title') || getMeta('twitter:title') || '';
+    const descMeta = getMeta('og:description') || getMeta('description') || '';
+
+    // Extract price
+    const priceM = html.match(/["']price["'][^>]*>\s*£([\d,]+)/) ||
+                   html.match(/£([\d,]+)(?:,000)?\s*(?:guide|asking|offers?)?/i) ||
+                   html.match(/"price":\s*"([\d]+)"/);
+    const price = priceM ? parseInt(priceM[1].replace(/,/g,'')) : 0;
+
+    // Extract address/location
+    const addrM = html.match(/"displayAddress":"([^"]+)"/) ||
+                  html.match(/<h1[^>]*itemprop="name"[^>]*>([^<]+)</) ||
+                  html.match(/["']address["'][^>]*>([^<]+)</);
+    const addr = addrM ? addrM[1].replace(/\\n/g,' ').trim() : '';
+
+    // Extract bedrooms
+    const bedsM = html.match(/"bedrooms":(\d+)/) || html.match(/(\d+)\s*bed/i);
+    const beds = bedsM ? bedsM[1] : '';
+
+    // Check for annexe keywords
+    const lcHtml = html.toLowerCase();
+    const hasAnnexe = /annex|annexe|granny flat|self.contained|dependant relative/.test(lcHtml);
+    const hasDetachedAnnexe = /detached annex|detached one.bedroom|separate building/.test(lcHtml);
+
+    // Autofill the form
+    if (title) document.getElementById('add-name').value = addr || title;
+    if (price) document.getElementById('add-price').value = price;
+    if (descMeta) document.getElementById('add-desc').value = descMeta.substring(0,350);
+    if (hasAnnexe) document.getElementById('add-annexe').value =
+      hasDetachedAnnexe ? 'confirmed' : 'confirmed';
+
+    // Try to geocode using postcodeM
+    const postM = html.match(/([A-Z]{1,2}\d{1,2}[A-Z]?\s*\d[A-Z]{2})/i);
+    if (postM) {
+      const postcode = postM[1].replace(/\s+/,'');
+      try {
+        const gr = await fetch(`https://api.postcodes.io/postcodes/${postcode}`);
+        if (gr.ok) {
+          const gd = await gr.json();
+          if (gd.result) {
+            document.getElementById('add-lat').value = gd.result.latitude.toFixed(4);
+            document.getElementById('add-lng').value = gd.result.longitude.toFixed(4);
+            const county = gd.result.admin_county || gd.result.admin_district || '';
+            document.getElementById('add-location').value = addr || county;
+            document.getElementById('add-geo-hint').style.display = 'none';
+          }
+        }
+      } catch(e) {}
+    }
+
+    const filled = [title||addr, price, descMeta].filter(Boolean).length;
+    status.style.color = filled >= 2 ? 'var(--green)' : 'var(--amber)';
+    status.textContent = filled >= 2
+      ? `✓ Details fetched — check and complete the form below`
+      : `⚠ Partial details only — please complete the form manually`;
+
+    // Note: images will be scraped next time rightmove_image_scraper.py is run
+    status.textContent += '. Run scripts/rightmove_image_scraper.py to fetch images.';
+
+  } catch(e) {
+    status.style.color = 'var(--red)';
+    status.textContent = `Could not fetch details (${e.message}) — please fill in manually`;
+  }
+  btn.textContent = '🔍 Fetch details'; btn.disabled = false;
 }
 
 async function addProperty() {
@@ -1194,5 +1444,18 @@ function toggleDesc(ref) {
 
 init();
 </script>
+
+<!-- QUESTIONS POPUP -->
+<div class="qs-popup" id="qs-popup">
+  <div class="qs-box">
+    <h2 id="qs-popup-title">Questions to ask the agent</h2>
+    <div id="qs-popup-body"></div>
+    <div class="qs-btns">
+      <button class="mbtn p" onclick="copyQsFromPopup()">📋 Copy all</button>
+      <button class="mbtn s" onclick="hideQuestions()">Close</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
