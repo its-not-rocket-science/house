@@ -414,19 +414,33 @@ let lbImages = [], lbIndex = 0;
 // ── RANK COLOUR ───────────────────────────────────────────────────────────────
 const rc = r => r<=2?'#1F4E79':r<=6?'#375623':r<=12?'#7F4F00':r<=20?'#555':'#888';
 
-// ── RIGHTMOVE IMAGE URLs ──────────────────────────────────────────────────────
-// RM serves images at predictable paths; floorplan at _FLP_00_ suffix
-function rmPhotos(ref, n=8) {
-  return Array.from({length:n},(_,i)=>
-    `https://media.rightmove.co.uk/dir/crop/10:9-16:9/${ref}_img_${String(i+1).padStart(2,'0')}.jpg`);
+// ── IMAGE MANIFEST ────────────────────────────────────────────────────────────
+let imageManifest = {};
+
+async function loadManifest() {
+  try {
+    const r = await fetch('data/images/manifest.json');
+    if (r.ok) imageManifest = await r.json();
+  } catch(e) { imageManifest = {}; }
 }
-function rmFloorplans(ref, n=2) {
-  return Array.from({length:n},(_,i)=>
-    `https://media.rightmove.co.uk/${ref}/FLP_00_${String(i).padStart(2,'0')}.jpeg`);
+
+function localPhotos(ref) {
+  const entry = imageManifest[ref];
+  if (entry && entry.photos && entry.photos.length)
+    return entry.photos.map(p => p.startsWith('http') ? p : p);
+  return [];
+}
+
+function localFloorplans(ref) {
+  const entry = imageManifest[ref];
+  if (entry && entry.floorplans && entry.floorplans.length)
+    return entry.floorplans.map(p => p.startsWith('http') ? p : p);
+  return [];
 }
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
 async function init() {
+  await loadManifest();
   const r = await fetch('data/properties.json');
   properties = await r.json();
   await loadNotes();
@@ -600,9 +614,9 @@ function renderDetail(p) {
   const visitDate=notes.visits[p.ref];
   const col=rc(p.rank);
 
-  // Gallery: tabs for Listing Photos, Floorplan, Visit Photos
-  const rmImgs=rmPhotos(p.ref,8);
-  const rmFloors=rmFloorplans(p.ref,2);
+  // Gallery: use local images from manifest
+  const rmImgs=localPhotos(p.ref);
+  const rmFloors=localFloorplans(p.ref);
   const dupRefs=p.duplicate_refs||[];
 
   document.getElementById('detail-content').innerHTML=`
@@ -614,15 +628,20 @@ function renderDetail(p) {
         <button class="gallery-tab" onclick="switchGalleryTab(this,'visit')">Visit photos (${visitPhotos.length})</button>
       </div>
       <div id="gtab-listing">
-        <img class="gallery-main" id="gallery-main-img"
-          src="${rmImgs[0]}" alt="Photo 1"
-          onerror="this.src='';this.style.height='60px';this.alt='Image not available'"
-          onclick="openLb(galleryImgSet,'gallery-main-img')">
-        <div class="gallery-thumbs" id="gallery-thumbs">
-          ${rmImgs.map((src,i)=>`<img src="${src}" class="${i===0?'active-thumb':''}"
+        ${rmImgs.length ? `
+          <img class="gallery-main" id="gallery-main-img"
+            src="${rmImgs[0]}" alt="Photo 1"
             onerror="this.style.display='none'"
-            onclick="setGalleryMain(this,'${src}',galleryImgSet)" alt="Photo ${i+1}">`).join('')}
-        </div>
+            onclick="openLb(galleryImgSet,null,galleryImgSet[0])">
+          <div class="gallery-thumbs" id="gallery-thumbs">
+            ${rmImgs.map((src,i)=>`<img src="${src}" class="${i===0?'active-thumb':''}"
+              onerror="this.style.display='none'"
+              onclick="setGalleryMain(this,'${src}',galleryImgSet)" alt="Photo ${i+1}">`).join('')}
+          </div>` :
+          `<div class="gallery-empty">
+            Photos not yet downloaded — run rightmove_image_scraper.py then push to repo.<br>
+            <a href="${p.rightmove_url}" target="_blank" style="color:#4d9fff">View on Rightmove ↗</a>
+          </div>`}
       </div>
       <div id="gtab-floor" style="display:none">
         ${rmFloors.map((src,i)=>`<img class="floor-img" src="${src}" alt="Floorplan ${i+1}"
@@ -671,8 +690,20 @@ function renderDetail(p) {
 
       <!-- ABOUT -->
       <div class="ds"><h3>About</h3></div>
-      <div class="detail-desc">${p.short_desc||'—'}</div>
-      <div class="detail-agent">Agent: ${p.agent}</div>
+      ${(()=>{
+        const full = (p.full_desc||p.short_desc||'').replace(/\n/g,'<br>');
+        const short = (p.short_desc||'');
+        const needsExpand = (p.full_desc||'').length > (short.length + 20);
+        if (!needsExpand) return `<div class="detail-desc">${full||'—'}</div>`;
+        return `<div class="detail-desc" id="desc-short-${p.ref}">${esc(short)}</div>
+          <div class="detail-desc" id="desc-full-${p.ref}" style="display:none">${(p.full_desc||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>')}</div>
+          <button onclick="toggleDesc('${p.ref}')" id="desc-toggle-${p.ref}"
+            style="margin-top:6px;background:none;border:none;color:var(--navy);
+            font-size:12px;cursor:pointer;padding:0;font-weight:600">
+            ▼ Show full description
+          </button>`;
+      })()}
+      <div class="detail-agent" style="margin-top:8px">Agent: ${p.agent}</div>
 
       <!-- NOTES -->
       <div class="ds"><h3>Notes</h3></div>
@@ -1019,6 +1050,17 @@ function lbNav(dir){
 
 const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
   .replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+
+function toggleDesc(ref) {
+  const s = document.getElementById('desc-short-'+ref);
+  const f = document.getElementById('desc-full-'+ref);
+  const b = document.getElementById('desc-toggle-'+ref);
+  if (!s||!f||!b) return;
+  const expanded = f.style.display !== 'none';
+  s.style.display = expanded ? '' : 'none';
+  f.style.display = expanded ? 'none' : '';
+  b.textContent   = expanded ? '▼ Show full description' : '▲ Show less';
+}
 
 init();
 </script>
