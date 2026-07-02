@@ -15,7 +15,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F173985596&propertyId=173985596",
     "lat": 51.1279,
     "lng": -3.0011,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "89061840",
@@ -33,7 +34,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F89061840&propertyId=89061840",
     "lat": 50.9012,
     "lng": -3.0234,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "89444523",
@@ -51,7 +53,10 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F89444523&propertyId=89444523",
     "lat": 50.7389,
     "lng": -2.8456,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": [
+      "87545469"
+    ]
   },
   {
     "ref": "169862942",
@@ -69,7 +74,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F169862942&propertyId=169862942",
     "lat": 51.0678,
     "lng": -3.1789,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "87890067",
@@ -87,7 +93,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F87890067&propertyId=87890067",
     "lat": 51.5912,
     "lng": -3.3456,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "173348153",
@@ -105,7 +112,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F173348153&propertyId=173348153",
     "lat": 50.8234,
     "lng": -2.1567,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "172773251",
@@ -123,7 +131,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F172773251&propertyId=172773251",
     "lat": 50.8567,
     "lng": -2.1123,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "89951784",
@@ -141,7 +150,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F89951784&propertyId=89951784",
     "lat": 51.7023,
     "lng": -3.0345,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "168359045",
@@ -159,7 +169,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F168359045&propertyId=168359045",
     "lat": 51.5734,
     "lng": -3.9812,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "88996269",
@@ -177,7 +188,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F88996269&propertyId=88996269",
     "lat": 51.7234,
     "lng": -2.9812,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "87130665",
@@ -195,7 +207,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F87130665&propertyId=87130665",
     "lat": 50.9456,
     "lng": -2.6234,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "172902734",
@@ -213,7 +226,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F172902734&propertyId=172902734",
     "lat": 51.3123,
     "lng": -2.2134,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "173219645",
@@ -231,7 +245,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F173219645&propertyId=173219645",
     "lat": 50.7512,
     "lng": -2.0234,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "88185459",
@@ -249,7 +264,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F88185459&propertyId=88185459",
     "lat": 51.6423,
     "lng": -3.8912,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "89701968",
@@ -267,7 +283,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F89701968&propertyId=89701968",
     "lat": 50.7234,
     "lng": -2.7523,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "174415073",
@@ -285,7 +302,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F174415073&propertyId=174415073",
     "lat": 50.7678,
     "lng": -2.4012,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "174472451",
@@ -303,7 +321,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F174472451&propertyId=174472451",
     "lat": 50.8712,
     "lng": -2.9456,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "88791255",
@@ -321,7 +340,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F88791255&propertyId=88791255",
     "lat": 50.9123,
     "lng": 0.5234,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "168243473",
@@ -339,7 +359,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F168243473&propertyId=168243473",
     "lat": 50.7378,
     "lng": -1.7734,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "89767338",
@@ -357,7 +378,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F89767338&propertyId=89767338",
     "lat": 51.5512,
     "lng": -1.7423,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "88156767",
@@ -375,7 +397,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F88156767&propertyId=88156767",
     "lat": 51.4523,
     "lng": -2.1123,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "87791562",
@@ -393,7 +416,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F87791562&propertyId=87791562",
     "lat": 51.3734,
     "lng": -2.1345,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "89236248",
@@ -411,7 +435,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F89236248&propertyId=89236248",
     "lat": 51.3156,
     "lng": -2.2156,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "89784342",
@@ -429,7 +454,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F89784342&propertyId=89784342",
     "lat": 51.7123,
     "lng": -3.8523,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "89415939",
@@ -447,7 +473,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F89415939&propertyId=89415939",
     "lat": 51.5912,
     "lng": -2.9834,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "170968559",
@@ -465,7 +492,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F170968559&propertyId=170968559",
     "lat": 51.0834,
     "lng": -1.8234,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "88318344",
@@ -483,7 +511,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F88318344&propertyId=88318344",
     "lat": 51.6423,
     "lng": -1.8512,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "170605958",
@@ -501,7 +530,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F170605958&propertyId=170605958",
     "lat": 51.0123,
     "lng": -3.4712,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "166496951",
@@ -519,7 +549,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F166496951&propertyId=166496951",
     "lat": 50.7512,
     "lng": -1.8834,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "90125946",
@@ -537,7 +568,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F90125946&propertyId=90125946",
     "lat": 50.7634,
     "lng": -1.8234,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "169598735",
@@ -555,7 +587,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F169598735&propertyId=169598735",
     "lat": 51.6612,
     "lng": -3.8123,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "174938813",
@@ -573,7 +606,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F174938813&propertyId=174938813",
     "lat": 50.4534,
     "lng": -4.4623,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "168382466",
@@ -591,7 +625,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F168382466&propertyId=168382466",
     "lat": 51.1234,
     "lng": -2.8923,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "88310844",
@@ -609,7 +644,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F88310844&propertyId=88310844",
     "lat": 51.1056,
     "lng": -2.9423,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "87545469",
@@ -627,7 +663,10 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F87545469&propertyId=87545469",
     "lat": 50.7389,
     "lng": -2.8456,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": [
+      "89444523"
+    ]
   },
   {
     "ref": "88055244",
@@ -645,7 +684,8 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F88055244&propertyId=88055244",
     "lat": 50.7334,
     "lng": -1.1623,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   },
   {
     "ref": "171958844",
@@ -663,6 +703,7 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F171958844&propertyId=171958844",
     "lat": 50.6534,
     "lng": -1.1723,
-    "status": "active"
+    "status": "active",
+    "duplicate_refs": []
   }
 ]
