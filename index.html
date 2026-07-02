@@ -58,8 +58,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   display:flex;gap:9px;align-items:flex-start;transition:background .1s;position:relative}
 .prop-card:hover{background:#f0f4f8}
 .prop-card.selected{background:#e8f0fb;border-left:3px solid var(--navy)}
+.rank-badge-col{display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0}
 .rank-badge{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;
-  justify-content:center;font-weight:700;font-size:10px;color:#fff;flex-shrink:0;margin-top:1px}
+  justify-content:center;font-weight:700;font-size:10px;color:#fff;flex-shrink:0}
+.card-vote-btns{display:flex;gap:2px}
+.card-vote-btn{background:none;border:1px solid var(--border);border-radius:3px;
+  font-size:9px;cursor:pointer;padding:1px 3px;line-height:1.2;transition:all .1s}
+.card-vote-btn:hover{background:#f0f4f8}
+.card-vote-btn.like.voted{background:#C6EFCE;border-color:#1E7145;color:#1E7145}
+.card-vote-btn.dislike.voted{background:#FFE4E4;border-color:#9C0006;color:#9C0006}
+.card-vote-net{font-size:9px;font-weight:700;text-align:center;line-height:1}
 .prop-card-body{flex:1;min-width:0}
 .prop-card-name{font-weight:600;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .prop-card-meta{font-size:11px;color:var(--muted);margin-top:2px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
@@ -230,6 +238,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 .sc-badge.amber{background:#FFEB9C;color:#7F4F00}
 .sc-badge.red{background:#FFE4E4;color:#9C0006}
 .sc-badge.grey{background:#f0f2f5;color:#888}
+.sc-row{display:grid;grid-template-columns:110px 1fr auto;gap:6px;align-items:center;
+  font-size:11.5px;padding:4px 0;border-bottom:1px solid #f0f2f5}
+.sc-select{font-size:10px;padding:2px 4px;border:1px solid var(--border);border-radius:4px;
+  background:#fff;cursor:pointer;font-weight:600;appearance:none;-webkit-appearance:none;
+  padding-right:14px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%23666'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 3px center}
+.sc-select.green{background-color:#C6EFCE;border-color:#1E7145;color:#1E7145}
+.sc-select.amber{background-color:#FFEB9C;border-color:#7F4F00;color:#7F4F00}
+.sc-select.red{background-color:#FFE4E4;border-color:#9C0006;color:#9C0006}
+.sc-rerank-btn{font-size:11px;padding:5px 12px;background:var(--navy);color:#fff;
+  border:none;border-radius:4px;cursor:pointer;font-weight:600;margin-top:8px}
+.sc-rerank-btn:hover{opacity:.85}
+.sc-rerank-btn:disabled{background:var(--grey);cursor:default}
+.sc-changed-banner{background:#EBF3FB;border:1px solid var(--navy);border-radius:4px;
+  padding:6px 10px;font-size:11.5px;color:var(--navy);margin-bottom:8px;display:none}
+.sc-changed-banner.show{display:block}
 .sc-flags{margin-bottom:10px}
 .sc-flag{display:flex;gap:6px;align-items:flex-start;font-size:12px;color:#9C0006;
   background:#FFF0F0;border-left:3px solid #9C0006;padding:6px 8px;
@@ -593,6 +617,9 @@ async function init() {
   const r = await fetch('data/properties.json');
   properties = await r.json();
   await loadNotes();
+  // Restore scorecard overrides into notes if present
+  if (!notes.scorecardOverrides) notes.scorecardOverrides = {};
+
   // Load votes (from GitHub or localStorage)
   try {
     const localVotes = localStorage.getItem('house_votes');
@@ -736,7 +763,21 @@ function renderList() {
     div.dataset.ref=p.ref;
     div.onclick=()=>selectProp(p.ref);
     div.innerHTML=`
-      <div class="rank-badge" style="background:${rc(p.rank)}">${p.rank}</div>
+      <div class="rank-badge-col" onclick="event.stopPropagation()">
+        <div class="rank-badge" style="background:${rc(p.rank)}">${p.rank}</div>
+        ${(()=>{
+          const pv=votes[p.ref]||[];
+          const net=pv.reduce((s,v)=>s+(v.type==='like'?1:-1),0);
+          const myV=localStorage.getItem('vote_'+p.ref);
+          return '<div class="card-vote-btns">'
+            +'<button class="card-vote-btn like '+(myV==='like'?'voted':'')+'" '
+            +'onclick="quickVote(event,\''+p.ref+'\',\'like\')" title="Like">👍</button>'
+            +'<button class="card-vote-btn dislike '+(myV==='dislike'?'voted':'')+'" '
+            +'onclick="quickVote(event,\''+p.ref+'\',\'dislike\')" title="Dislike">👎</button>'
+            +'</div>'
+            +(net!==0?'<div class="card-vote-net" style="color:'+(net>0?'var(--green)':'var(--red)')+'">'+( net>0?'+':'')+net+'</div>':'');
+        })()}
+      </div>
       <div class="prop-card-body">
         <div class="prop-card-name">${p.name}</div>
         <div class="prop-card-meta">
@@ -832,17 +873,18 @@ function renderDetail(p) {
       </div>
       <div id="gtab-floor" style="display:none">
         ${rmFloors.length ? `
-          <div class="gallery-main-wrap" id="floor-wrap">
+          <div style="display:flex;gap:6px;padding:4px 6px;background:#1a1a1a;align-items:center">
+            <span style="color:#aaa;font-size:11px;flex:1">Scroll or pinch to zoom · drag to pan</span>
+            <button class="pz-btn" onclick="pzIn('floor-wrap')" title="Zoom in" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2)">+</button>
+            <button class="pz-btn" onclick="pzOut('floor-wrap')" title="Zoom out" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2)">−</button>
+            <button class="pz-btn" onclick="pzReset('floor-wrap')" title="Reset zoom" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2)">⤢</button>
+            <button class="pz-btn" onclick="openFloorWindow()" title="Open in new window" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2);padding:0 6px;font-size:11px;width:auto">⊞ New window</button>
+          </div>
+          <div class="gallery-main-wrap" id="floor-wrap" style="cursor:grab">
             <img class="gallery-main" id="gallery-floor-main"
               src="${rmFloors[0]}" alt="Floorplan"
-              onerror="this.style.display='none'"
-              onclick="floorLb(0)">
-            <div class="pz-controls">
-              <button class="pz-btn" onclick="pzIn('floor-wrap')" title="Zoom in">+</button>
-              <button class="pz-btn" onclick="pzOut('floor-wrap')" title="Zoom out">−</button>
-              <button class="pz-btn" onclick="pzReset('floor-wrap')" title="Reset">⤢</button>
-              <button class="pz-btn" onclick="openImgNewTab('gallery-floor-main')" title="Open in new tab">↗</button>
-            </div>
+              onerror="this.parentElement.parentElement.innerHTML='<div class=gallery-empty>No floorplan image loaded — <a href=\'${p.rightmove_url}\' target=\'_blank\' style=\'color:#4d9fff\'>view on Rightmove ↗</a></div>'"
+              style="cursor:inherit">
           </div>
           ${rmFloors.length > 1 ? `<div class="gallery-thumbs">
             ${rmFloors.map((src,i)=>`<img src="${src}" data-idx="${i}" class="${i===0?'active-thumb':''}"
@@ -988,6 +1030,15 @@ function switchGalleryTab(btn, tab) {
     const el=document.getElementById('gtab-'+t);
     if(el) el.style.display=t===tab?'block':'none';
   });
+  // Initialise panzoom on floor wrap when tab first shown
+  if (tab === 'floor') {
+    delete pzInstances['floor-wrap']; // force reinit on correct visible element
+    setTimeout(()=>getPz('floor-wrap'), 50);
+  }
+  if (tab === 'listing') {
+    delete pzInstances['listing-wrap'];
+    setTimeout(()=>getPz('listing-wrap'), 50);
+  }
 }
 
 
@@ -1014,6 +1065,22 @@ function pzReset(wrapId) { getPz(wrapId)?.reset(); }
 function openImgNewTab(imgId) {
   const img = document.getElementById(imgId);
   if (img && img.src) window.open(img.src, '_blank');
+}
+function openFloorWindow() {
+  const img = document.getElementById('gallery-floor-main');
+  if (!img || !img.src) return;
+  const src = img.src;
+  const w = window.open('', '_blank',
+    'width=1000,height=800,menubar=no,toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes');
+  if (!w) return;
+  w.document.write('<html><head><title>Floorplan</title>'
+    +'<style>body{margin:0;background:#222;display:flex;align-items:center;justify-content:center;min-height:100vh}'
+    +'img{max-width:98vw;max-height:98vh;object-fit:contain;cursor:zoom-in}'
+    +'img.zoomed{max-width:none;max-height:none;cursor:zoom-out}'
+    +'</style></head><body>'
+    +'<img src="'+src+'" onclick="this.classList.toggle(\'zoomed\')" alt="Floorplan">'
+    +'</body></html>');
+  w.document.close();
 }
 
 // ── AGENT STATUS ──────────────────────────────────────────────────────────────
@@ -1111,6 +1178,30 @@ function renderVotes(ref) {
         Votes with explanations</div>
       <div class="vote-history">${voteHistory}</div>`:''}
     </div>`
+}
+
+function quickVote(event, ref, type) {
+  event.stopPropagation();
+  const myVote = localStorage.getItem('vote_'+ref);
+  if (myVote === type) { // toggle off
+    localStorage.removeItem('vote_'+ref);
+    if (votes[ref]) votes[ref] = votes[ref].filter(v=>!(!v.reason && v.voter===localStorage.getItem('voter_name')));
+  } else {
+    if (!votes[ref]) votes[ref] = [];
+    const voterName = localStorage.getItem('voter_name') || 'Anonymous';
+    // Remove any previous no-reason vote from this voter
+    votes[ref] = votes[ref].filter(v=>!(v.voter===voterName&&!v.reason));
+    votes[ref].push({type, reason:'', voter:voterName, date:new Date().toLocaleDateString('en-GB')});
+    localStorage.setItem('vote_'+ref, type);
+  }
+  localStorage.setItem('house_votes', JSON.stringify(votes));
+  pushVotesFile('Quick vote on '+ref);
+  renderList();
+  // If detail panel is open for this ref, refresh votes section
+  if (selected === ref) {
+    const p = properties.find(x=>x.ref===ref);
+    if (p) renderDetail(p);
+  }
 }
 
 function castVote(ref, type) {
@@ -1771,18 +1862,43 @@ function renderScorecard(ref) {
     cats[s.cat].push(s);
   }
 
-  const badgeClass = score => score === 3 ? 'green' : score >= 2 ? 'amber' : score === 1 ? 'amber' : 'red';
-  const badgeText  = score => score === 3 ? '✓ Good' : score === 2 ? '~ Check' : score === 1 ? '~ Partial' : '✗ Unknown';
+  const scClass = score => score === 3 ? 'green' : score >= 2 ? 'amber' : score === 1 ? 'amber' : 'red';
+
+  // Check for user overrides
+  const overrides = (notes.scorecardOverrides||{})[ref] || {};
 
   const scRows = Object.entries(cats).map(([cat, items]) => {
-    const rows = items.map(s => `
-      <div class="sc-row">
-        <div class="sc-label">${s.label}</div>
-        <div class="sc-note">${s.note}</div>
-        <div><span class="sc-badge ${badgeClass(s.score)}">${badgeText(s.score)}</span></div>
-      </div>`).join('');
-    return `<div class="sc-cat-label">${cat}</div>${rows}`;
+    const rows = items.map((s, si) => {
+      const key = cat+'__'+si;
+      const effectiveScore = overrides[key] !== undefined ? overrides[key] : s.score;
+      const cls = scClass(effectiveScore);
+      const changed = overrides[key] !== undefined && overrides[key] !== s.score;
+      return `
+        <div class="sc-row" style="${changed?'background:#fffde7;':''}">
+          <div class="sc-label">${s.label}${changed?' <span style="font-size:9px;color:var(--amber)">✎</span>':''}</div>
+          <div class="sc-note">${s.note}</div>
+          <select class="sc-select ${cls}" data-ref="${ref}" data-key="${key}"
+            onchange="updateScorecard('${ref}','${key}',parseInt(this.value),this)"
+            onclick="event.stopPropagation()">
+            <option value="3" ${effectiveScore===3?'selected':''}>✓ Good</option>
+            <option value="2" ${effectiveScore===2?'selected':''}>~ Check</option>
+            <option value="1" ${effectiveScore===1?'selected':''}>~ Partial</option>
+            <option value="0" ${effectiveScore===0?'selected':''}>✗ Unknown</option>
+          </select>
+        </div>`;
+    }).join('');
+    return '<div class="sc-cat-label">'+cat+'</div>'+rows;
   }).join('');
+
+  // Compute effective overall pct with overrides
+  const effectiveScores = sc.scores.map((s,i)=>{
+    const cat = Object.keys(cats).find(c=>cats[c].includes(s));
+    const catIdx = cat ? cats[cat].indexOf(s) : -1;
+    const key = cat+'__'+catIdx;
+    return overrides[key] !== undefined ? overrides[key] : s.score;
+  });
+  const effectivePct = Math.round(effectiveScores.reduce((a,b)=>a+b,0) / (sc.scores.length*3) * 100);
+  const hasOverrides = Object.keys(overrides).length > 0;
 
   const flagsHtml = sc.red_flags.length ? `
     <div class="ds"><h3>⚠ Red flags</h3></div>
@@ -1799,31 +1915,141 @@ function renderScorecard(ref) {
         <div class="sc-q"><span class="sc-q-icon">${i+1}.</span><span>${q}</span></div>`).join('')}
     </div>` : '<div style="font-size:12px;color:var(--green);margin-bottom:12px">✓ No outstanding questions</div>';
 
+  const dispPct = hasOverrides ? effectivePct : pct;
+  const dispRingCol = dispPct >= 70 ? '#1E7145' : dispPct >= 45 ? '#7F4F00' : '#9C0006';
+  const dispOffset = circ * (1 - dispPct / 100);
+
   return `
     <div class="ds"><h3>Scorecard</h3></div>
+    <div class="sc-changed-banner ${hasOverrides?'show':''}" id="sc-banner-${ref}">
+      ✎ You have updated ${Object.keys(overrides).length} score${Object.keys(overrides).length!==1?'s':''}.
+      <button class="sc-rerank-btn" style="margin-top:0;margin-left:8px;font-size:10px;padding:3px 8px"
+        onclick="rerank('${ref}')">↻ Rerank now</button>
+      <button onclick="resetScorecard('${ref}')"
+        style="background:none;border:none;color:var(--navy);font-size:10px;cursor:pointer;margin-left:4px;text-decoration:underline">
+        Reset to auto</button>
+    </div>
     <div class="sc-header">
       <div class="sc-overall">
         <svg class="sc-ring" viewBox="0 0 ${ringC*2} ${ringC*2}">
           <circle class="bg" cx="${ringC}" cy="${ringC}" r="${ringR}" stroke-dasharray="${circ}"/>
           <circle class="fill" cx="${ringC}" cy="${ringC}" r="${ringR}"
-            stroke="${ringCol}"
+            stroke="${dispRingCol}"
             stroke-dasharray="${circ}"
-            stroke-dashoffset="${offset.toFixed(1)}"/>
+            stroke-dashoffset="${dispOffset.toFixed(1)}"/>
         </svg>
         <div>
-          <div class="sc-pct">${pct}% fit</div>
-          <div style="font-size:11px;color:var(--muted)">${sc.scores.length} criteria assessed</div>
+          <div class="sc-pct">${dispPct}% fit${hasOverrides?' <span style="font-size:9px;color:var(--amber)">✎ edited</span>':''}</div>
+          <div style="font-size:11px;color:var(--muted)">${sc.scores.length} criteria · change dropdowns to update</div>
         </div>
       </div>
       <div style="font-size:11px;color:var(--muted);text-align:right">
-        <span style="color:var(--green);font-weight:600">${sc.scores.filter(s=>s.score===3).length} resolved ✓</span><br>
-        <span style="color:var(--amber);font-weight:600">${sc.scores.filter(s=>s.score>0&&s.score<3).length} partial ~</span><br>
-        <span style="color:var(--red);font-weight:600">${sc.scores.filter(s=>s.score===0).length} unknown ✗</span>
+        <span style="color:var(--green);font-weight:600">${effectiveScores.filter(s=>s===3).length} resolved ✓</span><br>
+        <span style="color:var(--amber);font-weight:600">${effectiveScores.filter(s=>s>0&&s<3).length} partial ~</span><br>
+        <span style="color:var(--red);font-weight:600">${effectiveScores.filter(s=>s===0).length} unknown ✗</span>
       </div>
     </div>
     <div class="sc-cats">${scRows}</div>
     ${flagsHtml}
     ${qsHtml}`;
+}
+
+// ── SCORECARD EDITING & RERANKING ────────────────────────────────────────────
+function updateScorecard(ref, key, newScore, selectEl) {
+  if (!notes.scorecardOverrides) notes.scorecardOverrides = {};
+  if (!notes.scorecardOverrides[ref]) notes.scorecardOverrides[ref] = {};
+  notes.scorecardOverrides[ref][key] = newScore;
+  localStorage.setItem('house_notes', JSON.stringify(notes));
+  // Update select colour class
+  selectEl.className = 'sc-select ' + (newScore===3?'green':newScore>=1?'amber':'red');
+  // Show changed banner
+  const banner = document.getElementById('sc-banner-'+ref);
+  if (banner) {
+    const count = Object.keys(notes.scorecardOverrides[ref]).length;
+    banner.classList.add('show');
+    banner.querySelector('span') && (banner.childNodes[0].textContent =
+      '✎ You have updated '+count+' score'+(count!==1?'s':'')+'. ');
+  }
+  // Update the ring live
+  const sc = scorecards[ref];
+  if (!sc) return;
+  const overrides = notes.scorecardOverrides[ref] || {};
+  const cats = {};
+  for (const s of sc.scores) { if (!cats[s.cat]) cats[s.cat]=[]; cats[s.cat].push(s); }
+  const effectiveScores = sc.scores.map((s,i)=>{
+    const cat = Object.keys(cats).find(c=>cats[c].includes(s));
+    const catIdx = cat?cats[cat].indexOf(s):-1;
+    const k = cat+'__'+catIdx;
+    return overrides[k]!==undefined?overrides[k]:s.score;
+  });
+  const pct = Math.round(effectiveScores.reduce((a,b)=>a+b,0)/(sc.scores.length*3)*100);
+  const pctEl = document.querySelector('.sc-pct');
+  if (pctEl) pctEl.textContent = pct+'% fit ✎ edited';
+  // Push to notes
+  pushNotesFile('Update scorecard for '+ref);
+}
+
+function rerank(ref) {
+  // Recompute ALL properties' effective scores and re-sort by them
+  if (!notes.scorecardOverrides) notes.scorecardOverrides = {};
+
+  const getEffectivePct = (propRef) => {
+    const sc = scorecards[propRef];
+    if (!sc) return 0;
+    const overrides = notes.scorecardOverrides[propRef] || {};
+    const cats = {};
+    for (const s of sc.scores) { if (!cats[s.cat]) cats[s.cat]=[]; cats[s.cat].push(s); }
+    const eff = sc.scores.map((s)=>{
+      const cat = Object.keys(cats).find(c=>cats[c].includes(s));
+      const idx = cat?cats[cat].indexOf(s):-1;
+      const k = cat+'__'+idx;
+      return overrides[k]!==undefined?overrides[k]:s.score;
+    });
+    return eff.reduce((a,b)=>a+b,0) / (sc.scores.length*3) * 100;
+  };
+
+  // Sort by effective score descending
+  const sorted = [...properties].sort((a,b)=>getEffectivePct(b.ref)-getEffectivePct(a.ref));
+  sorted.forEach((p,i)=>{
+    const prop = properties.find(x=>x.ref===p.ref);
+    if (prop) prop.rank = i+1;
+  });
+
+  // Update markers on map
+  Object.entries(markers).forEach(([r,m])=>{
+    const p=properties.find(x=>x.ref===r);
+    if (!p) return;
+    const col=rc(p.rank);
+    const icon=L.divIcon({
+      html:'<div style="background:'+col+';width:26px;height:26px;border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 5px rgba(0,0,0,.4)"><span style="color:#fff;font-size:10px;font-weight:700">'+p.rank+'</span></div>',
+      iconSize:[26,26],iconAnchor:[13,13],className:''
+    });
+    m.setIcon(icon);
+  });
+
+  pushPropsFile('Rerank after scorecard updates');
+  pushNotesFile('Save scorecard overrides');
+  applyFilters();
+  updateStats();
+  // Re-render detail for current property
+  const p = properties.find(x=>x.ref===ref);
+  if (p) renderDetail(p);
+
+  // Flash confirmation
+  const btn = event.target;
+  const orig = btn.textContent;
+  btn.textContent = '✓ Reranked!';
+  btn.disabled = true;
+  setTimeout(()=>{ btn.textContent=orig; btn.disabled=false; }, 2000);
+}
+
+function resetScorecard(ref) {
+  if (!notes.scorecardOverrides) return;
+  delete notes.scorecardOverrides[ref];
+  localStorage.setItem('house_notes', JSON.stringify(notes));
+  pushNotesFile('Reset scorecard for '+ref);
+  const p = properties.find(x=>x.ref===ref);
+  if (p) renderDetail(p);
 }
 
 function copyQuestions(ref) {
