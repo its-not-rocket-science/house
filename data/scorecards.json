@@ -2393,101 +2393,116 @@
   },
   "87791562": {
     "ref": "87791562",
-    "overall_pct": 39,
+    "overall_pct": 62,
     "scores": [
       {
         "cat": "Annexe",
-        "label": "Annexe status",
-        "score": 1,
-        "note": "No confirmed annexe — creation needed",
-        "resolved": false
+        "label": "Independent entrance",
+        "score": 3,
+        "note": "Own external side entrance confirmed in listing",
+        "resolved": true
+      },
+      {
+        "cat": "Annexe",
+        "label": "Shower / wetroom",
+        "score": 2,
+        "note": "Bath with shower over — not a level-access walk-in shower",
+        "resolved": true
+      },
+      {
+        "cat": "Annexe",
+        "label": "Kitchen",
+        "score": 3,
+        "note": "Full fitted kitchen confirmed — oven, hob, sink, fridge/freezer space",
+        "resolved": true
       },
       {
         "cat": "Annexe",
         "label": "Planning / building control",
-        "score": 3,
-        "note": "Approved use confirmed",
-        "resolved": true
+        "score": 0,
+        "note": "Planning/BC approval not mentioned in listing",
+        "resolved": false
       },
       {
         "cat": "Smoke separation",
         "label": "Physical separation",
-        "score": 0,
-        "note": "No annexe yet — separation depends on what is created",
+        "score": 2,
+        "note": "Own external side entrance — but appears attached to main house",
         "resolved": false
       },
       {
         "cat": "Mobility",
         "label": "Ground floor bedroom",
         "score": 1,
-        "note": "Not confirmed — check annexe layout",
+        "note": "Annexe layout unclear — rooms listed but floor levels not specified",
         "resolved": false
       },
       {
         "cat": "Mobility",
-        "label": "Walk-in shower / wetroom",
+        "label": "Walk-in shower",
         "score": 1,
-        "note": "Walk-in shower not confirmed",
-        "resolved": false
+        "note": "Annexe has bath with shower over — not level access",
+        "resolved": true
       },
       {
         "cat": "Heating",
         "label": "Fuel type",
-        "score": 0,
-        "note": "Heating type not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Gas CH in main house; annexe has radiators — likely gas throughout",
+        "resolved": true
       },
       {
         "cat": "Drainage",
         "label": "Drainage type",
-        "score": 0,
-        "note": "Drainage type not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Mains drainage — connected suburban estate",
+        "resolved": true
       },
       {
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed",
+        "note": "Broadband speed not confirmed in listing",
         "resolved": false
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
         "score": 3,
-        "note": "No flood risk indicators",
+        "note": "Suburban estate — no flood risk indicators",
         "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Listed building",
         "score": 3,
-        "note": "Not listed",
+        "note": "Modern property — not listed",
         "resolved": true
       },
       {
         "cat": "Transaction",
         "label": "Chain",
         "score": 1,
-        "note": "Chain status not confirmed",
+        "note": "Chain status not mentioned in listing",
         "resolved": false
       },
       {
         "cat": "Transaction",
         "label": "Budget headroom",
         "score": 1,
-        "note": "Only £15,000 under budget — very tight",
+        "note": "£15,000 under budget — very tight",
         "resolved": true
       }
     ],
     "questions": [
-      "What is the realistic scope for creating a self-contained annexe — outbuilding, garage conversion or extension?",
-      "Is there a ground floor bedroom accessible without stairs, for a person with limited mobility?",
-      "Is there a walk-in or level-access shower — no step — accessible from the ground floor?",
-      "What is the heating fuel — oil, gas, LPG, heat pump or electric? What are approximate annual costs?",
-      "Is the drainage mains or private (septic tank / sewage treatment plant)?",
-      "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
+      "Is the annexe shower a step-in bath/shower or is there space to replace it with a level-access walk-in shower?",
+      "Has the annexe been granted planning permission and building control approval? Does it have its own council tax band?",
+      "Is there full air/smoke separation between the annexe and main house — i.e. can a smoker in the annexe not affect main house air quality?",
+      "Are all the annexe rooms on a single level (ground floor) with no internal stairs?",
+      "Is there space in the annexe bathroom to replace the bath with a level-access wet room?",
+      "Is the annexe heated by the same gas central heating as the main house, or does it have separate heating?",
+      "What broadband speeds are available — is full fibre (FTTP) available? What are upload speeds?",
+      "Is there an onward chain on the vendor's side?"
     ],
     "red_flags": []
   },
