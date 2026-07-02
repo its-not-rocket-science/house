@@ -915,6 +915,13 @@ function renderDetail(p) {
       <div class="detail-name">${p.name}</div>
       <div class="detail-location">📍 ${p.location}</div>
       <div class="detail-price">${p.price_display}</div>
+      <div class="vote-row">
+        <button class="vote-btn like ${myVote==='like'?'voted':''}"
+          onclick="castVote('${ref}','like')">👍 Like <span>${likes}</span></button>
+        <button class="vote-btn dislike ${myVote==='dislike'?'voted':''}"
+          onclick="castVote('${ref}','dislike')">👎 Dislike <span>${dislikes}</span></button>
+        <span class="vote-count ${net>0?'positive':net<0?'negative':''}">${net>0?'+':''}${net}</span>
+      </div>
       <div class="detail-pills">
         <span class="dpill cluster">${p.cluster}</span>
         <span class="dpill ${p.annexe==='confirmed'?'ac':'ap'}">
@@ -1167,13 +1174,6 @@ function renderVotes(ref) {
   return `
     <div data-vote-ref="${ref}">
     <div class="ds"><h3>Votes</h3></div>
-    <div class="vote-row">
-      <button class="vote-btn like ${myVote==='like'?'voted':''}"
-        onclick="castVote('${ref}','like')">👍 Like <span>${likes}</span></button>
-      <button class="vote-btn dislike ${myVote==='dislike'?'voted':''}"
-        onclick="castVote('${ref}','dislike')">👎 Dislike <span>${dislikes}</span></button>
-      <span class="vote-count ${net>0?'positive':net<0?'negative':''}">${net>0?'+':''}${net}</span>
-    </div>
     <div class="vote-reason-wrap" id="vote-reason-${ref}" style="display:none">
       <input class="vote-reason-input" id="vote-reason-input-${ref}"
         placeholder="Explain your vote (required for multiple votes)…">

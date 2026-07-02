@@ -1,5 +1,16 @@
 {
-  "notes": {},
+  "notes": {
+    "89061840": {
+      "text": "AGENT REPLY — Zoe Lovelock, Paul Fenton (02/07/2026)\n\nHEATING: Confirmed. Oil boiler (Worcester) serves main house only. Annexe has its own independent LPG central heating. ✓\n\nDRAINAGE: Traditional septic tank to soakaway — NOT to watercourse. 2020 General Binding Rules do not apply. Emptied 2 weeks ago. Fully compliant. ✓\n\nBROADBAND: Vendor works from home without issues but unsure of speeds. Check Ofcom checker (TA20 3HG). ⚠\n\nROAD NOISE: House and road separated by garden and hedgerow (visible on Google Street View). 22-inch thick stone walls. Not noticeable inside unless windows/doors open. ✓\n\nBUILDING CONTROL: Indemnity policy to be obtained \"after survey if needed\". NOTE: this is not correct — it must be a pre-exchange condition. Solicitor to flag. ⚠\n\nPLOT: All freehold confirmed. No vehicular access to paddock. ✓\n\nNEXT STEPS:\n— Check Ofcom broadband at TA20 3HG\n— Reply to Zoe requesting viewing dates + confirm BC indemnity timing with solicitor\n— Ask about annexe single-level layout, LPG supply details, chain status",
+      "date": "02/07/2026"
+    }
+  },
   "visits": {},
-  "photos": {}
+  "photos": {},
+  "agentStatus": {
+    "89061840": "replied"
+  },
+  "agentStatusDate": {
+    "89061840": "02/07/2026"
+  }
 }

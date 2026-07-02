@@ -114,7 +114,7 @@
   },
   "89061840": {
     "ref": "89061840",
-    "overall_pct": 64,
+    "overall_pct": 76,
     "scores": [
       {
         "cat": "Annexe",
@@ -126,9 +126,9 @@
       {
         "cat": "Annexe",
         "label": "Shower / wetroom",
-        "score": 2,
-        "note": "Shower likely in annexe — confirm type",
-        "resolved": false
+        "score": 3,
+        "note": "Confirmed: walk-in mains shower in annexe (from original listing description)",
+        "resolved": true
       },
       {
         "cat": "Annexe",
@@ -140,9 +140,9 @@
       {
         "cat": "Annexe",
         "label": "Planning / building control",
-        "score": 2,
-        "note": "No BC certificate — indemnity policy offered",
-        "resolved": true
+        "score": 1,
+        "note": "Indemnity policy to be obtained 'after survey if needed' — vendor misunderstands process; solicitor must make this a pre-exchange condition",
+        "resolved": false
       },
       {
         "cat": "Smoke separation",
@@ -168,15 +168,15 @@
       {
         "cat": "Heating",
         "label": "Fuel type",
-        "score": 2,
-        "note": "Oil CH + wood burners — ASHP conversion recommended",
+        "score": 3,
+        "note": "Confirmed: oil boiler (Worcester) to main house only; annexe has independent LPG CH — ideal separation",
         "resolved": true
       },
       {
         "cat": "Drainage",
         "label": "Drainage type",
-        "score": 1,
-        "note": "Private drainage — septic/STP; check EA compliance",
+        "score": 3,
+        "note": "Confirmed: traditional septic tank to soakaway (not watercourse) — 2020 GBR do not apply; emptied 2 weeks ago; compliant",
         "resolved": true
       },
       {
@@ -217,22 +217,25 @@
       {
         "cat": "Risk",
         "label": "Road noise",
-        "score": 0,
-        "note": "Property positioned directly on A303 — assess at viewing",
-        "resolved": false
+        "score": 2,
+        "note": "Agent confirms: 22-inch stone walls + garden + hedgerow; not noticeable inside with windows closed — assess at viewing",
+        "resolved": true
       }
     ],
     "questions": [
-      "Does the annexe have its own completely separate external entrance?",
-      "Is the annexe shower a walk-in/level-access shower, or does it have a step or bath?",
-      "What are the approximate annual oil heating costs? When was the oil boiler last serviced?",
-      "Is the private drainage a traditional septic tank or a sewage treatment plant? When was it last emptied and has it been assessed as compliant with the 2020 EA General Binding Rules?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?",
-      "How far is the property set back from the A303 carriageway? Is road noise significant inside the house or in the garden, particularly from HGVs?"
+      "Does the annexe have its own completely separate external entrance — i.e. can the occupant reach the annexe without passing through the main house at all?",
+      "Are all the annexe rooms (living/kitchen, bedroom, shower room) on a single ground level with no internal stairs?",
+      "What broadband provider does the vendor use and approximately what speeds do they get — particularly upload?",
+      "What are the approximate annual oil heating costs for the main house? When was the Worcester boiler last serviced and is there a service record?",
+      "What are the approximate annual LPG costs for the annexe? How is the LPG supplied — bottles or a fixed tank — and where is it located on the plot?",
+      "Is there an onward chain on the vendor's side?",
+      "Can the building control indemnity policy be obtained as a condition prior to exchange, rather than after survey? Our solicitor will need this confirmed early.",
+      "What is the approximate size of the paddock in acres? Is it currently grazed or maintained, and is there any form of pedestrian access to it?"
     ],
     "red_flags": [
-      "No building control completion certificate — check indemnity policy covers adequately",
-      "Private drainage — budget £200–£400 for condition survey; up to £20k if replacement needed"
+      "BC indemnity: vendor says 'after survey if needed' — this must be a pre-exchange condition; instruct solicitor to require it unconditionally",
+      "LPG annexe heating: confirm tank/bottle location and annual cost; budget for possible ASHP upgrade longer term",
+      "Broadband: vendor works from home 'without issues' but speeds unconfirmed — check Ofcom checker at TA20 3HG before viewing"
     ]
   },
   "89444523": {
