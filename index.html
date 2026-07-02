@@ -643,13 +643,20 @@ function renderDetail(p) {
             <a href="${p.rightmove_url}" target="_blank" style="color:#4d9fff">View on Rightmove ↗</a>
           </div>`}
       </div>
-      <div id="gtab-floor" style="display:none">
-        ${rmFloors.map((src,i)=>`<img class="floor-img" src="${src}" alt="Floorplan ${i+1}"
-          onerror="this.style.display='none'"
-          onclick="openLbSingle('${src}')">`).join('')}
-        <div class="gallery-empty" id="floor-fallback" style="display:none">
-          No floorplan available — <a href="${p.rightmove_url}" target="_blank" style="color:var(--navy)">view on Rightmove ↗</a>
-        </div>
+            <div id="gtab-floor" style="display:none">
+        ${rmFloors.length ? `
+          <img class="gallery-main" id="gallery-floor-main"
+            src="${rmFloors[0]}" alt="Floorplan"
+            onerror="this.style.display='none'"
+            onclick="openLb(floorImgSet,null,floorImgSet[0])">
+          ${rmFloors.length > 1 ? `<div class="gallery-thumbs">
+            ${rmFloors.map((src,i)=>`<img src="${src}" class="${i===0?'active-thumb':''}"
+              onerror="this.style.display='none'"
+              onclick="setFloorMain(this,'${src}')" alt="Floorplan ${i+1}">`).join('')}
+          </div>` : ''}` :
+          `<div class="gallery-empty">
+            No floorplan available — <a href="${p.rightmove_url}" target="_blank" style="color:#4d9fff">view on Rightmove ↗</a>
+          </div>`}
       </div>
       <div id="gtab-visit" style="display:none">
         ${visitPhotos.length?`<div style="padding:6px"><div class="photo-grid">
@@ -749,16 +756,10 @@ function renderDetail(p) {
 
   // Set up gallery image set for lightbox navigation
   window.galleryImgSet = rmImgs;
+  window.floorImgSet   = rmFloors;
   // Check floorplan images — show fallback if none load
-  setTimeout(checkFloorFallback, 1500);
 }
 
-function checkFloorFallback() {
-  const floors = document.querySelectorAll('#gtab-floor .floor-img');
-  const allHidden = [...floors].every(img => img.style.display === 'none' || !img.src);
-  const fb = document.getElementById('floor-fallback');
-  if (fb) fb.style.display = allHidden ? 'flex' : 'none';
-}
 
 function switchGalleryTab(btn, tab) {
   document.querySelectorAll('.gallery-tab').forEach(b=>b.classList.remove('active'));
@@ -772,7 +773,14 @@ function switchGalleryTab(btn, tab) {
 function setGalleryMain(thumb, src, imgSet) {
   const main=document.getElementById('gallery-main-img');
   if(main) { main.src=src; main.onclick=()=>openLb(imgSet,null,src); }
-  document.querySelectorAll('.gallery-thumbs img').forEach(t=>t.classList.remove('active-thumb'));
+  document.querySelectorAll('#gtab-listing .gallery-thumbs img').forEach(t=>t.classList.remove('active-thumb'));
+  thumb.classList.add('active-thumb');
+}
+
+function setFloorMain(thumb, src) {
+  const main=document.getElementById('gallery-floor-main');
+  if(main) { main.src=src; main.onclick=()=>openLb(window.floorImgSet,null,src); main.style.display=''; }
+  document.querySelectorAll('#gtab-floor .gallery-thumbs img').forEach(t=>t.classList.remove('active-thumb'));
   thumb.classList.add('active-thumb');
 }
 
