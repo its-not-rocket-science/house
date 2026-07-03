@@ -407,7 +407,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
     <div id="filters">
       <h2>Sort</h2>
       <div class="filter-row sort-row" id="sort-btns">
-        <button class="sort-btn active" data-sort="rank" onclick="setSort(this)">Rank</button>
+        <button class="sort-btn active" data-sort="fit" onclick="setSort(this)">% Fit ★</button>
+        <button class="sort-btn" data-sort="rank" onclick="setSort(this)">Rank</button>
         <button class="sort-btn" data-sort="price-asc" onclick="setSort(this)">Price ↑</button>
         <button class="sort-btn" data-sort="price-desc" onclick="setSort(this)">Price ↓</button>
         <button class="sort-btn" data-sort="name" onclick="setSort(this)">A–Z</button>
@@ -439,7 +440,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
         <button class="filter-btn" data-f="caveat" data-v="none" onclick="toggleF(this)">No caveats</button>
         <button class="filter-btn" data-f="caveat" data-v="has" onclick="toggleF(this)">⚠ Has caveat</button>
       </div>
-      <div id="result-count"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:2px">
+        <div id="result-count"></div>
+        <button id="reset-sort-btn" onclick="resetToFit()"
+          style="display:none;background:none;border:none;color:var(--navy);
+          font-size:11px;cursor:pointer;text-decoration:underline;padding:0">
+          ↺ % Fit
+        </button>
+      </div>
     </div>
     <div id="prop-list"></div>
   </div>
@@ -586,7 +594,7 @@ const PHOTOS_DIR = 'data/photos';
 
 // ── STATE ─────────────────────────────────────────────────────────────────────
 let properties = [], notes = {notes:{},visits:{},photos:{}}, scorecards = {}, votes = {};
-let filtered = [], selected = null, currentSort = 'rank';
+let filtered = [], selected = null, currentSort = 'fit';
 let activeF = {cluster:'all',annexe:'all',status:'all',caveat:'all'};
 let map = null, markers = {};
 let lbImages = [], lbIndex = 0;
@@ -758,10 +766,35 @@ function setSort(btn) {
   applyFilters();
 }
 
+function resetToFit() {
+  const btn = document.querySelector('.sort-btn[data-sort="fit"]');
+  if (btn) setSort(btn);
+}
+
 function sortProps(arr) {
   const a=[...arr];
   const statusOrder={active:0,'viewing-booked':1,'offer-made':2,rejected:3};
   switch(currentSort) {
+    case 'fit': return a.sort((x,y)=>{
+      const getScore = p => {
+        const sc = scorecards[p.ref];
+        if (!sc) return 0;
+        const overrides = (notes.scorecardOverrides||{})[p.ref]||{};
+        const cats={};
+        for(const s of sc.scores){if(!cats[s.cat])cats[s.cat]=[];cats[s.cat].push(s);}
+        const eff=sc.scores.map(s=>{
+          const cat=Object.keys(cats).find(c=>cats[c].includes(s));
+          const idx=cat?cats[cat].indexOf(s):-1;
+          const k=cat+'__'+idx;
+          return overrides[k]!==undefined?overrides[k]:s.score;
+        });
+        const raw=Math.round(eff.reduce((a,b)=>a+b,0)/(sc.scores.length*3)*100);
+        // Apply caveat penalties (same as rerank logic)
+        const penalties={flood:-15,'flood-check':-8,ferry:-20,prc:-12,logistics:-10,duplicate:-50,bungalow:-5};
+        return raw+(penalties[p.caveat]||0);
+      };
+      return getScore(y)-getScore(x);
+    });
     case 'rank':       return a.sort((x,y)=>x.rank-y.rank);
     case 'price-asc':  return a.sort((x,y)=>x.price-y.price);
     case 'price-desc': return a.sort((x,y)=>y.price-x.price);
@@ -810,6 +843,8 @@ function applyFilters() {
   updateMapMarkers();
   document.getElementById('result-count').textContent=
     `${filtered.length} of ${properties.length} properties`;
+  const resetBtn = document.getElementById('reset-sort-btn');
+  if (resetBtn) resetBtn.style.display = currentSort !== 'fit' ? 'block' : 'none';
 }
 
 function renderList() {
