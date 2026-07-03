@@ -999,16 +999,16 @@ function renderDetail(p) {
     <div class="detail-body">
       <div class="detail-rank-row">
         <div class="detail-rank" style="background:${col}">Rank #${p.rank}</div>
-        ${renderVotes(p.ref)}
         <div class="detail-vote-inline" id="dvote-${p.ref}">
           ${(()=>{
-            const pv=votes[p.ref]||[];
+            const ref=p.ref;
+            const pv=votes[ref]||[];
             const likes=pv.filter(v=>v.type==='like').length;
             const dislikes=pv.filter(v=>v.type==='dislike').length;
             const net=likes-dislikes;
-            const myV=localStorage.getItem('vote_'+p.ref);
-            return '<button class="dv-btn like '+(myV==='like'?'voted':'')+'" data-ref="${p.ref}" data-type="like" title="Like this property">👍</button>'
-              +'<button class="dv-btn dislike '+(myV==='dislike'?'voted':'')+'" data-ref="${p.ref}" data-type="dislike" title="Dislike this property">👎</button>'
+            const myV=localStorage.getItem('vote_'+ref);
+            return '<button class="dv-btn like '+(myV==='like'?'voted':'')+'" data-ref="'+ref+'" data-type="like" title="Like">👍</button>'
+              +'<button class="dv-btn dislike '+(myV==='dislike'?'voted':'')+'" data-ref="'+ref+'" data-type="dislike" title="Dislike">👎</button>'
               +(net!==0?'<span class="dv-net" style="color:'+(net>0?'var(--green)':'var(--red)')+'">'+(net>0?'+':'')+net+'</span>':'');
           })()}
         </div>
