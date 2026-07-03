@@ -999,6 +999,7 @@ function renderDetail(p) {
     <div class="detail-body">
       <div class="detail-rank-row">
         <div class="detail-rank" style="background:${col}">Rank #${p.rank}</div>
+        ${renderVotes(p.ref)}
         <div class="detail-vote-inline" id="dvote-${p.ref}">
           ${(()=>{
             const pv=votes[p.ref]||[];
