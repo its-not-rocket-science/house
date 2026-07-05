@@ -4147,5 +4147,441 @@
     "red_flags": [
       "FERRY DEPENDENCY — medical access, moving day and repeat visits all require ferry; significant ongoing cost and logistical complexity for elderly relative"
     ]
+  },
+  "167437883": {
+    "ref": "167437883",
+    "overall_pct": 48,
+    "scores": [
+      {
+        "cat": "Annexe",
+        "label": "Annexe status",
+        "score": 1,
+        "note": "No confirmed self-contained annexe — works needed",
+        "resolved": false
+      },
+      {
+        "cat": "Smoke separation",
+        "label": "Physical separation",
+        "score": 0,
+        "note": "Depends on what annexe is created",
+        "resolved": false
+      },
+      {
+        "cat": "Mobility",
+        "label": "Ground floor bedroom",
+        "score": 1,
+        "note": "Ground floor bedroom not confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Mobility",
+        "label": "Walk-in shower",
+        "score": 1,
+        "note": "Walk-in shower not confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Fuel type",
+        "score": 1,
+        "note": "Oil heating — ASHP conversion recommended",
+        "resolved": true
+      },
+      {
+        "cat": "Drainage",
+        "label": "Drainage type",
+        "score": 0,
+        "note": "Drainage type not confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Connectivity",
+        "label": "Broadband",
+        "score": 0,
+        "note": "Broadband speed not confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Risk",
+        "label": "Flood risk",
+        "score": 3,
+        "note": "No flood risk indicators",
+        "resolved": true
+      },
+      {
+        "cat": "Risk",
+        "label": "Listed building",
+        "score": 3,
+        "note": "Not listed",
+        "resolved": true
+      },
+      {
+        "cat": "Transaction",
+        "label": "Chain",
+        "score": 3,
+        "note": "No onward chain confirmed",
+        "resolved": true
+      },
+      {
+        "cat": "Transaction",
+        "label": "Budget headroom",
+        "score": 3,
+        "note": "£92,900 under budget — good scope for works",
+        "resolved": true
+      }
+    ],
+    "questions": [
+      "What is the realistic scope and cost for creating a fully self-contained annexe?",
+      "Are all annexe rooms on a single ground level with no internal stairs?",
+      "Is there a walk-in or level-access shower (no step) accessible from the ground floor?",
+      "What are the approximate annual oil heating costs? When was the boiler last serviced?",
+      "Is drainage mains or private (septic tank/STP)?",
+      "What broadband speeds are available — upload as well as download? Is full fibre (FTTP) available?"
+    ],
+    "red_flags": [
+      "Oil heating — budget £10k–18k net for ASHP after £7,500 BUS grant"
+    ]
+  },
+  "89491017": {
+    "ref": "89491017",
+    "overall_pct": 53,
+    "scores": [
+      {
+        "cat": "Annexe",
+        "label": "Independent entrance",
+        "score": 0,
+        "note": "Not confirmed in listing",
+        "resolved": false
+      },
+      {
+        "cat": "Annexe",
+        "label": "Shower / wetroom",
+        "score": 3,
+        "note": "Shower confirmed in annexe",
+        "resolved": true
+      },
+      {
+        "cat": "Annexe",
+        "label": "Kitchen",
+        "score": 3,
+        "note": "Kitchen confirmed in annexe",
+        "resolved": true
+      },
+      {
+        "cat": "Annexe",
+        "label": "Planning / BC",
+        "score": 0,
+        "note": "Planning/BC status unknown",
+        "resolved": false
+      },
+      {
+        "cat": "Smoke separation",
+        "label": "Physical separation",
+        "score": 1,
+        "note": "Attached annexe — smoke separation unconfirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Mobility",
+        "label": "Ground floor bedroom",
+        "score": 1,
+        "note": "Ground floor bedroom not confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Mobility",
+        "label": "Walk-in shower",
+        "score": 3,
+        "note": "Walk-in/level-access shower confirmed",
+        "resolved": true
+      },
+      {
+        "cat": "Heating",
+        "label": "Fuel type",
+        "score": 3,
+        "note": "Mains gas CH confirmed",
+        "resolved": true
+      },
+      {
+        "cat": "Drainage",
+        "label": "Drainage type",
+        "score": 1,
+        "note": "Private drainage — confirm EA compliance",
+        "resolved": true
+      },
+      {
+        "cat": "Connectivity",
+        "label": "Broadband",
+        "score": 0,
+        "note": "Broadband speed not confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Risk",
+        "label": "Flood risk",
+        "score": 3,
+        "note": "No flood risk indicators",
+        "resolved": true
+      },
+      {
+        "cat": "Risk",
+        "label": "Listed building",
+        "score": 3,
+        "note": "Not listed",
+        "resolved": true
+      },
+      {
+        "cat": "Risk",
+        "label": "Japanese Knotweed",
+        "score": 0,
+        "note": "Knotweed present at boundary — treatment plan in place",
+        "resolved": false
+      },
+      {
+        "cat": "Transaction",
+        "label": "Chain",
+        "score": 1,
+        "note": "Chain status not confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Transaction",
+        "label": "Budget headroom",
+        "score": 2,
+        "note": "£55,000 under budget",
+        "resolved": true
+      }
+    ],
+    "questions": [
+      "Does the annexe have its own completely separate external entrance independent of the main house?",
+      "Has the annexe got planning permission and building control approval? Does it have its own council tax band?",
+      "Is there full smoke/air separation between annexe and main house?",
+      "Are all annexe rooms on a single ground level with no internal stairs?",
+      "Is the septic tank/STP compliant with 2020 EA General Binding Rules? When was it last emptied?",
+      "What broadband speeds are available — upload as well as download? Is full fibre (FTTP) available?",
+      "Which mortgage lender has confirmed they will lend on this property with knotweed present? Can you provide the full treatment plan documentation?",
+      "Is there an onward chain on the vendor's side?"
+    ],
+    "red_flags": [
+      "Private drainage — confirm EA compliance; budget up to £20k if replacement needed",
+      "JAPANESE KNOTWEED — some mortgage lenders will decline; confirm your lender accepts active treatment plan before proceeding"
+    ]
+  },
+  "160507001": {
+    "ref": "160507001",
+    "overall_pct": 31,
+    "scores": [
+      {
+        "cat": "Annexe",
+        "label": "Annexe status",
+        "score": 1,
+        "note": "No confirmed self-contained annexe — works needed",
+        "resolved": false
+      },
+      {
+        "cat": "Smoke separation",
+        "label": "Physical separation",
+        "score": 0,
+        "note": "Depends on what annexe is created",
+        "resolved": false
+      },
+      {
+        "cat": "Mobility",
+        "label": "Ground floor bedroom",
+        "score": 1,
+        "note": "Ground floor bedroom not confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Mobility",
+        "label": "Walk-in shower",
+        "score": 1,
+        "note": "Walk-in shower not confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Fuel type",
+        "score": 0,
+        "note": "Heating type not confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Drainage",
+        "label": "Drainage type",
+        "score": 0,
+        "note": "Drainage type not confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Connectivity",
+        "label": "Broadband",
+        "score": 0,
+        "note": "Broadband speed not confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Risk",
+        "label": "Flood risk",
+        "score": 3,
+        "note": "No flood risk indicators",
+        "resolved": true
+      },
+      {
+        "cat": "Risk",
+        "label": "Listed building",
+        "score": 3,
+        "note": "Not listed",
+        "resolved": true
+      },
+      {
+        "cat": "Risk",
+        "label": "Conversion project",
+        "score": 0,
+        "note": "Requires barn/building conversion — complex Welsh rural planning",
+        "resolved": false
+      },
+      {
+        "cat": "Transaction",
+        "label": "Chain",
+        "score": 1,
+        "note": "Chain status not confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Transaction",
+        "label": "Budget headroom",
+        "score": 1,
+        "note": "£15,000 under budget — tight",
+        "resolved": true
+      }
+    ],
+    "questions": [
+      "What is the realistic scope and cost for creating a fully self-contained annexe?",
+      "Are all annexe rooms on a single ground level with no internal stairs?",
+      "Is there a walk-in or level-access shower (no step) accessible from the ground floor?",
+      "What is the heating type and approximate annual cost?",
+      "Is drainage mains or private (septic tank/STP)?",
+      "What broadband speeds are available — upload as well as download? Is full fibre (FTTP) available?",
+      "Has any pre-application planning advice been sought from Carmarthenshire County Council for the unconverted buildings? What permitted development rights exist?",
+      "Is there an onward chain on the vendor's side?"
+    ],
+    "red_flags": [
+      "PLANNING RISK — Welsh rural conversion requires pre-application advice from Carmarthenshire CC; refusal possible"
+    ]
+  },
+  "90443352": {
+    "ref": "90443352",
+    "overall_pct": 69,
+    "scores": [
+      {
+        "cat": "Annexe",
+        "label": "Independent entrance",
+        "score": 3,
+        "note": "Own external entrance confirmed",
+        "resolved": true
+      },
+      {
+        "cat": "Annexe",
+        "label": "Shower / wetroom",
+        "score": 3,
+        "note": "Shower confirmed in annexe",
+        "resolved": true
+      },
+      {
+        "cat": "Annexe",
+        "label": "Kitchen",
+        "score": 3,
+        "note": "Kitchen confirmed in annexe",
+        "resolved": true
+      },
+      {
+        "cat": "Annexe",
+        "label": "Planning / BC",
+        "score": 3,
+        "note": "Approved use confirmed",
+        "resolved": true
+      },
+      {
+        "cat": "Smoke separation",
+        "label": "Physical separation",
+        "score": 1,
+        "note": "Internal connection exists — smoke separation not guaranteed",
+        "resolved": false
+      },
+      {
+        "cat": "Mobility",
+        "label": "Ground floor bedroom",
+        "score": 1,
+        "note": "Ground floor bedroom not confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Mobility",
+        "label": "Walk-in shower",
+        "score": 3,
+        "note": "Walk-in/level-access shower confirmed",
+        "resolved": true
+      },
+      {
+        "cat": "Heating",
+        "label": "Fuel type",
+        "score": 3,
+        "note": "Mains gas CH confirmed",
+        "resolved": true
+      },
+      {
+        "cat": "Drainage",
+        "label": "Drainage type",
+        "score": 0,
+        "note": "Drainage type not confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Connectivity",
+        "label": "Broadband",
+        "score": 0,
+        "note": "Broadband speed not confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Risk",
+        "label": "Flood risk",
+        "score": 3,
+        "note": "No flood risk indicators",
+        "resolved": true
+      },
+      {
+        "cat": "Risk",
+        "label": "Listed building",
+        "score": 3,
+        "note": "Not listed",
+        "resolved": true
+      },
+      {
+        "cat": "Transaction",
+        "label": "Chain",
+        "score": 1,
+        "note": "Chain status not confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Transaction",
+        "label": "Budget headroom",
+        "score": 2,
+        "note": "£40,000 under budget",
+        "resolved": true
+      }
+    ],
+    "questions": [
+      "Is there full smoke/air separation between annexe and main house? Can a smoker in the annexe affect main house air quality?",
+      "Are all annexe rooms on a single ground level with no internal stairs?",
+      "Is drainage mains or private (septic tank/STP)?",
+      "What broadband speeds are available — upload as well as download? Is full fibre (FTTP) available?",
+      "Is there an onward chain on the vendor's side?"
+    ],
+    "red_flags": [
+      "Internal access between annexe and main house — smoke separation needs confirming"
+    ]
   }
 }
