@@ -278,6 +278,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 .copy-qs-btn:hover{background:#e0eaf8}
 
 
+/* AGENT EMAIL INPUT */
+.agent-email-row{display:flex;gap:6px;align-items:center;margin-bottom:8px}
+.agent-email-input{flex:1;padding:5px 8px;border:1px solid var(--border);border-radius:4px;
+  font-size:12px;font-family:inherit}
+.agent-email-input:focus{outline:none;border-color:var(--navy)}
+.agent-email-save{font-size:11px;padding:4px 9px;background:var(--navy);color:#fff;
+  border:none;border-radius:4px;cursor:pointer}
+.agent-email-save:hover{opacity:.85}
 /* AGENT CONTACT STATUS */
 .agent-status-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
 .agent-sbtn{font-size:11px;padding:3px 9px;border-radius:10px;
@@ -290,8 +298,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 .agent-sbtn[data-as="not-proceeding"].on{background:var(--red)}
 /* QUESTIONS POPUP */
 .qs-popup{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);
-  z-index:6000;align-items:center;justify-content:center}
-.qs-popup.show{display:flex}
+  z-index:6000;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .25s ease}
+.qs-popup.show{display:flex;opacity:1}
+.qs-popup.fading{opacity:0}
 .qs-box{background:#fff;border-radius:8px;padding:20px;width:520px;max-width:95vw;
   max-height:85vh;overflow-y:auto}
 .qs-box h2{font-size:14px;margin-bottom:12px;color:var(--navy)}
@@ -1026,7 +1036,23 @@ function renderDetail(p) {
       <!-- LINKS -->
       <div class="detail-links">
         <a class="dl p" href="${p.rightmove_url}" target="_blank">Rightmove ↗</a>
-        <a class="dl s" href="${p.contact_url}" target="_blank">Contact agent ↗</a>
+        ${(()=>{
+          const email=(notes.agentEmail||{})[p.ref];
+          const sc=scorecards[p.ref];
+          const qs=sc?.questions||[];
+          const subject=encodeURIComponent('Enquiry re: '+p.name+', '+p.location);
+          const body=encodeURIComponent(
+            'Dear '+p.agent.split(',')[0]+',\n\n'
+            +'I am interested in '+p.name+' ('+p.price_display+') and have the following questions:\n\n'
+            +qs.map((q,i)=>(i+1)+'. '+q).join('\n')
+            +'\n\nI would also like to arrange a viewing at your earliest convenience.\n\nKind regards'
+          );
+          if(email){
+            return '<a class="dl s" href="mailto:'+email+'?subject='+subject+'&body='+body+'" title="Email agent with questions pre-filled">✉ Email agent ↗</a>';
+          } else {
+            return '<a class="dl s" href="'+p.contact_url+'" target="_blank">Contact agent ↗</a>';
+          }
+        })()}
         <a class="dl s" href="#" onclick="event.preventDefault();showQuestions('${p.ref}')">❓ Questions to ask</a>
         ${dupRefs.map(dr=>`<a class="dl d" href="https://www.rightmove.co.uk/properties/${dr}" target="_blank">
           Duplicate listing ${dr} ↗</a>`).join('')}
@@ -1048,8 +1074,14 @@ function renderDetail(p) {
             onclick="setAgentStatus('${p.ref}','${as}')">${agentStatusLabel(as)}</button>`
         ).join('')}
       </div>
-      <div id="agent-status-note-${p.ref}" style="font-size:11px;color:var(--muted);margin-bottom:8px">
+      <div id="agent-status-note-${p.ref}" style="font-size:11px;color:var(--muted);margin-bottom:6px">
         ${(notes.agentStatus||{})[p.ref] ? 'Last updated: ' + ((notes.agentStatusDate||{})[p.ref]||'') : ''}
+      </div>
+      <div class="agent-email-row">
+        <input class="agent-email-input" type="email" id="agent-email-${p.ref}"
+          placeholder="Agent email address (enables mailto: link with questions pre-filled)"
+          value="${(notes.agentEmail||{})[p.ref]||''}">
+        <button class="agent-email-save" onclick="saveAgentEmail('${p.ref}')">Save</button>
       </div>
 
       <!-- ABOUT -->
@@ -1191,6 +1223,19 @@ function openFloorWindow() {
 }
 
 // ── AGENT STATUS ──────────────────────────────────────────────────────────────
+function saveAgentEmail(ref) {
+  const input = document.getElementById('agent-email-'+ref);
+  if (!input) return;
+  const email = input.value.trim();
+  if (!notes.agentEmail) notes.agentEmail = {};
+  notes.agentEmail[ref] = email;
+  localStorage.setItem('house_notes', JSON.stringify(notes));
+  pushNotesFile('Save agent email for '+ref);
+  // Re-render detail to update the contact link
+  const p = properties.find(x=>x.ref===ref);
+  if (p) renderDetail(p);
+}
+
 function agentStatusLabel(s) {
   return {'not-contacted':'Not contacted','contacted':'Contacted','replied':'Replied',
     'viewing-arranged':'Viewing arranged','not-proceeding':'Not proceeding'}[s] || s;
@@ -1235,8 +1280,17 @@ function copyQsFromPopup() {
   const text = sc.questions.map((q,i) => `${i+1}. ${q}`).join('\n');
   navigator.clipboard.writeText(text).then(() => {
     const btn = event.target;
-    btn.textContent = '✓ Copied';
-    setTimeout(() => btn.textContent = '📋 Copy all', 2000);
+    btn.textContent = '✓ Copied!';
+    // Fade and close after brief pause
+    setTimeout(() => {
+      const popup = document.getElementById('qs-popup');
+      popup.classList.add('fading');
+      setTimeout(() => {
+        popup.classList.remove('show','fading');
+        btn.textContent = '📋 Copy all';
+        currentQsRef = null;
+      }, 260);
+    }, 700);
   });
 }
 
