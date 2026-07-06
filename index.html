@@ -1926,15 +1926,40 @@ async function deleteProperty(ref) {
 
 // ── NOTES ─────────────────────────────────────────────────────────────────────
 async function loadNotes() {
-  const token=getToken();
-  if(token) {
+  // Always fetch the static file first — no auth needed, always reflects committed state
+  try {
+    const r = await fetch('data/notes.json?_='+Date.now());
+    if (r.ok) notes = await r.json();
+  } catch(e) {}
+
+  // Merge localStorage on top (captures any unsaved local changes)
+  const local = localStorage.getItem('house_notes');
+  if (local) {
     try {
-      const r=await ghGet(NOTES_PATH);
-      if(r.ok){const d=await r.json();notes=JSON.parse(atob(d.content));return;}
-    } catch(e){}
+      const lv = JSON.parse(local);
+      const merge = (base, over) => {
+        if (!over || typeof over !== 'object') return base;
+        const out = Object.assign({}, base);
+        for (const k of Object.keys(over)) {
+          if (over[k] && typeof over[k]==='object' && !Array.isArray(over[k])
+              && out[k] && typeof out[k]==='object') {
+            out[k] = Object.assign({}, out[k], over[k]);
+          } else { out[k] = over[k]; }
+        }
+        return out;
+      };
+      notes = merge(notes, lv);
+    } catch(e) {}
   }
-  const local=localStorage.getItem('house_notes');
-  if(local){try{notes=JSON.parse(local);}catch(e){}}
+
+  // If GitHub token set, fetch API version (most up-to-date, overrides both)
+  const token = getToken();
+  if (token) {
+    try {
+      const r = await ghGet(NOTES_PATH);
+      if (r.ok) { const d=await r.json(); notes=JSON.parse(atob(d.content)); }
+    } catch(e) {}
+  }
 }
 
 async function saveNote(ref) {
