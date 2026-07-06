@@ -301,7 +301,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   z-index:6000;align-items:center;justify-content:center;
   opacity:0;transition:opacity .25s ease}
 .qs-popup.show{display:flex;opacity:1}
-.qs-popup.fading{opacity:0}
+.qs-popup.fading{display:flex;opacity:0;pointer-events:none}
 .qs-box{background:#fff;border-radius:8px;padding:20px;width:520px;max-width:95vw;
   max-height:85vh;overflow-y:auto}
 .qs-box h2{font-size:14px;margin-bottom:12px;color:var(--navy)}
@@ -383,6 +383,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 #route-info.show{display:block}
 #route-close{float:right;background:none;border:none;cursor:pointer;font-size:14px;
   color:var(--muted);margin-left:8px}
+
+/* PHOTO SECTIONS */
+.photo-section-label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;
+  color:#aaa;background:#1a1a1a;padding:3px 8px;font-weight:600}
+.photo-section-edit{font-size:10px;color:#4d9fff;background:none;border:none;
+  cursor:pointer;padding:2px 6px;float:right;text-decoration:underline}
 
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:5px}
@@ -918,7 +924,12 @@ function selectProp(ref) {
   if(!p) return;
   document.querySelectorAll('.prop-card').forEach(c=>
     c.classList.toggle('selected',c.dataset.ref===ref));
-  if(markers[ref]) { map.panTo([p.lat,p.lng]); markers[ref].openPopup(); }
+  if(markers[ref]) {
+    // Zoom so nearest town/city is visible — z11 fits ~30km radius, good for most rural properties
+    // Use flyTo for a smooth animated transition
+    map.flyTo([p.lat,p.lng], 11, {animate:true, duration:0.8});
+    setTimeout(()=>markers[ref].openPopup(), 850);
+  }
   renderDetail(p);
   document.getElementById('detail-panel').classList.add('open');
 }
@@ -963,11 +974,21 @@ function renderDetail(p) {
               <button class="pz-btn" onclick="openImgNewTab('gallery-main-img')" title="Open in new tab">↗</button>
             </div>
           </div>
-          <div class="gallery-thumbs">
-            ${rmImgs.map((src,i)=>`<img src="${src}" data-idx="${i}" class="${i===0?'active-thumb':''}"
-              onerror="this.style.display='none'"
-              onclick="pickPhoto(this,${i})" alt="Photo ${i+1}">`).join('')}
-          </div>` :
+          ${(()=>{
+            const sections = getPhotoSections(p.ref, rmImgs);
+            const hasMultiple = Object.values(sections).filter(a=>a.length>0).length > 1;
+            if(!hasMultiple) return '<div class="gallery-thumbs">'
+              +rmImgs.map((src,i)=>'<img src="'+src+'" data-idx="'+i+'" class="'+(i===0?'active-thumb':'')+'"'
+                +' onerror="this.style.display=\'none\'" onclick="pickPhoto(this,'+i+')" alt="Photo '+(i+1)+'">').join('')
+              +'</div>';
+            return Object.entries(sections).filter(([,imgs])=>imgs.length>0).map(([label,imgs])=>
+              '<div class="photo-section-label">'+label+'</div>'
+              +'<div class="gallery-thumbs">'
+              +imgs.map(({src,idx})=>'<img src="'+src+'" data-idx="'+idx+'" class="'+(idx===0?'active-thumb':'')+'"'
+                +' onerror="this.style.display=\'none\'" onclick="pickPhoto(this,'+idx+')" alt="'+label+'">').join('')
+              +'</div>'
+            ).join('');
+          })()}` :
           `<div class="gallery-empty">
             Photos not yet downloaded — run scripts/rightmove_image_scraper.py then push to repo.<br>
             <a href="${p.rightmove_url}" target="_blank" style="color:#4d9fff">View on Rightmove ↗</a>
@@ -1159,6 +1180,7 @@ function renderDetail(p) {
   window._gImgs   = rmImgs;
   window._fImgs   = rmFloors;
   window._vPhotos = notes.photos[p.ref] || [];
+  window._currentProp = p;
 }
 
 
@@ -1281,12 +1303,13 @@ function copyQsFromPopup() {
   navigator.clipboard.writeText(text).then(() => {
     const btn = event.target;
     btn.textContent = '✓ Copied!';
-    // Fade and close after brief pause
+    const popup = document.getElementById('qs-popup');
     setTimeout(() => {
-      const popup = document.getElementById('qs-popup');
       popup.classList.add('fading');
       setTimeout(() => {
         popup.classList.remove('show','fading');
+        popup.style.display = 'none';
+        setTimeout(() => { popup.style.display = ''; }, 50);
         btn.textContent = '📋 Copy all';
         currentQsRef = null;
       }, 260);
@@ -1632,6 +1655,40 @@ function renderHomeEd(p) {
     ${he.notes?`<div class="detail-desc" style="margin-top:8px;color:var(--muted);font-style:italic">${he.notes}</div>`:''}`;
 }
 
+
+// ── PHOTO SECTIONS ───────────────────────────────────────────────────────────
+// Split listing photos into Main / Garden / Annexe based on stored overrides
+// or an automatic heuristic (first 60% = main, last 20% = garden, 
+// middle 20% = annexe if confirmed annexe property)
+function getPhotoSections(ref, imgs) {
+  if (!imgs.length) return {};
+  // Check for manual override in notes
+  const override = (notes.photoSections||{})[ref];
+  if (override) {
+    const sections = {Main:[], Garden:[], Annexe:[]};
+    imgs.forEach((src,i)=>{
+      const cat = override[i] || 'Main';
+      if (sections[cat]) sections[cat].push({src,idx:i});
+    });
+    return sections;
+  }
+  // Auto-heuristic
+  const n = imgs.length;
+  const p = window._currentProp;
+  const hasAnnexe = p && p.annexe === 'confirmed';
+  if (n <= 4 || !hasAnnexe) {
+    // Not enough photos to split, or no annexe — return single group
+    return { 'All photos': imgs.map((src,i)=>({src,idx:i})) };
+  }
+  // Heuristic split: first ~55% main interior, next ~20% annexe, last ~25% garden/exterior
+  const mainEnd   = Math.round(n * 0.55);
+  const annexeEnd = Math.round(n * 0.75);
+  return {
+    'Main house': imgs.slice(0, mainEnd).map((src,i)=>({src,idx:i})),
+    'Annexe':     imgs.slice(mainEnd, annexeEnd).map((src,i)=>({src,idx:mainEnd+i})),
+    'Garden & exterior': imgs.slice(annexeEnd).map((src,i)=>({src,idx:annexeEnd+i})),
+  };
+}
 
 // Gallery helpers — all use window._gImgs / _fImgs / _vPhotos set in renderDetail
 function galleryLb(i)  { openLb(window._gImgs,   i); }
