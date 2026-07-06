@@ -74,7 +74,7 @@
   {
     "ref": "89061840",
     "name": "Oakfields, Ham — Stone Cottage 0.6ac",
-    "rank": 1,
+    "rank": 3,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Ham, Combe St Nicholas",
@@ -215,7 +215,7 @@
   {
     "ref": "169862942",
     "name": "Tithill, Bishops Lydeard",
-    "rank": 5,
+    "rank": 1,
     "price": 425000,
     "price_display": "£425,000",
     "location": "Bishops Lydeard, Somerset",
@@ -349,7 +349,7 @@
   {
     "ref": "173348153",
     "name": "Winterborne Stickland — 5-Bed Semi",
-    "rank": 16,
+    "rank": 21,
     "price": 425000,
     "price_display": "£425,000",
     "location": "Winterborne Stickland, Dorset",
@@ -463,7 +463,7 @@
   {
     "ref": "89951784",
     "name": "Pentrepiod Rd, Pontypool — Stone Det",
-    "rank": 17,
+    "rank": 16,
     "price": 460000,
     "price_display": "£460,000",
     "location": "Pontypool, South Wales",
@@ -525,7 +525,7 @@
   {
     "ref": "168359045",
     "name": "Highmead Ave, Newton, Swansea",
-    "rank": 27,
+    "rank": 29,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Newton, Swansea",
@@ -587,7 +587,7 @@
   {
     "ref": "88996269",
     "name": "Newtown Rd, Penperlleni, Monmouthshire",
-    "rank": 18,
+    "rank": 19,
     "price": 430000,
     "price_display": "£430,000",
     "location": "Penperlleni, Monmouthshire",
@@ -897,7 +897,7 @@
   {
     "ref": "89701968",
     "name": "Loders, Bridport — Det Character",
-    "rank": 19,
+    "rank": 18,
     "price": 470000,
     "price_display": "£470,000",
     "location": "Loders, Dorset",
@@ -964,7 +964,7 @@
   {
     "ref": "174415073",
     "name": "Killara, Piddletrenthide",
-    "rank": 31,
+    "rank": 32,
     "price": 400000,
     "price_display": "£400,000",
     "location": "Piddletrenthide, Dorset",
@@ -1217,7 +1217,7 @@
   {
     "ref": "89767338",
     "name": "Bibury Rd, Old Walcot, Swindon",
-    "rank": 21,
+    "rank": 17,
     "price": 440000,
     "price_display": "£440,000",
     "location": "Swindon, Wiltshire",
@@ -1326,7 +1326,7 @@
   {
     "ref": "87791562",
     "name": "Halifax Rd, Bowerhill, Melksham",
-    "rank": 4,
+    "rank": 5,
     "price": 465000,
     "price_display": "£465,000",
     "location": "Melksham, Wiltshire",
@@ -1383,7 +1383,7 @@
   {
     "ref": "89236248",
     "name": "St Thomas Rd, Trowbridge",
-    "rank": 32,
+    "rank": 31,
     "price": 470000,
     "price_display": "£470,000",
     "location": "Trowbridge, Wiltshire",
@@ -2289,7 +2289,7 @@
       "asd_support": "Welsh IAS model. Glangwili Hospital Carmarthen has paediatric teams. Strong legal framework for ASD support in Wales.",
       "notes": "Remote rural location — community access requires transport. Japanese Knotweed caveat takes priority in assessment."
     },
-    "rank": 29
+    "rank": 27
   },
   {
     "ref": "160507001",
@@ -2388,7 +2388,7 @@
       "asd_support": "Somerset Progressive School (West Hatch). North Hill House (Frome). Strong neurodiversity awareness in Taunton community. Musgrove Park Hospital CAMHS on doorstep.",
       "notes": "Excellent Somerset West cluster rating. Musgrove Park Hospital 5 minutes is an exceptional plus for mobility and CAMHS access."
     },
-    "rank": 3
+    "rank": 2
   },
   {
     "ref": "apex27_885144",
@@ -2440,6 +2440,6 @@
       "asd_support": "Welsh IAS legal framework — stronger than English equivalent. Morriston Hospital 15 min. Swansea NAS branch with community activities.",
       "notes": "Already have 88 Gwyn St Alltwen in tracker — this is number 60, a larger property. Different listing."
     },
-    "rank": 2
+    "rank": 4
   }
 ]

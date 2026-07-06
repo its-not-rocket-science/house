@@ -47,6 +47,14 @@
     "apex27_885144": {
       "text": "Agent suggestion from Andy O'Neill, Moving You (06/07/2026). Property not on Rightmove — listed on apex27 platform. See full details at https://movingyou-property-details.apex27.co.uk/885144",
       "date": "06/07/2026"
+    },
+    "169862942": {
+      "date": "06/07/2026",
+      "text": "AGENT REPLY — Emmajayne Briggs, Wilkie May & Tuckwood (06/07/2026)\nEmmajayne.Briggs@wilkie.co.uk | 01823 332121\n\nROSE DENE, TITHILL, BISHOPS LYDEARD\n\nEntrance: Multiple external access doors from rear garden — bedroom, kitchen, conservatory ✓\nShower: LEVEL walk-in shower confirmed ✓\nSmoke separation: Internal door from annexe conservatory into main house kitchen ⚠\nDrainage: Private sewage treatment plant (WCI, Wiveliscombe, 2015 — single property only) ⚠\nBroadband: ULTRAFAST (Ofcom) — 900 Mbps up AND 900 Mbps download ✓\nChain: Sellers downsizing in Taunton — willing to chain-break if needed ~"
+    },
+    "90443352": {
+      "date": "06/07/2026",
+      "text": "AGENT REPLY — Emmajayne Briggs, Wilkie May & Tuckwood (06/07/2026)\nEmmajayne.Briggs@wilkie.co.uk | 01823 332121\n\n34 MANOR ROAD, TAUNTON\n\nEntrance: Own external door further down driveway (photo 1 on Rightmove) ✓\nShower: Very small step into shower cubicle — not fully level access ⚠\nSmoke separation: Kitchen OPEN/SHARED between annexe and main house ✗ CRITICAL\nDrainage: Mains drainage confirmed ✓\nBroadband: ULTRAFAST (Ofcom) — 1800 Mbps download / 1000 Mbps upload ✓ Exceptional\nChain: NO ONWARD CHAIN ✓\n\nACTION: Partition wall between kitchens is essential. Must be raised at viewing."
     }
   },
   "visits": {},
@@ -62,10 +70,12 @@
     "87890067": "not-proceeding",
     "174938813": "replied",
     "171958844": "not-proceeding",
-    "apex27_885144": "replied"
+    "apex27_885144": "replied",
+    "169862942": "replied",
+    "90443352": "replied"
   },
   "agentStatusDate": {
-    "89061840": "02/07/2026",
+    "89061840": "06/07/2026",
     "88310844": "06/07/2026",
     "173219645": "06/07/2026",
     "88791255": "06/07/2026",
@@ -75,7 +85,9 @@
     "87890067": "06/07/2026",
     "174938813": "06/07/2026",
     "171958844": "06/07/2026",
-    "apex27_885144": "06/07/2026"
+    "apex27_885144": "06/07/2026",
+    "169862942": "06/07/2026",
+    "90443352": "06/07/2026"
   },
   "agentEmail": {
     "89061840": "zoe@paul-fenton.com",
@@ -89,6 +101,8 @@
     "174938813": "martindurber@tamarestates.co.uk",
     "171958844": "info@wilsontominey.com",
     "arthur_wheeler_iow": "sales@arthur-wheeler.co.uk",
-    "apex27_885144": "andy.oneill@moving-you.co.uk"
+    "apex27_885144": "andy.oneill@moving-you.co.uk",
+    "169862942": "Emmajayne.Briggs@wilkie.co.uk",
+    "90443352": "Emmajayne.Briggs@wilkie.co.uk"
   }
 }

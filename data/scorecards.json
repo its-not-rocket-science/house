@@ -358,21 +358,21 @@
   },
   "169862942": {
     "ref": "169862942",
-    "overall_pct": 60,
+    "overall_pct": 83,
     "scores": [
       {
         "cat": "Annexe",
         "label": "Independent entrance",
-        "score": 0,
-        "note": "Not confirmed in listing",
-        "resolved": false
+        "score": 3,
+        "note": "Multiple external access doors from rear garden (bedroom, kitchen, conservatory) ✓",
+        "resolved": true
       },
       {
         "cat": "Annexe",
         "label": "Shower / wetroom",
-        "score": 2,
-        "note": "Shower likely in annexe — confirm type",
-        "resolved": false
+        "score": 3,
+        "note": "Level walk-in shower confirmed ✓",
+        "resolved": true
       },
       {
         "cat": "Annexe",
@@ -392,8 +392,8 @@
         "cat": "Smoke separation",
         "label": "Physical separation",
         "score": 1,
-        "note": "Attached annexe — smoke separation needs confirming",
-        "resolved": false
+        "note": "Attached — internal door from annexe conservatory into main kitchen. Smoke separation unconfirmed.",
+        "resolved": true
       },
       {
         "cat": "Mobility",
@@ -419,16 +419,16 @@
       {
         "cat": "Drainage",
         "label": "Drainage type",
-        "score": 0,
-        "note": "Drainage type not confirmed",
-        "resolved": false
+        "score": 2,
+        "note": "Private sewage treatment plant (WCI, 2015, single property) — modern STP; check EA compliance",
+        "resolved": true
       },
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 0,
-        "note": "Broadband speed not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Ultrafast confirmed (Ofcom) — 900 Mbps upload AND download ✓",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -447,9 +447,9 @@
       {
         "cat": "Transaction",
         "label": "Chain",
-        "score": 1,
-        "note": "Chain status not confirmed",
-        "resolved": false
+        "score": 2,
+        "note": "Onward chain — downsizing in Taunton; vendor willing to chain-break if needed",
+        "resolved": true
       },
       {
         "cat": "Transaction",
@@ -460,14 +460,20 @@
       }
     ],
     "questions": [
-      "Does the annexe have its own completely separate external entrance?",
-      "Is the annexe shower a walk-in/level-access shower, or does it have a step or bath?",
-      "Is there full air/smoke separation between the annexe and main house so a smoker in the annexe cannot affect the main living areas?",
-      "Is the drainage mains or private (septic tank / sewage treatment plant)?",
-      "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
+      "The annexe connects to the main house via a door from the conservatory into the kitchen — is it possible to permanently seal or lock that door so a smoker in the annexe cannot affect the main house? If so, is there any structural reason why this can't be done?",
+      "The private sewage treatment plant was installed by WCI in Wiveliscombe in 2015 — can the vendor provide the installation certificate, the latest emptying/service record, and confirmation it was assessed as compliant with the 2020 EA General Binding Rules?",
+      "Is there an annual maintenance contract in place for the STP, and what is the approximate annual cost?",
+      "What are the approximate annual oil heating costs? When was the boiler last serviced and is there a service record?",
+      "What is the LPG heating situation in the annexe — is it on a fixed tank or bottles, and what are the approximate annual costs?",
+      "Has the annexe been granted planning permission and building control completion certificate? Does it have its own council tax band?",
+      "We would like to arrange a viewing — what dates are available?"
     ],
-    "red_flags": []
+    "red_flags": [
+      "Internal connecting door from annexe to main house — smoke separation needs confirming before offer",
+      "Private STP — obtain installation certificate, service record and EA compliance confirmation before exchange",
+      "Oil heating main house + LPG annexe — budget for potential ASHP upgrades long term",
+      "Onward chain exists, though vendor willing to chain-break"
+    ]
   },
   "87890067": {
     "ref": "87890067",
@@ -4480,20 +4486,20 @@
   },
   "90443352": {
     "ref": "90443352",
-    "overall_pct": 69,
+    "overall_pct": 81,
     "scores": [
       {
         "cat": "Annexe",
         "label": "Independent entrance",
         "score": 3,
-        "note": "Own external entrance confirmed",
+        "note": "Own external entrance confirmed — separate door further down driveway (Rightmove photo 1) ✓",
         "resolved": true
       },
       {
         "cat": "Annexe",
         "label": "Shower / wetroom",
-        "score": 3,
-        "note": "Shower confirmed in annexe",
+        "score": 1,
+        "note": "Very small step into shower cubicle — not fully level access; conversion to wet room needed",
         "resolved": true
       },
       {
@@ -4513,9 +4519,9 @@
       {
         "cat": "Smoke separation",
         "label": "Physical separation",
-        "score": 1,
-        "note": "Internal connection exists — smoke separation not guaranteed",
-        "resolved": false
+        "score": 0,
+        "note": "Kitchen currently OPEN between annexe and main house — no smoke separation at all ✗",
+        "resolved": true
       },
       {
         "cat": "Mobility",
@@ -4541,16 +4547,16 @@
       {
         "cat": "Drainage",
         "label": "Drainage type",
-        "score": 0,
-        "note": "Drainage type not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Mains drainage confirmed ✓",
+        "resolved": true
       },
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 0,
-        "note": "Broadband speed not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Ultrafast confirmed (Ofcom) — 1800 Mbps download / 1000 Mbps upload ✓ Exceptional",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -4569,9 +4575,9 @@
       {
         "cat": "Transaction",
         "label": "Chain",
-        "score": 1,
-        "note": "Chain status not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "No onward chain confirmed ✓",
+        "resolved": true
       },
       {
         "cat": "Transaction",
@@ -4582,14 +4588,16 @@
       }
     ],
     "questions": [
-      "Is there full smoke/air separation between annexe and main house? Can a smoker in the annexe affect main house air quality?",
-      "Are all annexe rooms on a single ground level with no internal stairs?",
-      "Is drainage mains or private (septic tank/STP)?",
-      "What broadband speeds are available — upload as well as download? Is full fibre (FTTP) available?",
-      "Is there an onward chain on the vendor's side?"
+      "The kitchen appears to be open/shared between the annexe and main house — is there any structural wall or door that could be reinstated to create full separation, ideally so the annexe kitchen operates completely independently? This is essential for our use case.",
+      "Following on from that, would the vendor consider a modest reduction in the asking price to reflect the cost of installing a partition wall and door to separate the two kitchens (approximately £2,000–4,000)?",
+      "The annexe shower has a small step — is there space to remove the cubicle and create a fully level wet room? What are the approximate room dimensions?",
+      "What gas boiler serves the main house, and is the annexe on the same heating system or independent?",
+      "We would like to arrange a viewing as soon as possible — this is a high priority for us. What dates are available this week or next?"
     ],
     "red_flags": [
-      "Internal access between annexe and main house — smoke separation needs confirming"
+      "CRITICAL: Kitchen open/shared between annexe and main house — NO smoke separation. A partition wall is essential before the annexe is usable for a smoker.",
+      "Shower has a small step — level-access wet room conversion needed (budget £2,000–4,000)",
+      "Both issues are structural/cosmetic and fixable but add cost on a property where budget headroom is £40k"
     ]
   },
   "apex27_885144": {
