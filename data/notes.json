@@ -55,6 +55,14 @@
     "90443352": {
       "date": "06/07/2026",
       "text": "AGENT REPLY — Emmajayne Briggs, Wilkie May & Tuckwood (06/07/2026)\nEmmajayne.Briggs@wilkie.co.uk | 01823 332121\n\n34 MANOR ROAD, TAUNTON\n\nEntrance: Own external door further down driveway (photo 1 on Rightmove) ✓\nShower: Very small step into shower cubicle — not fully level access ⚠\nSmoke separation: Kitchen OPEN/SHARED between annexe and main house ✗ CRITICAL\nDrainage: Mains drainage confirmed ✓\nBroadband: ULTRAFAST (Ofcom) — 1800 Mbps download / 1000 Mbps upload ✓ Exceptional\nChain: NO ONWARD CHAIN ✓\n\nACTION: Partition wall between kitchens is essential. Must be raised at viewing."
+    },
+    "89951784": {
+      "date": "07/07/2026",
+      "text": "AGENT REPLY — Lauren Howells, haart Pontypool (06/07/2026)\nLauren.Howells@haart.co.uk | 01495 832990 / Direct: 01495 832993 / Mobile: 07887 453040\n\nQ1 External entrance: YES — separate front door to annexe ✓ (also internal via lockable garage)\nQ2 Annexe shower room: YES — shower room fitted (type not confirmed) ✓\nQ3 Ground floor shower (main): None currently — utility + WC could be converted ⚠\nQ4 Heating: TWO SEPARATE GAS SYSTEMS — main house and annexe independent ✓. Solar panels. ~£340/month, ~£800/yr solar refund.\nQ5 Drainage: MAINS confirmed ✓\nQ6 Broadband: Fibre fitted and in use ✓ (speeds not specified)\nQ7 Chain: Onward — can arrange to move quickly ⚠"
+    },
+    "174415073": {
+      "date": "07/07/2026",
+      "text": "AGENT REPLY — Rebecca Diment, Meyers HQ (07/07/2026)\nrebecca.d@meyersestates.com | 01305 259436 / 07849 085072\n\nQ1 Annexe scope: Garage conversion possible with planning (garage needs TLC)\nQ2 Ground floor bedroom: Not currently — living room could be converted\nQ3 Ground floor shower: NO BATHROOM DOWNSTAIRS ✗\nQ4 Heating: BACK BOILER via log burner + immersion electric. No gas in Piddletrenthide. ✗\nQ5 Drainage: Mains ✓\nQ6 Broadband: Attached Ofcom checker link (not specified here)\nQ7 Flooding: FLOODED ~11 years ago. Garden floods after prolonged rain. River defences now in place.\n   Insurance OK. Never a problem since. ⚠\nQ8 Chain: Onward chain ⚠\n\nCONCERNS: Back boiler heating, no downstairs bathroom, flood history."
     }
   },
   "visits": {},
@@ -72,7 +80,9 @@
     "171958844": "not-proceeding",
     "apex27_885144": "replied",
     "169862942": "replied",
-    "90443352": "replied"
+    "90443352": "replied",
+    "89951784": "replied",
+    "174415073": "replied"
   },
   "agentStatusDate": {
     "89061840": "06/07/2026",
@@ -87,7 +97,9 @@
     "171958844": "06/07/2026",
     "apex27_885144": "06/07/2026",
     "169862942": "06/07/2026",
-    "90443352": "06/07/2026"
+    "90443352": "06/07/2026",
+    "89951784": "07/07/2026",
+    "174415073": "07/07/2026"
   },
   "agentEmail": {
     "89061840": "zoe@paul-fenton.com",
@@ -103,6 +115,8 @@
     "arthur_wheeler_iow": "sales@arthur-wheeler.co.uk",
     "apex27_885144": "andy.oneill@moving-you.co.uk",
     "169862942": "Emmajayne.Briggs@wilkie.co.uk",
-    "90443352": "Emmajayne.Briggs@wilkie.co.uk"
+    "90443352": "Emmajayne.Briggs@wilkie.co.uk",
+    "89951784": "Lauren.Howells@haart.co.uk",
+    "174415073": "rebecca.d@meyersestates.com"
   }
 }

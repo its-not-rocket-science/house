@@ -820,21 +820,21 @@
   },
   "89951784": {
     "ref": "89951784",
-    "overall_pct": 48,
+    "overall_pct": 76,
     "scores": [
       {
         "cat": "Annexe",
         "label": "Independent entrance",
-        "score": 1,
-        "note": "Annexe accessed via main house — smoke separation risk",
+        "score": 3,
+        "note": "Separate front door to annexe confirmed ✓. Internal garage access also exists but can be locked.",
         "resolved": true
       },
       {
         "cat": "Annexe",
         "label": "Shower / wetroom",
-        "score": 0,
-        "note": "Shower in annexe not confirmed",
-        "resolved": false
+        "score": 2,
+        "note": "Shower room confirmed in annexe — shower type not specified; confirm level access at viewing",
+        "resolved": true
       },
       {
         "cat": "Annexe",
@@ -874,23 +874,23 @@
       {
         "cat": "Heating",
         "label": "Fuel type",
-        "score": 0,
-        "note": "Heating type not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Two SEPARATE gas systems — main house and annexe completely independent heating ✓. Solar panels. ~£340/month - £800/yr solar refund.",
+        "resolved": true
       },
       {
         "cat": "Drainage",
         "label": "Drainage type",
-        "score": 0,
-        "note": "Drainage type not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Mains drainage confirmed ✓",
+        "resolved": true
       },
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 0,
-        "note": "Broadband speed not confirmed",
-        "resolved": false
+        "score": 2,
+        "note": "Fibre fitted and in use — speeds not specified; confirm FTTP vs FTTC",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -909,9 +909,9 @@
       {
         "cat": "Transaction",
         "label": "Chain",
-        "score": 1,
-        "note": "Chain status not confirmed",
-        "resolved": false
+        "score": 2,
+        "note": "Onward chain — vendors will buy on but can arrange to move quickly if needed",
+        "resolved": true
       },
       {
         "cat": "Transaction",
@@ -919,19 +919,27 @@
         "score": 1,
         "note": "Only £20,000 under budget — very tight",
         "resolved": true
+      },
+      {
+        "cat": "?",
+        "label": "Walk-in shower",
+        "score": 1,
+        "note": "No ground floor shower currently. Utility room + WC could be converted — not yet done.",
+        "resolved": true
       }
     ],
     "questions": [
-      "Does the annexe have its own external entrance independent of the main house?",
-      "Does the annexe have a walk-in shower or wet room? If not, is there space to add one?",
-      "Is there a walk-in or level-access shower — no step — accessible from the ground floor?",
-      "What is the heating fuel — oil, gas, LPG, heat pump or electric? What are approximate annual costs?",
-      "Is the drainage mains or private (septic tank / sewage treatment plant)?",
-      "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
+      "Is the annexe shower a level-access/walk-in shower with no step, or does it have a step or bath?",
+      "What are the broadband speeds available — upload and download? Is it full fibre to the premises (FTTP) or fibre to the cabinet (FTTC)?",
+      "The internal garage access between annexe and main house — is there a fire door, or just a standard door? And can the garage be used as a garage, or is it part of the living space?",
+      "Is there full smoke/air separation between the annexe and main house when the garage door is locked — i.e. no shared ventilation?",
+      "Has the annexe been granted planning permission and building control approval? Does it have its own council tax band?",
+      "We would like to arrange a viewing — what dates are available?"
     ],
     "red_flags": [
-      "Annexe accessed via main house — smoke/air separation may be inadequate"
+      "Internal garage access exists — confirm this can be permanently locked for smoke separation",
+      "Ground floor walk-in shower not currently present — utility conversion needed (budget £3,000–5,000)",
+      "Broadband speeds not confirmed — check Ofcom checker for Pontypool NP4 postcode"
     ]
   },
   "168359045": {
@@ -1726,14 +1734,14 @@
   },
   "174415073": {
     "ref": "174415073",
-    "overall_pct": 39,
+    "overall_pct": 41,
     "scores": [
       {
         "cat": "Annexe",
         "label": "Annexe status",
         "score": 1,
-        "note": "No confirmed annexe — creation needed",
-        "resolved": false
+        "note": "Garage conversion possible with planning — condition needs TLC. No confirmed annexe.",
+        "resolved": true
       },
       {
         "cat": "Annexe",
@@ -1753,8 +1761,8 @@
         "cat": "Mobility",
         "label": "Ground floor bedroom",
         "score": 1,
-        "note": "Not confirmed — check annexe layout",
-        "resolved": false
+        "note": "No current ground floor bedroom. Living room could be converted — not confirmed.",
+        "resolved": true
       },
       {
         "cat": "Mobility",
@@ -1767,15 +1775,15 @@
         "cat": "Heating",
         "label": "Fuel type",
         "score": 0,
-        "note": "Heating type not confirmed",
-        "resolved": false
+        "note": "Back boiler heated via log burner + immersion heater for hot water. No gas, no oil CH. ✗",
+        "resolved": true
       },
       {
         "cat": "Drainage",
         "label": "Drainage type",
-        "score": 0,
-        "note": "Drainage type not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Mains drainage confirmed ✓",
+        "resolved": true
       },
       {
         "cat": "Connectivity",
@@ -1788,8 +1796,8 @@
         "cat": "Risk",
         "label": "Flood risk",
         "score": 1,
-        "note": "Water/river nearby — confirm flood risk",
-        "resolved": false
+        "note": "Flooded 11 years ago (before river defences). Garden still floods after prolonged rain. Insurance OK. ⚠",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -1801,9 +1809,9 @@
       {
         "cat": "Transaction",
         "label": "Chain",
-        "score": 1,
-        "note": "Chain status not confirmed",
-        "resolved": false
+        "score": 0,
+        "note": "Onward chain confirmed",
+        "resolved": true
       },
       {
         "cat": "Transaction",
@@ -1811,19 +1819,29 @@
         "score": 3,
         "note": "£80,000 under budget — good scope for works",
         "resolved": true
+      },
+      {
+        "cat": "?",
+        "label": "Walk-in shower",
+        "score": 0,
+        "note": "NO bathroom downstairs — significant mobility barrier ✗",
+        "resolved": true
       }
     ],
     "questions": [
-      "What is the realistic scope for creating a self-contained annexe — outbuilding, garage conversion or extension?",
-      "Is there a ground floor bedroom accessible without stairs, for a person with limited mobility?",
-      "Is there a walk-in or level-access shower — no step — accessible from the ground floor?",
-      "What is the heating fuel — oil, gas, LPG, heat pump or electric? What are approximate annual costs?",
-      "Is the drainage mains or private (septic tank / sewage treatment plant)?",
-      "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?",
-      "Has the property ever flooded? What is the Environment Agency flood risk designation?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
+      "The property flooded about 11 years ago and the garden still floods after prolonged rain — what is the current EA flood risk designation for DT2 7QL, and can the vendor provide details of the river defence system that was installed?",
+      "The heating is a back boiler via the log burner with immersion electric for hot water — there is no gas or oil central heating. What is the approximate annual electricity and wood fuel cost? Is the back boiler in good working order and when was it last serviced?",
+      "For the garage conversion: what are the dimensions of the garage, and does it have an existing solid floor, electricity supply and roof in usable condition?",
+      "Is there any scope to add a downstairs WC or shower room to the main house — and if so, where would be the most practical location?",
+      "We would like to arrange a viewing — what dates are available?"
     ],
-    "red_flags": []
+    "red_flags": [
+      "FLOODED 11 years ago — garden still floods in prolonged rain. Check current EA flood designation for DT2 7QL.",
+      "Back boiler via log burner — unusual heating system, expensive and unreliable. No gas available in village. Budget for ASHP replacement.",
+      "No bathroom or shower downstairs at all — serious mobility barrier without major works",
+      "No confirmed annexe — garage conversion needed; planning required; garage condition poor ('needs TLC')",
+      "Onward chain"
+    ]
   },
   "174472451": {
     "ref": "174472451",
