@@ -591,21 +591,21 @@
   },
   "173348153": {
     "ref": "173348153",
-    "overall_pct": 48,
+    "overall_pct": 64,
     "scores": [
       {
         "cat": "Annexe",
         "label": "Independent entrance",
-        "score": 0,
-        "note": "Not confirmed in listing",
-        "resolved": false
+        "score": 3,
+        "note": "External access confirmed — around side, into annexe without entering main house ✓",
+        "resolved": true
       },
       {
         "cat": "Annexe",
         "label": "Shower / wetroom",
-        "score": 2,
-        "note": "Shower likely in annexe — confirm type",
-        "resolved": false
+        "score": 1,
+        "note": "Small step into annexe shower — wet room conversion possible ⚠",
+        "resolved": true
       },
       {
         "cat": "Annexe",
@@ -625,8 +625,8 @@
         "cat": "Smoke separation",
         "label": "Physical separation",
         "score": 1,
-        "note": "Attached annexe — smoke separation needs confirming",
-        "resolved": false
+        "note": "Door can be closed but not confirmed completely airtight ⚠",
+        "resolved": true
       },
       {
         "cat": "Mobility",
@@ -645,16 +645,16 @@
       {
         "cat": "Heating",
         "label": "Fuel type",
-        "score": 0,
-        "note": "Heating type not confirmed",
-        "resolved": false
+        "score": 1,
+        "note": "LPG + oil boiler — two systems. Annual costs unknown.",
+        "resolved": true
       },
       {
         "cat": "Drainage",
         "label": "Drainage type",
-        "score": 0,
-        "note": "Drainage type not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Mains drainage confirmed ✓",
+        "resolved": true
       },
       {
         "cat": "Connectivity",
@@ -680,9 +680,9 @@
       {
         "cat": "Transaction",
         "label": "Chain",
-        "score": 1,
-        "note": "Chain status not confirmed",
-        "resolved": false
+        "score": 2,
+        "note": "Flexible — has property to buy but also somewhere to move into temporarily",
+        "resolved": true
       },
       {
         "cat": "Transaction",
@@ -693,16 +693,19 @@
       }
     ],
     "questions": [
-      "Does the annexe have its own completely separate external entrance?",
-      "Is the annexe shower a walk-in/level-access shower, or does it have a step or bath?",
-      "Is there full air/smoke separation between the annexe and main house so a smoker in the annexe cannot affect the main living areas?",
-      "Is there a walk-in or level-access shower — no step — accessible from the ground floor?",
-      "What is the heating fuel — oil, gas, LPG, heat pump or electric? What are approximate annual costs?",
-      "Is the drainage mains or private (septic tank / sewage treatment plant)?",
-      "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
+      "The connecting door between annexe and main house — can it be sealed permanently or fitted with a tight fire door? Smoke separation is essential for our use case.",
+      "What are the annexe shower room dimensions? Is there space for a full level-access wet room (no step)?",
+      "Which system heats which building — is the LPG for the annexe and oil for the main house, or vice versa? Are they completely independent?",
+      "What are the approximate annual LPG and oil costs?",
+      "The vendor has somewhere to move into temporarily — what timescale to completion would work for them?",
+      "What broadband speeds are available at Winterborne Stickland — specifically upload speed? Is full fibre available?",
+      "We would like to arrange a viewing — what dates are available?"
     ],
-    "red_flags": []
+    "red_flags": [
+      "Smoke separation: connecting door can close but airtightness unconfirmed — critical to establish at viewing",
+      "Shower step — wet room conversion needed (£2,000–4,000)",
+      "LPG + oil dual system — budget for rationalisation and ASHP conversion longer term"
+    ]
   },
   "172773251": {
     "ref": "172773251",
@@ -4720,6 +4723,123 @@
       "No confirmed self-contained annexe — lower ground is flexible space but needs kitchen and ideally external entrance to work for multi-generational living",
       "Council Tax Band E — higher running costs than Band D/C properties",
       "NOT on Rightmove — listed via Moving You/Apex27; no Rightmove ref for image scraper"
+    ]
+  },
+  "90542934": {
+    "ref": "90542934",
+    "overall_pct": 62,
+    "scores": [
+      {
+        "cat": "Annexe",
+        "label": "Independent entrance",
+        "score": 0,
+        "note": "Separate entrance not confirmed in listing — vestibule leads in but no mention of external door vs internal",
+        "resolved": false
+      },
+      {
+        "cat": "Annexe",
+        "label": "Shower / wetroom",
+        "score": 2,
+        "note": "En-suite shower room confirmed in annexe — type not specified (step or level access?)",
+        "resolved": false
+      },
+      {
+        "cat": "Annexe",
+        "label": "Kitchen",
+        "score": 3,
+        "note": "Kitchen with built-in oven and hob confirmed ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Annexe",
+        "label": "Planning / BC",
+        "score": 0,
+        "note": "Planning/BC status not mentioned in listing",
+        "resolved": false
+      },
+      {
+        "cat": "Smoke separation",
+        "label": "Physical separation",
+        "score": 1,
+        "note": "Annexe appears to be ground floor extension — connection to main house unclear",
+        "resolved": false
+      },
+      {
+        "cat": "Mobility",
+        "label": "Ground floor bedroom",
+        "score": 3,
+        "note": "Annexe is entirely ground floor — double bedroom confirmed ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Mobility",
+        "label": "Walk-in shower",
+        "score": 1,
+        "note": "En-suite shower room confirmed — level access not specified",
+        "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Fuel type",
+        "score": 3,
+        "note": "Gas central heating confirmed ✓. Mains services.",
+        "resolved": true
+      },
+      {
+        "cat": "Drainage",
+        "label": "Drainage type",
+        "score": 3,
+        "note": "Mains services confirmed ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Connectivity",
+        "label": "Broadband",
+        "score": 0,
+        "note": "Broadband not mentioned — check Ofcom for BA14",
+        "resolved": false
+      },
+      {
+        "cat": "Risk",
+        "label": "Flood risk",
+        "score": 3,
+        "note": "Trowbridge town — no flood risk indicators",
+        "resolved": true
+      },
+      {
+        "cat": "Risk",
+        "label": "Listed building",
+        "score": 3,
+        "note": "Not listed — modern detached",
+        "resolved": true
+      },
+      {
+        "cat": "Transaction",
+        "label": "Chain",
+        "score": 1,
+        "note": "Chain status not confirmed in listing",
+        "resolved": false
+      },
+      {
+        "cat": "Transaction",
+        "label": "Budget headroom",
+        "score": 3,
+        "note": "£105,000 under budget — excellent scope for works and wet room conversion",
+        "resolved": true
+      }
+    ],
+    "questions": [
+      "Does the annexe have its own completely separate external entrance, or is it accessed via the main house?",
+      "Is there full air/smoke separation between the annexe and the main house — i.e. is the annexe fully self-contained with no shared doorways or ventilation?",
+      "The annexe en-suite shower room — is it a level-access/walk-in shower with no step, or does it have a step or bath?",
+      "Has the annexe been granted planning permission and building control approval? Does it have its own council tax band?",
+      "What broadband speeds are available at BA14 — upload as well as download? Is full fibre (FTTP) available?",
+      "Is there an onward chain on the vendor's side?",
+      "We would like to arrange a viewing as soon as possible — what dates are available?"
+    ],
+    "red_flags": [
+      "Independent entrance not confirmed — must establish at viewing whether annexe has own external door",
+      "Shower level access not confirmed — wet room conversion may be needed (£2,000–4,000 but £105k headroom)"
     ]
   }
 }
