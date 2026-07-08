@@ -349,7 +349,7 @@
   {
     "ref": "173348153",
     "name": "Winterborne Stickland — 5-Bed Semi",
-    "rank": 8,
+    "rank": 6,
     "price": 425000,
     "price_display": "£425,000",
     "location": "Winterborne Stickland, Dorset",
@@ -406,7 +406,7 @@
   {
     "ref": "172773251",
     "name": "White Cliff Gardens, Blandford Forum",
-    "rank": 26,
+    "rank": 20,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Blandford Forum, Dorset",
@@ -463,7 +463,7 @@
   {
     "ref": "89951784",
     "name": "Pentrepiod Rd, Pontypool — Stone Det",
-    "rank": 3,
+    "rank": 5,
     "price": 460000,
     "price_display": "£460,000",
     "location": "Pontypool, South Wales",
@@ -525,7 +525,7 @@
   {
     "ref": "168359045",
     "name": "Highmead Ave, Newton, Swansea",
-    "rank": 12,
+    "rank": 11,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Newton, Swansea",
@@ -587,7 +587,7 @@
   {
     "ref": "88996269",
     "name": "Newtown Rd, Penperlleni, Monmouthshire",
-    "rank": 22,
+    "rank": 21,
     "price": 430000,
     "price_display": "£430,000",
     "location": "Penperlleni, Monmouthshire",
@@ -721,7 +721,7 @@
   {
     "ref": "172902734",
     "name": "Halfway Close, Trowbridge",
-    "rank": 11,
+    "rank": 12,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Trowbridge, Wiltshire",
@@ -783,7 +783,7 @@
   {
     "ref": "173219645",
     "name": "Allens Rd, Upton, Poole",
-    "rank": 30,
+    "rank": 29,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Upton, Poole",
@@ -897,7 +897,7 @@
   {
     "ref": "89701968",
     "name": "Loders, Bridport — Det Character",
-    "rank": 21,
+    "rank": 22,
     "price": 470000,
     "price_display": "£470,000",
     "location": "Loders, Dorset",
@@ -1217,7 +1217,7 @@
   {
     "ref": "89767338",
     "name": "Bibury Rd, Old Walcot, Swindon",
-    "rank": 20,
+    "rank": 24,
     "price": 440000,
     "price_display": "£440,000",
     "location": "Swindon, Wiltshire",
@@ -1326,7 +1326,7 @@
   {
     "ref": "87791562",
     "name": "Halifax Rd, Bowerhill, Melksham",
-    "rank": 7,
+    "rank": 8,
     "price": 465000,
     "price_display": "£465,000",
     "location": "Melksham, Wiltshire",
@@ -1725,7 +1725,7 @@
   {
     "ref": "166496951",
     "name": "Plassey Cres, Bournemouth — Chalet Bungalow",
-    "rank": 5,
+    "rank": 3,
     "price": 390000,
     "price_display": "£390,000",
     "location": "Bournemouth",
@@ -1777,7 +1777,7 @@
   {
     "ref": "90125946",
     "name": "Damerham Rd, Throop, Bournemouth",
-    "rank": 41,
+    "rank": 42,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Throop, Bournemouth",
@@ -1891,7 +1891,7 @@
   {
     "ref": "174938813",
     "name": "Willow Way, Liskeard, Cornwall",
-    "rank": 25,
+    "rank": 26,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Liskeard, Cornwall",
@@ -2242,7 +2242,7 @@
       "asd_support": "Welsh Integrated Autism Services (IAS) — legal right to assessment. Withybush Hospital Haverfordwest has paediatric services.",
       "notes": "Wales has stronger legal ASD framework than England. Rural isolation of Narberth area means community travel needed."
     },
-    "rank": 24
+    "rank": 25
   },
   {
     "ref": "89491017",
@@ -2289,7 +2289,7 @@
       "asd_support": "Welsh IAS model. Glangwili Hospital Carmarthen has paediatric teams. Strong legal framework for ASD support in Wales.",
       "notes": "Remote rural location — community access requires transport. Japanese Knotweed caveat takes priority in assessment."
     },
-    "rank": 29
+    "rank": 30
   },
   {
     "ref": "160507001",
@@ -2336,7 +2336,7 @@
       "asd_support": "Welsh IAS legal framework. Glangwili Hospital Carmarthen 8 miles.",
       "notes": "Project caveat is the primary concern here — home-ed community is secondary until viability is confirmed."
     },
-    "rank": 42
+    "rank": 41
   },
   {
     "ref": "90443352",
@@ -2440,7 +2440,7 @@
       "asd_support": "Welsh IAS legal framework — stronger than English equivalent. Morriston Hospital 15 min. Swansea NAS branch with community activities.",
       "notes": "Already have 88 Gwyn St Alltwen in tracker — this is number 60, a larger property. Different listing."
     },
-    "rank": 6
+    "rank": 7
   },
   {
     "ref": "90542934",
