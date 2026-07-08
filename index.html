@@ -292,14 +292,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 .copy-qs-btn:hover{background:#e0eaf8}
 
 
-/* AGENT EMAIL INPUT */
-.agent-email-row{display:flex;gap:6px;align-items:center;margin-bottom:8px}
-.agent-email-input{flex:1;padding:5px 8px;border:1px solid var(--border);border-radius:4px;
-  font-size:12px;font-family:inherit}
-.agent-email-input:focus{outline:none;border-color:var(--navy)}
-.agent-email-save{font-size:11px;padding:4px 9px;background:var(--navy);color:#fff;
-  border:none;border-radius:4px;cursor:pointer}
-.agent-email-save:hover{opacity:.85}
 /* AGENT CONTACT STATUS */
 .agent-status-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
 .agent-sbtn{font-size:11px;padding:3px 9px;border-radius:10px;
@@ -312,10 +304,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 .agent-sbtn[data-as="not-proceeding"].on{background:var(--red)}
 /* QUESTIONS POPUP */
 .qs-popup{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);
-  z-index:6000;align-items:center;justify-content:center;
-  opacity:0;transition:opacity .25s ease}
-.qs-popup.show{display:flex;opacity:1}
-.qs-popup.fading{display:flex;opacity:0;pointer-events:none}
+  z-index:6000;align-items:center;justify-content:center}
+.qs-popup.show{display:flex}
 .qs-box{background:#fff;border-radius:8px;padding:20px;width:520px;max-width:95vw;
   max-height:85vh;overflow-y:auto}
 .qs-box h2{font-size:14px;margin-bottom:12px;color:var(--navy)}
@@ -398,98 +388,55 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 #route-close{float:right;background:none;border:none;cursor:pointer;font-size:14px;
   color:var(--muted);margin-left:8px}
 
-/* PHOTO SECTIONS */
-.photo-section-label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;
-  color:#aaa;background:#1a1a1a;padding:3px 8px;font-weight:600}
-.photo-section-edit{font-size:10px;color:#4d9fff;background:none;border:none;
-  cursor:pointer;padding:2px 6px;float:right;text-decoration:underline}
-
 
 /* ── VIEWING DAY PLANNER ──────────────────────────────────────────────────── */
 #planner-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);
-  z-index:8000;align-items:flex-start;justify-content:center;padding:24px 16px;
-  overflow-y:auto}
+  z-index:8000;align-items:flex-start;justify-content:center;padding:24px 16px;overflow-y:auto}
 #planner-overlay.show{display:flex}
-#planner-box{background:#fff;border-radius:10px;width:740px;max-width:98vw;
-  box-shadow:0 8px 40px rgba(0,0,0,.25)}
-#planner-header{background:var(--navy);color:#fff;padding:16px 20px;
-  border-radius:10px 10px 0 0;display:flex;align-items:center;gap:12px}
+#planner-box{background:#fff;border-radius:10px;width:740px;max-width:98vw;box-shadow:0 8px 40px rgba(0,0,0,.25)}
+#planner-header{background:var(--navy);color:#fff;padding:16px 20px;border-radius:10px 10px 0 0;display:flex;align-items:center;gap:12px}
 #planner-header h2{font-size:15px;font-weight:700;flex:1}
-.planner-close{background:none;border:none;color:rgba(255,255,255,.7);
-  font-size:20px;cursor:pointer;padding:0;line-height:1}
+.planner-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:20px;cursor:pointer;padding:0;line-height:1}
 .planner-close:hover{color:#fff}
 #planner-body{padding:18px 20px}
 .planner-intro{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5}
 .planner-intro strong{color:var(--text)}
-/* Cluster cards */
-.cluster-card{border:1.5px solid var(--border);border-radius:8px;margin-bottom:14px;
-  overflow:hidden;transition:border-color .15s}
+.cluster-card{border:1.5px solid var(--border);border-radius:8px;margin-bottom:14px;overflow:hidden;transition:border-color .15s}
 .cluster-card:hover{border-color:var(--navy)}
-.cluster-card.selected{border-color:var(--navy);border-width:2px;
-  box-shadow:0 0 0 3px rgba(31,78,121,.12)}
-.cluster-header{background:#f8f9fb;padding:10px 14px;display:flex;
-  align-items:center;gap:10px;cursor:pointer}
-.cluster-badge{background:var(--navy);color:#fff;font-size:11px;font-weight:700;
-  padding:2px 9px;border-radius:10px;white-space:nowrap}
+.cluster-header{background:#f8f9fb;padding:10px 14px;display:flex;align-items:center;gap:10px;cursor:pointer}
+.cluster-badge{background:var(--navy);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:10px;white-space:nowrap}
 .cluster-title{font-weight:600;font-size:13px;flex:1}
 .cluster-meta{font-size:11px;color:var(--muted);display:flex;gap:12px}
 .cluster-meta span{white-space:nowrap}
 .cluster-body{padding:10px 14px 14px}
-/* Journey timeline */
 .journey-timeline{display:flex;flex-direction:column;gap:0}
 .jt-row{display:grid;grid-template-columns:26px 1fr auto;gap:8px;align-items:center}
-.jt-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;
-  border:2px solid #fff;box-shadow:0 0 0 2px var(--navy);background:#fff;
-  margin:0 6px}
-.jt-dot.start{background:var(--navy)}
-.jt-dot.end{background:var(--green)}
-.jt-dot.prop{background:var(--amber)}
-.jt-line{width:2px;background:var(--border);height:24px;margin:0 auto}
+.jt-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;border:2px solid #fff;box-shadow:0 0 0 2px var(--navy);background:#fff;margin:0 6px}
+.jt-dot.start{background:var(--navy)}.jt-dot.end{background:var(--green)}.jt-dot.prop{background:var(--amber)}
 .jt-label{font-size:12.5px;font-weight:600;color:var(--text)}
 .jt-sublabel{font-size:11px;color:var(--muted)}
-.jt-time{font-size:11px;font-weight:600;color:var(--navy);text-align:right;
-  white-space:nowrap}
-.jt-drive{font-size:10.5px;color:var(--muted);text-align:right}
-.jt-drive-row{display:grid;grid-template-columns:26px 1fr auto;gap:8px;
-  align-items:center;opacity:.7}
-.jt-drive-line{width:2px;background:#dde1e7;height:28px;margin:0 auto;
-  background:repeating-linear-gradient(to bottom,var(--border) 0,var(--border) 4px,transparent 4px,transparent 8px)}
+.jt-time{font-size:11px;font-weight:600;color:var(--navy);text-align:right;white-space:nowrap}
+.jt-drive-row{display:grid;grid-template-columns:26px 1fr auto;gap:8px;align-items:center;opacity:.7}
+.jt-drive-line{width:2px;height:28px;margin:0 auto;background:repeating-linear-gradient(to bottom,var(--border) 0,var(--border) 4px,transparent 4px,transparent 8px)}
 .jt-drive-text{font-size:11px;color:var(--muted);padding-left:2px}
 .jt-drive-mins{font-size:11px;color:var(--muted);text-align:right}
-/* Totals */
-.cluster-totals{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;
-  padding-top:10px;border-top:1px solid var(--border)}
+.cluster-totals{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
 .ct-item{text-align:center}
 .ct-val{font-size:17px;font-weight:700;color:var(--navy)}
 .ct-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
-/* Actions */
 .cluster-actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
-.ca-btn{font-size:12px;padding:6px 14px;border-radius:4px;cursor:pointer;
-  font-weight:600;border:1px solid var(--border)}
-.ca-btn.primary{background:var(--navy);color:#fff;border-color:var(--navy)}
-.ca-btn.primary:hover{opacity:.88}
-.ca-btn.secondary{background:#fff;color:var(--navy)}
-.ca-btn.secondary:hover{background:#f0f4f8}
-/* Tab picker */
+.ca-btn{font-size:12px;padding:6px 14px;border-radius:4px;cursor:pointer;font-weight:600;border:1px solid var(--border)}
+.ca-btn.primary{background:var(--navy);color:#fff;border-color:var(--navy)}.ca-btn.primary:hover{opacity:.88}
+.ca-btn.secondary{background:#fff;color:var(--navy)}.ca-btn.secondary:hover{background:#f0f4f8}
 .planner-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:16px}
-.planner-tab{padding:8px 16px;font-size:13px;cursor:pointer;border:none;
-  background:none;border-bottom:2px solid transparent;color:var(--muted);font-weight:500}
+.planner-tab{padding:8px 16px;font-size:13px;cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;color:var(--muted);font-weight:500}
 .planner-tab.active{color:var(--navy);border-bottom-color:var(--navy)}
-/* Custom builder */
-.custom-prop-list{display:flex;flex-direction:column;gap:4px;max-height:280px;
-  overflow-y:auto;margin-bottom:12px}
-.custom-prop-row{display:flex;align-items:center;gap:8px;padding:6px 8px;
-  border-radius:4px;cursor:pointer;font-size:12.5px;border:1px solid transparent}
-.custom-prop-row:hover{background:#f0f4f8}
-.custom-prop-row.selected{background:#e8f0fb;border-color:var(--navy)}
-.custom-prop-row.disabled{opacity:.4;cursor:not-allowed}
-.cp-rank{width:22px;height:22px;border-radius:50%;background:var(--navy);
-  color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;
-  justify-content:center;flex-shrink:0}
-.cp-name{flex:1;font-weight:500}
-.cp-dist{font-size:11px;color:var(--muted);white-space:nowrap}
-.custom-result{background:#f8f9fb;border:1px solid var(--border);border-radius:6px;
-  padding:12px 14px;margin-top:8px}
+.custom-prop-list{display:flex;flex-direction:column;gap:4px;max-height:280px;overflow-y:auto;margin-bottom:12px}
+.custom-prop-row{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:4px;cursor:pointer;font-size:12.5px;border:1px solid transparent}
+.custom-prop-row:hover{background:#f0f4f8}.custom-prop-row.selected{background:#e8f0fb;border-color:var(--navy)}
+.cp-rank{width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cp-name{flex:1;font-weight:500}.cp-dist{font-size:11px;color:var(--muted);white-space:nowrap}
+.custom-result{background:#f8f9fb;border:1px solid var(--border);border-radius:6px;padding:12px 14px;margin-top:8px}
 
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:5px}
@@ -756,7 +703,7 @@ function localFloorplans(ref) {
 // ── INIT ──────────────────────────────────────────────────────────────────────
 async function init() {
   await loadManifest();
-  loadClusters(); // pre-load for planner
+  loadClusters();
   try { const sc = await fetch('data/scorecards.json'); scorecards = await sc.json(); } catch(e) {}
   try { const vr = await fetch('data/votes.json'); votes = await vr.json(); } catch(e) { votes = {}; }
   const r = await fetch('data/properties.json');
@@ -1036,12 +983,7 @@ function selectProp(ref) {
   if(!p) return;
   document.querySelectorAll('.prop-card').forEach(c=>
     c.classList.toggle('selected',c.dataset.ref===ref));
-  if(markers[ref]) {
-    // Zoom so nearest town/city is visible — z11 fits ~30km radius, good for most rural properties
-    // Use flyTo for a smooth animated transition
-    map.flyTo([p.lat,p.lng], 11, {animate:true, duration:0.8});
-    setTimeout(()=>markers[ref].openPopup(), 850);
-  }
+  if(markers[ref]) { map.panTo([p.lat,p.lng]); markers[ref].openPopup(); }
   renderDetail(p);
   document.getElementById('detail-panel').classList.add('open');
 }
@@ -1086,21 +1028,11 @@ function renderDetail(p) {
               <button class="pz-btn" onclick="openImgNewTab('gallery-main-img')" title="Open in new tab">↗</button>
             </div>
           </div>
-          ${(()=>{
-            const sections = getPhotoSections(p.ref, rmImgs);
-            const hasMultiple = Object.values(sections).filter(a=>a.length>0).length > 1;
-            if(!hasMultiple) return '<div class="gallery-thumbs">'
-              +rmImgs.map((src,i)=>'<img src="'+src+'" data-idx="'+i+'" class="'+(i===0?'active-thumb':'')+'"'
-                +' onerror="this.style.display=\'none\'" onclick="pickPhoto(this,'+i+')" alt="Photo '+(i+1)+'">').join('')
-              +'</div>';
-            return Object.entries(sections).filter(([,imgs])=>imgs.length>0).map(([label,imgs])=>
-              '<div class="photo-section-label">'+label+'</div>'
-              +'<div class="gallery-thumbs">'
-              +imgs.map(({src,idx})=>'<img src="'+src+'" data-idx="'+idx+'" class="'+(idx===0?'active-thumb':'')+'"'
-                +' onerror="this.style.display=\'none\'" onclick="pickPhoto(this,'+idx+')" alt="'+label+'">').join('')
-              +'</div>'
-            ).join('');
-          })()}` :
+          <div class="gallery-thumbs">
+            ${rmImgs.map((src,i)=>`<img src="${src}" data-idx="${i}" class="${i===0?'active-thumb':''}"
+              onerror="this.style.display='none'"
+              onclick="pickPhoto(this,${i})" alt="Photo ${i+1}">`).join('')}
+          </div>` :
           `<div class="gallery-empty">
             Photos not yet downloaded — run scripts/rightmove_image_scraper.py then push to repo.<br>
             <a href="${p.rightmove_url}" target="_blank" style="color:#4d9fff">View on Rightmove ↗</a>
@@ -1142,16 +1074,16 @@ function renderDetail(p) {
     <div class="detail-body">
       <div class="detail-rank-row">
         <div class="detail-rank" style="background:${col}">Rank #${p.rank}</div>
+        ${renderVotes(p.ref)}
         <div class="detail-vote-inline" id="dvote-${p.ref}">
           ${(()=>{
-            const ref=p.ref;
-            const pv=votes[ref]||[];
+            const pv=votes[p.ref]||[];
             const likes=pv.filter(v=>v.type==='like').length;
             const dislikes=pv.filter(v=>v.type==='dislike').length;
             const net=likes-dislikes;
-            const myV=localStorage.getItem('vote_'+ref);
-            return '<button class="dv-btn like '+(myV==='like'?'voted':'')+'" data-ref="'+ref+'" data-type="like" title="Like">👍</button>'
-              +'<button class="dv-btn dislike '+(myV==='dislike'?'voted':'')+'" data-ref="'+ref+'" data-type="dislike" title="Dislike">👎</button>'
+            const myV=localStorage.getItem('vote_'+p.ref);
+            return '<button class="dv-btn like '+(myV==='like'?'voted':'')+'" data-ref="${p.ref}" data-type="like" title="Like this property">👍</button>'
+              +'<button class="dv-btn dislike '+(myV==='dislike'?'voted':'')+'" data-ref="${p.ref}" data-type="dislike" title="Dislike this property">👎</button>'
               +(net!==0?'<span class="dv-net" style="color:'+(net>0?'var(--green)':'var(--red)')+'">'+(net>0?'+':'')+net+'</span>':'');
           })()}
         </div>
@@ -1169,23 +1101,7 @@ function renderDetail(p) {
       <!-- LINKS -->
       <div class="detail-links">
         <a class="dl p" href="${p.rightmove_url}" target="_blank">Rightmove ↗</a>
-        ${(()=>{
-          const email=(notes.agentEmail||{})[p.ref];
-          const sc=scorecards[p.ref];
-          const qs=sc?.questions||[];
-          const subject=encodeURIComponent('Enquiry re: '+p.name+', '+p.location);
-          const body=encodeURIComponent(
-            'Dear '+p.agent.split(',')[0]+',\n\n'
-            +'I am interested in '+p.name+' ('+p.price_display+') and have the following questions:\n\n'
-            +qs.map((q,i)=>(i+1)+'. '+q).join('\n')
-            +'\n\nI would also like to arrange a viewing at your earliest convenience.\n\nKind regards'
-          );
-          if(email){
-            return '<a class="dl s" href="mailto:'+email+'?subject='+subject+'&body='+body+'" title="Email agent with questions pre-filled">✉ Email agent ↗</a>';
-          } else {
-            return '<a class="dl s" href="'+p.contact_url+'" target="_blank">Contact agent ↗</a>';
-          }
-        })()}
+        <a class="dl s" href="${p.contact_url}" target="_blank">Contact agent ↗</a>
         <a class="dl s" href="#" onclick="event.preventDefault();showQuestions('${p.ref}')">❓ Questions to ask</a>
         ${dupRefs.map(dr=>`<a class="dl d" href="https://www.rightmove.co.uk/properties/${dr}" target="_blank">
           Duplicate listing ${dr} ↗</a>`).join('')}
@@ -1207,14 +1123,8 @@ function renderDetail(p) {
             onclick="setAgentStatus('${p.ref}','${as}')">${agentStatusLabel(as)}</button>`
         ).join('')}
       </div>
-      <div id="agent-status-note-${p.ref}" style="font-size:11px;color:var(--muted);margin-bottom:6px">
+      <div id="agent-status-note-${p.ref}" style="font-size:11px;color:var(--muted);margin-bottom:8px">
         ${(notes.agentStatus||{})[p.ref] ? 'Last updated: ' + ((notes.agentStatusDate||{})[p.ref]||'') : ''}
-      </div>
-      <div class="agent-email-row">
-        <input class="agent-email-input" type="email" id="agent-email-${p.ref}"
-          placeholder="Agent email address (enables mailto: link with questions pre-filled)"
-          value="${(notes.agentEmail||{})[p.ref]||''}">
-        <button class="agent-email-save" onclick="saveAgentEmail('${p.ref}')">Save</button>
       </div>
 
       <!-- ABOUT -->
@@ -1292,7 +1202,6 @@ function renderDetail(p) {
   window._gImgs   = rmImgs;
   window._fImgs   = rmFloors;
   window._vPhotos = notes.photos[p.ref] || [];
-  window._currentProp = p;
 }
 
 
@@ -1314,421 +1223,6 @@ function switchGalleryTab(btn, tab) {
   }
 }
 
-
-
-// ── VIEWING DAY PLANNER ───────────────────────────────────────────────────────
-let clusters = [], plannerCustomSelected = [];
-
-async function loadClusters() {
-  if (clusters.length) return;
-  try {
-    const r = await fetch('data/clusters.json');
-    if (r.ok) clusters = await r.json();
-  } catch(e) {}
-}
-
-function showPlanner() {
-  loadClusters().then(() => {
-    renderSuggestedTab();
-    renderCustomTab();
-    document.getElementById('planner-overlay').classList.add('show');
-  });
-}
-function hidePlanner() {
-  document.getElementById('planner-overlay').classList.remove('show');
-}
-function handlePlannerClick(e) {
-  if (e.target === document.getElementById('planner-overlay')) hidePlanner();
-}
-function switchPlannerTab(btn, tab) {
-  document.querySelectorAll('.planner-tab').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('ptab-suggested').style.display = tab==='suggested'?'':'none';
-  document.getElementById('ptab-custom').style.display    = tab==='custom'?'':'none';
-}
-
-function fmtMins(m) {
-  if (m < 60) return m + 'min';
-  return Math.floor(m/60) + 'h' + (m%60 ? ' ' + (m%60) + 'min' : '');
-}
-
-function renderSuggestedTab() {
-  const el = document.getElementById('ptab-suggested');
-  if (!clusters.length) {
-    el.innerHTML = '<p style="color:var(--muted);font-size:13px">No cluster data available.</p>';
-    return;
-  }
-  const intro = `<p class="planner-intro">
-    Grouped by proximity — properties close enough to visit in a single day.
-    Times are <strong>estimated driving times</strong> from <strong>UB7 7JY</strong>
-    at ~55 km/h average. Allow 60 minutes per viewing plus time for lunch.
-  </p>`;
-
-  const cards = clusters.map((c, ci) => {
-    const props_sorted = c.properties;
-    const n = props_sorted.length;
-
-    // Build timeline rows
-    let timelineHtml = '';
-    // UB7 start
-    timelineHtml += `
-      <div class="jt-row">
-        <div class="jt-dot start"></div>
-        <div><div class="jt-label">UB7 7JY (home)</div><div class="jt-sublabel">Depart ~8:00am</div></div>
-        <div></div>
-      </div>`;
-    // Drive to first property
-    timelineHtml += `
-      <div class="jt-drive-row">
-        <div class="jt-drive-line"></div>
-        <div class="jt-drive-text">🚗 Drive to ${props_sorted[0].name.split(',')[0]}</div>
-        <div class="jt-drive-mins">${fmtMins(c.legs_mins[0])}</div>
-      </div>`;
-    // Each property
-    props_sorted.forEach((p, i) => {
-      const sc = scorecards[p.ref];
-      const pct = sc ? sc.overall_pct : '?';
-      timelineHtml += `
-        <div class="jt-row" style="cursor:pointer" onclick="hidePlanner();selectProp('${p.ref}')">
-          <div class="jt-dot prop"></div>
-          <div>
-            <div class="jt-label">#${p.rank} ${p.name}</div>
-            <div class="jt-sublabel">${p.price_display} · ${p.location} · ${pct}% fit · ${p.annexe==='confirmed'?'✓ annexe':'~ potential'}</div>
-          </div>
-          <div>
-            <div class="jt-time">${fmtMins(p.ub7_drive_mins)} from UB7</div>
-          </div>
-        </div>`;
-      // Drive to next
-      if (i < n-1) {
-        timelineHtml += `
-          <div class="jt-drive-row">
-            <div class="jt-drive-line"></div>
-            <div class="jt-drive-text">🚗 Drive to ${props_sorted[i+1].name.split(',')[0]}</div>
-            <div class="jt-drive-mins">${fmtMins(c.legs_mins[i+1])}</div>
-          </div>`;
-      }
-    });
-    // Drive home
-    timelineHtml += `
-      <div class="jt-drive-row">
-        <div class="jt-drive-line"></div>
-        <div class="jt-drive-text">🚗 Return to UB7 7JY</div>
-        <div class="jt-drive-mins">${fmtMins(c.legs_mins[n])}</div>
-      </div>
-      <div class="jt-row">
-        <div class="jt-dot end"></div>
-        <div><div class="jt-label">UB7 7JY (home)</div>
-        <div class="jt-sublabel">Est. return ~${estimateReturnTime(c)}</div></div>
-        <div></div>
-      </div>`;
-
-    const areaName = getClusterArea(c);
-    return `
-      <div class="cluster-card" id="cluster-${ci}">
-        <div class="cluster-header" onclick="toggleCluster(${ci})">
-          <span class="cluster-badge">Day ${ci+1}</span>
-          <div>
-            <div class="cluster-title">${areaName}</div>
-            <div class="cluster-meta">
-              <span>🏠 ${n} propert${n===1?'y':'ies'}</span>
-              <span>🚗 ${fmtMins(c.total_drive_mins)} driving</span>
-              <span>⏱ ~${fmtMins(c.total_day_mins)} total day</span>
-            </div>
-          </div>
-          <span style="color:var(--muted);font-size:14px" id="cluster-chevron-${ci}">▼</span>
-        </div>
-        <div class="cluster-body" id="cluster-body-${ci}">
-          <div class="journey-timeline">${timelineHtml}</div>
-          <div class="cluster-totals">
-            <div class="ct-item"><div class="ct-val">${fmtMins(c.legs_mins[0])}</div><div class="ct-lbl">UB7 → first</div></div>
-            <div class="ct-item"><div class="ct-val">${fmtMins(c.total_drive_mins)}</div><div class="ct-lbl">Total driving</div></div>
-            <div class="ct-item"><div class="ct-val">${n * 60}min</div><div class="ct-lbl">Viewings (${n}×60)</div></div>
-            <div class="ct-item"><div class="ct-val">${fmtMins(c.total_day_mins)}</div><div class="ct-lbl">Est. day total</div></div>
-          </div>
-          <div class="cluster-actions">
-            <button class="ca-btn primary" onclick="showClusterOnMap(${ci})">🗺 Show on map</button>
-            <button class="ca-btn secondary" onclick="copyItinerary(${ci})">📋 Copy itinerary</button>
-          </div>
-        </div>
-      </div>`;
-  }).join('');
-
-  el.innerHTML = intro + cards;
-}
-
-function estimateReturnTime(c) {
-  // Assume 8am depart, 60min per viewing
-  let mins = 8 * 60 + c.total_day_mins;
-  const h = Math.floor(mins/60) % 24;
-  const m = mins % 60;
-  return `${h}:${m.toString().padStart(2,'0')}`;
-}
-
-function getClusterArea(c) {
-  // Derive area name from property locations
-  const locations = c.properties.map(p => p.location.split(',').pop().trim());
-  const unique = [...new Set(locations)];
-  if (unique.length === 1) return unique[0];
-  // Find common county/region word
-  const words = unique.join(' ').split(' ');
-  const freq = {};
-  words.forEach(w => { if (w.length > 3) freq[w] = (freq[w]||0)+1; });
-  const common = Object.entries(freq).filter(([,n])=>n>1).sort((a,b)=>b[1]-a[1]);
-  if (common.length) return common[0][0] + ' area';
-  return unique.slice(0,2).join(' / ');
-}
-
-function toggleCluster(ci) {
-  const body = document.getElementById('cluster-body-'+ci);
-  const chev = document.getElementById('cluster-chevron-'+ci);
-  const hidden = body.style.display === 'none';
-  body.style.display = hidden ? '' : 'none';
-  chev.textContent = hidden ? '▼' : '▶';
-}
-
-let plannerMapLayers = [];
-function showClusterOnMap(ci) {
-  const c = clusters[ci];
-  hidePlanner();
-  // Clear previous planner layers
-  plannerMapLayers.forEach(l => { try { map.removeLayer(l); } catch(e){} });
-  plannerMapLayers = [];
-
-  const points = [[51.5046, -0.4812], // UB7
-    ...c.properties.map(p => [p.lat, p.lng]),
-    [51.5046, -0.4812]];  // return
-
-  // Draw route line
-  const line = L.polyline(points, {color:'#7F4F00',weight:3,opacity:0.7,dashArray:'8,5'}).addTo(map);
-  plannerMapLayers.push(line);
-
-  // UB7 marker
-  const ub7Icon = L.divIcon({
-    html:'<div style="background:#1F4E79;color:#fff;font-size:9px;font-weight:700;padding:3px 6px;border-radius:3px;white-space:nowrap;box-shadow:0 1px 4px rgba(0,0,0,.3)">🏠 UB7</div>',
-    iconAnchor:[20,12], className:''
-  });
-  plannerMapLayers.push(L.marker([51.5046,-0.4812],{icon:ub7Icon}).addTo(map));
-
-  // Property order labels
-  c.properties.forEach((p,i) => {
-    const icon = L.divIcon({
-      html:`<div style="background:#7F4F00;color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3)">${i+1}</div>`,
-      iconSize:[22,22], iconAnchor:[11,11], className:''
-    });
-    plannerMapLayers.push(L.marker([p.lat,p.lng],{icon}).addTo(map));
-  });
-
-  // Fit map to show all points
-  map.fitBounds(L.latLngBounds(points), {padding:[40,40]});
-}
-
-function copyItinerary(ci) {
-  const c = clusters[ci];
-  const lines = [
-    `VIEWING DAY ${ci+1} — ${getClusterArea(c)}`,
-    `Total day: ~${fmtMins(c.total_day_mins)} | Driving: ${fmtMins(c.total_drive_mins)}`,
-    '',
-    `08:00  Depart UB7 7JY`,
-  ];
-  let hour = 8, min = 0;
-  c.properties.forEach((p, i) => {
-    min += c.legs_mins[i];
-    hour += Math.floor(min/60); min = min%60;
-    lines.push(`${hour}:${min.toString().padStart(2,'0')}  Arrive: #${p.rank} ${p.name}`);
-    lines.push(`         ${p.price_display} · ${p.location}`);
-    lines.push(`         ${p.ub7_drive_mins}min from UB7 · ${p.annexe==='confirmed'?'Confirmed annexe':'Potential annexe'}`);
-    lines.push(`         View: ${p.rightmove_url||''}`);
-    min += 60; // 60min viewing
-    hour += Math.floor(min/60); min = min%60;
-    lines.push(`${hour}:${min.toString().padStart(2,'0')}  Depart`);
-    if (i < c.properties.length-1) {
-      lines.push(`         🚗 ${fmtMins(c.legs_mins[i+1])} drive to next`);
-    }
-  });
-  min += c.legs_mins[c.properties.length];
-  hour += Math.floor(min/60); min = min%60;
-  lines.push(`${hour}:${min.toString().padStart(2,'0')}  Return UB7 7JY`);
-  lines.push('');
-  lines.push('Generated by House Hunt 2026');
-
-  navigator.clipboard.writeText(lines.join('\n')).then(() => {
-    const btn = event.target;
-    btn.textContent = '✓ Copied!';
-    setTimeout(()=>btn.textContent='📋 Copy itinerary', 2000);
-  });
-}
-
-// ── CUSTOM BUILDER ─────────────────────────────────────────────────────────
-function renderCustomTab() {
-  const el = document.getElementById('ptab-custom');
-  const UB7 = [51.5046, -0.4812];
-
-  function haversine(a, b) {
-    const R=6371, toRad=x=>x*Math.PI/180;
-    const dLat=toRad(b[0]-a[0]), dLon=toRad(b[1]-a[1]);
-    const h=Math.sin(dLat/2)**2+Math.cos(toRad(a[0]))*Math.cos(toRad(b[0]))*Math.sin(dLon/2)**2;
-    return 2*R*Math.asin(Math.sqrt(h));
-  }
-  function driveMins(km) { return Math.round(km/55*60); }
-
-  // Eligible properties (not rejected, not duplicate)
-  const eligible = properties.filter(p =>
-    !['rejected','not-proceeding'].includes(p.status) &&
-    p.caveat !== 'duplicate' &&
-    p.lat && p.lng
-  ).sort((a,b)=>a.rank-b.rank);
-
-  const rows = eligible.map(p => {
-    const km = haversine(UB7, [p.lat,p.lng]);
-    const mins = driveMins(km);
-    return `<div class="custom-prop-row" id="cprop-${p.ref}"
-        data-ref="${p.ref}" data-lat="${p.lat}" data-lng="${p.lng}" data-mins="${mins}"
-        onclick="toggleCustomProp('${p.ref}')">
-      <div class="cp-rank" style="background:${rc(p.rank)}">${p.rank}</div>
-      <div>
-        <div class="cp-name">${p.name}</div>
-        <div style="font-size:10.5px;color:var(--muted)">${p.price_display} · ${p.annexe==='confirmed'?'✓ annexe':'~ potential'}</div>
-      </div>
-      <div class="cp-dist">${fmtMins(mins)}</div>
-    </div>`;
-  }).join('');
-
-  el.innerHTML = `
-    <p class="planner-intro">Select up to 5 properties to build a custom viewing day.
-    A warning will appear if properties are too far apart for a single day.</p>
-    <div style="font-size:11px;color:var(--muted);margin-bottom:6px">
-      Click to select — <span id="custom-count">0</span>/5 selected
-    </div>
-    <div class="custom-prop-list">${rows}</div>
-    <div id="custom-result"></div>`;
-}
-
-function toggleCustomProp(ref) {
-  const idx = plannerCustomSelected.indexOf(ref);
-  if (idx >= 0) {
-    plannerCustomSelected.splice(idx, 1);
-    document.getElementById('cprop-'+ref)?.classList.remove('selected');
-  } else {
-    if (plannerCustomSelected.length >= 5) {
-      showToast && showToast('Maximum 5 properties per day', 'warning');
-      return;
-    }
-    plannerCustomSelected.push(ref);
-    document.getElementById('cprop-'+ref)?.classList.add('selected');
-  }
-  document.getElementById('custom-count').textContent = plannerCustomSelected.length;
-  renderCustomResult();
-}
-
-function renderCustomResult() {
-  const el = document.getElementById('custom-result');
-  if (!plannerCustomSelected.length) { el.innerHTML=''; return; }
-
-  const UB7 = [51.5046, -0.4812];
-  function haversine(a,b){const R=6371,toRad=x=>x*Math.PI/180,dLat=toRad(b[0]-a[0]),dLon=toRad(b[1]-a[1]),h=Math.sin(dLat/2)**2+Math.cos(toRad(a[0]))*Math.cos(toRad(b[0]))*Math.sin(dLon/2)**2;return 2*R*Math.asin(Math.sqrt(h));}
-  function dMins(km){return Math.round(km/55*60);}
-
-  const selected = plannerCustomSelected.map(ref => properties.find(p=>p.ref===ref)).filter(Boolean);
-  // Sort by distance from UB7
-  selected.sort((a,b)=>haversine(UB7,[a.lat,a.lng])-haversine(UB7,[b.lat,b.lng]));
-
-  // Build legs
-  const legs = [haversine(UB7,[selected[0].lat,selected[0].lng])];
-  for (let i=0;i<selected.length-1;i++)
-    legs.push(haversine([selected[i].lat,selected[i].lng],[selected[i+1].lat,selected[i+1].lng]));
-  legs.push(haversine([selected[selected.length-1].lat,selected[selected.length-1].lng],UB7));
-
-  const legMins = legs.map(dMins);
-  const totalDrive = legMins.reduce((a,b)=>a+b,0);
-  const totalDay = totalDrive + selected.length*60;
-
-  // Warn if any inter-property leg > 60 mins
-  const maxInterLeg = Math.max(...legMins.slice(1,-1));
-  const warning = maxInterLeg > 60
-    ? `<div style="background:#FFF3CD;border:1px solid #ffc107;border-radius:4px;
-        padding:8px 10px;font-size:12px;color:#664d03;margin-bottom:10px">
-        ⚠ One leg is ${fmtMins(maxInterLeg)} — these properties may be too spread out
-        for a comfortable single day. Consider splitting into two days.
-      </div>` : '';
-
-  if (totalDay > 12*60) {
-    // Over 12 hour day
-  }
-
-  let rows = `
-    <div style="font-size:11px;color:var(--muted);margin-bottom:6px">🚗 UB7 → first: ${fmtMins(legMins[0])}</div>`;
-  selected.forEach((p,i) => {
-    rows += `<div style="display:flex;justify-content:space-between;padding:5px 0;
-      border-bottom:1px solid var(--border);font-size:12.5px">
-      <span><strong>#${p.rank}</strong> ${p.name}</span>
-      <span style="color:var(--navy);font-weight:600">${fmtMins(legMins[i+1])} next${i<selected.length-1?'→home':' →home'}</span>
-    </div>`;
-  });
-
-  el.innerHTML = `<div class="custom-result">
-    ${warning}
-    ${rows}
-    <div class="cluster-totals" style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border)">
-      <div class="ct-item"><div class="ct-val">${fmtMins(totalDrive)}</div><div class="ct-lbl">Driving</div></div>
-      <div class="ct-item"><div class="ct-val">${selected.length * 60}min</div><div class="ct-lbl">Viewings</div></div>
-      <div class="ct-item"><div class="ct-val">${fmtMins(totalDay)}</div><div class="ct-lbl">Total day</div></div>
-    </div>
-    <div class="cluster-actions">
-      <button class="ca-btn primary" onclick="showCustomOnMap()">🗺 Show on map</button>
-      <button class="ca-btn secondary" onclick="copyCustomItinerary()">📋 Copy itinerary</button>
-    </div>
-  </div>`;
-}
-
-function showCustomOnMap() {
-  const UB7 = [51.5046,-0.4812];
-  function haversine(a,b){const R=6371,toRad=x=>x*Math.PI/180,dLat=toRad(b[0]-a[0]),dLon=toRad(b[1]-a[1]),h=Math.sin(dLat/2)**2+Math.cos(toRad(a[0]))*Math.cos(toRad(b[0]))*Math.sin(dLon/2)**2;return 2*R*Math.asin(Math.sqrt(h));}
-  const selected = plannerCustomSelected.map(ref=>properties.find(p=>p.ref===ref)).filter(Boolean)
-    .sort((a,b)=>haversine(UB7,[a.lat,a.lng])-haversine(UB7,[b.lat,b.lng]));
-  hidePlanner();
-  plannerMapLayers.forEach(l=>{try{map.removeLayer(l);}catch(e){}});
-  plannerMapLayers=[];
-  const points=[UB7,...selected.map(p=>[p.lat,p.lng]),UB7];
-  const line=L.polyline(points,{color:'#7F4F00',weight:3,opacity:.7,dashArray:'8,5'}).addTo(map);
-  plannerMapLayers.push(line);
-  const ub7Icon=L.divIcon({html:'<div style="background:#1F4E79;color:#fff;font-size:9px;font-weight:700;padding:3px 6px;border-radius:3px">🏠 UB7</div>',iconAnchor:[20,12],className:''});
-  plannerMapLayers.push(L.marker(UB7,{icon:ub7Icon}).addTo(map));
-  selected.forEach((p,i)=>{
-    const icon=L.divIcon({html:`<div style="background:#7F4F00;color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3)">${i+1}</div>`,iconSize:[22,22],iconAnchor:[11,11],className:''});
-    plannerMapLayers.push(L.marker([p.lat,p.lng],{icon}).addTo(map));
-  });
-  map.fitBounds(L.latLngBounds(points),{padding:[40,40]});
-}
-
-function copyCustomItinerary() {
-  const UB7=[51.5046,-0.4812];
-  function haversine(a,b){const R=6371,toRad=x=>x*Math.PI/180,dLat=toRad(b[0]-a[0]),dLon=toRad(b[1]-a[1]),h=Math.sin(dLat/2)**2+Math.cos(toRad(a[0]))*Math.cos(toRad(b[0]))*Math.sin(dLon/2)**2;return 2*R*Math.asin(Math.sqrt(h));}
-  function dMins(km){return Math.round(km/55*60);}
-  const selected=plannerCustomSelected.map(ref=>properties.find(p=>p.ref===ref)).filter(Boolean)
-    .sort((a,b)=>haversine(UB7,[a.lat,a.lng])-haversine(UB7,[b.lat,b.lng]));
-  const legs=[haversine(UB7,[selected[0].lat,selected[0].lng])];
-  for(let i=0;i<selected.length-1;i++) legs.push(haversine([selected[i].lat,selected[i].lng],[selected[i+1].lat,selected[i+1].lng]));
-  legs.push(haversine([selected[selected.length-1].lat,selected[selected.length-1].lng],UB7));
-  const legMins=legs.map(dMins);
-  const lines=['CUSTOM VIEWING DAY','From: UB7 7JY',''];
-  let h=8,m=0;
-  lines.push(`08:00  Depart UB7 7JY`);
-  selected.forEach((p,i)=>{m+=legMins[i];h+=Math.floor(m/60);m=m%60;
-    lines.push(`${h}:${m.toString().padStart(2,'0')}  #${p.rank} ${p.name} (${p.price_display})`);
-    lines.push(`         ${p.location}`);
-    lines.push(`         Rightmove: ${p.rightmove_url||''}`);
-    m+=60;h+=Math.floor(m/60);m=m%60;
-    lines.push(`${h}:${m.toString().padStart(2,'0')}  Depart`);
-    if(i<selected.length-1) lines.push(`         🚗 ${fmtMins(legMins[i+1])} to next`);
-  });
-  m+=legMins[selected.length];h+=Math.floor(m/60);m=m%60;
-  lines.push(`${h}:${m.toString().padStart(2,'0')}  Return UB7 7JY`);
-  navigator.clipboard.writeText(lines.join('\n')).then(()=>{
-    const btn=event.target; btn.textContent='✓ Copied!';
-    setTimeout(()=>btn.textContent='📋 Copy itinerary',2000);
-  });
-}
 
 // ── PANZOOM ───────────────────────────────────────────────────────────────────
 const pzInstances = {};
@@ -1767,44 +1261,11 @@ function openFloorWindow() {
     +'img.zoomed{max-width:none;max-height:none;cursor:zoom-out}'
     +'</style></head><body>'
     +'<img src="'+src+'" onclick="this.classList.toggle(\'zoomed\')" alt="Floorplan">'
-    +'
-<!-- VIEWING DAY PLANNER -->
-<div id="planner-overlay" onclick="handlePlannerClick(event)">
-  <div id="planner-box">
-    <div id="planner-header">
-      <span>🗓</span>
-      <h2>Viewing Day Planner</h2>
-      <button class="planner-close" onclick="hidePlanner()">✕</button>
-    </div>
-    <div id="planner-body">
-      <div class="planner-tabs">
-        <button class="planner-tab active" onclick="switchPlannerTab(this,'suggested')">Suggested days</button>
-        <button class="planner-tab" onclick="switchPlannerTab(this,'custom')">Build your own</button>
-      </div>
-      <div id="ptab-suggested"></div>
-      <div id="ptab-custom" style="display:none"></div>
-    </div>
-  </div>
-</div>
-
-</body></html>');
+    +'</body></html>');
   w.document.close();
 }
 
 // ── AGENT STATUS ──────────────────────────────────────────────────────────────
-function saveAgentEmail(ref) {
-  const input = document.getElementById('agent-email-'+ref);
-  if (!input) return;
-  const email = input.value.trim();
-  if (!notes.agentEmail) notes.agentEmail = {};
-  notes.agentEmail[ref] = email;
-  localStorage.setItem('house_notes', JSON.stringify(notes));
-  pushNotesFile('Save agent email for '+ref);
-  // Re-render detail to update the contact link
-  const p = properties.find(x=>x.ref===ref);
-  if (p) renderDetail(p);
-}
-
 function agentStatusLabel(s) {
   return {'not-contacted':'Not contacted','contacted':'Contacted','replied':'Replied',
     'viewing-arranged':'Viewing arranged','not-proceeding':'Not proceeding'}[s] || s;
@@ -1849,18 +1310,8 @@ function copyQsFromPopup() {
   const text = sc.questions.map((q,i) => `${i+1}. ${q}`).join('\n');
   navigator.clipboard.writeText(text).then(() => {
     const btn = event.target;
-    btn.textContent = '✓ Copied!';
-    const popup = document.getElementById('qs-popup');
-    setTimeout(() => {
-      popup.classList.add('fading');
-      setTimeout(() => {
-        popup.classList.remove('show','fading');
-        popup.style.display = 'none';
-        setTimeout(() => { popup.style.display = ''; }, 50);
-        btn.textContent = '📋 Copy all';
-        currentQsRef = null;
-      }, 260);
-    }, 700);
+    btn.textContent = '✓ Copied';
+    setTimeout(() => btn.textContent = '📋 Copy all', 2000);
   });
 }
 
@@ -2203,40 +1654,6 @@ function renderHomeEd(p) {
 }
 
 
-// ── PHOTO SECTIONS ───────────────────────────────────────────────────────────
-// Split listing photos into Main / Garden / Annexe based on stored overrides
-// or an automatic heuristic (first 60% = main, last 20% = garden, 
-// middle 20% = annexe if confirmed annexe property)
-function getPhotoSections(ref, imgs) {
-  if (!imgs.length) return {};
-  // Check for manual override in notes
-  const override = (notes.photoSections||{})[ref];
-  if (override) {
-    const sections = {Main:[], Garden:[], Annexe:[]};
-    imgs.forEach((src,i)=>{
-      const cat = override[i] || 'Main';
-      if (sections[cat]) sections[cat].push({src,idx:i});
-    });
-    return sections;
-  }
-  // Auto-heuristic
-  const n = imgs.length;
-  const p = window._currentProp;
-  const hasAnnexe = p && p.annexe === 'confirmed';
-  if (n <= 4 || !hasAnnexe) {
-    // Not enough photos to split, or no annexe — return single group
-    return { 'All photos': imgs.map((src,i)=>({src,idx:i})) };
-  }
-  // Heuristic split: first ~55% main interior, next ~20% annexe, last ~25% garden/exterior
-  const mainEnd   = Math.round(n * 0.55);
-  const annexeEnd = Math.round(n * 0.75);
-  return {
-    'Main house': imgs.slice(0, mainEnd).map((src,i)=>({src,idx:i})),
-    'Annexe':     imgs.slice(mainEnd, annexeEnd).map((src,i)=>({src,idx:mainEnd+i})),
-    'Garden & exterior': imgs.slice(annexeEnd).map((src,i)=>({src,idx:annexeEnd+i})),
-  };
-}
-
 // Gallery helpers — all use window._gImgs / _fImgs / _vPhotos set in renderDetail
 function galleryLb(i)  { openLb(window._gImgs,   i); }
 function floorLb(i)    { openLb(window._fImgs,    i); }
@@ -2473,40 +1890,15 @@ async function deleteProperty(ref) {
 
 // ── NOTES ─────────────────────────────────────────────────────────────────────
 async function loadNotes() {
-  // Always fetch the static file first — no auth needed, always reflects committed state
-  try {
-    const r = await fetch('data/notes.json?_='+Date.now());
-    if (r.ok) notes = await r.json();
-  } catch(e) {}
-
-  // Merge localStorage on top (captures any unsaved local changes)
-  const local = localStorage.getItem('house_notes');
-  if (local) {
+  const token=getToken();
+  if(token) {
     try {
-      const lv = JSON.parse(local);
-      const merge = (base, over) => {
-        if (!over || typeof over !== 'object') return base;
-        const out = Object.assign({}, base);
-        for (const k of Object.keys(over)) {
-          if (over[k] && typeof over[k]==='object' && !Array.isArray(over[k])
-              && out[k] && typeof out[k]==='object') {
-            out[k] = Object.assign({}, out[k], over[k]);
-          } else { out[k] = over[k]; }
-        }
-        return out;
-      };
-      notes = merge(notes, lv);
-    } catch(e) {}
+      const r=await ghGet(NOTES_PATH);
+      if(r.ok){const d=await r.json();notes=JSON.parse(atob(d.content));return;}
+    } catch(e){}
   }
-
-  // If GitHub token set, fetch API version (most up-to-date, overrides both)
-  const token = getToken();
-  if (token) {
-    try {
-      const r = await ghGet(NOTES_PATH);
-      if (r.ok) { const d=await r.json(); notes=JSON.parse(atob(d.content)); }
-    } catch(e) {}
-  }
+  const local=localStorage.getItem('house_notes');
+  if(local){try{notes=JSON.parse(local);}catch(e){}}
 }
 
 async function saveNote(ref) {
@@ -2634,71 +2026,47 @@ function openLb(srcs, startIndex) {
   if (!lbImages.length) return;
   lbSetImage(lbIndex);
   document.getElementById('lightbox').classList.add('show');
-  const hasNav = lbImages.length > 1;
-  document.getElementById('lightbox-nav').style.display = hasNav ? 'flex' : 'none';
-  // Init panzoom on the wrap div
+  document.getElementById('lightbox-nav').style.display = lbImages.length > 1 ? 'flex' : 'none';
   const wrap = document.getElementById('lightbox-img-wrap');
   const img  = document.getElementById('lightbox-img');
   if (lbPz) { try { lbPz.destroy(); } catch(e){} lbPz = null; }
   img.onload = () => {
     if (typeof Panzoom !== 'undefined') {
-      lbPz = Panzoom(img, {
-        maxScale: 8, minScale: 1, contain: 'outside', cursor: 'grab',
-        startX: 0, startY: 0,
-      });
-      // Wheel zoom
+      lbPz = Panzoom(img, {maxScale:8,minScale:1,contain:'outside',cursor:'grab'});
       wrap.addEventListener('wheel', lbWheelHandler, {passive:false});
     }
   };
 }
-
-function lbWheelHandler(e) {
-  e.preventDefault();
-  if (lbPz) lbPz.zoomWithWheel(e);
-}
-
+function lbWheelHandler(e) { e.preventDefault(); if(lbPz) lbPz.zoomWithWheel(e); }
 function lbSetImage(idx) {
   const img = document.getElementById('lightbox-img');
   img.src = lbImages[idx];
-  img.removeAttribute('style'); // clear any transform residue
+  img.removeAttribute('style');
   const counter = document.getElementById('lightbox-counter');
-  if (counter && lbImages.length > 1)
-    counter.textContent = (idx+1) + ' / ' + lbImages.length;
-  else if (counter) counter.textContent = '';
-  // Reset zoom when changing image
+  if (counter) counter.textContent = lbImages.length>1 ? (idx+1)+' / '+lbImages.length : '';
   if (lbPz) { try { lbPz.reset({animate:false}); } catch(e){} }
 }
-
 function closeLightbox() {
   document.getElementById('lightbox').classList.remove('show');
   const wrap = document.getElementById('lightbox-img-wrap');
   wrap.removeEventListener('wheel', lbWheelHandler);
   if (lbPz) { try { lbPz.destroy(); } catch(e){} lbPz = null; }
 }
-
 function handleLightboxClick(e) {
-  // Only close if clicking the dark backdrop, not the image or controls
   if (e.target === document.getElementById('lightbox')) closeLightbox();
 }
-
-function lbNav(dir) {
-  lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
-  lbSetImage(lbIndex);
-}
-
-function lbZoomIn()    { if (lbPz) lbPz.zoomIn(); }
-function lbZoomOut()   { if (lbPz) lbPz.zoomOut(); }
-function lbZoomReset() { if (lbPz) lbPz.reset({animate:true}); }
-
-// Keyboard nav for lightbox
+function lbNav(dir) { lbIndex=(lbIndex+dir+lbImages.length)%lbImages.length; lbSetImage(lbIndex); }
+function lbZoomIn()    { if(lbPz) lbPz.zoomIn(); }
+function lbZoomOut()   { if(lbPz) lbPz.zoomOut(); }
+function lbZoomReset() { if(lbPz) lbPz.reset({animate:true}); }
 document.addEventListener('keydown', e => {
   if (!document.getElementById('lightbox').classList.contains('show')) return;
-  if (e.key === 'Escape')     closeLightbox();
-  if (e.key === 'ArrowLeft')  lbNav(-1);
-  if (e.key === 'ArrowRight') lbNav(1);
-  if (e.key === '+' || e.key === '=') lbZoomIn();
-  if (e.key === '-')          lbZoomOut();
-  if (e.key === '0')          lbZoomReset();
+  if (e.key==='Escape')     closeLightbox();
+  if (e.key==='ArrowLeft')  lbNav(-1);
+  if (e.key==='ArrowRight') lbNav(1);
+  if (e.key==='+'||e.key==='=') lbZoomIn();
+  if (e.key==='-')          lbZoomOut();
+  if (e.key==='0')          lbZoomReset();
 });
 
 const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
@@ -2934,6 +2302,198 @@ function toggleDesc(ref) {
   f.style.display = expanded ? 'none' : '';
   b.textContent   = expanded ? '▼ Show full description' : '▲ Show less';
 }
+
+// ── VIEWING DAY PLANNER ───────────────────────────────────────────────────────
+let clusters = [], plannerCustomSelected = [], plannerMapLayers = [];
+
+async function loadClusters() {
+  if (clusters.length) return;
+  try { const r = await fetch('data/clusters.json'); if(r.ok) clusters = await r.json(); } catch(e) {}
+}
+
+function showPlanner() {
+  loadClusters().then(() => {
+    renderSuggestedTab();
+    renderCustomTab();
+    document.getElementById('planner-overlay').classList.add('show');
+  });
+}
+function hidePlanner() { document.getElementById('planner-overlay').classList.remove('show'); }
+function handlePlannerClick(e) { if(e.target===document.getElementById('planner-overlay')) hidePlanner(); }
+function switchPlannerTab(btn, tab) {
+  document.querySelectorAll('.planner-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('ptab-suggested').style.display = tab==='suggested'?'':'none';
+  document.getElementById('ptab-custom').style.display    = tab==='custom'?'':'none';
+}
+function fmtMins(m) { if(m<60) return m+'min'; return Math.floor(m/60)+'h'+(m%60?' '+(m%60)+'min':''); }
+
+function getClusterArea(c) {
+  const locs = c.properties.map(p=>p.location.split(',').pop().trim());
+  const unique = [...new Set(locs)];
+  if(unique.length===1) return unique[0];
+  const words = unique.join(' ').split(' ');
+  const freq = {};
+  words.forEach(w=>{if(w.length>3) freq[w]=(freq[w]||0)+1;});
+  const common = Object.entries(freq).filter(([,n])=>n>1).sort((a,b)=>b[1]-a[1]);
+  return common.length ? common[0][0]+' area' : unique.slice(0,2).join(' / ');
+}
+
+function estimateReturnTime(c) {
+  let mins = 8*60 + c.total_day_mins;
+  return Math.floor(mins/60)%24 + ':' + (mins%60).toString().padStart(2,'0');
+}
+
+function renderSuggestedTab() {
+  const el = document.getElementById('ptab-suggested');
+  if (!clusters.length) { el.innerHTML='<p style="color:var(--muted);font-size:13px">No cluster data available.</p>'; return; }
+  const intro = `<p class="planner-intro">Grouped by proximity — properties close enough to visit in a single day.
+    Times are <strong>estimated driving times</strong> from <strong>UB7 7JY</strong> at ~55 km/h.
+    Allow 60 minutes per viewing.</p>`;
+  const cards = clusters.map((c,ci) => {
+    const n = c.properties.length;
+    let tl = `<div class="jt-row"><div class="jt-dot start"></div><div><div class="jt-label">UB7 7JY (home)</div><div class="jt-sublabel">Depart ~8:00am</div></div><div></div></div>`;
+    tl += `<div class="jt-drive-row"><div class="jt-drive-line"></div><div class="jt-drive-text">🚗 Drive to ${c.properties[0].name.split(',')[0]}</div><div class="jt-drive-mins">${fmtMins(c.legs_mins[0])}</div></div>`;
+    c.properties.forEach((p,i)=>{
+      const pct = (scorecards[p.ref]||{}).overall_pct||'?';
+      tl += `<div class="jt-row" style="cursor:pointer" onclick="hidePlanner();selectProp('${p.ref}')"><div class="jt-dot prop"></div><div><div class="jt-label">#${p.rank} ${p.name}</div><div class="jt-sublabel">${p.price_display} · ${p.location} · ${pct}% fit</div></div><div class="jt-time">${fmtMins(p.ub7_drive_mins)} from UB7</div></div>`;
+      if(i<n-1) tl+=`<div class="jt-drive-row"><div class="jt-drive-line"></div><div class="jt-drive-text">🚗 Drive to ${c.properties[i+1].name.split(',')[0]}</div><div class="jt-drive-mins">${fmtMins(c.legs_mins[i+1])}</div></div>`;
+    });
+    tl+=`<div class="jt-drive-row"><div class="jt-drive-line"></div><div class="jt-drive-text">🚗 Return to UB7 7JY</div><div class="jt-drive-mins">${fmtMins(c.legs_mins[n])}</div></div>`;
+    tl+=`<div class="jt-row"><div class="jt-dot end"></div><div><div class="jt-label">UB7 7JY (home)</div><div class="jt-sublabel">Est. return ~${estimateReturnTime(c)}</div></div><div></div></div>`;
+    return `<div class="cluster-card" id="cluster-${ci}">
+      <div class="cluster-header" onclick="toggleCluster(${ci})">
+        <span class="cluster-badge">Day ${ci+1}</span>
+        <div><div class="cluster-title">${getClusterArea(c)}</div>
+          <div class="cluster-meta"><span>🏠 ${n} propert${n===1?'y':'ies'}</span><span>🚗 ${fmtMins(c.total_drive_mins)} driving</span><span>⏱ ~${fmtMins(c.total_day_mins)} total</span></div></div>
+        <span style="color:var(--muted);font-size:14px" id="cluster-chevron-${ci}">▼</span>
+      </div>
+      <div class="cluster-body" id="cluster-body-${ci}">
+        <div class="journey-timeline">${tl}</div>
+        <div class="cluster-totals">
+          <div class="ct-item"><div class="ct-val">${fmtMins(c.legs_mins[0])}</div><div class="ct-lbl">UB7→first</div></div>
+          <div class="ct-item"><div class="ct-val">${fmtMins(c.total_drive_mins)}</div><div class="ct-lbl">Total driving</div></div>
+          <div class="ct-item"><div class="ct-val">${n*60}min</div><div class="ct-lbl">Viewings (${n}×60)</div></div>
+          <div class="ct-item"><div class="ct-val">${fmtMins(c.total_day_mins)}</div><div class="ct-lbl">Total day</div></div>
+        </div>
+        <div class="cluster-actions">
+          <button class="ca-btn primary" onclick="showClusterOnMap(${ci})">🗺 Show on map</button>
+          <button class="ca-btn secondary" onclick="copyItinerary(${ci})">📋 Copy itinerary</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  el.innerHTML = intro + cards;
+}
+
+function toggleCluster(ci) {
+  const body=document.getElementById('cluster-body-'+ci), chev=document.getElementById('cluster-chevron-'+ci);
+  const hidden=body.style.display==='none'; body.style.display=hidden?'':'none'; chev.textContent=hidden?'▼':'▶';
+}
+
+function showClusterOnMap(ci) {
+  const c=clusters[ci]; hidePlanner();
+  plannerMapLayers.forEach(l=>{try{map.removeLayer(l);}catch(e){}});
+  plannerMapLayers=[];
+  const pts=[[51.5046,-0.4812],...c.properties.map(p=>[p.lat,p.lng]),[51.5046,-0.4812]];
+  plannerMapLayers.push(L.polyline(pts,{color:'#7F4F00',weight:3,opacity:.7,dashArray:'8,5'}).addTo(map));
+  plannerMapLayers.push(L.marker([51.5046,-0.4812],{icon:L.divIcon({html:'<div style="background:#1F4E79;color:#fff;font-size:9px;font-weight:700;padding:3px 6px;border-radius:3px">🏠 UB7</div>',iconAnchor:[20,12],className:''})}).addTo(map));
+  c.properties.forEach((p,i)=>{
+    plannerMapLayers.push(L.marker([p.lat,p.lng],{icon:L.divIcon({html:`<div style="background:#7F4F00;color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3)">${i+1}</div>`,iconSize:[22,22],iconAnchor:[11,11],className:''})}).addTo(map));
+  });
+  map.fitBounds(L.latLngBounds(pts),{padding:[40,40]});
+}
+
+function copyItinerary(ci) {
+  const c=clusters[ci];
+  const lines=[`VIEWING DAY ${ci+1} — ${getClusterArea(c)}`,`Total: ~${fmtMins(c.total_day_mins)} | Driving: ${fmtMins(c.total_drive_mins)}`,'','08:00  Depart UB7 7JY'];
+  let h=8,m=0;
+  c.properties.forEach((p,i)=>{
+    m+=c.legs_mins[i];h+=Math.floor(m/60);m=m%60;
+    lines.push(`${h}:${m.toString().padStart(2,'0')}  #${p.rank} ${p.name} (${p.price_display})`);
+    lines.push(`       ${p.location} · Rightmove: ${p.rightmove_url||''}`);
+    m+=60;h+=Math.floor(m/60);m=m%60;
+    lines.push(`${h}:${m.toString().padStart(2,'0')}  Depart`);
+    if(i<c.properties.length-1) lines.push(`       🚗 ${fmtMins(c.legs_mins[i+1])} to next`);
+  });
+  m+=c.legs_mins[c.properties.length];h+=Math.floor(m/60);m=m%60;
+  lines.push(`${h}:${m.toString().padStart(2,'0')}  Return UB7 7JY`,'','Generated by House Hunt 2026');
+  navigator.clipboard.writeText(lines.join('\n')).then(()=>{const btn=event.target;btn.textContent='✓ Copied!';setTimeout(()=>btn.textContent='📋 Copy itinerary',2000);});
+}
+
+function renderCustomTab() {
+  const el=document.getElementById('ptab-custom');
+  const UB7=[51.5046,-0.4812];
+  function hav(a,b){const R=6371,r=x=>x*Math.PI/180,dl=r(b[0]-a[0]),dn=r(b[1]-a[1]),h=Math.sin(dl/2)**2+Math.cos(r(a[0]))*Math.cos(r(b[0]))*Math.sin(dn/2)**2;return 2*R*Math.asin(Math.sqrt(h));}
+  function dm(km){return Math.round(km/55*60);}
+  const eligible=properties.filter(p=>!['rejected','not-proceeding'].includes(p.status)&&p.caveat!=='duplicate'&&p.lat&&p.lng).sort((a,b)=>a.rank-b.rank);
+  const rows=eligible.map(p=>{
+    const mins=dm(hav(UB7,[p.lat,p.lng]));
+    return `<div class="custom-prop-row" id="cprop-${p.ref}" data-ref="${p.ref}" data-lat="${p.lat}" data-lng="${p.lng}" data-mins="${mins}" onclick="toggleCustomProp('${p.ref}')">
+      <div class="cp-rank" style="background:${rc(p.rank)}">${p.rank}</div>
+      <div><div class="cp-name">${p.name}</div><div style="font-size:10.5px;color:var(--muted)">${p.price_display} · ${p.annexe==='confirmed'?'✓ annexe':'~ potential'}</div></div>
+      <div class="cp-dist">${fmtMins(mins)}</div>
+    </div>`;
+  }).join('');
+  el.innerHTML=`<p class="planner-intro">Select up to 5 properties to build a custom viewing day.</p>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:6px">Click to select — <span id="custom-count">0</span>/5 selected</div>
+    <div class="custom-prop-list">${rows}</div><div id="custom-result"></div>`;
+}
+
+function toggleCustomProp(ref) {
+  const idx=plannerCustomSelected.indexOf(ref);
+  if(idx>=0){plannerCustomSelected.splice(idx,1);document.getElementById('cprop-'+ref)?.classList.remove('selected');}
+  else{if(plannerCustomSelected.length>=5)return;plannerCustomSelected.push(ref);document.getElementById('cprop-'+ref)?.classList.add('selected');}
+  document.getElementById('custom-count').textContent=plannerCustomSelected.length;
+  renderCustomResult();
+}
+
+function renderCustomResult() {
+  const el=document.getElementById('custom-result');
+  if(!plannerCustomSelected.length){el.innerHTML='';return;}
+  const UB7=[51.5046,-0.4812];
+  function hav(a,b){const R=6371,r=x=>x*Math.PI/180,dl=r(b[0]-a[0]),dn=r(b[1]-a[1]),h=Math.sin(dl/2)**2+Math.cos(r(a[0]))*Math.cos(r(b[0]))*Math.sin(dn/2)**2;return 2*R*Math.asin(Math.sqrt(h));}
+  function dm(km){return Math.round(km/55*60);}
+  const sel=plannerCustomSelected.map(ref=>properties.find(p=>p.ref===ref)).filter(Boolean).sort((a,b)=>hav(UB7,[a.lat,a.lng])-hav(UB7,[b.lat,b.lng]));
+  const legs=[hav(UB7,[sel[0].lat,sel[0].lng])];
+  for(let i=0;i<sel.length-1;i++) legs.push(hav([sel[i].lat,sel[i].lng],[sel[i+1].lat,sel[i+1].lng]));
+  legs.push(hav([sel[sel.length-1].lat,sel[sel.length-1].lng],UB7));
+  const lm=legs.map(dm), totalDrive=lm.reduce((a,b)=>a+b,0), totalDay=totalDrive+sel.length*60;
+  const maxLeg=Math.max(...lm.slice(1,-1));
+  const warn=maxLeg>60?`<div style="background:#FFF3CD;border:1px solid #ffc107;border-radius:4px;padding:8px 10px;font-size:12px;color:#664d03;margin-bottom:10px">⚠ One leg is ${fmtMins(maxLeg)} — consider splitting into two days.</div>`:'';
+  let rows=`<div style="font-size:11px;color:var(--muted);margin-bottom:6px">🚗 UB7 → first: ${fmtMins(lm[0])}</div>`;
+  sel.forEach((p,i)=>{rows+=`<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:12.5px"><span><strong>#${p.rank}</strong> ${p.name}</span><span style="color:var(--navy);font-weight:600">${i<sel.length-1?fmtMins(lm[i+1])+' →next':'→home '+fmtMins(lm[sel.length])}</span></div>`;});
+  el.innerHTML=`<div class="custom-result">${warn}${rows}<div class="cluster-totals" style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border)"><div class="ct-item"><div class="ct-val">${fmtMins(totalDrive)}</div><div class="ct-lbl">Driving</div></div><div class="ct-item"><div class="ct-val">${sel.length*60}min</div><div class="ct-lbl">Viewings</div></div><div class="ct-item"><div class="ct-val">${fmtMins(totalDay)}</div><div class="ct-lbl">Total day</div></div></div><div class="cluster-actions"><button class="ca-btn primary" onclick="showCustomOnMap()">🗺 Show on map</button><button class="ca-btn secondary" onclick="copyCustomItinerary()">📋 Copy</button></div></div>`;
+}
+
+function showCustomOnMap() {
+  const UB7=[51.5046,-0.4812];
+  function hav(a,b){const R=6371,r=x=>x*Math.PI/180,dl=r(b[0]-a[0]),dn=r(b[1]-a[1]),h=Math.sin(dl/2)**2+Math.cos(r(a[0]))*Math.cos(r(b[0]))*Math.sin(dn/2)**2;return 2*R*Math.asin(Math.sqrt(h));}
+  const sel=plannerCustomSelected.map(ref=>properties.find(p=>p.ref===ref)).filter(Boolean).sort((a,b)=>hav(UB7,[a.lat,a.lng])-hav(UB7,[b.lat,b.lng]));
+  hidePlanner(); plannerMapLayers.forEach(l=>{try{map.removeLayer(l);}catch(e){}});plannerMapLayers=[];
+  const pts=[UB7,...sel.map(p=>[p.lat,p.lng]),UB7];
+  plannerMapLayers.push(L.polyline(pts,{color:'#7F4F00',weight:3,opacity:.7,dashArray:'8,5'}).addTo(map));
+  plannerMapLayers.push(L.marker(UB7,{icon:L.divIcon({html:'<div style="background:#1F4E79;color:#fff;font-size:9px;font-weight:700;padding:3px 6px;border-radius:3px">🏠 UB7</div>',iconAnchor:[20,12],className:''})}).addTo(map));
+  sel.forEach((p,i)=>{plannerMapLayers.push(L.marker([p.lat,p.lng],{icon:L.divIcon({html:`<div style="background:#7F4F00;color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;border:2px solid #fff">${i+1}</div>`,iconSize:[22,22],iconAnchor:[11,11],className:''})}).addTo(map));});
+  map.fitBounds(L.latLngBounds(pts),{padding:[40,40]});
+}
+
+function copyCustomItinerary() {
+  const UB7=[51.5046,-0.4812];
+  function hav(a,b){const R=6371,r=x=>x*Math.PI/180,dl=r(b[0]-a[0]),dn=r(b[1]-a[1]),h=Math.sin(dl/2)**2+Math.cos(r(a[0]))*Math.cos(r(b[0]))*Math.sin(dn/2)**2;return 2*R*Math.asin(Math.sqrt(h));}
+  function dm(km){return Math.round(km/55*60);}
+  const sel=plannerCustomSelected.map(ref=>properties.find(p=>p.ref===ref)).filter(Boolean).sort((a,b)=>hav(UB7,[a.lat,a.lng])-hav(UB7,[b.lat,b.lng]));
+  const legs=[hav(UB7,[sel[0].lat,sel[0].lng])];
+  for(let i=0;i<sel.length-1;i++)legs.push(hav([sel[i].lat,sel[i].lng],[sel[i+1].lat,sel[i+1].lng]));
+  legs.push(hav([sel[sel.length-1].lat,sel[sel.length-1].lng],UB7));
+  const lm=legs.map(dm);
+  const lines=['CUSTOM VIEWING DAY','From: UB7 7JY','','08:00  Depart UB7 7JY'];
+  let h=8,m=0;
+  sel.forEach((p,i)=>{m+=lm[i];h+=Math.floor(m/60);m=m%60;lines.push(`${h}:${m.toString().padStart(2,'0')}  #${p.rank} ${p.name}`);lines.push(`       ${p.rightmove_url||''}`);m+=60;h+=Math.floor(m/60);m=m%60;lines.push(`${h}:${m.toString().padStart(2,'0')}  Depart`);if(i<sel.length-1)lines.push(`       🚗 ${fmtMins(lm[i+1])} to next`);});
+  m+=lm[sel.length];h+=Math.floor(m/60);m=m%60;lines.push(`${h}:${m.toString().padStart(2,'0')}  Return UB7 7JY`);
+  navigator.clipboard.writeText(lines.join('\n')).then(()=>{const btn=event.target;btn.textContent='✓ Copied!';setTimeout(()=>btn.textContent='📋 Copy',2000);});
+}
+
 
 init();
 </script>
