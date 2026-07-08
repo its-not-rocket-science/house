@@ -6,101 +6,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>House Hunt 2026</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.min.css"/>
 <style>
 :root {
-  /* semantic colours — single source of truth, see PROMPT 9 */
-  --color-primary:#1F4E79;    --color-primary-bg:#E6F1FB;
-  --color-success:#1E7145;    --color-success-bg:#C6EFCE;
-  --color-warning:#7F4F00;    --color-warning-bg:#FFEB9C;
-  --color-danger:#9C0006;     --color-danger-bg:#FFE4E4;
-  --color-surface:#F8F9FB;    --color-border:#DDE1E7;
-  --color-text:#1A1A2E;       --color-muted:#666666;
-  --bg:#f0f2f5; --card:#fff;
-  --text-xs:10px; --text-sm:12px; --text-base:14px; --text-lg:16px; --text-xl:20px; --text-2xl:28px;
-  /* legacy short names — aliased to the semantic vars above, not redefined */
-  --navy:var(--color-primary); --green:var(--color-success); --amber:var(--color-warning);
-  --red:var(--color-danger); --grey:var(--color-muted); --border:var(--color-border);
-  --text:var(--color-text); --muted:var(--color-muted);
-  --confirmed:var(--color-success-bg); --potential:var(--color-warning-bg);
+  --navy:#1F4E79; --green:#1E7145; --amber:#7F4F00; --red:#9C0006; --grey:#555;
+  --bg:#f0f2f5; --card:#fff; --border:#dde1e7; --text:#1a1a2e; --muted:#666;
+  --confirmed:#C6EFCE; --potential:#FFEB9C;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
-  background:var(--bg);color:var(--text);font-size:var(--text-base)}
+  background:var(--bg);color:var(--text);font-size:14px}
 
 /* HEADER */
 #header{background:var(--navy);color:#fff;padding:10px 16px;display:flex;
   align-items:center;gap:12px;position:sticky;top:0;z-index:1000;
   box-shadow:0 2px 8px rgba(0,0,0,.3);flex-wrap:wrap}
-#header h1{font-size:var(--text-lg);font-weight:700;flex:1;white-space:nowrap}
-#header-stats{font-size:var(--text-sm);opacity:.8;display:flex;gap:10px;flex-wrap:wrap}
+#header h1{font-size:15px;font-weight:700;flex:1;white-space:nowrap}
+#header-stats{font-size:11px;opacity:.8;display:flex;gap:10px;flex-wrap:wrap}
 .hdr-btn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);
-  color:#fff;padding:4px 10px;border-radius:4px;font-size:var(--text-sm);cursor:pointer;white-space:nowrap}
+  color:#fff;padding:4px 10px;border-radius:4px;font-size:11px;cursor:pointer;white-space:nowrap}
 .hdr-btn:hover{background:rgba(255,255,255,.25)}
 .hdr-btn.set{background:rgba(30,113,69,.6);border-color:var(--green)}
 .hdr-btn.add{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.5)}
-#voter-display{font-size:var(--text-sm);opacity:.85;white-space:nowrap}
-
-/* READ-ONLY BANNER */
-#readonly-banner{display:none;background:var(--navy);color:#fff;padding:8px 16px;
-  font-size:var(--text-sm);align-items:center;gap:10px;justify-content:center;text-align:center;
-  border-bottom:1px solid rgba(255,255,255,.2)}
-#readonly-banner.show{display:flex}
-#readonly-banner .rb-close{background:none;border:none;color:#fff;font-size:var(--text-lg);
-  cursor:pointer;opacity:.8;line-height:1;flex-shrink:0}
-#readonly-banner .rb-close:hover{opacity:1}
-
-/* UNSAVED CHANGES BANNER */
-#unsaved-banner{display:none;background:var(--color-warning-bg);color:var(--color-warning);padding:6px 16px;
-  font-size:var(--text-sm);align-items:center;justify-content:center;text-align:center;
-  border-bottom:1px solid #e0c060}
-#unsaved-banner.show{display:flex}
-
-/* SYNC STATUS */
-#sync-status{display:flex;align-items:center;gap:5px;font-size:var(--text-sm);opacity:.9;white-space:nowrap}
-.sync-dot{font-size:var(--text-xs);color:#aaa;line-height:1}
-.sync-dot.pending{color:#ffc107;animation:sync-spin 1s linear infinite}
-.sync-dot.success{color:#4caf50}
-.sync-dot.error{color:#ff6b6b}
-@keyframes sync-spin{from{opacity:.3}50%{opacity:1}to{opacity:.3}}
-#sync-retry{font-size:var(--text-xs);padding:1px 7px;background:rgba(255,255,255,.2);
-  border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:3px;cursor:pointer}
-
-/* TOASTS */
-#toast-container{position:fixed;bottom:16px;right:16px;z-index:9999;
-  display:flex;flex-direction:column;gap:8px;align-items:flex-end;pointer-events:none}
-.toast{background:#fff;border-radius:4px;box-shadow:0 2px 10px rgba(0,0,0,.2);padding:10px 12px;
-  display:flex;align-items:center;gap:8px;min-width:200px;max-width:320px;font-size:var(--text-sm);
-  border-left:4px solid var(--color-border);transform:translateX(120%);opacity:0;
-  transition:transform .2s ease,opacity .2s ease;pointer-events:auto}
-.toast.show{transform:translateX(0);opacity:1}
-.toast.hide{transform:translateX(120%);opacity:0}
-.toast.success{border-left-color:var(--color-success)}
-.toast.warning{border-left-color:var(--color-warning)}
-.toast.error{border-left-color:var(--color-danger)}
-.toast-icon{font-weight:700}
-.toast.success .toast-icon{color:var(--color-success)}
-.toast.warning .toast-icon{color:var(--color-warning)}
-.toast.error .toast-icon{color:var(--color-danger)}
-.toast-msg{flex:1}
-.toast-close{background:none;border:none;cursor:pointer;color:var(--muted);font-size:var(--text-sm);line-height:1}
-
-/* KEYBOARD SHORTCUTS HELP */
-#key-help-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);
-  z-index:10001;align-items:center;justify-content:center}
-#key-help-modal.show{display:flex}
-#key-help-modal kbd{background:#eee;border:1px solid #ccc;border-radius:3px;
-  padding:1px 6px;font-family:monospace;font-size:var(--text-xs)}
-.prop-card.kb-active{outline:2px solid var(--color-primary);outline-offset:-2px}
-
-/* VOTER NAME MODAL */
-#voter-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);
-  z-index:9998;align-items:center;justify-content:center}
-#voter-modal.show{display:flex}
-#voter-modal .modal-box{width:340px}
-#voter-modal p{font-size:var(--text-sm);color:var(--muted);margin-bottom:12px}
-#voter-name-input{width:100%;padding:8px 10px;border:1px solid var(--border);
-  border-radius:4px;font-size:var(--text-base);font-family:inherit;margin-bottom:12px}
 
 /* LAYOUT */
 #app{display:grid;grid-template-columns:340px 1fr;height:calc(100vh - 46px)}
@@ -109,59 +35,53 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 #main{overflow:hidden;display:flex;flex-direction:column;position:relative}
 
 /* FILTERS */
-#filters{padding:10px 12px;border-bottom:1px solid var(--border);background:var(--color-surface)}
-#filters h2{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.05em;
+#filters{padding:10px 12px;border-bottom:1px solid var(--border);background:#f8f9fb}
+#filters h2{font-size:10px;text-transform:uppercase;letter-spacing:.05em;
   color:var(--muted);margin-bottom:6px}
 .filter-row{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:5px}
-.filter-btn{font-size:var(--text-sm);padding:3px 8px;border-radius:10px;
+.filter-btn{font-size:11px;padding:3px 8px;border-radius:10px;
   border:1px solid var(--border);background:#fff;cursor:pointer;white-space:nowrap;transition:all .12s}
 .filter-btn:hover{border-color:var(--navy);color:var(--navy)}
 .filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
 .filter-btn.active.g{background:var(--green);border-color:var(--green)}
 .filter-btn.active.a{background:var(--amber);border-color:var(--amber)}
 .filter-row.sort-row{gap:4px}
-.sort-btn{font-size:var(--text-sm);padding:3px 8px;border-radius:4px;
+.sort-btn{font-size:11px;padding:3px 8px;border-radius:4px;
   border:1px solid var(--border);background:#fff;cursor:pointer;white-space:nowrap}
-.sort-btn.active{background:var(--color-primary-bg);border-color:var(--navy);color:var(--navy);font-weight:600}
+.sort-btn.active{background:#e8f0fb;border-color:var(--navy);color:var(--navy);font-weight:600}
 #search-box{width:100%;padding:6px 10px;border:1px solid var(--border);
-  border-radius:4px;font-size:var(--text-sm);margin-bottom:6px}
-#result-count{font-size:var(--text-sm);color:var(--muted);margin-top:2px}
+  border-radius:4px;font-size:12px;margin-bottom:6px}
+#result-count{font-size:11px;color:var(--muted);margin-top:2px}
 
 /* PROPERTY LIST */
 #prop-list{flex:1;overflow-y:auto}
-.prop-card{padding:12px 14px;border-bottom:1px solid var(--border);cursor:pointer;
-  display:flex;gap:9px;align-items:flex-start;transition:background .1s;position:relative;
-  border-left:3px solid var(--color-border)}
-.prop-card[data-annexe="confirmed"]{border-left-color:var(--color-success)}
-.prop-card[data-annexe="potential"]{border-left-color:var(--color-warning)}
+.prop-card{padding:10px 12px;border-bottom:1px solid var(--border);cursor:pointer;
+  display:flex;gap:9px;align-items:flex-start;transition:background .1s;position:relative}
 .prop-card:hover{background:#f0f4f8}
-.prop-card.selected{background:var(--color-primary-bg);border-left:4px solid var(--navy)}
-.prop-card-indicators{display:flex;gap:6px;align-items:center;margin-top:5px;
-  padding-top:5px;border-top:1px solid var(--border);min-height:14px}
-.prop-card-fit-bar{position:absolute;left:0;right:0;bottom:0;height:1px}
+.prop-card.selected{background:#e8f0fb;border-left:3px solid var(--navy)}
 .rank-badge-col{display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0}
 .rank-badge{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;
-  justify-content:center;font-weight:700;font-size:var(--text-xs);color:#fff;flex-shrink:0}
+  justify-content:center;font-weight:700;font-size:10px;color:#fff;flex-shrink:0}
 .card-vote-btns{display:flex;gap:2px}
 .card-vote-btn{background:none;border:1px solid var(--border);border-radius:3px;
-  font-size:var(--text-xs);cursor:pointer;padding:1px 3px;line-height:1.4;transition:all .1s}
+  font-size:9px;cursor:pointer;padding:1px 3px;line-height:1.2;transition:all .1s}
 .card-vote-btn:hover{background:#f0f4f8}
-.card-vote-btn.like.voted{background:var(--color-success-bg);border-color:var(--color-success);color:var(--color-success)}
-.card-vote-btn.dislike.voted{background:var(--color-danger-bg);border-color:var(--color-danger);color:var(--color-danger)}
-.card-vote-net{font-size:var(--text-xs);font-weight:700;text-align:center;line-height:1}
+.card-vote-btn.like.voted{background:#C6EFCE;border-color:#1E7145;color:#1E7145}
+.card-vote-btn.dislike.voted{background:#FFE4E4;border-color:#9C0006;color:#9C0006}
+.card-vote-net{font-size:9px;font-weight:700;text-align:center;line-height:1}
 .prop-card-body{flex:1;min-width:0}
-.prop-card-name{font-weight:600;font-size:var(--text-sm);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.prop-card-meta{font-size:var(--text-sm);color:var(--muted);margin-top:2px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.prop-card-name{font-weight:600;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prop-card-meta{font-size:11px;color:var(--muted);margin-top:2px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
 .prop-card-price{font-weight:700;color:var(--navy)}
-.pill{font-size:var(--text-xs);padding:1px 6px;border-radius:8px;font-weight:600;white-space:nowrap}
+.pill{font-size:10px;padding:1px 6px;border-radius:8px;font-weight:600;white-space:nowrap}
 .pill.confirmed{background:var(--confirmed);color:var(--green)}
 .pill.potential{background:var(--potential);color:var(--amber)}
-.pill.caveat{background:var(--color-danger-bg);color:var(--red)}
+.pill.caveat{background:#FFE4E4;color:var(--red)}
 .pill.dup{background:#e8e8f0;color:#444}
 .card-del-btn{position:absolute;top:8px;right:8px;background:none;border:none;
-  color:#ccc;font-size:var(--text-base);cursor:pointer;padding:2px 5px;border-radius:3px;opacity:0}
+  color:#ccc;font-size:14px;cursor:pointer;padding:2px 5px;border-radius:3px;opacity:0}
 .prop-card:hover .card-del-btn{opacity:1}
-.card-del-btn:hover{background:var(--color-danger-bg);color:var(--red)}
+.card-del-btn:hover{background:#FFE4E4;color:var(--red)}
 .status-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px}
 
 /* MAP */
@@ -175,7 +95,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   box-shadow:-4px 0 16px rgba(0,0,0,.1)}
 #detail-panel.open{transform:translateX(0)}
 #detail-close{position:absolute;top:10px;right:12px;background:none;border:none;
-  font-size:var(--text-xl);cursor:pointer;color:var(--muted);z-index:10;line-height:1}
+  font-size:20px;cursor:pointer;color:var(--muted);z-index:10;line-height:1}
 #detail-close:hover{color:var(--text)}
 
 /* GALLERY */
@@ -186,50 +106,50 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   border:2px solid transparent;flex-shrink:0;opacity:.7;transition:all .1s}
 .gallery-thumbs img:hover,.gallery-thumbs img.active-thumb{opacity:1;border-color:#fff}
 .gallery-tabs{display:flex;background:#222;border-bottom:1px solid #333}
-.gallery-tab{font-size:var(--text-sm);padding:5px 12px;color:#aaa;cursor:pointer;border:none;
+.gallery-tab{font-size:11px;padding:5px 12px;color:#aaa;cursor:pointer;border:none;
   background:none;border-bottom:2px solid transparent;transition:all .1s}
 .gallery-tab:hover{color:#fff}
 .gallery-tab.active{color:#fff;border-bottom-color:#4d9fff}
 .gallery-empty{height:80px;display:flex;align-items:center;justify-content:center;
-  color:#666;font-size:var(--text-sm);background:#111}
+  color:#666;font-size:12px;background:#111}
 .floor-img{width:100%;max-height:300px;object-fit:contain;background:#f5f5f5;display:block;cursor:pointer}
 
 /* DETAIL BODY */
 .detail-body{padding:14px 16px}
 .detail-rank-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
 .detail-rank{display:inline-block;padding:3px 10px;border-radius:3px;color:#fff;
-  font-weight:700;font-size:var(--text-sm)}
+  font-weight:700;font-size:11px}
 .detail-vote-inline{display:flex;align-items:center;gap:5px}
 .dv-btn{background:#fff;border:1.5px solid var(--border);border-radius:16px;
-  padding:3px 10px;cursor:pointer;font-size:var(--text-base);transition:all .12s;font-weight:600}
+  padding:3px 10px;cursor:pointer;font-size:13px;transition:all .12s;font-weight:600}
 .dv-btn:hover{transform:scale(1.08);border-color:#aaa}
-.dv-btn.like.voted{background:var(--confirmed);border-color:var(--color-success)}
-.dv-btn.dislike.voted{background:var(--color-danger-bg);border-color:var(--color-danger)}
-.dv-net{font-size:var(--text-base);font-weight:700;min-width:20px;text-align:center}
-.detail-name{font-size:var(--text-lg);font-weight:700;margin-bottom:3px}
-.detail-location{font-size:var(--text-sm);color:var(--muted);margin-bottom:8px}
-.detail-price{font-size:var(--text-xl);font-weight:700;color:var(--navy);margin-bottom:10px}
+.dv-btn.like.voted{background:var(--confirmed);border-color:#1E7145}
+.dv-btn.dislike.voted{background:#FFE4E4;border-color:#9C0006}
+.dv-net{font-size:13px;font-weight:700;min-width:20px;text-align:center}
+.detail-name{font-size:15px;font-weight:700;margin-bottom:3px}
+.detail-location{font-size:12px;color:var(--muted);margin-bottom:8px}
+.detail-price{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:10px}
 .detail-pills{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
-.dpill{font-size:var(--text-sm);padding:3px 9px;border-radius:10px;font-weight:600}
-.dpill.cluster{background:var(--color-primary-bg);color:var(--navy)}
+.dpill{font-size:11px;padding:3px 9px;border-radius:10px;font-weight:600}
+.dpill.cluster{background:#e8f0fb;color:var(--navy)}
 .dpill.ac{background:var(--confirmed);color:var(--green)}
 .dpill.ap{background:var(--potential);color:var(--amber)}
-.dpill.cav{background:var(--color-danger-bg);color:var(--red)}
+.dpill.cav{background:#FFE4E4;color:var(--red)}
 .detail-links{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
-.dl{font-size:var(--text-sm);padding:5px 11px;border-radius:4px;text-decoration:none;
+.dl{font-size:12px;padding:5px 11px;border-radius:4px;text-decoration:none;
   font-weight:600;display:inline-block;white-space:nowrap}
 .dl.p{background:var(--navy);color:#fff}
 .dl.s{background:#f0f4f8;color:var(--navy);border:1px solid var(--border)}
 .dl.d{background:#fff8e1;color:var(--amber);border:1px solid #ffe082}
 .dl:hover{opacity:.85}
-.ds h3{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.05em;color:var(--muted);
+.ds h3{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);
   margin-bottom:5px;border-bottom:1px solid var(--border);padding-bottom:3px;margin-top:12px}
-.detail-desc{font-size:var(--text-sm);line-height:1.6;color:#333}
-.detail-agent{font-size:var(--text-sm);color:var(--muted);margin-top:6px}
+.detail-desc{font-size:12.5px;line-height:1.6;color:#333}
+.detail-agent{font-size:12px;color:var(--muted);margin-top:6px}
 
 /* STATUS */
 .status-row{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
-.sbtn{font-size:var(--text-sm);padding:4px 9px;border-radius:4px;border:1px solid var(--border);
+.sbtn{font-size:11px;padding:4px 9px;border-radius:4px;border:1px solid var(--border);
   background:#fff;cursor:pointer;transition:all .1s}
 .sbtn.on{color:#fff;border-color:transparent}
 .sbtn[data-s="active"].on{background:var(--green)}
@@ -239,24 +159,25 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 
 /* NOTES */
 #notes-area{width:100%;min-height:80px;border:1px solid var(--border);border-radius:4px;
-  padding:8px;font-family:inherit;font-size:var(--text-sm);resize:vertical;margin-bottom:6px}
+  padding:8px;font-family:inherit;font-size:12.5px;resize:vertical;margin-bottom:6px}
 .save-btn{background:var(--navy);color:#fff;border:none;padding:6px 13px;
-  border-radius:4px;cursor:pointer;font-size:var(--text-sm);font-weight:600}
+  border-radius:4px;cursor:pointer;font-size:12px;font-weight:600}
 .save-btn:hover{opacity:.85}
 .save-btn:disabled{background:var(--grey);cursor:default}
-.existing-note{background:var(--color-surface);border:1px solid var(--border);border-radius:4px;
-  padding:8px 10px;font-size:var(--text-sm);line-height:1.6;margin-bottom:8px;white-space:pre-wrap}
-.note-meta{font-size:var(--text-xs);color:var(--muted);margin-bottom:3px}
+.note-ok{font-size:11px;color:var(--green);margin-left:8px}
+.existing-note{background:#f8f9fb;border:1px solid var(--border);border-radius:4px;
+  padding:8px 10px;font-size:12.5px;line-height:1.6;margin-bottom:8px;white-space:pre-wrap}
+.note-meta{font-size:10px;color:var(--muted);margin-bottom:3px}
 
 /* PHOTOS */
 .photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:8px}
 .photo-thumb{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px;
   cursor:pointer;border:1px solid var(--border)}
 .upload-zone{border:2px dashed var(--border);border-radius:6px;padding:14px;
-  text-align:center;font-size:var(--text-sm);color:var(--muted);cursor:pointer;transition:all .12s}
+  text-align:center;font-size:12px;color:var(--muted);cursor:pointer;transition:all .12s}
 .upload-zone:hover,.upload-zone.drag{border-color:var(--navy);color:var(--navy);background:#f0f4f8}
 #file-input{display:none}
-.up-prog{font-size:var(--text-sm);color:var(--navy);margin-top:5px}
+.up-prog{font-size:11px;color:var(--navy);margin-top:5px}
 
 /* ADD PROPERTY MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);
@@ -264,27 +185,27 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 .modal-overlay.show{display:flex}
 .modal-box{background:#fff;border-radius:8px;padding:22px;width:500px;max-width:95vw;
   max-height:90vh;overflow-y:auto}
-.modal-box h2{font-size:var(--text-lg);margin-bottom:12px;color:var(--navy)}
+.modal-box h2{font-size:15px;margin-bottom:12px;color:var(--navy)}
 .modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
 .modal-grid .full{grid-column:1/-1}
-.modal-field label{display:block;font-size:var(--text-sm);font-weight:600;color:var(--muted);
+.modal-field label{display:block;font-size:11px;font-weight:600;color:var(--muted);
   text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px}
 .modal-field input,.modal-field select,.modal-field textarea{width:100%;
-  padding:7px 9px;border:1px solid var(--border);border-radius:4px;font-size:var(--text-sm);font-family:inherit}
+  padding:7px 9px;border:1px solid var(--border);border-radius:4px;font-size:12.5px;font-family:inherit}
 .modal-field textarea{min-height:60px;resize:vertical}
 .modal-btns{display:flex;gap:8px;margin-top:4px}
-.mbtn{padding:7px 16px;border-radius:4px;border:none;cursor:pointer;font-size:var(--text-base);font-weight:600}
+.mbtn{padding:7px 16px;border-radius:4px;border:none;cursor:pointer;font-size:13px;font-weight:600}
 .mbtn.p{background:var(--navy);color:#fff}
 .mbtn.s{background:#f0f4f8;color:var(--text)}
-.mbtn.d{background:var(--color-danger-bg);color:var(--red)}
+.mbtn.d{background:#FFE4E4;color:var(--red)}
 
 /* CONFIRM MODAL */
 #confirm-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);
   z-index:10000;align-items:center;justify-content:center}
 #confirm-modal.show{display:flex}
 .confirm-box{background:#fff;border-radius:8px;padding:22px;width:360px;max-width:95vw}
-.confirm-box h2{font-size:var(--text-base);margin-bottom:8px}
-.confirm-box p{font-size:var(--text-sm);color:var(--muted);margin-bottom:16px;line-height:1.4}
+.confirm-box h2{font-size:14px;margin-bottom:8px}
+.confirm-box p{font-size:12.5px;color:var(--muted);margin-bottom:16px;line-height:1.5}
 
 /* TOKEN */
 #token-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);
@@ -293,15 +214,29 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 
 /* LIGHTBOX */
 #lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:9997;
-  align-items:center;justify-content:center;flex-direction:column}
+  align-items:center;justify-content:center;flex-direction:column;user-select:none}
 #lightbox.show{display:flex}
-#lightbox-img{max-width:92vw;max-height:88vh;object-fit:contain}
-#lightbox-close{position:absolute;top:14px;right:18px;color:#fff;font-size:var(--text-2xl);
-  cursor:pointer;background:none;border:none;line-height:1}
-#lightbox-nav{display:flex;gap:20px;margin-top:12px}
+#lightbox-img-wrap{position:relative;overflow:hidden;
+  max-width:92vw;max-height:82vh;display:flex;align-items:center;justify-content:center;
+  cursor:grab}
+#lightbox-img-wrap:active{cursor:grabbing}
+#lightbox-img{max-width:100%;max-height:82vh;object-fit:contain;display:block;
+  outline:none;border:none;user-select:none;-webkit-user-drag:none;pointer-events:none}
+#lightbox-close{position:absolute;top:14px;right:18px;color:#fff;font-size:26px;
+  cursor:pointer;background:none;border:none;line-height:1;z-index:10}
+#lightbox-close:focus{outline:none}
+#lightbox-toolbar{display:flex;gap:8px;margin-top:10px;align-items:center}
+#lightbox-nav{display:flex;gap:12px}
 .lb-nav-btn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);
-  color:#fff;padding:6px 18px;border-radius:4px;cursor:pointer;font-size:var(--text-base)}
-.lb-nav-btn:hover{background:rgba(255,255,255,.25)}
+  color:#fff;padding:6px 16px;border-radius:4px;cursor:pointer;font-size:14px}
+.lb-nav-btn:hover{background:rgba(255,255,255,.28)}
+.lb-nav-btn:focus{outline:none}
+.lb-zoom-btn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);
+  color:#fff;width:32px;height:32px;border-radius:4px;cursor:pointer;font-size:16px;
+  font-weight:700;display:flex;align-items:center;justify-content:center;line-height:1}
+.lb-zoom-btn:hover{background:rgba(255,255,255,.28)}
+.lb-zoom-btn:focus{outline:none}
+#lightbox-counter{color:rgba(255,255,255,.6);font-size:12px;min-width:48px;text-align:center}
 
 
 /* SCORECARD */
@@ -310,72 +245,64 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 .sc-ring{width:52px;height:52px;flex-shrink:0}
 .sc-ring circle{fill:none;stroke-width:6;stroke-linecap:round}
 .sc-ring .bg{stroke:#e8edf2}
-.sc-ring .fill{stroke:var(--color-success);transition:stroke-dashoffset .4s ease;transform:rotate(-90deg);transform-origin:50% 50%}
-.sc-pct{font-size:var(--text-base);font-weight:700;color:var(--navy)}
+.sc-ring .fill{stroke:#1E7145;transition:stroke-dashoffset .4s ease;transform:rotate(-90deg);transform-origin:50% 50%}
+.sc-pct{font-size:13px;font-weight:700;color:var(--navy)}
 .sc-cats{display:flex;flex-direction:column;gap:3px;margin-bottom:12px}
 .sc-row{display:grid;grid-template-columns:110px 1fr 60px;gap:6px;align-items:center;
-  font-size:var(--text-sm);padding:4px 0;border-bottom:1px solid #f0f2f5}
+  font-size:11.5px;padding:4px 0;border-bottom:1px solid #f0f2f5}
 .sc-row:last-child{border-bottom:none}
-.sc-cat-label{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.04em;
+.sc-cat-label{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;
   color:var(--muted);margin-top:8px;margin-bottom:2px;padding-top:4px;
   border-top:1px solid var(--border);grid-column:1/-1}
-.sc-label{color:#333;font-size:var(--text-sm)}
-.sc-note{font-size:var(--text-sm);color:var(--muted)}
-.sc-badge{font-size:var(--text-xs);font-weight:700;padding:2px 7px;border-radius:8px;text-align:center;white-space:nowrap}
-.sc-badge.green{background:var(--color-success-bg);color:var(--color-success)}
-.sc-badge.amber{background:var(--color-warning-bg);color:var(--color-warning)}
-.sc-badge.red{background:var(--color-danger-bg);color:var(--color-danger)}
+.sc-label{color:#333;font-size:11.5px}
+.sc-note{font-size:11px;color:var(--muted)}
+.sc-badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px;text-align:center;white-space:nowrap}
+.sc-badge.green{background:#C6EFCE;color:#1E7145}
+.sc-badge.amber{background:#FFEB9C;color:#7F4F00}
+.sc-badge.red{background:#FFE4E4;color:#9C0006}
 .sc-badge.grey{background:#f0f2f5;color:#888}
 .sc-row{display:grid;grid-template-columns:110px 1fr auto;gap:6px;align-items:center;
-  font-size:var(--text-sm);padding:4px 0;border-bottom:1px solid #f0f2f5}
-.sc-select{font-size:var(--text-xs);padding:2px 4px;border:1px solid var(--border);border-radius:4px;
+  font-size:11.5px;padding:4px 0;border-bottom:1px solid #f0f2f5}
+.sc-select{font-size:10px;padding:2px 4px;border:1px solid var(--border);border-radius:4px;
   background:#fff;cursor:pointer;font-weight:600;appearance:none;-webkit-appearance:none;
   padding-right:14px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%23666'/%3E%3C/svg%3E");
   background-repeat:no-repeat;background-position:right 3px center}
-.sc-select.green{background-color:var(--color-success-bg);border-color:var(--color-success);color:var(--color-success)}
-.sc-select.amber{background-color:var(--color-warning-bg);border-color:var(--color-warning);color:var(--color-warning)}
-.sc-select.red{background-color:var(--color-danger-bg);border-color:var(--color-danger);color:var(--color-danger)}
-.sc-rerank-btn{font-size:var(--text-sm);padding:5px 12px;background:var(--navy);color:#fff;
+.sc-select.green{background-color:#C6EFCE;border-color:#1E7145;color:#1E7145}
+.sc-select.amber{background-color:#FFEB9C;border-color:#7F4F00;color:#7F4F00}
+.sc-select.red{background-color:#FFE4E4;border-color:#9C0006;color:#9C0006}
+.sc-rerank-btn{font-size:11px;padding:5px 12px;background:var(--navy);color:#fff;
   border:none;border-radius:4px;cursor:pointer;font-weight:600;margin-top:8px}
 .sc-rerank-btn:hover{opacity:.85}
 .sc-rerank-btn:disabled{background:var(--grey);cursor:default}
-.sc-changed-banner{background:var(--color-primary-bg);border:1px solid var(--navy);border-radius:4px;
-  padding:6px 10px;font-size:var(--text-sm);color:var(--navy);margin-bottom:8px;display:none}
+.sc-changed-banner{background:#EBF3FB;border:1px solid var(--navy);border-radius:4px;
+  padding:6px 10px;font-size:11.5px;color:var(--navy);margin-bottom:8px;display:none}
 .sc-changed-banner.show{display:block}
 .sc-flags{margin-bottom:10px}
-.sc-flag{display:flex;gap:6px;align-items:flex-start;font-size:var(--text-sm);color:var(--color-danger);
-  background:#FFF0F0;border-left:3px solid var(--color-danger);padding:6px 8px;
+.sc-flag{display:flex;gap:6px;align-items:flex-start;font-size:12px;color:#9C0006;
+  background:#FFF0F0;border-left:3px solid #9C0006;padding:6px 8px;
   border-radius:0 4px 4px 0;margin-bottom:5px;line-height:1.4}
 .sc-flag-icon{flex-shrink:0;margin-top:1px}
 .sc-qs{margin-bottom:4px}
-.sc-q{display:flex;gap:6px;align-items:flex-start;font-size:var(--text-sm);
-  background:var(--color-primary-bg);border-left:3px solid var(--navy);padding:6px 8px;
+.sc-q{display:flex;gap:6px;align-items:flex-start;font-size:12px;
+  background:#EBF3FB;border-left:3px solid var(--navy);padding:6px 8px;
   border-radius:0 4px 4px 0;margin-bottom:5px;line-height:1.4;color:#1a3a5c}
 .sc-q-icon{flex-shrink:0;font-weight:700;color:var(--navy);margin-top:1px}
-.copy-qs-btn{font-size:var(--text-sm);background:#f0f4f8;border:1px solid var(--border);
+.copy-qs-btn{font-size:11px;background:#f0f4f8;border:1px solid var(--border);
   color:var(--navy);padding:4px 10px;border-radius:4px;cursor:pointer;margin-bottom:8px}
 .copy-qs-btn:hover{background:#e0eaf8}
-
-/* INFO TOOLTIP */
-.info-tip{position:relative;display:inline-block;cursor:help}
-.info-tip-icon{font-size:var(--text-sm);color:var(--muted);margin-left:3px}
-.info-tip-pop{display:none;position:absolute;bottom:130%;left:50%;transform:translateX(-50%);
-  background:var(--color-text);color:#fff;font-size:var(--text-sm);line-height:1.4;padding:8px 10px;border-radius:6px;
-  width:220px;z-index:2000;box-shadow:0 4px 12px rgba(0,0,0,.3);text-align:left;font-weight:400}
-.info-tip:hover .info-tip-pop,.info-tip.show .info-tip-pop{display:block}
 
 
 /* AGENT EMAIL INPUT */
 .agent-email-row{display:flex;gap:6px;align-items:center;margin-bottom:8px}
 .agent-email-input{flex:1;padding:5px 8px;border:1px solid var(--border);border-radius:4px;
-  font-size:var(--text-sm);font-family:inherit}
+  font-size:12px;font-family:inherit}
 .agent-email-input:focus{outline:none;border-color:var(--navy)}
-.agent-email-save{font-size:var(--text-sm);padding:4px 9px;background:var(--navy);color:#fff;
+.agent-email-save{font-size:11px;padding:4px 9px;background:var(--navy);color:#fff;
   border:none;border-radius:4px;cursor:pointer}
 .agent-email-save:hover{opacity:.85}
 /* AGENT CONTACT STATUS */
 .agent-status-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
-.agent-sbtn{font-size:var(--text-sm);padding:3px 9px;border-radius:10px;
+.agent-sbtn{font-size:11px;padding:3px 9px;border-radius:10px;
   border:1px solid var(--border);background:#fff;cursor:pointer;transition:all .1s}
 .agent-sbtn.on{color:#fff;border-color:transparent}
 .agent-sbtn[data-as="not-contacted"].on{background:#888}
@@ -391,9 +318,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 .qs-popup.fading{display:flex;opacity:0;pointer-events:none}
 .qs-box{background:#fff;border-radius:8px;padding:20px;width:520px;max-width:95vw;
   max-height:85vh;overflow-y:auto}
-.qs-box h2{font-size:var(--text-base);margin-bottom:12px;color:var(--navy)}
+.qs-box h2{font-size:14px;margin-bottom:12px;color:var(--navy)}
 .qs-item{display:flex;gap:8px;align-items:flex-start;padding:7px 0;
-  border-bottom:1px solid var(--border);font-size:var(--text-sm);line-height:1.4}
+  border-bottom:1px solid var(--border);font-size:12.5px;line-height:1.5}
 .qs-item:last-child{border-bottom:none}
 .qs-num{font-weight:700;color:var(--navy);flex-shrink:0;width:18px}
 .qs-btns{display:flex;gap:8px;margin-top:14px}
@@ -401,7 +328,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 .pz-controls{display:flex;gap:4px;padding:4px 6px;background:rgba(0,0,0,.5);
   position:absolute;bottom:8px;right:8px;border-radius:4px;z-index:10}
 .pz-btn{background:rgba(255,255,255,.85);border:none;width:26px;height:26px;
-  border-radius:3px;cursor:pointer;font-size:var(--text-base);display:flex;align-items:center;
+  border-radius:3px;cursor:pointer;font-size:14px;display:flex;align-items:center;
   justify-content:center;font-weight:700;color:#333}
 .pz-btn:hover{background:#fff}
 .gallery-main-wrap{position:relative;overflow:hidden;background:#000;line-height:0}
@@ -411,85 +338,158 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 /* VOTES */
 .vote-row{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
 .vote-btn{display:flex;align-items:center;gap:5px;padding:6px 14px;border-radius:20px;
-  border:2px solid var(--border);background:#fff;cursor:pointer;font-size:var(--text-base);
+  border:2px solid var(--border);background:#fff;cursor:pointer;font-size:13px;
   font-weight:600;transition:all .15s}
 .vote-btn:hover{transform:scale(1.05)}
-.vote-btn.like:hover,.vote-btn.like.voted{background:var(--color-success-bg);border-color:var(--color-success);color:var(--color-success)}
-.vote-btn.dislike:hover,.vote-btn.dislike.voted{background:var(--color-danger-bg);border-color:var(--color-danger);color:var(--color-danger)}
-.vote-count{font-size:var(--text-2xl);font-weight:700;color:var(--navy);min-width:28px;text-align:center}
+.vote-btn.like:hover,.vote-btn.like.voted{background:#C6EFCE;border-color:#1E7145;color:#1E7145}
+.vote-btn.dislike:hover,.vote-btn.dislike.voted{background:#FFE4E4;border-color:#9C0006;color:#9C0006}
+.vote-count{font-size:18px;font-weight:700;color:var(--navy);min-width:28px;text-align:center}
 .vote-count.positive{color:var(--green)}
 .vote-count.negative{color:var(--red)}
 .vote-reason-wrap{margin-top:6px}
 .vote-reason-input{width:100%;padding:6px 9px;border:1px solid var(--border);border-radius:4px;
-  font-size:var(--text-sm);font-family:inherit;margin-bottom:5px}
-.vote-submit-btn{font-size:var(--text-sm);padding:4px 12px;background:var(--navy);color:#fff;
+  font-size:12px;font-family:inherit;margin-bottom:5px}
+.vote-submit-btn{font-size:11px;padding:4px 12px;background:var(--navy);color:#fff;
   border:none;border-radius:4px;cursor:pointer}
 .vote-submit-btn:hover{opacity:.85}
 .vote-history{margin-top:8px}
 .vote-entry{display:flex;gap:8px;align-items:flex-start;padding:6px 0;
-  border-bottom:1px solid var(--border);font-size:var(--text-sm)}
+  border-bottom:1px solid var(--border);font-size:12px}
 .vote-entry:last-child{border-bottom:none}
-.vote-entry-icon{font-size:var(--text-base);flex-shrink:0}
+.vote-entry-icon{font-size:14px;flex-shrink:0}
 .vote-entry-text{flex:1;color:#333;line-height:1.4}
-.vote-entry-meta{font-size:var(--text-xs);color:var(--muted);margin-top:2px}
+.vote-entry-meta{font-size:10px;color:var(--muted);margin-top:2px}
 /* JOURNEY TIMES */
 .journey-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px}
-.journey-card{background:var(--color-surface);border:1px solid var(--border);border-radius:6px;
+.journey-card{background:#f8f9fb;border:1px solid var(--border);border-radius:6px;
   padding:8px 10px;text-align:center}
-.journey-card .jc-label{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.04em;
+.journey-card .jc-label{font-size:10px;text-transform:uppercase;letter-spacing:.04em;
   color:var(--muted);margin-bottom:3px}
-.journey-card .jc-time{font-size:var(--text-xl);font-weight:700;color:var(--navy);line-height:1}
-.journey-card .jc-unit{font-size:var(--text-xs);color:var(--muted)}
-.journey-card .jc-detail{font-size:var(--text-xs);color:#555;margin-top:3px}
+.journey-card .jc-time{font-size:18px;font-weight:700;color:var(--navy);line-height:1}
+.journey-card .jc-unit{font-size:10px;color:var(--muted)}
+.journey-card .jc-detail{font-size:10.5px;color:#555;margin-top:3px}
 .journey-card.best .jc-time{color:var(--green)}
 .journey-card.ok .jc-time{color:var(--amber)}
 .journey-card.slow .jc-time{color:var(--red)}
-.journey-route-btn{font-size:var(--text-sm);background:#f0f4f8;border:1px solid var(--border);
+.journey-route-btn{font-size:11px;background:#f0f4f8;border:1px solid var(--border);
   color:var(--navy);padding:4px 10px;border-radius:4px;cursor:pointer;margin-right:6px;
   margin-bottom:6px}
 .journey-route-btn:hover{background:#e0eaf8}
 .journey-route-btn.active{background:var(--navy);color:#fff}
 /* HOME ED */
-.he-rating{display:inline-block;padding:3px 10px;border-radius:10px;font-size:var(--text-sm);
+.he-rating{display:inline-block;padding:3px 10px;border-radius:10px;font-size:11px;
   font-weight:700;margin-bottom:8px}
-.he-rating.excellent{background:var(--color-success-bg);color:var(--color-success)}
-.he-rating.very-good{background:var(--color-primary-bg);color:var(--navy)}
-.he-rating.good{background:var(--color-warning-bg);color:var(--color-warning)}
-.he-rating.moderate{background:var(--color-danger-bg);color:var(--color-danger)}
+.he-rating.excellent{background:#C6EFCE;color:#1E7145}
+.he-rating.very-good{background:#EBF3FB;color:var(--navy)}
+.he-rating.good{background:#FFEB9C;color:#7F4F00}
+.he-rating.moderate{background:#FFE4E4;color:#9C0006}
 .he-rating.unknown{background:#f0f0f0;color:#888}
-.he-group{padding:6px 0;border-bottom:1px solid var(--border);font-size:var(--text-sm)}
+.he-group{padding:6px 0;border-bottom:1px solid var(--border);font-size:12px}
 .he-group:last-child{border-bottom:none}
 .he-group-name{font-weight:600;color:var(--navy)}
-.he-group-detail{color:var(--muted);font-size:var(--text-sm);margin-top:2px}
-.he-asd-box{background:var(--color-primary-bg);border-left:3px solid var(--navy);padding:8px 10px;
-  border-radius:0 4px 4px 0;font-size:var(--text-sm);line-height:1.6;margin-bottom:8px}
+.he-group-detail{color:var(--muted);font-size:11px;margin-top:2px}
+.he-asd-box{background:#EBF3FB;border-left:3px solid var(--navy);padding:8px 10px;
+  border-radius:0 4px 4px 0;font-size:12px;line-height:1.5;margin-bottom:8px}
 /* ROUTE ON MAP */
 #route-info{position:absolute;bottom:12px;left:12px;background:white;
-  border-radius:6px;padding:8px 12px;font-size:var(--text-sm);box-shadow:0 2px 8px rgba(0,0,0,.15);
+  border-radius:6px;padding:8px 12px;font-size:12px;box-shadow:0 2px 8px rgba(0,0,0,.15);
   z-index:400;display:none;max-width:220px}
 #route-info.show{display:block}
-#route-close{float:right;background:none;border:none;cursor:pointer;font-size:var(--text-base);
+#route-close{float:right;background:none;border:none;cursor:pointer;font-size:14px;
   color:var(--muted);margin-left:8px}
 
 /* PHOTO SECTIONS */
-.photo-section-label{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.06em;
+.photo-section-label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;
   color:#aaa;background:#1a1a1a;padding:3px 8px;font-weight:600}
-.photo-section-edit{font-size:var(--text-xs);color:#4d9fff;background:none;border:none;
+.photo-section-edit{font-size:10px;color:#4d9fff;background:none;border:none;
   cursor:pointer;padding:2px 6px;float:right;text-decoration:underline}
 
-/* SKELETON LOADING */
-@keyframes shimmer{0%{background-position:-200px 0}100%{background-position:200px 0}}
-.skel{background:linear-gradient(90deg,#e4e6ea 25%,#f0f1f4 37%,#e4e6ea 63%);
-  background-size:400px 100%;animation:shimmer 1.4s ease infinite;border-radius:4px}
-.skel-badge{width:26px;height:26px;border-radius:50%;flex-shrink:0}
-.skeleton-card{pointer-events:none}
 
-/* EMPTY / ERROR STATES */
-#load-error{display:none;position:fixed;inset:0;background:var(--bg);z-index:20000;
-  align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:20px}
-#load-error.show{display:flex}
-.empty-state{padding:40px 20px;text-align:center;color:var(--muted)}
-.empty-state p{font-size:var(--text-sm);margin-bottom:12px}
+/* ── VIEWING DAY PLANNER ──────────────────────────────────────────────────── */
+#planner-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);
+  z-index:8000;align-items:flex-start;justify-content:center;padding:24px 16px;
+  overflow-y:auto}
+#planner-overlay.show{display:flex}
+#planner-box{background:#fff;border-radius:10px;width:740px;max-width:98vw;
+  box-shadow:0 8px 40px rgba(0,0,0,.25)}
+#planner-header{background:var(--navy);color:#fff;padding:16px 20px;
+  border-radius:10px 10px 0 0;display:flex;align-items:center;gap:12px}
+#planner-header h2{font-size:15px;font-weight:700;flex:1}
+.planner-close{background:none;border:none;color:rgba(255,255,255,.7);
+  font-size:20px;cursor:pointer;padding:0;line-height:1}
+.planner-close:hover{color:#fff}
+#planner-body{padding:18px 20px}
+.planner-intro{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5}
+.planner-intro strong{color:var(--text)}
+/* Cluster cards */
+.cluster-card{border:1.5px solid var(--border);border-radius:8px;margin-bottom:14px;
+  overflow:hidden;transition:border-color .15s}
+.cluster-card:hover{border-color:var(--navy)}
+.cluster-card.selected{border-color:var(--navy);border-width:2px;
+  box-shadow:0 0 0 3px rgba(31,78,121,.12)}
+.cluster-header{background:#f8f9fb;padding:10px 14px;display:flex;
+  align-items:center;gap:10px;cursor:pointer}
+.cluster-badge{background:var(--navy);color:#fff;font-size:11px;font-weight:700;
+  padding:2px 9px;border-radius:10px;white-space:nowrap}
+.cluster-title{font-weight:600;font-size:13px;flex:1}
+.cluster-meta{font-size:11px;color:var(--muted);display:flex;gap:12px}
+.cluster-meta span{white-space:nowrap}
+.cluster-body{padding:10px 14px 14px}
+/* Journey timeline */
+.journey-timeline{display:flex;flex-direction:column;gap:0}
+.jt-row{display:grid;grid-template-columns:26px 1fr auto;gap:8px;align-items:center}
+.jt-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;
+  border:2px solid #fff;box-shadow:0 0 0 2px var(--navy);background:#fff;
+  margin:0 6px}
+.jt-dot.start{background:var(--navy)}
+.jt-dot.end{background:var(--green)}
+.jt-dot.prop{background:var(--amber)}
+.jt-line{width:2px;background:var(--border);height:24px;margin:0 auto}
+.jt-label{font-size:12.5px;font-weight:600;color:var(--text)}
+.jt-sublabel{font-size:11px;color:var(--muted)}
+.jt-time{font-size:11px;font-weight:600;color:var(--navy);text-align:right;
+  white-space:nowrap}
+.jt-drive{font-size:10.5px;color:var(--muted);text-align:right}
+.jt-drive-row{display:grid;grid-template-columns:26px 1fr auto;gap:8px;
+  align-items:center;opacity:.7}
+.jt-drive-line{width:2px;background:#dde1e7;height:28px;margin:0 auto;
+  background:repeating-linear-gradient(to bottom,var(--border) 0,var(--border) 4px,transparent 4px,transparent 8px)}
+.jt-drive-text{font-size:11px;color:var(--muted);padding-left:2px}
+.jt-drive-mins{font-size:11px;color:var(--muted);text-align:right}
+/* Totals */
+.cluster-totals{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;
+  padding-top:10px;border-top:1px solid var(--border)}
+.ct-item{text-align:center}
+.ct-val{font-size:17px;font-weight:700;color:var(--navy)}
+.ct-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+/* Actions */
+.cluster-actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.ca-btn{font-size:12px;padding:6px 14px;border-radius:4px;cursor:pointer;
+  font-weight:600;border:1px solid var(--border)}
+.ca-btn.primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+.ca-btn.primary:hover{opacity:.88}
+.ca-btn.secondary{background:#fff;color:var(--navy)}
+.ca-btn.secondary:hover{background:#f0f4f8}
+/* Tab picker */
+.planner-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:16px}
+.planner-tab{padding:8px 16px;font-size:13px;cursor:pointer;border:none;
+  background:none;border-bottom:2px solid transparent;color:var(--muted);font-weight:500}
+.planner-tab.active{color:var(--navy);border-bottom-color:var(--navy)}
+/* Custom builder */
+.custom-prop-list{display:flex;flex-direction:column;gap:4px;max-height:280px;
+  overflow-y:auto;margin-bottom:12px}
+.custom-prop-row{display:flex;align-items:center;gap:8px;padding:6px 8px;
+  border-radius:4px;cursor:pointer;font-size:12.5px;border:1px solid transparent}
+.custom-prop-row:hover{background:#f0f4f8}
+.custom-prop-row.selected{background:#e8f0fb;border-color:var(--navy)}
+.custom-prop-row.disabled{opacity:.4;cursor:not-allowed}
+.cp-rank{width:22px;height:22px;border-radius:50%;background:var(--navy);
+  color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0}
+.cp-name{flex:1;font-weight:500}
+.cp-dist{font-size:11px;color:var(--muted);white-space:nowrap}
+.custom-result{background:#f8f9fb;border:1px solid var(--border);border-radius:6px;
+  padding:12px 14px;margin-top:8px}
 
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:5px}
@@ -497,28 +497,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 ::-webkit-scrollbar-thumb:hover{background:#aaa}
 
 /* RESPONSIVE */
-#detail-drag-handle{display:none}
-#mobile-filters-toggle{display:none;width:100%;text-align:left;margin-bottom:6px}
 @media(max-width:860px){
   #app{grid-template-columns:1fr;grid-template-rows:55vh 1fr}
   #main{grid-row:1}
   #sidebar{grid-row:2;max-height:45vh}
-  #detail-panel{width:100%;top:auto;bottom:0;left:0;right:0;height:90%;
-    transform:translateY(100%);transition:transform .25s ease}
-  #detail-panel.open{transform:translateY(0)}
-  #detail-drag-handle{display:block;width:40px;height:4px;background:#ccc;
-    border-radius:2px;margin:8px auto 0}
-}
-@media(max-width:600px){
-  .sort-row{flex-wrap:wrap}
-  .sort-row .sort-btn{font-size:var(--text-xs)}
-  #mobile-filters-toggle{display:block}
-  #mobile-collapsible-filters{display:none}
-  #mobile-collapsible-filters.expanded{display:block}
-  #header-stats,#voter-display{display:none}
-}
-@media(max-width:480px){
-  .gallery-main{height:160px}
+  #detail-panel{width:100%}
 }
 </style>
 </head>
@@ -531,65 +514,33 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
     <span id="stat-viewing">—</span>
     <span id="stat-offer">—</span>
   </div>
-  <span id="voter-display"></span>
-  <span id="sync-status">
-    <span class="sync-dot" id="sync-dot">●</span>
-    <span id="sync-label"></span>
-    <button id="sync-retry" style="display:none" onclick="retryLastPush()">Retry</button>
-  </span>
+  <button class="hdr-btn" onclick="showPlanner()" id="planner-btn">🗓 Day Planner</button>
   <button class="hdr-btn add" onclick="showAddModal()">＋ Add property</button>
-  <button class="hdr-btn" onclick="toggleKeyHelp()" aria-label="Keyboard shortcuts help">❓</button>
-  <button class="hdr-btn" id="token-btn" onclick="showTokenModal()"
-    title="Sync settings — allows your votes and notes to be seen by other family members.">⚙ GitHub Token</button>
-</div>
-<div id="readonly-banner">
-  <span>👀 Read-only mode — votes and notes are visible but won't be saved. Ask the organiser for a token to contribute.</span>
-  <button class="rb-close" onclick="dismissReadonlyBanner()" aria-label="Dismiss">✕</button>
-</div>
-<div id="unsaved-banner">
-  <span>⚠ You have unsaved local changes — connect GitHub to sync them.</span>
-</div>
-
-<div id="toast-container"></div>
-
-<div id="load-error">
-  <div style="font-size:64px;margin-bottom:12px">🏚</div>
-  <div style="font-size:var(--text-lg);font-weight:700;margin-bottom:6px">Couldn't load property data</div>
-  <div style="font-size:var(--text-sm);color:var(--muted);max-width:360px;margin-bottom:16px;line-height:1.4">
-    Try refreshing the page. If the problem persists, the site may be updating — check back in a minute.
-  </div>
-  <button class="mbtn p" onclick="location.reload()">Refresh</button>
+  <button class="hdr-btn" id="token-btn" onclick="showTokenModal()">⚙ GitHub Token</button>
 </div>
 
 <div id="app">
   <!-- SIDEBAR -->
   <div id="sidebar">
     <div id="filters">
-      <button class="filter-btn" id="mobile-filters-toggle" onclick="toggleMobileFilters()">Filters ▼</button>
-      <div id="mobile-collapsible-filters">
-        <h2>Sort</h2>
-        <div class="filter-row sort-row" id="sort-btns">
-          <button class="sort-btn active" data-sort="fit" onclick="setSort(this)">
-            <span class="info-tip" onclick="event.stopPropagation();this.classList.toggle('show')">% Fit ⓘ
-              <span class="info-tip-pop">Sorts by how well each property meets your confirmed criteria. Updates as agents reply to questions.</span>
-            </span>
-          </button>
-          <button class="sort-btn" data-sort="rank" onclick="setSort(this)">Rank</button>
-          <button class="sort-btn" data-sort="price-asc" onclick="setSort(this)">Price ↑</button>
-          <button class="sort-btn" data-sort="price-desc" onclick="setSort(this)">Price ↓</button>
-          <button class="sort-btn" data-sort="name" onclick="setSort(this)">A–Z</button>
-          <button class="sort-btn" data-sort="cluster" onclick="setSort(this)">Area</button>
-          <button class="sort-btn" data-sort="status" onclick="setSort(this)">Status</button>
-          <button class="sort-btn" data-sort="annexe" onclick="setSort(this)">Annexe</button>
-          <button class="sort-btn" data-sort="london" onclick="setSort(this)">→ London</button>
-          <button class="sort-btn" data-sort="coast" onclick="setSort(this)">→ Coast</button>
-          <button class="sort-btn" data-sort="hospital" onclick="setSort(this)">→ Hospital</button>
-          <button class="sort-btn" data-sort="popularity" onclick="setSort(this)">👍 Votes</button>
-        </div>
-        <div class="filter-row" id="cluster-filters"></div>
+      <h2>Sort</h2>
+      <div class="filter-row sort-row" id="sort-btns">
+        <button class="sort-btn active" data-sort="fit" onclick="setSort(this)">% Fit ★</button>
+        <button class="sort-btn" data-sort="rank" onclick="setSort(this)">Rank</button>
+        <button class="sort-btn" data-sort="price-asc" onclick="setSort(this)">Price ↑</button>
+        <button class="sort-btn" data-sort="price-desc" onclick="setSort(this)">Price ↓</button>
+        <button class="sort-btn" data-sort="name" onclick="setSort(this)">A–Z</button>
+        <button class="sort-btn" data-sort="cluster" onclick="setSort(this)">Area</button>
+        <button class="sort-btn" data-sort="status" onclick="setSort(this)">Status</button>
+        <button class="sort-btn" data-sort="annexe" onclick="setSort(this)">Annexe</button>
+        <button class="sort-btn" data-sort="london" onclick="setSort(this)">→ London</button>
+        <button class="sort-btn" data-sort="coast" onclick="setSort(this)">→ Coast</button>
+        <button class="sort-btn" data-sort="hospital" onclick="setSort(this)">→ Hospital</button>
+        <button class="sort-btn" data-sort="popularity" onclick="setSort(this)">👍 Votes</button>
       </div>
       <h2 style="margin-top:6px">Filter</h2>
       <input id="search-box" type="text" placeholder="Search name, location, agent…" oninput="applyFilters()">
+      <div class="filter-row" id="cluster-filters"></div>
       <div class="filter-row">
         <button class="filter-btn active" data-f="annexe" data-v="all" onclick="toggleF(this)">All annexe</button>
         <button class="filter-btn g" data-f="annexe" data-v="confirmed" onclick="toggleF(this)">✓ Confirmed</button>
@@ -600,9 +551,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
         <button class="filter-btn" data-f="status" data-v="active" onclick="toggleF(this)">Active</button>
         <button class="filter-btn" data-f="status" data-v="viewing-booked" onclick="toggleF(this)">Viewing</button>
         <button class="filter-btn" data-f="status" data-v="offer-made" onclick="toggleF(this)">Offer</button>
-        <button class="filter-btn status-extra" data-f="status" data-v="rejected" onclick="toggleF(this)" style="display:none">Rejected</button>
-        <button class="filter-btn status-extra" data-f="status" data-v="not-proceeding" onclick="toggleF(this)" style="display:none">Not proceeding</button>
-        <button class="filter-btn" id="showall-toggle-btn" onclick="toggleShowAll()">Show all incl. rejected</button>
+        <button class="filter-btn" data-f="status" data-v="rejected" onclick="toggleF(this)">Rejected</button>
       </div>
       <div class="filter-row">
         <button class="filter-btn active" data-f="caveat" data-v="all" onclick="toggleF(this)">All</button>
@@ -610,10 +559,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
         <button class="filter-btn" data-f="caveat" data-v="has" onclick="toggleF(this)">⚠ Has caveat</button>
       </div>
       <div style="display:flex;align-items:center;justify-content:space-between;margin-top:2px">
-        <div id="result-count" role="status" aria-live="polite"></div>
+        <div id="result-count"></div>
         <button id="reset-sort-btn" onclick="resetToFit()"
           style="display:none;background:none;border:none;color:var(--navy);
-          font-size:var(--text-sm);cursor:pointer;text-decoration:underline;padding:0">
+          font-size:11px;cursor:pointer;text-decoration:underline;padding:0">
           ↺ % Fit
         </button>
       </div>
@@ -625,10 +574,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   <div id="main">
     <div id="map-container">
       <div id="map"></div>
-      <div id="route-info"><button id="route-close" onclick="clearRoute()" aria-label="Close route info">✕</button><div id="route-text"></div></div>
+      <div id="route-info"><button id="route-close" onclick="clearRoute()">✕</button><div id="route-text"></div></div>
       <div id="detail-panel">
-        <div id="detail-drag-handle"></div>
-        <button id="detail-close" onclick="closeDetail()" aria-label="Close property details">✕</button>
+        <button id="detail-close" onclick="closeDetail()">✕</button>
         <div id="detail-content"></div>
       </div>
     </div>
@@ -650,7 +598,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
             🔍 Fetch details
           </button>
         </div>
-        <div id="fetch-rm-status" style="font-size:var(--text-sm);color:var(--muted);margin-top:4px"></div>
+        <div id="fetch-rm-status" style="font-size:11px;color:var(--muted);margin-top:4px"></div>
       </div>
       <div class="modal-field full">
         <label>Property name / title</label>
@@ -702,7 +650,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
         <input id="add-dup" placeholder="e.g. 87545469">
       </div>
     </div>
-    <div id="add-geo-hint" style="font-size:var(--text-sm);color:var(--amber);margin-bottom:10px;display:none">
+    <div id="add-geo-hint" style="font-size:11px;color:var(--amber);margin-bottom:10px;display:none">
       ⚠ Lat/lng needed for map pin. Look up the address on
       <a href="https://www.latlong.net/" target="_blank">latlong.net</a>.
     </div>
@@ -728,10 +676,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 <!-- TOKEN MODAL -->
 <div id="token-modal">
   <div class="modal-box" style="max-width:440px">
-    <h2>Sync settings</h2>
-    <p style="font-size:var(--text-sm);color:var(--muted);margin-bottom:14px;line-height:1.4">
-      Sync settings — allows your votes and notes to be seen by other family members.
-      Stored in your browser only.
+    <h2>GitHub Personal Access Token</h2>
+    <p style="font-size:12.5px;color:var(--muted);margin-bottom:14px;line-height:1.5">
+      Fine-grained token for <strong>its-not-rocket-science/house</strong>.
+      Stored in your browser's localStorage only.
     </p>
     <div class="modal-field" style="margin-bottom:12px">
       <input type="password" id="token-input" placeholder="github_pat_…">
@@ -744,46 +692,26 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   </div>
 </div>
 
-<!-- KEYBOARD SHORTCUTS HELP -->
-<div id="key-help-modal">
-  <div class="modal-box" style="max-width:380px">
-    <h2>Keyboard shortcuts</h2>
-    <div style="font-size:var(--text-sm);line-height:1.6">
-      <div><kbd>Esc</kbd> — close panel / modal</div>
-      <div><kbd>↑</kbd> / <kbd>↓</kbd> — navigate properties</div>
-      <div><kbd>Enter</kbd> — open selected property</div>
-      <div><kbd>F</kbd> — focus search</div>
-      <div><kbd>1</kbd>–<kbd>9</kbd> — jump to ranked property</div>
-      <div><kbd>?</kbd> — toggle this help</div>
-    </div>
-    <div class="modal-btns"><button class="mbtn s" onclick="hideKeyHelp()">Close</button></div>
-  </div>
-</div>
-
-<!-- VOTER NAME MODAL -->
-<div id="voter-modal" onclick="if(event.target===this)saveVoterName()">
-  <div class="modal-box">
-    <h2>What's your name?</h2>
-    <p>So we know who's voting.</p>
-    <input type="text" id="voter-name-input" placeholder="Your name" onkeydown="if(event.key==='Enter')saveVoterName()">
-    <div class="modal-btns">
-      <button class="mbtn p" onclick="saveVoterName()">Let's go →</button>
-    </div>
-  </div>
-</div>
-
 <!-- LIGHTBOX -->
 <div id="lightbox" onclick="handleLightboxClick(event)">
-  <button id="lightbox-close" onclick="closeLightbox()" aria-label="Close image viewer">✕</button>
-  <img id="lightbox-img" src="" alt="">
-  <div id="lightbox-nav">
-    <button class="lb-nav-btn" onclick="lbNav(-1)" aria-label="Previous image">◀ Prev</button>
-    <button class="lb-nav-btn" onclick="lbNav(1)" aria-label="Next image">Next ▶</button>
+  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div id="lightbox-img-wrap">
+    <img id="lightbox-img" src="" alt="" draggable="false">
+  </div>
+  <div id="lightbox-toolbar">
+    <div id="lightbox-nav">
+      <button class="lb-nav-btn" onclick="lbNav(-1)">◀ Prev</button>
+      <button class="lb-nav-btn" onclick="lbNav(1)">Next ▶</button>
+    </div>
+    <span id="lightbox-counter"></span>
+    <button class="lb-zoom-btn" onclick="lbZoomIn()"  title="Zoom in">+</button>
+    <button class="lb-zoom-btn" onclick="lbZoomOut()" title="Zoom out">−</button>
+    <button class="lb-zoom-btn" onclick="lbZoomReset()" title="Reset zoom" style="font-size:13px">⤢</button>
+    <button class="lb-zoom-btn" onclick="openImgNewTab('lightbox-img')" title="Open in new tab">↗</button>
   </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/panzoom/9.4.3/panzoom.min.js"></script>
 <script>
 // ── CONFIG ────────────────────────────────────────────────────────────────────
@@ -794,108 +722,12 @@ const PHOTOS_DIR = 'data/photos';
 // ── STATE ─────────────────────────────────────────────────────────────────────
 let properties = [], notes = {notes:{},visits:{},photos:{}}, scorecards = {}, votes = {};
 let filtered = [], selected = null, currentSort = 'fit';
-let activeF = {cluster:'all',annexe:'all',status:'all',caveat:'all',showAll:false};
-let map = null, markers = {}, clusterGroup = null;
+let activeF = {cluster:'all',annexe:'all',status:'all',caveat:'all'};
+let map = null, markers = {};
 let lbImages = [], lbIndex = 0;
 
-// ── KEYBOARD SHORTCUTS ────────────────────────────────────────────────────────
-let kbIndex = -1;
-let lastFocusKeyHelp = null;
-
-function toggleKeyHelp() {
-  const el = document.getElementById('key-help-modal');
-  if (el.classList.contains('show')) hideKeyHelp();
-  else showKeyHelp();
-}
-function showKeyHelp() {
-  lastFocusKeyHelp = document.activeElement;
-  document.getElementById('key-help-modal').classList.add('show');
-}
-function hideKeyHelp() {
-  document.getElementById('key-help-modal').classList.remove('show');
-  if (lastFocusKeyHelp && lastFocusKeyHelp.focus) lastFocusKeyHelp.focus();
-  lastFocusKeyHelp = null;
-}
-
-function kbNavigate(dir) {
-  if (!filtered.length) return;
-  kbIndex = Math.min(filtered.length-1, Math.max(0, kbIndex+dir));
-  const cards = document.querySelectorAll('#prop-list .prop-card');
-  cards.forEach((c,i)=>c.classList.toggle('kb-active', i===kbIndex));
-  const el = cards[kbIndex];
-  if (el) el.scrollIntoView({block:'nearest'});
-}
-function kbOpenSelected() {
-  if (kbIndex>=0 && filtered[kbIndex]) selectProp(filtered[kbIndex].ref);
-}
-function jumpToRank(n) {
-  const p = properties.find(x=>x.rank===n);
-  if (p) selectProp(p.ref);
-}
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    if (document.getElementById('key-help-modal').classList.contains('show')) { hideKeyHelp(); return; }
-    const openModal = document.querySelector(
-      '.modal-overlay.show, #confirm-modal.show, #token-modal.show, #voter-modal.show, .qs-popup.show');
-    if (openModal) { openModal.classList.remove('show'); return; }
-    if (document.getElementById('detail-panel').classList.contains('open')) closeDetail();
-    return;
-  }
-
-  const tag = (document.activeElement.tagName||'').toLowerCase();
-  if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
-
-  if (e.key === '?') { e.preventDefault(); toggleKeyHelp(); return; }
-  if (e.key === 'ArrowDown') { e.preventDefault(); kbNavigate(1); return; }
-  if (e.key === 'ArrowUp') { e.preventDefault(); kbNavigate(-1); return; }
-  if (e.key === 'Enter') { kbOpenSelected(); return; }
-  if (e.key === 'f' || e.key === 'F') { e.preventDefault(); document.getElementById('search-box').focus(); return; }
-  if (/^[1-9]$/.test(e.key)) { jumpToRank(parseInt(e.key,10)); return; }
-});
-
-// ── TOASTS ────────────────────────────────────────────────────────────────────
-function showToast(message, type, duration) {
-  type = type || 'success';
-  duration = duration || 3000;
-  const icons = {success:'✓', warning:'⚠', error:'✗'};
-  const container = document.getElementById('toast-container');
-  if (!container) return;
-  const toast = document.createElement('div');
-  toast.className = 'toast ' + type;
-  toast.innerHTML = `<span class="toast-icon">${icons[type]||''}</span>`
-    +`<span class="toast-msg">${esc(message)}</span>`
-    +`<button class="toast-close" onclick="dismissToast(this.parentElement)" aria-label="Dismiss">✕</button>`;
-  container.appendChild(toast);
-  requestAnimationFrame(()=>toast.classList.add('show'));
-  const existing = container.querySelectorAll('.toast');
-  if (existing.length > 3) dismissToast(existing[0]);
-  toast._timer = setTimeout(()=>dismissToast(toast), duration);
-}
-function dismissToast(toast) {
-  if (!toast || !toast.parentElement) return;
-  clearTimeout(toast._timer);
-  toast.classList.remove('show');
-  toast.classList.add('hide');
-  setTimeout(()=>toast.remove(), 220);
-}
-
-// ── IMAGE FALLBACK ────────────────────────────────────────────────────────────
-const IMG_PLACEHOLDER = 'data:image/svg+xml;utf8,' + encodeURIComponent(
-  '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="150">'
-  +'<rect width="100%" height="100%" fill="#e4e6ea"/>'
-  +'<text x="50%" y="52%" font-size="34" text-anchor="middle" dominant-baseline="middle">🏠</text>'
-  +'</svg>');
-function imgFallback(img) {
-  img.onerror = null;
-  img.src = IMG_PLACEHOLDER;
-  img.style.objectFit = 'contain';
-  img.style.background = '#e4e6ea';
-  img.style.padding = '20px';
-}
-
 // ── RANK COLOUR ───────────────────────────────────────────────────────────────
-const rc = r => r<=2?'var(--color-primary)':r<=6?'#375623':r<=12?'var(--color-warning)':r<=20?'#555':'#888';
+const rc = r => r<=2?'#1F4E79':r<=6?'#375623':r<=12?'#7F4F00':r<=20?'#555':'#888';
 
 // ── IMAGE MANIFEST ────────────────────────────────────────────────────────────
 let imageManifest = {};
@@ -923,18 +755,12 @@ function localFloorplans(ref) {
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
 async function init() {
-  renderSkeleton();
   await loadManifest();
+  loadClusters(); // pre-load for planner
   try { const sc = await fetch('data/scorecards.json'); scorecards = await sc.json(); } catch(e) {}
   try { const vr = await fetch('data/votes.json'); votes = await vr.json(); } catch(e) { votes = {}; }
-  try {
-    const r = await fetch('data/properties.json');
-    if (!r.ok) throw new Error('HTTP '+r.status);
-    properties = await r.json();
-  } catch(e) {
-    showLoadError();
-    return;
-  }
+  const r = await fetch('data/properties.json');
+  properties = await r.json();
   await loadNotes();
   // Restore scorecard overrides into notes if present
   if (!notes.scorecardOverrides) notes.scorecardOverrides = {};
@@ -963,8 +789,6 @@ async function init() {
   applyFilters();
   updateStats();
   updateTokenBtn();
-  initReadonlyBanner();
-  initVoterName();
 
   // Event delegation for card vote buttons — handles dynamically rendered cards
   document.getElementById('prop-list').addEventListener('click', function(e) {
@@ -1006,8 +830,8 @@ async function init() {
       const dislikes = pv.filter(v=>v.type==='dislike').length;
       const net = likes - dislikes;
       const myV = localStorage.getItem('vote_'+ref);
-      wrap.innerHTML = '<button class="dv-btn like '+(myV==='like'?'voted':'')+'" data-ref="'+ref+'" data-type="like" title="Like" aria-label="Like this property">👍</button>'
-        +'<button class="dv-btn dislike '+(myV==='dislike'?'voted':'')+'" data-ref="'+ref+'" data-type="dislike" title="Dislike" aria-label="Dislike this property">👎</button>'
+      wrap.innerHTML = '<button class="dv-btn like '+(myV==='like'?'voted':'')+'" data-ref="'+ref+'" data-type="like" title="Like">👍</button>'
+        +'<button class="dv-btn dislike '+(myV==='dislike'?'voted':'')+'" data-ref="'+ref+'" data-type="dislike" title="Dislike">👎</button>'
         +(net!==0?'<span class="dv-net" style="color:'+(net>0?'var(--green)':'var(--red)')+'">'+(net>0?'+':'')+net+'</span>':'');
     }
     // Also refresh card
@@ -1017,38 +841,6 @@ async function init() {
     });
     renderList();
   });
-}
-
-// ── SKELETON / ERROR STATES ──────────────────────────────────────────────────
-function renderSkeleton() {
-  const list = document.getElementById('prop-list');
-  if (!list) return;
-  let html = '';
-  for (let i=0; i<6; i++) {
-    html += `<div class="prop-card skeleton-card">
-      <div class="rank-badge-col"><div class="skel skel-badge"></div></div>
-      <div class="prop-card-body">
-        <div class="skel" style="width:70%;height:12px;margin-bottom:6px"></div>
-        <div class="skel" style="width:40%;height:10px;margin-bottom:4px"></div>
-        <div class="skel" style="width:55%;height:10px"></div>
-      </div>
-    </div>`;
-  }
-  list.innerHTML = html;
-}
-
-function showLoadError() {
-  document.getElementById('load-error').classList.add('show');
-}
-
-function clearAllFilters() {
-  activeF = {cluster:'all',annexe:'all',status:'all',caveat:'all',showAll:false};
-  document.getElementById('search-box').value = '';
-  document.querySelectorAll('[data-f]').forEach(b=>b.classList.toggle('active', b.dataset.v==='all'));
-  document.querySelectorAll('.status-extra').forEach(b=>b.style.display='none');
-  const showAllBtn = document.getElementById('showall-toggle-btn');
-  if (showAllBtn) { showAllBtn.textContent = 'Show all incl. rejected'; showAllBtn.classList.remove('active'); }
-  applyFilters();
 }
 
 function buildClusterFilters() {
@@ -1071,24 +863,10 @@ function populateClusterDatalist() {
   });
 }
 
-function clusterIconFn(cluster) {
-  const count = cluster.getChildCount();
-  const sz = count < 10 ? 30 : count < 50 ? 38 : 46;
-  return L.divIcon({
-    html:`<div style="background:var(--color-primary);width:${sz}px;height:${sz}px;border-radius:50%;
-      border:2px solid #fff;display:flex;align-items:center;justify-content:center;
-      box-shadow:0 1px 5px rgba(0,0,0,.4)">
-      <span style="color:#fff;font-size:var(--text-sm);font-weight:700">${count}</span></div>`,
-    className:'', iconSize:L.point(sz,sz)
-  });
-}
-
 function initMap() {
   map = L.map('map').setView([51.5,-2.5],7);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     {attribution:'© OpenStreetMap contributors',maxZoom:18}).addTo(map);
-  clusterGroup = L.markerClusterGroup({iconCreateFunction: clusterIconFn});
-  map.addLayer(clusterGroup);
   properties.forEach(addMarker);
 }
 
@@ -1098,15 +876,14 @@ function addMarker(p) {
     html:`<div style="background:${col};width:26px;height:26px;border-radius:50%;
       border:2px solid #fff;display:flex;align-items:center;justify-content:center;
       box-shadow:0 1px 5px rgba(0,0,0,.4)">
-      <span style="color:#fff;font-size:var(--text-xs);font-weight:700">${p.rank}</span></div>`,
+      <span style="color:#fff;font-size:10px;font-weight:700">${p.rank}</span></div>`,
     iconSize:[26,26],iconAnchor:[13,13],className:''
   });
-  const m = L.marker([p.lat,p.lng],{icon});
+  const m = L.marker([p.lat,p.lng],{icon}).addTo(map);
   m.bindPopup(`<strong>${p.name}</strong><br>${p.price_display}<br>
-    <a href="#" style="font-size:var(--text-sm);color:var(--navy)"
+    <a href="#" style="font-size:11px;color:var(--navy)"
       onclick="event.preventDefault();selectProp('${p.ref}')">View details →</a>`);
   m.on('click',()=>selectProp(p.ref));
-  clusterGroup.addLayer(m);
   markers[p.ref]=m;
 }
 
@@ -1122,29 +899,30 @@ function resetToFit() {
   if (btn) setSort(btn);
 }
 
-function getFitPct(p) {
-  const sc = scorecards[p.ref];
-  if (!sc) return 0;
-  const overrides = (notes.scorecardOverrides||{})[p.ref]||{};
-  const cats={};
-  for(const s of sc.scores){if(!cats[s.cat])cats[s.cat]=[];cats[s.cat].push(s);}
-  const eff=sc.scores.map(s=>{
-    const cat=Object.keys(cats).find(c=>cats[c].includes(s));
-    const idx=cat?cats[cat].indexOf(s):-1;
-    const k=cat+'__'+idx;
-    return overrides[k]!==undefined?overrides[k]:s.score;
-  });
-  const raw=Math.round(eff.reduce((a,b)=>a+b,0)/(sc.scores.length*3)*100);
-  // Apply caveat penalties (same as rerank logic)
-  const penalties={flood:-15,'flood-check':-8,ferry:-20,prc:-12,logistics:-10,duplicate:-50,bungalow:-5};
-  return raw+(penalties[p.caveat]||0);
-}
-
 function sortProps(arr) {
   const a=[...arr];
   const statusOrder={active:0,'viewing-booked':1,'offer-made':2,rejected:3};
   switch(currentSort) {
-    case 'fit': return a.sort((x,y)=>getFitPct(y)-getFitPct(x));
+    case 'fit': return a.sort((x,y)=>{
+      const getScore = p => {
+        const sc = scorecards[p.ref];
+        if (!sc) return 0;
+        const overrides = (notes.scorecardOverrides||{})[p.ref]||{};
+        const cats={};
+        for(const s of sc.scores){if(!cats[s.cat])cats[s.cat]=[];cats[s.cat].push(s);}
+        const eff=sc.scores.map(s=>{
+          const cat=Object.keys(cats).find(c=>cats[c].includes(s));
+          const idx=cat?cats[cat].indexOf(s):-1;
+          const k=cat+'__'+idx;
+          return overrides[k]!==undefined?overrides[k]:s.score;
+        });
+        const raw=Math.round(eff.reduce((a,b)=>a+b,0)/(sc.scores.length*3)*100);
+        // Apply caveat penalties (same as rerank logic)
+        const penalties={flood:-15,'flood-check':-8,ferry:-20,prc:-12,logistics:-10,duplicate:-50,bungalow:-5};
+        return raw+(penalties[p.caveat]||0);
+      };
+      return getScore(y)-getScore(x);
+    });
     case 'rank':       return a.sort((x,y)=>x.rank-y.rank);
     case 'price-asc':  return a.sort((x,y)=>x.price-y.price);
     case 'price-desc': return a.sort((x,y)=>y.price-x.price);
@@ -1169,26 +947,6 @@ function sortProps(arr) {
 }
 
 // ── FILTERS ───────────────────────────────────────────────────────────────────
-function toggleMobileFilters() {
-  const el = document.getElementById('mobile-collapsible-filters');
-  const btn = document.getElementById('mobile-filters-toggle');
-  el.classList.toggle('expanded');
-  btn.textContent = el.classList.contains('expanded') ? 'Filters ▲' : 'Filters ▼';
-}
-
-function toggleShowAll() {
-  activeF.showAll = !activeF.showAll;
-  const btn = document.getElementById('showall-toggle-btn');
-  btn.textContent = activeF.showAll ? 'Active only' : 'Show all incl. rejected';
-  btn.classList.toggle('active', activeF.showAll);
-  document.querySelectorAll('.status-extra').forEach(b=>b.style.display = activeF.showAll ? '' : 'none');
-  if (!activeF.showAll && (activeF.status==='rejected'||activeF.status==='not-proceeding')) {
-    activeF.status = 'all';
-    document.querySelectorAll('[data-f="status"]').forEach(b=>b.classList.toggle('active', b.dataset.v==='all'));
-  }
-  applyFilters();
-}
-
 function toggleF(btn) {
   const f=btn.dataset.f, v=btn.dataset.v;
   activeF[f]=v;
@@ -1202,7 +960,6 @@ function applyFilters() {
   let res=properties.filter(p=>{
     if(activeF.cluster!=='all'&&p.cluster!==activeF.cluster) return false;
     if(activeF.annexe!=='all'&&p.annexe!==activeF.annexe) return false;
-    if(!activeF.showAll&&(p.status==='rejected'||p.status==='not-proceeding')) return false;
     if(activeF.status!=='all'&&p.status!==activeF.status) return false;
     if(activeF.caveat==='none'&&p.caveat) return false;
     if(activeF.caveat==='has'&&!p.caveat) return false;
@@ -1221,13 +978,6 @@ function applyFilters() {
 function renderList() {
   const list=document.getElementById('prop-list');
   list.innerHTML='';
-  if (!filtered.length) {
-    list.innerHTML = `<div class="empty-state">
-      <p>No properties match your filters.</p>
-      <button class="mbtn s" onclick="clearAllFilters()">Clear filters</button>
-    </div>`;
-    return;
-  }
   filtered.forEach(p=>{
     const hasNote=notes.notes[p.ref];
     const photoCount=(notes.photos[p.ref]||[]).length;
@@ -1235,24 +985,15 @@ function renderList() {
     const div=document.createElement('div');
     div.className='prop-card'+(selected===p.ref?' selected':'');
     div.dataset.ref=p.ref;
-    div.dataset.annexe=p.annexe;
     div.onclick=()=>selectProp(p.ref);
-    const badgeSz = p.rank<=3?30:p.rank<=10?26:22;
-    const badgeFs = p.rank<=3?'11px':p.rank<=10?'10px':'9px';
-    const badgeExtra = p.rank<=3?'box-shadow:0 2px 5px rgba(0,0,0,.35);'
-      : p.rank>=11?'opacity:.75;':'';
-    const fitPct = Math.max(0, Math.min(100, getFitPct(p)));
-    const fitCol = fitPct>70?'var(--color-success)':fitPct>=50?'var(--color-warning)':'var(--color-danger)';
-    const as=(notes.agentStatus||{})[p.ref];
-    const hasIndicators = hasNote || photoCount || (as&&as!=='not-contacted') || (notes.agentPhone||{})[p.ref];
     div.innerHTML=`
       <div class="rank-badge-col">
-        <div class="rank-badge" style="background:${rc(p.rank)};width:${badgeSz}px;height:${badgeSz}px;font-size:${badgeFs};${badgeExtra}">${p.rank}</div>
+        <div class="rank-badge" style="background:${rc(p.rank)}">${p.rank}</div>
         <div class="card-vote-btns">
           <button class="card-vote-btn like ${localStorage.getItem('vote_'+p.ref)==='like'?'voted':''}"
-            data-ref="${p.ref}" data-type="like" title="Like" aria-label="Like this property">👍</button>
+            data-ref="${p.ref}" data-type="like" title="Like">👍</button>
           <button class="card-vote-btn dislike ${localStorage.getItem('vote_'+p.ref)==='dislike'?'voted':''}"
-            data-ref="${p.ref}" data-type="dislike" title="Dislike" aria-label="Dislike this property">👎</button>
+            data-ref="${p.ref}" data-type="dislike" title="Dislike">👎</button>
         </div>
         ${(()=>{const net=(votes[p.ref]||[]).reduce((s,v)=>s+(v.type==='like'?1:-1),0);
           return net!==0?'<div class="card-vote-net" style="color:'+(net>0?'var(--green)':'var(--red)')+'">'+(net>0?'+':'')+net+'</div>':'';})()}
@@ -1262,66 +1003,44 @@ function renderList() {
         <div class="prop-card-meta">
           <span class="prop-card-price">${p.price_display}</span>
           ${(()=>{const pv=votes[p.ref]||[];const net=pv.reduce((s,v)=>s+(v.type==='like'?1:-1),0);
-            return pv.length?`<span style="font-size:var(--text-xs);font-weight:700;color:${net>0?'var(--green)':net<0?'var(--red)':'var(--muted)'}">
+            return pv.length?`<span style="font-size:10px;font-weight:700;color:${net>0?'var(--green)':net<0?'var(--red)':'var(--muted)'}">
             ${net>0?'👍':''}${net<0?'👎':''}${Math.abs(net)>0?Math.abs(net):''}</span>`:'';})()}
           <span class="pill ${p.annexe}">${p.annexe==='confirmed'?'✓ Annexe':'~ Potential'}</span>
           ${p.caveat?`<span class="pill caveat">⚠ ${p.caveat}</span>`:''}
           ${isDup?'<span class="pill dup">duplicate</span>':''}
+          ${hasNote?'<span style="font-size:10px">📝</span>':''}
+          ${photoCount?`<span style="font-size:10px">📷${photoCount}</span>`:''}
         </div>
         <div class="prop-card-meta" style="margin-top:2px">
           <span>${p.cluster}</span>
           <span style="color:${sCol(p.status)};font-weight:600">${sLabel(p.status)}</span>
+          ${(()=>{const as=(notes.agentStatus||{})[p.ref];return as&&as!=='not-contacted'?
+            `<span style="font-size:10px;color:var(--navy)">📧 ${agentStatusLabel(as)}</span>`:''})()}
         </div>
-        ${hasIndicators?`<div class="prop-card-indicators">
-          ${as&&as!=='not-contacted'?`<span style="font-size:var(--text-xs);color:var(--navy)">📧 ${agentStatusLabel(as)}</span>`:''}
-          ${(notes.agentPhone||{})[p.ref]?'<span style="font-size:var(--text-xs)" title="Phone number on file">📞</span>':''}
-          ${hasNote?'<span style="font-size:var(--text-xs)" title="Has notes">📝</span>':''}
-          ${photoCount?`<span style="font-size:var(--text-xs)" title="${photoCount} photo(s)">📷${photoCount}</span>`:''}
-        </div>`:''}
       </div>
       <div class="status-dot" style="background:${sCol(p.status)}"></div>
-      <button class="card-del-btn" title="Delete" aria-label="Delete ${p.name}" onclick="event.stopPropagation();confirmDelete('${p.ref}')">✕</button>
-      <div class="prop-card-fit-bar" style="background:${fitCol};width:${fitPct}%"></div>`;
+      <button class="card-del-btn" title="Delete" onclick="event.stopPropagation();confirmDelete('${p.ref}')">✕</button>`;
     list.appendChild(div);
   });
 }
 
 function updateMapMarkers() {
   const refs=new Set(filtered.map(p=>p.ref));
-  Object.entries(markers).forEach(([ref,m])=>{
-    const shouldShow = refs.has(ref);
-    const inCluster = clusterGroup.hasLayer(m);
-    if (shouldShow && !inCluster) clusterGroup.addLayer(m);
-    if (!shouldShow && inCluster) clusterGroup.removeLayer(m);
-  });
+  Object.entries(markers).forEach(([ref,m])=>m.setOpacity(refs.has(ref)?1:0.2));
 }
 
 // ── SELECT ────────────────────────────────────────────────────────────────────
-let lastFocusDetail = null;
 function selectProp(ref) {
-  if (!document.getElementById('detail-panel').classList.contains('open')) {
-    lastFocusDetail = document.activeElement;
-  }
   selected=ref;
   const p=properties.find(x=>x.ref===ref);
   if(!p) return;
   document.querySelectorAll('.prop-card').forEach(c=>
     c.classList.toggle('selected',c.dataset.ref===ref));
-  const m = markers[ref];
-  if(m) {
-    const parent = clusterGroup.getVisibleParent(m);
-    if (parent && parent !== m) {
-      // Marker is hidden inside a cluster — expand the cluster to reveal it first
-      clusterGroup.zoomToShowLayer(m, () => {
-        map.panTo([p.lat,p.lng], {animate:true});
-        setTimeout(()=>m.openPopup(), 300);
-      });
-    } else {
-      // Zoom so nearest town/city is visible — z11 fits ~30km radius, good for most rural properties
-      // Use flyTo for a smooth animated transition
-      map.flyTo([p.lat,p.lng], 11, {animate:true, duration:0.8});
-      setTimeout(()=>m.openPopup(), 850);
-    }
+  if(markers[ref]) {
+    // Zoom so nearest town/city is visible — z11 fits ~30km radius, good for most rural properties
+    // Use flyTo for a smooth animated transition
+    map.flyTo([p.lat,p.lng], 11, {animate:true, duration:0.8});
+    setTimeout(()=>markers[ref].openPopup(), 850);
   }
   renderDetail(p);
   document.getElementById('detail-panel').classList.add('open');
@@ -1331,8 +1050,6 @@ function closeDetail() {
   document.getElementById('detail-panel').classList.remove('open');
   selected=null;
   document.querySelectorAll('.prop-card').forEach(c=>c.classList.remove('selected'));
-  if (lastFocusDetail && lastFocusDetail.focus) lastFocusDetail.focus();
-  lastFocusDetail = null;
 }
 
 // ── DETAIL ────────────────────────────────────────────────────────────────────
@@ -1360,13 +1077,13 @@ function renderDetail(p) {
           <div class="gallery-main-wrap" id="listing-wrap">
             <img class="gallery-main" id="gallery-main-img"
               src="${rmImgs[0]}" alt="Photo 1"
-              onerror="imgFallback(this)"
+              onerror="this.style.display='none'"
               onclick="galleryLb(0)">
             <div class="pz-controls">
-              <button class="pz-btn" onclick="pzIn('listing-wrap')" title="Zoom in" aria-label="Zoom in">+</button>
-              <button class="pz-btn" onclick="pzOut('listing-wrap')" title="Zoom out" aria-label="Zoom out">−</button>
-              <button class="pz-btn" onclick="pzReset('listing-wrap')" title="Reset" aria-label="Reset zoom">⤢</button>
-              <button class="pz-btn" onclick="openImgNewTab('gallery-main-img')" title="Open in new tab" aria-label="Open image in new tab">↗</button>
+              <button class="pz-btn" onclick="pzIn('listing-wrap')" title="Zoom in">+</button>
+              <button class="pz-btn" onclick="pzOut('listing-wrap')" title="Zoom out">−</button>
+              <button class="pz-btn" onclick="pzReset('listing-wrap')" title="Reset">⤢</button>
+              <button class="pz-btn" onclick="openImgNewTab('gallery-main-img')" title="Open in new tab">↗</button>
             </div>
           </div>
           ${(()=>{
@@ -1374,31 +1091,29 @@ function renderDetail(p) {
             const hasMultiple = Object.values(sections).filter(a=>a.length>0).length > 1;
             if(!hasMultiple) return '<div class="gallery-thumbs">'
               +rmImgs.map((src,i)=>'<img src="'+src+'" data-idx="'+i+'" class="'+(i===0?'active-thumb':'')+'"'
-                +' onerror="imgFallback(this)" onclick="pickPhoto(this,'+i+')" tabindex="0" role="button"'
-                +' onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();this.click();}" alt="Photo '+(i+1)+'">').join('')
+                +' onerror="this.style.display=\'none\'" onclick="pickPhoto(this,'+i+')" alt="Photo '+(i+1)+'">').join('')
               +'</div>';
             return Object.entries(sections).filter(([,imgs])=>imgs.length>0).map(([label,imgs])=>
               '<div class="photo-section-label">'+label+'</div>'
               +'<div class="gallery-thumbs">'
               +imgs.map(({src,idx})=>'<img src="'+src+'" data-idx="'+idx+'" class="'+(idx===0?'active-thumb':'')+'"'
-                +' onerror="imgFallback(this)" onclick="pickPhoto(this,'+idx+')" tabindex="0" role="button"'
-                +' onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();this.click();}" alt="'+label+'">').join('')
+                +' onerror="this.style.display=\'none\'" onclick="pickPhoto(this,'+idx+')" alt="'+label+'">').join('')
               +'</div>'
             ).join('');
           })()}` :
           `<div class="gallery-empty">
-            Photos for this property will appear here once available.<br>
+            Photos not yet downloaded — run scripts/rightmove_image_scraper.py then push to repo.<br>
             <a href="${p.rightmove_url}" target="_blank" style="color:#4d9fff">View on Rightmove ↗</a>
           </div>`}
       </div>
       <div id="gtab-floor" style="display:none">
         ${rmFloors.length ? `
           <div style="display:flex;gap:6px;padding:4px 6px;background:#1a1a1a;align-items:center">
-            <span style="color:#aaa;font-size:var(--text-sm);flex:1">Scroll or pinch to zoom · drag to pan</span>
-            <button class="pz-btn" onclick="pzIn('floor-wrap')" title="Zoom in" aria-label="Zoom in" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2)">+</button>
-            <button class="pz-btn" onclick="pzOut('floor-wrap')" title="Zoom out" aria-label="Zoom out" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2)">−</button>
-            <button class="pz-btn" onclick="pzReset('floor-wrap')" title="Reset zoom" aria-label="Reset zoom" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2)">⤢</button>
-            <button class="pz-btn" onclick="openFloorWindow()" title="Open in new window" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2);padding:0 6px;font-size:var(--text-sm);width:auto">⊞ New window</button>
+            <span style="color:#aaa;font-size:11px;flex:1">Scroll or pinch to zoom · drag to pan</span>
+            <button class="pz-btn" onclick="pzIn('floor-wrap')" title="Zoom in" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2)">+</button>
+            <button class="pz-btn" onclick="pzOut('floor-wrap')" title="Zoom out" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2)">−</button>
+            <button class="pz-btn" onclick="pzReset('floor-wrap')" title="Reset zoom" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2)">⤢</button>
+            <button class="pz-btn" onclick="openFloorWindow()" title="Open in new window" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2);padding:0 6px;font-size:11px;width:auto">⊞ New window</button>
           </div>
           <div class="gallery-main-wrap" id="floor-wrap" style="cursor:grab">
             <img class="gallery-main" id="gallery-floor-main"
@@ -1408,8 +1123,7 @@ function renderDetail(p) {
           </div>
           ${rmFloors.length > 1 ? `<div class="gallery-thumbs">
             ${rmFloors.map((src,i)=>`<img src="${src}" data-idx="${i}" class="${i===0?'active-thumb':''}"
-              onerror="imgFallback(this)" tabindex="0" role="button"
-              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"
+              onerror="this.style.display='none'"
               onclick="pickFloor(this,${i})" alt="Floorplan ${i+1}">`).join('')}
           </div>` : ''}` :
           `<div class="gallery-empty">
@@ -1419,7 +1133,7 @@ function renderDetail(p) {
       <div id="gtab-visit" style="display:none">
         ${visitPhotos.length ? `<div style="padding:6px"><div class="photo-grid">
           ${visitPhotos.map((ph,i)=>`<img class="photo-thumb" src="${ph.url}"
-            onerror="imgFallback(this)" onclick="visitLb(${i})" alt="${ph.name}">`).join('')}
+            onclick="visitLb(${i})" alt="${ph.name}">`).join('')}
         </div></div>` : `<div class="gallery-empty">No visit photos yet</div>`}
       </div>
     </div>
@@ -1436,8 +1150,8 @@ function renderDetail(p) {
             const dislikes=pv.filter(v=>v.type==='dislike').length;
             const net=likes-dislikes;
             const myV=localStorage.getItem('vote_'+ref);
-            return '<button class="dv-btn like '+(myV==='like'?'voted':'')+'" data-ref="'+ref+'" data-type="like" title="Like" aria-label="Like this property">👍</button>'
-              +'<button class="dv-btn dislike '+(myV==='dislike'?'voted':'')+'" data-ref="'+ref+'" data-type="dislike" title="Dislike" aria-label="Dislike this property">👎</button>'
+            return '<button class="dv-btn like '+(myV==='like'?'voted':'')+'" data-ref="'+ref+'" data-type="like" title="Like">👍</button>'
+              +'<button class="dv-btn dislike '+(myV==='dislike'?'voted':'')+'" data-ref="'+ref+'" data-type="dislike" title="Dislike">👎</button>'
               +(net!==0?'<span class="dv-net" style="color:'+(net>0?'var(--green)':'var(--red)')+'">'+(net>0?'+':'')+net+'</span>':'');
           })()}
         </div>
@@ -1493,7 +1207,7 @@ function renderDetail(p) {
             onclick="setAgentStatus('${p.ref}','${as}')">${agentStatusLabel(as)}</button>`
         ).join('')}
       </div>
-      <div id="agent-status-note-${p.ref}" style="font-size:var(--text-sm);color:var(--muted);margin-bottom:6px">
+      <div id="agent-status-note-${p.ref}" style="font-size:11px;color:var(--muted);margin-bottom:6px">
         ${(notes.agentStatus||{})[p.ref] ? 'Last updated: ' + ((notes.agentStatusDate||{})[p.ref]||'') : ''}
       </div>
       <div class="agent-email-row">
@@ -1501,14 +1215,6 @@ function renderDetail(p) {
           placeholder="Agent email address (enables mailto: link with questions pre-filled)"
           value="${(notes.agentEmail||{})[p.ref]||''}">
         <button class="agent-email-save" onclick="saveAgentEmail('${p.ref}')">Save</button>
-      </div>
-      <div class="agent-email-row">
-        ${(()=>{const phone=(notes.agentPhone||{})[p.ref];
-          return phone?`<a class="detail-agent" href="tel:${phone.replace(/\s+/g,'')}" style="font-weight:600;color:var(--navy)">📞 ${phone}</a>`:'';})()}
-        <input class="agent-email-input" type="tel" id="agent-phone-${p.ref}"
-          placeholder="Agent phone number"
-          value="${(notes.agentPhone||{})[p.ref]||''}">
-        <button class="agent-email-save" onclick="saveAgentPhone('${p.ref}')">Save</button>
       </div>
 
       <!-- ABOUT -->
@@ -1522,7 +1228,7 @@ function renderDetail(p) {
           <div class="detail-desc" id="desc-full-${p.ref}" style="display:none">${(p.full_desc||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>')}</div>
           <button onclick="toggleDesc('${p.ref}')" id="desc-toggle-${p.ref}"
             style="margin-top:6px;background:none;border:none;color:var(--navy);
-            font-size:var(--text-sm);cursor:pointer;padding:0;font-weight:600">
+            font-size:12px;cursor:pointer;padding:0;font-weight:600">
             ▼ Show full description
           </button>`;
       })()}
@@ -1539,6 +1245,7 @@ function renderDetail(p) {
       <textarea id="notes-area" placeholder="Add notes — impressions, questions for agent, what you noticed on the viewing…">${existingNote?existingNote.text:''}</textarea>
       <div style="display:flex;align-items:center">
         <button class="save-btn" onclick="saveNote('${p.ref}')">Save note</button>
+        <span class="note-ok" id="note-ok"></span>
       </div>
 
       <!-- UPLOAD -->
@@ -1558,7 +1265,7 @@ function renderDetail(p) {
       <div class="ds"><h3>Viewing date</h3></div>
       <div style="display:flex;gap:8px;align-items:center">
         <input type="date" id="vd-${p.ref}" value="${visitDate||''}"
-          style="padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:var(--text-sm)">
+          style="padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:12px">
         <button class="save-btn" onclick="saveVisitDate('${p.ref}')">Save</button>
       </div>
 
@@ -1574,13 +1281,10 @@ function renderDetail(p) {
       <!-- DELETE -->
       <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--border)">
         <button onclick="confirmDelete('${p.ref}')"
-          style="background:var(--color-danger-bg);color:var(--red);border:1px solid #ffc4c4;
-          padding:6px 13px;border-radius:4px;cursor:pointer;font-size:var(--text-sm);font-weight:600">
+          style="background:#FFE4E4;color:var(--red);border:1px solid #ffc4c4;
+          padding:6px 13px;border-radius:4px;cursor:pointer;font-size:12px;font-weight:600">
           🗑 Remove this property
         </button>
-        <div style="font-size:var(--text-xs);color:var(--muted);margin-top:8px">
-          Data last updated: ${(notes.agentStatusDate||{})[p.ref] || new Date().toLocaleDateString('en-GB')}
-        </div>
       </div>
     </div>`;
 
@@ -1610,6 +1314,421 @@ function switchGalleryTab(btn, tab) {
   }
 }
 
+
+
+// ── VIEWING DAY PLANNER ───────────────────────────────────────────────────────
+let clusters = [], plannerCustomSelected = [];
+
+async function loadClusters() {
+  if (clusters.length) return;
+  try {
+    const r = await fetch('data/clusters.json');
+    if (r.ok) clusters = await r.json();
+  } catch(e) {}
+}
+
+function showPlanner() {
+  loadClusters().then(() => {
+    renderSuggestedTab();
+    renderCustomTab();
+    document.getElementById('planner-overlay').classList.add('show');
+  });
+}
+function hidePlanner() {
+  document.getElementById('planner-overlay').classList.remove('show');
+}
+function handlePlannerClick(e) {
+  if (e.target === document.getElementById('planner-overlay')) hidePlanner();
+}
+function switchPlannerTab(btn, tab) {
+  document.querySelectorAll('.planner-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('ptab-suggested').style.display = tab==='suggested'?'':'none';
+  document.getElementById('ptab-custom').style.display    = tab==='custom'?'':'none';
+}
+
+function fmtMins(m) {
+  if (m < 60) return m + 'min';
+  return Math.floor(m/60) + 'h' + (m%60 ? ' ' + (m%60) + 'min' : '');
+}
+
+function renderSuggestedTab() {
+  const el = document.getElementById('ptab-suggested');
+  if (!clusters.length) {
+    el.innerHTML = '<p style="color:var(--muted);font-size:13px">No cluster data available.</p>';
+    return;
+  }
+  const intro = `<p class="planner-intro">
+    Grouped by proximity — properties close enough to visit in a single day.
+    Times are <strong>estimated driving times</strong> from <strong>UB7 7JY</strong>
+    at ~55 km/h average. Allow 60 minutes per viewing plus time for lunch.
+  </p>`;
+
+  const cards = clusters.map((c, ci) => {
+    const props_sorted = c.properties;
+    const n = props_sorted.length;
+
+    // Build timeline rows
+    let timelineHtml = '';
+    // UB7 start
+    timelineHtml += `
+      <div class="jt-row">
+        <div class="jt-dot start"></div>
+        <div><div class="jt-label">UB7 7JY (home)</div><div class="jt-sublabel">Depart ~8:00am</div></div>
+        <div></div>
+      </div>`;
+    // Drive to first property
+    timelineHtml += `
+      <div class="jt-drive-row">
+        <div class="jt-drive-line"></div>
+        <div class="jt-drive-text">🚗 Drive to ${props_sorted[0].name.split(',')[0]}</div>
+        <div class="jt-drive-mins">${fmtMins(c.legs_mins[0])}</div>
+      </div>`;
+    // Each property
+    props_sorted.forEach((p, i) => {
+      const sc = scorecards[p.ref];
+      const pct = sc ? sc.overall_pct : '?';
+      timelineHtml += `
+        <div class="jt-row" style="cursor:pointer" onclick="hidePlanner();selectProp('${p.ref}')">
+          <div class="jt-dot prop"></div>
+          <div>
+            <div class="jt-label">#${p.rank} ${p.name}</div>
+            <div class="jt-sublabel">${p.price_display} · ${p.location} · ${pct}% fit · ${p.annexe==='confirmed'?'✓ annexe':'~ potential'}</div>
+          </div>
+          <div>
+            <div class="jt-time">${fmtMins(p.ub7_drive_mins)} from UB7</div>
+          </div>
+        </div>`;
+      // Drive to next
+      if (i < n-1) {
+        timelineHtml += `
+          <div class="jt-drive-row">
+            <div class="jt-drive-line"></div>
+            <div class="jt-drive-text">🚗 Drive to ${props_sorted[i+1].name.split(',')[0]}</div>
+            <div class="jt-drive-mins">${fmtMins(c.legs_mins[i+1])}</div>
+          </div>`;
+      }
+    });
+    // Drive home
+    timelineHtml += `
+      <div class="jt-drive-row">
+        <div class="jt-drive-line"></div>
+        <div class="jt-drive-text">🚗 Return to UB7 7JY</div>
+        <div class="jt-drive-mins">${fmtMins(c.legs_mins[n])}</div>
+      </div>
+      <div class="jt-row">
+        <div class="jt-dot end"></div>
+        <div><div class="jt-label">UB7 7JY (home)</div>
+        <div class="jt-sublabel">Est. return ~${estimateReturnTime(c)}</div></div>
+        <div></div>
+      </div>`;
+
+    const areaName = getClusterArea(c);
+    return `
+      <div class="cluster-card" id="cluster-${ci}">
+        <div class="cluster-header" onclick="toggleCluster(${ci})">
+          <span class="cluster-badge">Day ${ci+1}</span>
+          <div>
+            <div class="cluster-title">${areaName}</div>
+            <div class="cluster-meta">
+              <span>🏠 ${n} propert${n===1?'y':'ies'}</span>
+              <span>🚗 ${fmtMins(c.total_drive_mins)} driving</span>
+              <span>⏱ ~${fmtMins(c.total_day_mins)} total day</span>
+            </div>
+          </div>
+          <span style="color:var(--muted);font-size:14px" id="cluster-chevron-${ci}">▼</span>
+        </div>
+        <div class="cluster-body" id="cluster-body-${ci}">
+          <div class="journey-timeline">${timelineHtml}</div>
+          <div class="cluster-totals">
+            <div class="ct-item"><div class="ct-val">${fmtMins(c.legs_mins[0])}</div><div class="ct-lbl">UB7 → first</div></div>
+            <div class="ct-item"><div class="ct-val">${fmtMins(c.total_drive_mins)}</div><div class="ct-lbl">Total driving</div></div>
+            <div class="ct-item"><div class="ct-val">${n * 60}min</div><div class="ct-lbl">Viewings (${n}×60)</div></div>
+            <div class="ct-item"><div class="ct-val">${fmtMins(c.total_day_mins)}</div><div class="ct-lbl">Est. day total</div></div>
+          </div>
+          <div class="cluster-actions">
+            <button class="ca-btn primary" onclick="showClusterOnMap(${ci})">🗺 Show on map</button>
+            <button class="ca-btn secondary" onclick="copyItinerary(${ci})">📋 Copy itinerary</button>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+
+  el.innerHTML = intro + cards;
+}
+
+function estimateReturnTime(c) {
+  // Assume 8am depart, 60min per viewing
+  let mins = 8 * 60 + c.total_day_mins;
+  const h = Math.floor(mins/60) % 24;
+  const m = mins % 60;
+  return `${h}:${m.toString().padStart(2,'0')}`;
+}
+
+function getClusterArea(c) {
+  // Derive area name from property locations
+  const locations = c.properties.map(p => p.location.split(',').pop().trim());
+  const unique = [...new Set(locations)];
+  if (unique.length === 1) return unique[0];
+  // Find common county/region word
+  const words = unique.join(' ').split(' ');
+  const freq = {};
+  words.forEach(w => { if (w.length > 3) freq[w] = (freq[w]||0)+1; });
+  const common = Object.entries(freq).filter(([,n])=>n>1).sort((a,b)=>b[1]-a[1]);
+  if (common.length) return common[0][0] + ' area';
+  return unique.slice(0,2).join(' / ');
+}
+
+function toggleCluster(ci) {
+  const body = document.getElementById('cluster-body-'+ci);
+  const chev = document.getElementById('cluster-chevron-'+ci);
+  const hidden = body.style.display === 'none';
+  body.style.display = hidden ? '' : 'none';
+  chev.textContent = hidden ? '▼' : '▶';
+}
+
+let plannerMapLayers = [];
+function showClusterOnMap(ci) {
+  const c = clusters[ci];
+  hidePlanner();
+  // Clear previous planner layers
+  plannerMapLayers.forEach(l => { try { map.removeLayer(l); } catch(e){} });
+  plannerMapLayers = [];
+
+  const points = [[51.5046, -0.4812], // UB7
+    ...c.properties.map(p => [p.lat, p.lng]),
+    [51.5046, -0.4812]];  // return
+
+  // Draw route line
+  const line = L.polyline(points, {color:'#7F4F00',weight:3,opacity:0.7,dashArray:'8,5'}).addTo(map);
+  plannerMapLayers.push(line);
+
+  // UB7 marker
+  const ub7Icon = L.divIcon({
+    html:'<div style="background:#1F4E79;color:#fff;font-size:9px;font-weight:700;padding:3px 6px;border-radius:3px;white-space:nowrap;box-shadow:0 1px 4px rgba(0,0,0,.3)">🏠 UB7</div>',
+    iconAnchor:[20,12], className:''
+  });
+  plannerMapLayers.push(L.marker([51.5046,-0.4812],{icon:ub7Icon}).addTo(map));
+
+  // Property order labels
+  c.properties.forEach((p,i) => {
+    const icon = L.divIcon({
+      html:`<div style="background:#7F4F00;color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3)">${i+1}</div>`,
+      iconSize:[22,22], iconAnchor:[11,11], className:''
+    });
+    plannerMapLayers.push(L.marker([p.lat,p.lng],{icon}).addTo(map));
+  });
+
+  // Fit map to show all points
+  map.fitBounds(L.latLngBounds(points), {padding:[40,40]});
+}
+
+function copyItinerary(ci) {
+  const c = clusters[ci];
+  const lines = [
+    `VIEWING DAY ${ci+1} — ${getClusterArea(c)}`,
+    `Total day: ~${fmtMins(c.total_day_mins)} | Driving: ${fmtMins(c.total_drive_mins)}`,
+    '',
+    `08:00  Depart UB7 7JY`,
+  ];
+  let hour = 8, min = 0;
+  c.properties.forEach((p, i) => {
+    min += c.legs_mins[i];
+    hour += Math.floor(min/60); min = min%60;
+    lines.push(`${hour}:${min.toString().padStart(2,'0')}  Arrive: #${p.rank} ${p.name}`);
+    lines.push(`         ${p.price_display} · ${p.location}`);
+    lines.push(`         ${p.ub7_drive_mins}min from UB7 · ${p.annexe==='confirmed'?'Confirmed annexe':'Potential annexe'}`);
+    lines.push(`         View: ${p.rightmove_url||''}`);
+    min += 60; // 60min viewing
+    hour += Math.floor(min/60); min = min%60;
+    lines.push(`${hour}:${min.toString().padStart(2,'0')}  Depart`);
+    if (i < c.properties.length-1) {
+      lines.push(`         🚗 ${fmtMins(c.legs_mins[i+1])} drive to next`);
+    }
+  });
+  min += c.legs_mins[c.properties.length];
+  hour += Math.floor(min/60); min = min%60;
+  lines.push(`${hour}:${min.toString().padStart(2,'0')}  Return UB7 7JY`);
+  lines.push('');
+  lines.push('Generated by House Hunt 2026');
+
+  navigator.clipboard.writeText(lines.join('\n')).then(() => {
+    const btn = event.target;
+    btn.textContent = '✓ Copied!';
+    setTimeout(()=>btn.textContent='📋 Copy itinerary', 2000);
+  });
+}
+
+// ── CUSTOM BUILDER ─────────────────────────────────────────────────────────
+function renderCustomTab() {
+  const el = document.getElementById('ptab-custom');
+  const UB7 = [51.5046, -0.4812];
+
+  function haversine(a, b) {
+    const R=6371, toRad=x=>x*Math.PI/180;
+    const dLat=toRad(b[0]-a[0]), dLon=toRad(b[1]-a[1]);
+    const h=Math.sin(dLat/2)**2+Math.cos(toRad(a[0]))*Math.cos(toRad(b[0]))*Math.sin(dLon/2)**2;
+    return 2*R*Math.asin(Math.sqrt(h));
+  }
+  function driveMins(km) { return Math.round(km/55*60); }
+
+  // Eligible properties (not rejected, not duplicate)
+  const eligible = properties.filter(p =>
+    !['rejected','not-proceeding'].includes(p.status) &&
+    p.caveat !== 'duplicate' &&
+    p.lat && p.lng
+  ).sort((a,b)=>a.rank-b.rank);
+
+  const rows = eligible.map(p => {
+    const km = haversine(UB7, [p.lat,p.lng]);
+    const mins = driveMins(km);
+    return `<div class="custom-prop-row" id="cprop-${p.ref}"
+        data-ref="${p.ref}" data-lat="${p.lat}" data-lng="${p.lng}" data-mins="${mins}"
+        onclick="toggleCustomProp('${p.ref}')">
+      <div class="cp-rank" style="background:${rc(p.rank)}">${p.rank}</div>
+      <div>
+        <div class="cp-name">${p.name}</div>
+        <div style="font-size:10.5px;color:var(--muted)">${p.price_display} · ${p.annexe==='confirmed'?'✓ annexe':'~ potential'}</div>
+      </div>
+      <div class="cp-dist">${fmtMins(mins)}</div>
+    </div>`;
+  }).join('');
+
+  el.innerHTML = `
+    <p class="planner-intro">Select up to 5 properties to build a custom viewing day.
+    A warning will appear if properties are too far apart for a single day.</p>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:6px">
+      Click to select — <span id="custom-count">0</span>/5 selected
+    </div>
+    <div class="custom-prop-list">${rows}</div>
+    <div id="custom-result"></div>`;
+}
+
+function toggleCustomProp(ref) {
+  const idx = plannerCustomSelected.indexOf(ref);
+  if (idx >= 0) {
+    plannerCustomSelected.splice(idx, 1);
+    document.getElementById('cprop-'+ref)?.classList.remove('selected');
+  } else {
+    if (plannerCustomSelected.length >= 5) {
+      showToast && showToast('Maximum 5 properties per day', 'warning');
+      return;
+    }
+    plannerCustomSelected.push(ref);
+    document.getElementById('cprop-'+ref)?.classList.add('selected');
+  }
+  document.getElementById('custom-count').textContent = plannerCustomSelected.length;
+  renderCustomResult();
+}
+
+function renderCustomResult() {
+  const el = document.getElementById('custom-result');
+  if (!plannerCustomSelected.length) { el.innerHTML=''; return; }
+
+  const UB7 = [51.5046, -0.4812];
+  function haversine(a,b){const R=6371,toRad=x=>x*Math.PI/180,dLat=toRad(b[0]-a[0]),dLon=toRad(b[1]-a[1]),h=Math.sin(dLat/2)**2+Math.cos(toRad(a[0]))*Math.cos(toRad(b[0]))*Math.sin(dLon/2)**2;return 2*R*Math.asin(Math.sqrt(h));}
+  function dMins(km){return Math.round(km/55*60);}
+
+  const selected = plannerCustomSelected.map(ref => properties.find(p=>p.ref===ref)).filter(Boolean);
+  // Sort by distance from UB7
+  selected.sort((a,b)=>haversine(UB7,[a.lat,a.lng])-haversine(UB7,[b.lat,b.lng]));
+
+  // Build legs
+  const legs = [haversine(UB7,[selected[0].lat,selected[0].lng])];
+  for (let i=0;i<selected.length-1;i++)
+    legs.push(haversine([selected[i].lat,selected[i].lng],[selected[i+1].lat,selected[i+1].lng]));
+  legs.push(haversine([selected[selected.length-1].lat,selected[selected.length-1].lng],UB7));
+
+  const legMins = legs.map(dMins);
+  const totalDrive = legMins.reduce((a,b)=>a+b,0);
+  const totalDay = totalDrive + selected.length*60;
+
+  // Warn if any inter-property leg > 60 mins
+  const maxInterLeg = Math.max(...legMins.slice(1,-1));
+  const warning = maxInterLeg > 60
+    ? `<div style="background:#FFF3CD;border:1px solid #ffc107;border-radius:4px;
+        padding:8px 10px;font-size:12px;color:#664d03;margin-bottom:10px">
+        ⚠ One leg is ${fmtMins(maxInterLeg)} — these properties may be too spread out
+        for a comfortable single day. Consider splitting into two days.
+      </div>` : '';
+
+  if (totalDay > 12*60) {
+    // Over 12 hour day
+  }
+
+  let rows = `
+    <div style="font-size:11px;color:var(--muted);margin-bottom:6px">🚗 UB7 → first: ${fmtMins(legMins[0])}</div>`;
+  selected.forEach((p,i) => {
+    rows += `<div style="display:flex;justify-content:space-between;padding:5px 0;
+      border-bottom:1px solid var(--border);font-size:12.5px">
+      <span><strong>#${p.rank}</strong> ${p.name}</span>
+      <span style="color:var(--navy);font-weight:600">${fmtMins(legMins[i+1])} next${i<selected.length-1?'→home':' →home'}</span>
+    </div>`;
+  });
+
+  el.innerHTML = `<div class="custom-result">
+    ${warning}
+    ${rows}
+    <div class="cluster-totals" style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border)">
+      <div class="ct-item"><div class="ct-val">${fmtMins(totalDrive)}</div><div class="ct-lbl">Driving</div></div>
+      <div class="ct-item"><div class="ct-val">${selected.length * 60}min</div><div class="ct-lbl">Viewings</div></div>
+      <div class="ct-item"><div class="ct-val">${fmtMins(totalDay)}</div><div class="ct-lbl">Total day</div></div>
+    </div>
+    <div class="cluster-actions">
+      <button class="ca-btn primary" onclick="showCustomOnMap()">🗺 Show on map</button>
+      <button class="ca-btn secondary" onclick="copyCustomItinerary()">📋 Copy itinerary</button>
+    </div>
+  </div>`;
+}
+
+function showCustomOnMap() {
+  const UB7 = [51.5046,-0.4812];
+  function haversine(a,b){const R=6371,toRad=x=>x*Math.PI/180,dLat=toRad(b[0]-a[0]),dLon=toRad(b[1]-a[1]),h=Math.sin(dLat/2)**2+Math.cos(toRad(a[0]))*Math.cos(toRad(b[0]))*Math.sin(dLon/2)**2;return 2*R*Math.asin(Math.sqrt(h));}
+  const selected = plannerCustomSelected.map(ref=>properties.find(p=>p.ref===ref)).filter(Boolean)
+    .sort((a,b)=>haversine(UB7,[a.lat,a.lng])-haversine(UB7,[b.lat,b.lng]));
+  hidePlanner();
+  plannerMapLayers.forEach(l=>{try{map.removeLayer(l);}catch(e){}});
+  plannerMapLayers=[];
+  const points=[UB7,...selected.map(p=>[p.lat,p.lng]),UB7];
+  const line=L.polyline(points,{color:'#7F4F00',weight:3,opacity:.7,dashArray:'8,5'}).addTo(map);
+  plannerMapLayers.push(line);
+  const ub7Icon=L.divIcon({html:'<div style="background:#1F4E79;color:#fff;font-size:9px;font-weight:700;padding:3px 6px;border-radius:3px">🏠 UB7</div>',iconAnchor:[20,12],className:''});
+  plannerMapLayers.push(L.marker(UB7,{icon:ub7Icon}).addTo(map));
+  selected.forEach((p,i)=>{
+    const icon=L.divIcon({html:`<div style="background:#7F4F00;color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3)">${i+1}</div>`,iconSize:[22,22],iconAnchor:[11,11],className:''});
+    plannerMapLayers.push(L.marker([p.lat,p.lng],{icon}).addTo(map));
+  });
+  map.fitBounds(L.latLngBounds(points),{padding:[40,40]});
+}
+
+function copyCustomItinerary() {
+  const UB7=[51.5046,-0.4812];
+  function haversine(a,b){const R=6371,toRad=x=>x*Math.PI/180,dLat=toRad(b[0]-a[0]),dLon=toRad(b[1]-a[1]),h=Math.sin(dLat/2)**2+Math.cos(toRad(a[0]))*Math.cos(toRad(b[0]))*Math.sin(dLon/2)**2;return 2*R*Math.asin(Math.sqrt(h));}
+  function dMins(km){return Math.round(km/55*60);}
+  const selected=plannerCustomSelected.map(ref=>properties.find(p=>p.ref===ref)).filter(Boolean)
+    .sort((a,b)=>haversine(UB7,[a.lat,a.lng])-haversine(UB7,[b.lat,b.lng]));
+  const legs=[haversine(UB7,[selected[0].lat,selected[0].lng])];
+  for(let i=0;i<selected.length-1;i++) legs.push(haversine([selected[i].lat,selected[i].lng],[selected[i+1].lat,selected[i+1].lng]));
+  legs.push(haversine([selected[selected.length-1].lat,selected[selected.length-1].lng],UB7));
+  const legMins=legs.map(dMins);
+  const lines=['CUSTOM VIEWING DAY','From: UB7 7JY',''];
+  let h=8,m=0;
+  lines.push(`08:00  Depart UB7 7JY`);
+  selected.forEach((p,i)=>{m+=legMins[i];h+=Math.floor(m/60);m=m%60;
+    lines.push(`${h}:${m.toString().padStart(2,'0')}  #${p.rank} ${p.name} (${p.price_display})`);
+    lines.push(`         ${p.location}`);
+    lines.push(`         Rightmove: ${p.rightmove_url||''}`);
+    m+=60;h+=Math.floor(m/60);m=m%60;
+    lines.push(`${h}:${m.toString().padStart(2,'0')}  Depart`);
+    if(i<selected.length-1) lines.push(`         🚗 ${fmtMins(legMins[i+1])} to next`);
+  });
+  m+=legMins[selected.length];h+=Math.floor(m/60);m=m%60;
+  lines.push(`${h}:${m.toString().padStart(2,'0')}  Return UB7 7JY`);
+  navigator.clipboard.writeText(lines.join('\n')).then(()=>{
+    const btn=event.target; btn.textContent='✓ Copied!';
+    setTimeout(()=>btn.textContent='📋 Copy itinerary',2000);
+  });
+}
 
 // ── PANZOOM ───────────────────────────────────────────────────────────────────
 const pzInstances = {};
@@ -1648,33 +1767,40 @@ function openFloorWindow() {
     +'img.zoomed{max-width:none;max-height:none;cursor:zoom-out}'
     +'</style></head><body>'
     +'<img src="'+src+'" onclick="this.classList.toggle(\'zoomed\')" alt="Floorplan">'
-    +'</body></html>');
+    +'
+<!-- VIEWING DAY PLANNER -->
+<div id="planner-overlay" onclick="handlePlannerClick(event)">
+  <div id="planner-box">
+    <div id="planner-header">
+      <span>🗓</span>
+      <h2>Viewing Day Planner</h2>
+      <button class="planner-close" onclick="hidePlanner()">✕</button>
+    </div>
+    <div id="planner-body">
+      <div class="planner-tabs">
+        <button class="planner-tab active" onclick="switchPlannerTab(this,'suggested')">Suggested days</button>
+        <button class="planner-tab" onclick="switchPlannerTab(this,'custom')">Build your own</button>
+      </div>
+      <div id="ptab-suggested"></div>
+      <div id="ptab-custom" style="display:none"></div>
+    </div>
+  </div>
+</div>
+
+</body></html>');
   w.document.close();
 }
 
 // ── AGENT STATUS ──────────────────────────────────────────────────────────────
-async function saveAgentEmail(ref) {
+function saveAgentEmail(ref) {
   const input = document.getElementById('agent-email-'+ref);
   if (!input) return;
   const email = input.value.trim();
   if (!notes.agentEmail) notes.agentEmail = {};
   notes.agentEmail[ref] = email;
   localStorage.setItem('house_notes', JSON.stringify(notes));
-  await pushNotesFile('Save agent email for '+ref);
-  if (getToken()) showToast('✓ Agent email saved','success');
+  pushNotesFile('Save agent email for '+ref);
   // Re-render detail to update the contact link
-  const p = properties.find(x=>x.ref===ref);
-  if (p) renderDetail(p);
-}
-
-function saveAgentPhone(ref) {
-  const input = document.getElementById('agent-phone-'+ref);
-  if (!input) return;
-  const phone = input.value.trim();
-  if (!notes.agentPhone) notes.agentPhone = {};
-  notes.agentPhone[ref] = phone;
-  localStorage.setItem('house_notes', JSON.stringify(notes));
-  pushNotesFile('Save agent phone for '+ref);
   const p = properties.find(x=>x.ref===ref);
   if (p) renderDetail(p);
 }
@@ -1701,24 +1827,20 @@ function setAgentStatus(ref, status) {
 
 // ── QUESTIONS POPUP ──────────────────────────────────────────────────────────
 let currentQsRef = null;
-let lastFocusQs = null;
 function showQuestions(ref) {
   const sc = scorecards[ref];
   const p  = properties.find(x => x.ref === ref);
   currentQsRef = ref;
-  lastFocusQs = document.activeElement;
   document.getElementById('qs-popup-title').textContent =
     `Questions to ask — ${p ? p.name : ref}`;
   const qs = sc?.questions || [];
   document.getElementById('qs-popup-body').innerHTML = qs.length
     ? qs.map((q,i) => `<div class="qs-item"><span class="qs-num">${i+1}.</span><span>${q}</span></div>`).join('')
-    : '<p style="color:var(--muted);font-size:var(--text-sm)">No outstanding questions for this property.</p>';
+    : '<p style="color:var(--muted);font-size:12px">No outstanding questions for this property.</p>';
   document.getElementById('qs-popup').classList.add('show');
 }
 function hideQuestions() {
   document.getElementById('qs-popup').classList.remove('show');
-  if (lastFocusQs && lastFocusQs.focus) lastFocusQs.focus();
-  lastFocusQs = null;
   currentQsRef = null;
 }
 function copyQsFromPopup() {
@@ -1745,13 +1867,6 @@ function copyQsFromPopup() {
 // Close popup on backdrop click
 document.getElementById('qs-popup')?.addEventListener('click', e => {
   if (e.target === document.getElementById('qs-popup')) hideQuestions();
-});
-
-// Close any open info-tip when clicking elsewhere (mobile)
-document.addEventListener('click', e => {
-  if (!e.target.closest('.info-tip')) {
-    document.querySelectorAll('.info-tip.show').forEach(t=>t.classList.remove('show'));
-  }
 });
 
 
@@ -1783,7 +1898,7 @@ function renderVotes(ref) {
       <button class="vote-submit-btn" onclick="submitVoteReason('${ref}')">Submit vote with reason</button>
     </div>
     ${withReason.length?`
-      <div style="font-size:var(--text-sm);font-weight:700;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">
+      <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">
         Votes with explanations</div>
       <div class="vote-history">${voteHistory}</div>`:''}
     </div>`
@@ -1914,8 +2029,7 @@ async function pushVotesFile(message) {
   try {
     const content = btoa(unescape(encodeURIComponent(JSON.stringify(votes, null, 2))));
     await ghPut('data/votes.json', content, message);
-    showToast('✓ Vote saved','success');
-  } catch(e) { console.warn('Save failed, changes stored locally.'); }
+  } catch(e) { console.warn('Votes push failed:', e); }
 }
 
 // ── JOURNEY TIMES ─────────────────────────────────────────────────────────────
@@ -1952,7 +2066,7 @@ function renderJourneys(p) {
       </div>
       <div class="journey-card">
         <div class="jc-label">🛒 Nearest town</div>
-        <div class="jc-time" style="font-size:var(--text-sm);padding-top:4px">${j.nearest_town||'—'}</div>
+        <div class="jc-time" style="font-size:12px;padding-top:4px">${j.nearest_town||'—'}</div>
       </div>
     </div>
     <div>
@@ -2031,7 +2145,6 @@ async function showRoute(ref, dest) {
       if (rd.routes && rd.routes[0]) {
         const coords = rd.routes[0].geometry.coordinates.map(c=>[c[1],c[0]]);
         const distKm = (rd.routes[0].distance/1000).toFixed(0);
-        // Leaflet sets colour as a raw SVG attribute, not via style — CSS vars won't resolve, must stay inline
         currentRoute = L.polyline(coords, {color:'#1F4E79',weight:4,opacity:0.8}).addTo(map);
         map.fitBounds(currentRoute.getBounds(), {padding:[40,40]});
         document.getElementById('route-text').innerHTML =
@@ -2045,7 +2158,6 @@ async function showRoute(ref, dest) {
   } catch(e) {}
 
   // Fallback: straight line
-  // Leaflet sets colour as a raw SVG attribute, not via style — CSS vars won't resolve, must stay inline
   currentRoute = L.polyline([from, to], {color:'#1F4E79',weight:3,opacity:0.6,dashArray:'8,6'}).addTo(map);
   map.fitBounds(currentRoute.getBounds(), {padding:[40,40]});
   const km = Math.round(L.latLng(from).distanceTo(L.latLng(to))/1000);
@@ -2084,7 +2196,7 @@ function renderHomeEd(p) {
         <strong>ASD / neurodiversity support:</strong> ${he.asd_support}
       </div>`:''}
     ${groups?`
-      <div style="font-size:var(--text-sm);font-weight:700;color:var(--muted);margin-bottom:4px;
+      <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:4px;
         text-transform:uppercase;letter-spacing:.04em">Local groups & contacts</div>
       <div>${groups}</div>`:''}
     ${he.notes?`<div class="detail-desc" style="margin-top:8px;color:var(--muted);font-style:italic">${he.notes}</div>`:''}`;
@@ -2146,7 +2258,7 @@ function pickFloor(thumb, i) {
 
 // ── STATUS ────────────────────────────────────────────────────────────────────
 const sLabel=s=>({'active':'Active','viewing-booked':'Viewing booked','offer-made':'Offer made','rejected':'Rejected'}[s]||s);
-const sCol=s=>({'active':'var(--color-success)','viewing-booked':'var(--color-primary)','offer-made':'var(--color-warning)','rejected':'#888'}[s]||'#ccc');
+const sCol=s=>({'active':' #1E7145','viewing-booked':'#1F4E79','offer-made':'#7F4F00','rejected':'#888'}[s]||'#ccc');
 
 function setStatus(ref,status) {
   const p=properties.find(x=>x.ref===ref);
@@ -2165,25 +2277,20 @@ function setStatus(ref,status) {
 }
 
 function updateStats() {
-  const propCount=properties.filter(p=>['active','viewing-booked','offer-made'].includes(p.status)).length;
-  const viewingCount=properties.filter(p=>p.status==='viewing-booked').length;
-  const topPick=properties.reduce((best,p)=>(!best||p.rank<best.rank)?p:best,null);
-  const topName=topPick?(topPick.name.length>25?topPick.name.slice(0,25)+'…':topPick.name):'—';
-  document.getElementById('stat-active').textContent=`🏠 ${propCount} properties`;
-  document.getElementById('stat-viewing').textContent=`📅 ${viewingCount} viewings booked`;
-  document.getElementById('stat-offer').textContent=`🌟 Top pick: ${topName}`;
+  const a=properties.filter(p=>p.status==='active').length;
+  const v=properties.filter(p=>p.status==='viewing-booked').length;
+  const o=properties.filter(p=>p.status==='offer-made').length;
+  document.getElementById('stat-active').textContent=`${a} active`;
+  document.getElementById('stat-viewing').textContent=`${v} viewing`;
+  document.getElementById('stat-offer').textContent=`${o} offer`;
 }
 
 // ── ADD PROPERTY ──────────────────────────────────────────────────────────────
-let lastFocusAddModal = null;
 function showAddModal() {
-  lastFocusAddModal = document.activeElement;
   document.getElementById('add-modal').classList.add('show');
 }
 function hideAddModal() {
   document.getElementById('add-modal').classList.remove('show');
-  if (lastFocusAddModal && lastFocusAddModal.focus) lastFocusAddModal.focus();
-  lastFocusAddModal = null;
 }
 
 function inferFromRef() {
@@ -2277,7 +2384,8 @@ async function fetchRmDetails() {
       ? `✓ Details fetched — check and complete the form below`
       : `⚠ Partial details only — please complete the form manually`;
 
-    status.textContent += '. Images will be added automatically when available.';
+    // Note: images will be scraped next time rightmove_image_scraper.py is run
+    status.textContent += '. Run scripts/rightmove_image_scraper.py to fetch images.';
 
   } catch(e) {
     status.style.color = 'var(--red)';
@@ -2338,11 +2446,9 @@ async function addProperty() {
 }
 
 // ── DELETE PROPERTY ───────────────────────────────────────────────────────────
-let lastFocusConfirm = null;
 function confirmDelete(ref) {
   const p=properties.find(x=>x.ref===ref);
   if(!p) return;
-  lastFocusConfirm = document.activeElement;
   document.getElementById('confirm-msg').textContent=
     `Remove "${p.name}" (${p.price_display}) from your list? This cannot be undone.`;
   document.getElementById('confirm-yes').onclick=()=>deleteProperty(ref);
@@ -2351,15 +2457,13 @@ function confirmDelete(ref) {
 
 function hideConfirm() {
   document.getElementById('confirm-modal').classList.remove('show');
-  if (lastFocusConfirm && lastFocusConfirm.focus) lastFocusConfirm.focus();
-  lastFocusConfirm = null;
 }
 
 async function deleteProperty(ref) {
   hideConfirm();
   if(selected===ref) closeDetail();
   // Remove marker
-  if(markers[ref]) { clusterGroup.removeLayer(markers[ref]); delete markers[ref]; }
+  if(markers[ref]) { map.removeLayer(markers[ref]); delete markers[ref]; }
   // Remove from array
   properties=properties.filter(p=>p.ref!==ref);
   applyFilters();
@@ -2368,17 +2472,12 @@ async function deleteProperty(ref) {
 }
 
 // ── NOTES ─────────────────────────────────────────────────────────────────────
-let hasUnsavedLocalChanges = false;
-
 async function loadNotes() {
-  let staticOk = false, localOk = false, tokenOk = false;
-
   // Always fetch the static file first — no auth needed, always reflects committed state
   try {
     const r = await fetch('data/notes.json?_='+Date.now());
-    if (r.ok) { notes = await r.json(); staticOk = true; }
+    if (r.ok) notes = await r.json();
   } catch(e) {}
-  const serverSnapshot = JSON.stringify(notes);
 
   // Merge localStorage on top (captures any unsaved local changes)
   const local = localStorage.getItem('house_notes');
@@ -2397,29 +2496,17 @@ async function loadNotes() {
         return out;
       };
       notes = merge(notes, lv);
-      localOk = true;
     } catch(e) {}
   }
-
-  hasUnsavedLocalChanges = !getToken() && JSON.stringify(notes) !== serverSnapshot;
-  renderUnsavedBanner();
 
   // If GitHub token set, fetch API version (most up-to-date, overrides both)
   const token = getToken();
   if (token) {
     try {
       const r = await ghGet(NOTES_PATH);
-      if (r.ok) { const d=await r.json(); notes=JSON.parse(atob(d.content)); tokenOk = true; }
+      if (r.ok) { const d=await r.json(); notes=JSON.parse(atob(d.content)); }
     } catch(e) {}
   }
-
-  if (!staticOk && !localOk && (!token || !tokenOk)) {
-    showToast('⚠ Could not load latest data','warning');
-  }
-}
-
-function renderUnsavedBanner() {
-  document.getElementById('unsaved-banner').classList.toggle('show', hasUnsavedLocalChanges);
 }
 
 async function saveNote(ref) {
@@ -2428,6 +2515,8 @@ async function saveNote(ref) {
   notes.notes[ref]={text,date:new Date().toLocaleDateString('en-GB')};
   localStorage.setItem('house_notes',JSON.stringify(notes));
   await pushNotesFile('Update note for '+ref);
+  const ok=document.getElementById('note-ok');
+  if(ok){ok.textContent='Saved ✓';setTimeout(()=>ok.textContent='',2500);}
   renderList();
 }
 
@@ -2484,54 +2573,16 @@ const getToken=()=>localStorage.getItem('gh_token');
 const ghHdrs=()=>({'Authorization':`Bearer ${getToken()}`,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'});
 const ghGet=path=>fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`,{headers:ghHdrs()});
 
-// ── SYNC STATE ────────────────────────────────────────────────────────────────
-let syncState = 'idle';
-let lastFailedPush = null;
-
-function setSyncState(state) {
-  syncState = state;
-  renderSyncState();
-  if (state === 'success') {
-    setTimeout(() => { if (syncState === 'success') setSyncState('idle'); }, 3000);
-  }
-}
-
-function renderSyncState() {
-  const dot = document.getElementById('sync-dot');
-  const label = document.getElementById('sync-label');
-  const retry = document.getElementById('sync-retry');
-  if (!dot) return;
-  dot.className = 'sync-dot ' + (syncState === 'idle' ? '' : syncState);
-  label.textContent = syncState === 'success' ? '✓ Saved' : syncState === 'error' ? '⚠ Not saved' : '';
-  retry.style.display = syncState === 'error' ? 'inline-block' : 'none';
-}
-
-function retryLastPush() {
-  if (!lastFailedPush) return;
-  const { path, b64, message } = lastFailedPush;
-  ghPut(path, b64, message).catch(() => {});
-}
-
 async function ghPut(path,b64,message){
-  setSyncState('pending');
-  try {
-    let sha=null;
-    const ex=await ghGet(path);
-    if(ex.ok){const d=await ex.json();sha=d.sha;}
-    const body={message,content:b64};
-    if(sha) body.sha=sha;
-    const r=await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`,
-      {method:'PUT',headers:{...ghHdrs(),'Content-Type':'application/json'},body:JSON.stringify(body)});
-    if(!r.ok) throw new Error(`GitHub API ${r.status}: ${r.statusText}`);
-    lastFailedPush = null;
-    setSyncState('success');
-    return r;
-  } catch(e) {
-    lastFailedPush = {path,b64,message};
-    setSyncState('error');
-    showToast('⚠ Save failed — changes stored locally','warning');
-    throw e;
-  }
+  let sha=null;
+  const ex=await ghGet(path);
+  if(ex.ok){const d=await ex.json();sha=d.sha;}
+  const body={message,content:b64};
+  if(sha) body.sha=sha;
+  const r=await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`,
+    {method:'PUT',headers:{...ghHdrs(),'Content-Type':'application/json'},body:JSON.stringify(body)});
+  if(!r.ok) throw new Error(`GitHub API ${r.status}: ${r.statusText}`);
+  return r;
 }
 
 async function pushPropsFile(message) {
@@ -2540,8 +2591,7 @@ async function pushPropsFile(message) {
   try {
     const content=btoa(unescape(encodeURIComponent(JSON.stringify(properties,null,2))));
     await ghPut(PROPS_PATH,content,message);
-    showToast('✓ Properties updated','success');
-  } catch(e){console.warn('Save failed, changes stored locally.');}
+  } catch(e){console.warn('Props push failed:',e);}
 }
 
 async function pushNotesFile(message) {
@@ -2550,14 +2600,12 @@ async function pushNotesFile(message) {
   try {
     const content=btoa(unescape(encodeURIComponent(JSON.stringify(notes,null,2))));
     await ghPut(NOTES_PATH,content,message);
-    showToast('✓ Notes saved','success');
-  } catch(e){console.warn('Save failed, changes stored locally.');}
+  } catch(e){console.warn('Notes push failed (saved locally):',e);}
 }
 
 // ── TOKEN ─────────────────────────────────────────────────────────────────────
-let lastFocusTokenModal = null;
-function showTokenModal(){lastFocusTokenModal=document.activeElement;document.getElementById('token-modal').classList.add('show');}
-function hideTokenModal(){document.getElementById('token-modal').classList.remove('show');if(lastFocusTokenModal&&lastFocusTokenModal.focus)lastFocusTokenModal.focus();lastFocusTokenModal=null;}
+function showTokenModal(){document.getElementById('token-modal').classList.add('show');}
+function hideTokenModal(){document.getElementById('token-modal').classList.remove('show');}
 function saveToken(){
   const t=document.getElementById('token-input').value.trim();
   if(!t) return;
@@ -2577,21 +2625,81 @@ function updateTokenBtn(){
 }
 
 // ── LIGHTBOX ──────────────────────────────────────────────────────────────────
-// openLb(srcsArray, startIndex)  — startIndex defaults to 0
+// ── LIGHTBOX ──────────────────────────────────────────────────────────────────
+let lbPz = null;
+
 function openLb(srcs, startIndex) {
   lbImages = (srcs||[]).filter(Boolean);
   lbIndex  = (typeof startIndex === 'number' && startIndex >= 0) ? startIndex : 0;
   if (!lbImages.length) return;
-  document.getElementById('lightbox-img').src = lbImages[lbIndex];
+  lbSetImage(lbIndex);
   document.getElementById('lightbox').classList.add('show');
-  document.getElementById('lightbox-nav').style.display = lbImages.length > 1 ? 'flex' : 'none';
+  const hasNav = lbImages.length > 1;
+  document.getElementById('lightbox-nav').style.display = hasNav ? 'flex' : 'none';
+  // Init panzoom on the wrap div
+  const wrap = document.getElementById('lightbox-img-wrap');
+  const img  = document.getElementById('lightbox-img');
+  if (lbPz) { try { lbPz.destroy(); } catch(e){} lbPz = null; }
+  img.onload = () => {
+    if (typeof Panzoom !== 'undefined') {
+      lbPz = Panzoom(img, {
+        maxScale: 8, minScale: 1, contain: 'outside', cursor: 'grab',
+        startX: 0, startY: 0,
+      });
+      // Wheel zoom
+      wrap.addEventListener('wheel', lbWheelHandler, {passive:false});
+    }
+  };
 }
-function closeLightbox(){document.getElementById('lightbox').classList.remove('show');}
-function handleLightboxClick(e){if(e.target===document.getElementById('lightbox')) closeLightbox();}
-function lbNav(dir){
-  lbIndex=(lbIndex+dir+lbImages.length)%lbImages.length;
-  document.getElementById('lightbox-img').src=lbImages[lbIndex];
+
+function lbWheelHandler(e) {
+  e.preventDefault();
+  if (lbPz) lbPz.zoomWithWheel(e);
 }
+
+function lbSetImage(idx) {
+  const img = document.getElementById('lightbox-img');
+  img.src = lbImages[idx];
+  img.removeAttribute('style'); // clear any transform residue
+  const counter = document.getElementById('lightbox-counter');
+  if (counter && lbImages.length > 1)
+    counter.textContent = (idx+1) + ' / ' + lbImages.length;
+  else if (counter) counter.textContent = '';
+  // Reset zoom when changing image
+  if (lbPz) { try { lbPz.reset({animate:false}); } catch(e){} }
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('show');
+  const wrap = document.getElementById('lightbox-img-wrap');
+  wrap.removeEventListener('wheel', lbWheelHandler);
+  if (lbPz) { try { lbPz.destroy(); } catch(e){} lbPz = null; }
+}
+
+function handleLightboxClick(e) {
+  // Only close if clicking the dark backdrop, not the image or controls
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+}
+
+function lbNav(dir) {
+  lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
+  lbSetImage(lbIndex);
+}
+
+function lbZoomIn()    { if (lbPz) lbPz.zoomIn(); }
+function lbZoomOut()   { if (lbPz) lbPz.zoomOut(); }
+function lbZoomReset() { if (lbPz) lbPz.reset({animate:true}); }
+
+// Keyboard nav for lightbox
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('show')) return;
+  if (e.key === 'Escape')     closeLightbox();
+  if (e.key === 'ArrowLeft')  lbNav(-1);
+  if (e.key === 'ArrowRight') lbNav(1);
+  if (e.key === '+' || e.key === '=') lbZoomIn();
+  if (e.key === '-')          lbZoomOut();
+  if (e.key === '0')          lbZoomReset();
+});
 
 const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
   .replace(/"/g,'&quot;').replace(/'/g,'&#039;');
@@ -2606,7 +2714,6 @@ function renderScorecard(ref) {
   const ringR = 20, ringC = 26;
   const circ = 2 * Math.PI * ringR;
   const offset = circ * (1 - pct / 100);
-  // Used as a raw SVG stroke="" attribute, not style — CSS vars won't resolve, must stay inline
   const ringCol = pct >= 70 ? '#1E7145' : pct >= 45 ? '#7F4F00' : '#9C0006';
 
   // Group scores by category
@@ -2629,7 +2736,7 @@ function renderScorecard(ref) {
       const changed = overrides[key] !== undefined && overrides[key] !== s.score;
       return `
         <div class="sc-row" style="${changed?'background:#fffde7;':''}">
-          <div class="sc-label">${s.label}${changed?' <span style="font-size:var(--text-xs);color:var(--amber)">✎</span>':''}</div>
+          <div class="sc-label">${s.label}${changed?' <span style="font-size:9px;color:var(--amber)">✎</span>':''}</div>
           <div class="sc-note">${s.note}</div>
           <select class="sc-select ${cls}" data-ref="${ref}" data-key="${key}"
             onchange="updateScorecard('${ref}','${key}',parseInt(this.value),this)"
@@ -2667,10 +2774,9 @@ function renderScorecard(ref) {
     <div class="sc-qs">
       ${sc.questions.map((q,i) => `
         <div class="sc-q"><span class="sc-q-icon">${i+1}.</span><span>${q}</span></div>`).join('')}
-    </div>` : '<div style="font-size:var(--text-sm);color:var(--green);margin-bottom:12px">✓ No outstanding questions</div>';
+    </div>` : '<div style="font-size:12px;color:var(--green);margin-bottom:12px">✓ No outstanding questions</div>';
 
   const dispPct = hasOverrides ? effectivePct : pct;
-  // Used as a raw SVG stroke="" attribute, not style — CSS vars won't resolve, must stay inline
   const dispRingCol = dispPct >= 70 ? '#1E7145' : dispPct >= 45 ? '#7F4F00' : '#9C0006';
   const dispOffset = circ * (1 - dispPct / 100);
 
@@ -2678,10 +2784,10 @@ function renderScorecard(ref) {
     <div class="ds"><h3>Scorecard</h3></div>
     <div class="sc-changed-banner ${hasOverrides?'show':''}" id="sc-banner-${ref}">
       ✎ You have updated ${Object.keys(overrides).length} score${Object.keys(overrides).length!==1?'s':''}.
-      <button class="sc-rerank-btn" style="margin-top:0;margin-left:8px;font-size:var(--text-xs);padding:3px 8px"
+      <button class="sc-rerank-btn" style="margin-top:0;margin-left:8px;font-size:10px;padding:3px 8px"
         onclick="rerank('${ref}')">↻ Rerank now</button>
       <button onclick="resetScorecard('${ref}')"
-        style="background:none;border:none;color:var(--navy);font-size:var(--text-xs);cursor:pointer;margin-left:4px;text-decoration:underline">
+        style="background:none;border:none;color:var(--navy);font-size:10px;cursor:pointer;margin-left:4px;text-decoration:underline">
         Reset to auto</button>
     </div>
     <div class="sc-header">
@@ -2694,16 +2800,11 @@ function renderScorecard(ref) {
             stroke-dashoffset="${dispOffset.toFixed(1)}"/>
         </svg>
         <div>
-          <div class="sc-pct">${dispPct}% fit
-            <span class="info-tip" onclick="event.stopPropagation();this.classList.toggle('show')">
-              <span class="info-tip-icon">ⓘ</span>
-              <span class="info-tip-pop">Score across 14 criteria: annexe quality, independent entrance, shower access, smoke separation, ground floor mobility, heating type, drainage, broadband, flood risk, listed building status, chain, and budget headroom. Caveats (flood, ferry, PRC) reduce the score further.</span>
-            </span>
-            ${hasOverrides?' <span style="font-size:var(--text-xs);color:var(--amber)">✎ edited</span>':''}</div>
-          <div style="font-size:var(--text-sm);color:var(--muted)">${sc.scores.length} criteria · change dropdowns to update</div>
+          <div class="sc-pct">${dispPct}% fit${hasOverrides?' <span style="font-size:9px;color:var(--amber)">✎ edited</span>':''}</div>
+          <div style="font-size:11px;color:var(--muted)">${sc.scores.length} criteria · change dropdowns to update</div>
         </div>
       </div>
-      <div style="font-size:var(--text-sm);color:var(--muted);text-align:right">
+      <div style="font-size:11px;color:var(--muted);text-align:right">
         <span style="color:var(--green);font-weight:600">${effectiveScores.filter(s=>s===3).length} resolved ✓</span><br>
         <span style="color:var(--amber);font-weight:600">${effectiveScores.filter(s=>s>0&&s<3).length} partial ~</span><br>
         <span style="color:var(--red);font-weight:600">${effectiveScores.filter(s=>s===0).length} unknown ✗</span>
@@ -2781,7 +2882,7 @@ function rerank(ref) {
     if (!p) return;
     const col=rc(p.rank);
     const icon=L.divIcon({
-      html:'<div style="background:'+col+';width:26px;height:26px;border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 5px rgba(0,0,0,.4)"><span style="color:#fff;font-size:var(--text-xs);font-weight:700">'+p.rank+'</span></div>',
+      html:'<div style="background:'+col+';width:26px;height:26px;border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 5px rgba(0,0,0,.4)"><span style="color:#fff;font-size:10px;font-weight:700">'+p.rank+'</span></div>',
       iconSize:[26,26],iconAnchor:[13,13],className:''
     });
     m.setIcon(icon);
@@ -2823,37 +2924,6 @@ function copyQuestions(ref) {
   });
 }
 
-// ── READ-ONLY BANNER ─────────────────────────────────────────────────────────
-function initReadonlyBanner() {
-  if (getToken()) return;
-  if (localStorage.getItem('readonly_banner_dismissed')) return;
-  document.getElementById('readonly-banner').classList.add('show');
-}
-function dismissReadonlyBanner() {
-  document.getElementById('readonly-banner').classList.remove('show');
-  localStorage.setItem('readonly_banner_dismissed', '1');
-}
-
-// ── VOTER NAME ────────────────────────────────────────────────────────────────
-function initVoterName() {
-  updateVoterDisplay();
-  if (localStorage.getItem('voter_name')) return;
-  setTimeout(() => {
-    document.getElementById('voter-modal').classList.add('show');
-    document.getElementById('voter-name-input').focus();
-  }, 1000);
-}
-function saveVoterName() {
-  const name = document.getElementById('voter-name-input').value.trim() || 'Anonymous';
-  localStorage.setItem('voter_name', name);
-  document.getElementById('voter-modal').classList.remove('show');
-  updateVoterDisplay();
-}
-function updateVoterDisplay() {
-  const name = localStorage.getItem('voter_name');
-  document.getElementById('voter-display').textContent = name ? `Voting as: ${name}` : '';
-}
-
 function toggleDesc(ref) {
   const s = document.getElementById('desc-short-'+ref);
   const f = document.getElementById('desc-full-'+ref);
@@ -2876,6 +2946,26 @@ init();
     <div class="qs-btns">
       <button class="mbtn p" onclick="copyQsFromPopup()">📋 Copy all</button>
       <button class="mbtn s" onclick="hideQuestions()">Close</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- VIEWING DAY PLANNER -->
+<div id="planner-overlay" onclick="handlePlannerClick(event)">
+  <div id="planner-box">
+    <div id="planner-header">
+      <span>🗓</span>
+      <h2>Viewing Day Planner</h2>
+      <button class="planner-close" onclick="hidePlanner()">✕</button>
+    </div>
+    <div id="planner-body">
+      <div class="planner-tabs">
+        <button class="planner-tab active" onclick="switchPlannerTab(this,'suggested')">Suggested days</button>
+        <button class="planner-tab" onclick="switchPlannerTab(this,'custom')">Build your own</button>
+      </div>
+      <div id="ptab-suggested"></div>
+      <div id="ptab-custom" style="display:none"></div>
     </div>
   </div>
 </div>
