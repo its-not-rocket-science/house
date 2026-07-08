@@ -947,7 +947,7 @@
   },
   "168359045": {
     "ref": "168359045",
-    "overall_pct": 43,
+    "overall_pct": 57,
     "scores": [
       {
         "cat": "Annexe",
@@ -1001,9 +1001,9 @@
       {
         "cat": "Heating",
         "label": "Fuel type",
-        "score": 0,
-        "note": "Heating type not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Gas CH confirmed. ~£165/month gas + £85/month electric = ~£3,000/yr. Well insulated. ✓",
+        "resolved": true
       },
       {
         "cat": "Drainage",
@@ -1015,9 +1015,9 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 0,
-        "note": "Broadband speed not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Full fibre (FTTP) via Sky confirmed ✓",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -1053,9 +1053,7 @@
       "Is the annexe shower a walk-in/level-access shower, or does it have a step or bath?",
       "Is there full air/smoke separation between the annexe and main house so a smoker in the annexe cannot affect the main living areas?",
       "Is there a walk-in or level-access shower — no step — accessible from the ground floor?",
-      "What is the heating fuel — oil, gas, LPG, heat pump or electric? What are approximate annual costs?",
       "Is the drainage mains or private (septic tank / sewage treatment plant)?",
-      "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?",
       "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
     ],
     "red_flags": []
