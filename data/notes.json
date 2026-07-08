@@ -69,8 +69,8 @@
       "text": "VOICEMAIL — Nadia, Wright Residential (06/07/2026)\nCall back: 01225 755553\nWants to take details and book viewing for Halfway Close, Trowbridge."
     },
     "166496951": {
-      "date": "07/07/2026",
-      "text": "VOICEMAIL — Sam, Hands (06/07/2026) + Ben, Stratford Estates (01202 237580)\nTwo agents called about Plassey Crescent."
+      "date": "08/07/2026",
+      "text": "AGENT REPLY — Ben Leaper, Stratton Oak Estates (08/07/2026)\nben@strattonoakestates.com | 01202 237580\n\nPlassey Crescent, Bournemouth BH8 — £390,000 bungalow\n\nQ Annexe: Could be created within existing layout — no further detail ⚠\nQ Heating: GAS CENTRAL HEATING confirmed ✓\nQ Drainage: Vendor THINKS mains — not formally confirmed ⚠\nQ Broadband: Older vendor, not technical — standard neighbourhood, options available ⚠\nQ Chain: Vendor buying PARK HOME — park homes transact quickly, low chain risk ✓\n\nNote: Ben tried calling several times. Consider calling back on 01202 237580."
     },
     "168243473": {
       "date": "07/07/2026",
@@ -154,7 +154,7 @@
     "89951784": "07/07/2026",
     "174415073": "07/07/2026",
     "172902734": "07/07/2026",
-    "166496951": "07/07/2026",
+    "166496951": "08/07/2026",
     "168243473": "07/07/2026",
     "89415939": "07/07/2026",
     "170605958": "07/07/2026",
@@ -180,7 +180,8 @@
     "169862942": "Emmajayne.Briggs@wilkie.co.uk",
     "90443352": "Emmajayne.Briggs@wilkie.co.uk",
     "89951784": "Lauren.Howells@haart.co.uk",
-    "174415073": "rebecca.d@meyersestates.com"
+    "174415073": "rebecca.d@meyersestates.com",
+    "166496951": "ben@strattonoakestates.com"
   },
   "agentPhone": {
     "172902734": "01225 755553",

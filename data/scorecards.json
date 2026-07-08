@@ -3179,14 +3179,14 @@
   },
   "166496951": {
     "ref": "166496951",
-    "overall_pct": 56,
+    "overall_pct": 78,
     "scores": [
       {
         "cat": "Annexe",
         "label": "Annexe status",
         "score": 1,
-        "note": "No confirmed annexe — creation needed",
-        "resolved": false
+        "note": "Annexe could be created within existing layout — not yet done; no detail on scope or cost",
+        "resolved": true
       },
       {
         "cat": "Annexe",
@@ -3219,22 +3219,22 @@
       {
         "cat": "Heating",
         "label": "Fuel type",
-        "score": 0,
-        "note": "Heating type not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Gas central heating confirmed ✓",
+        "resolved": true
       },
       {
         "cat": "Drainage",
         "label": "Drainage type",
-        "score": 0,
-        "note": "Drainage type not confirmed",
+        "score": 2,
+        "note": "Vendor believes mains drainage — not formally confirmed; standard Bournemouth neighbourhood suggests mains",
         "resolved": false
       },
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 0,
-        "note": "Broadband speed not confirmed",
+        "score": 1,
+        "note": "Standard neighbourhood — options available but speeds not confirmed. Older vendor, not technical.",
         "resolved": false
       },
       {
@@ -3254,9 +3254,9 @@
       {
         "cat": "Transaction",
         "label": "Chain",
-        "score": 1,
-        "note": "Chain status not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Vendor buying park home — park homes transact very quickly, minimal chain risk ✓",
+        "resolved": true
       },
       {
         "cat": "Transaction",
@@ -3267,13 +3267,19 @@
       }
     ],
     "questions": [
-      "What is the realistic scope for creating a self-contained annexe — outbuilding, garage conversion or extension?",
-      "What is the heating fuel — oil, gas, LPG, heat pump or electric? What are approximate annual costs?",
-      "Is the drainage mains or private (septic tank / sewage treatment plant)?",
-      "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
+      "What rooms within the existing layout could be converted to create the annexe — is it a garage, a ground floor bedroom wing, or another area? What works would be needed to make it self-contained?",
+      "Could the annexe have its own separate external entrance, or would it always be accessed through the main house?",
+      "Can you confirm mains drainage formally — is the property connected to Bournemouth Water / Wessex Water mains sewerage?",
+      "What broadband speeds are achievable at BH8 9NE — is full fibre (FTTP) available? This matters for home-schooling.",
+      "Is there a walk-in or level-access shower currently in the property, or would one need to be installed?",
+      "Is there an onward chain on the vendor's side — has she found a specific park home to purchase?",
+      "We would like to arrange a viewing — what dates are available?"
     ],
-    "red_flags": []
+    "red_flags": [
+      "No confirmed annexe — conversion needed within existing layout; scope and cost completely unknown",
+      "Bungalow caveat applies — single-storey layout limits flexibility",
+      "Broadband unconfirmed — check Ofcom checker for BH8 9NE"
+    ]
   },
   "90125946": {
     "ref": "90125946",
