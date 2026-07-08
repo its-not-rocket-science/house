@@ -1,0 +1,405 @@
+HOUSE HUNT APP — IMPROVEMENT PROMPTS
+=====================================
+Run these in sequence in a new Claude session, uploading the current
+index.html each time and replacing it with the output before moving on.
+Each prompt is self-contained and references this app's specific code.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+QUICK WINS (do these before sharing with family)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+── PROMPT 1: Read-only mode banner & voter name on first load ──────────────
+
+I have a house-hunting web app (single HTML file, Leaflet map, GitHub Pages).
+Users without a GitHub token are in read-only mode but the app gives them no
+indication of this.
+
+Please make two changes to the attached index.html:
+
+1. On load, if localStorage has no 'gh_token' key, show a dismissible
+   info banner directly below the header (navy background, white text) saying:
+   "👀 Read-only mode — votes and notes are visible but won't be saved.
+   Ask the organiser for a token to contribute."
+   The banner should have an ✕ close button that sets a localStorage flag
+   so it doesn't reappear after being dismissed.
+
+2. On first load (no 'voter_name' in localStorage), after a 1-second delay
+   show a small friendly modal: "What's your name? So we know who's voting."
+   Single text input, "Let's go →" button. Store the result in localStorage
+   as 'voter_name'. If they close it without entering a name, default to
+   'Anonymous'. Show "Voting as: [name]" in small text in the header bar
+   next to the token button.
+
+Don't change anything else. Return the full updated index.html.
+
+
+── PROMPT 2: Hide rejected/sale-agreed by default; smarter header stats ────
+
+In my house hunt app (attached index.html), the sidebar currently shows all
+properties including ones marked as 'rejected' or 'not-proceeding'. This is
+overwhelming for new family members.
+
+Please make these changes:
+
+1. Change the default status filter from 'all' to show only active,
+   'viewing-booked' and 'offer-made' properties. Add a 'Show all' toggle
+   button at the end of the status filter row that switches between
+   "Active only" and "Show all incl. rejected".
+
+2. The header stats currently show "X active / Y viewing / Z offer".
+   Change these to:
+   - "🏠 X properties" (count of active+viewing+offer only)
+   - "📅 Y viewings booked" (viewing-booked count)
+   - "🌟 Top pick: [name of #1 ranked property]" (name truncated to 25 chars)
+
+3. The status filter buttons for 'rejected' and 'not-proceeding' should only
+   appear when "Show all" mode is active, not in the default view.
+
+Don't change anything else. Return the full updated index.html.
+
+
+── PROMPT 3: Agent phone numbers in detail panel ───────────────────────────
+
+In my house hunt app (attached index.html), the detail panel shows an agent
+email field (stored in notes.agentEmail) but does not display phone numbers,
+which are stored in notes.agentPhone[ref].
+
+Please add a phone number display row directly below the agent email input
+in the detail panel. It should:
+
+1. Display the stored phone number (if any) as a clickable tel: link:
+   "📞 01234 567890" styled like the existing agent email row.
+
+2. Have an editable input field next to it (same style as the email input)
+   pre-populated with the stored number, with a Save button that calls a new
+   saveAgentPhone(ref) function — identical in structure to saveAgentEmail().
+
+3. In the sidebar property cards, if a phone number is stored, show a tiny
+   📞 indicator alongside the existing 📧 agent status indicator.
+
+Don't change anything else. Return the full updated index.html.
+
+
+── PROMPT 4: Scorecard % Fit tooltip and "what does this mean?" ────────────
+
+In my house hunt app (attached index.html), the circular scorecard ring shows
+a percentage (e.g. "83% fit") but new users don't know what criteria it covers.
+
+Please add:
+
+1. A small ⓘ icon next to "% fit" text in the scorecard ring. On hover
+   (desktop) or click (mobile), show a tooltip that reads:
+   "Score across 14 criteria: annexe quality, independent entrance,
+   shower access, smoke separation, ground floor mobility, heating type,
+   drainage, broadband, flood risk, listed building status, chain,
+   and budget headroom. Caveats (flood, ferry, PRC) reduce the score further."
+   Style the tooltip as a dark rounded popover appearing above the ring.
+
+2. In the sidebar sort buttons, rename "% Fit ★" to "% Fit ⓘ" and on
+   hover show a brief tooltip: "Sorts by how well each property meets your
+   confirmed criteria. Updates as agents reply to questions."
+
+Don't change anything else. Return the full updated index.html.
+
+
+── PROMPT 5: Mobile layout fixes ───────────────────────────────────────────
+
+My house hunt app (attached index.html) has a responsive breakpoint at 860px
+but several things break on mobile:
+
+1. The sort buttons row overflows horizontally. On screens under 600px wide,
+   wrap them into two rows and reduce font size to 10px.
+
+2. The detail panel on mobile should slide up from the bottom (not in from
+   the right) and take up 90% of screen height, with a drag handle at the top.
+   On desktop (>860px) keep the current slide-in-from-right behaviour.
+
+3. The gallery main image height (220px) is too tall on small screens —
+   reduce to 160px on screens under 480px.
+
+4. The header wraps badly on small screens. On mobile, hide the header stats
+   and show only the title and the two action buttons (Add property, Token).
+
+5. The filter section in the sidebar has too many rows on mobile — collapse
+   the cluster filters and sort buttons into a single "Filters ▼" expandable
+   section that is collapsed by default on screens under 600px.
+
+Don't change anything else. Return the full updated index.html.
+
+
+── PROMPT 6: Remove developer-facing language from the UI ──────────────────
+
+My house hunt app (attached index.html) has several places where
+developer-facing text appears in the user interface. Please find and replace
+all of the following:
+
+1. Any text containing "run scripts/" or "rightmove_image_scraper.py" or
+   "push to repo" — replace with: "Photos for this property will appear
+   here once available."
+
+2. Any text containing "data/images/manifest.json" — replace with nothing
+   (remove the reference entirely from visible UI).
+
+3. In the Add Property modal, the "Fetch details" status message that says
+   "Run scripts/rightmove_image_scraper.py to fetch images" — replace with:
+   "Images will be added automatically when available."
+
+4. Any console.warn() calls that contain internal path references — change
+   to generic "Save failed, changes stored locally." messages.
+
+5. The GitHub token button tooltip or any visible text mentioning "GitHub API",
+   "PAT", "fine-grained token" or similar — replace with: "Sync settings —
+   allows your votes and notes to be seen by other family members."
+
+Don't change anything else. Return the full updated index.html.
+
+
+── PROMPT 7: Last-updated timestamp and save status indicator ───────────────
+
+My house hunt app (attached index.html) persists data to GitHub via the API
+but gives no visual feedback about whether saves succeed or fail.
+
+Please add:
+
+1. A sync status indicator in the header — a small dot (●) that is:
+   - Grey when idle
+   - Amber + spinning when a push is in flight (any ghPut call active)
+   - Green for 3 seconds after a successful push ("✓ Saved")
+   - Red with "⚠ Not saved" if a push throws an error (with a retry button)
+
+   Implement this by wrapping all ghPut calls to set a global syncState
+   variable, and adding a renderSyncState() function called after each
+   state change.
+
+2. In the footer area of the detail panel (below the delete button), show:
+   "Data last updated: [date from notes.agentStatusDate or today's date]"
+   in small muted text.
+
+3. If localStorage has unsaved changes (i.e. local notes differ from what
+   was loaded from the static file), show a subtle amber banner:
+   "⚠ You have unsaved local changes — connect GitHub to sync them."
+
+Don't change anything else. Return the full updated index.html.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROFESSIONAL POLISH (do these after the quick wins)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+── PROMPT 8: Standardise typography to a consistent type scale ─────────────
+
+My house hunt app (attached index.html) has inconsistent font sizes throughout
+the CSS — values like 7.5px, 8.5px, 9.5px, 11.5px, 12.5px appear alongside
+round numbers. Please standardise to this exact scale and nothing else:
+
+  --text-xs:   10px   (badges, labels, timestamps, meta)
+  --text-sm:   12px   (notes, secondary content, tooltips)
+  --text-base: 14px   (body, card content, inputs)
+  --text-lg:   16px   (section headings, property names in detail)
+  --text-xl:   20px   (price display)
+  --text-2xl:  28px   (large numbers like vote count)
+
+Replace every font-size value in the CSS with the nearest value from this
+scale. Add these as CSS custom properties in the :root block.
+Also standardise line-height: use 1.4 for UI elements and 1.6 for
+descriptive text (notes, descriptions, home-ed sections).
+
+Don't change any functionality. Return the full updated index.html.
+
+
+── PROMPT 9: Consolidate colour variables ──────────────────────────────────
+
+My house hunt app (attached index.html) defines colours inconsistently —
+some as CSS variables, some as hex literals repeated inline throughout the
+JavaScript template literals and CSS.
+
+Please:
+
+1. Add these semantic colour variables to :root (replacing existing ones):
+     --color-primary:     #1F4E79   (navy — primary actions, ranks, links)
+     --color-primary-bg:  #E6F1FB   (light navy — highlighted sections)
+     --color-success:     #1E7145   (green — confirmed, good scores)
+     --color-success-bg:  #C6EFCE   (light green)
+     --color-warning:     #7F4F00   (amber — partial, caveats)
+     --color-warning-bg:  #FFEB9C   (light amber)
+     --color-danger:      #9C0006   (red — unknown, red flags)
+     --color-danger-bg:   #FFE4E4   (light red)
+     --color-surface:     #F8F9FB   (card backgrounds, alt rows)
+     --color-border:      #DDE1E7   (all borders)
+     --color-text:        #1A1A2E   (primary text)
+     --color-muted:       #666666   (secondary text)
+
+2. Replace every hardcoded hex colour in CSS rules with the appropriate
+   variable. For hex colours inside JavaScript template literal strings
+   (e.g. style="color:#1E7145"), replace with CSS variable references where
+   possible, or leave as-is with a comment if they must stay inline.
+
+3. Remove any duplicate or near-duplicate colour definitions.
+
+Don't change any functionality. Return the full updated index.html.
+
+
+── PROMPT 10: Loading skeleton and error states ────────────────────────────
+
+My house hunt app (attached index.html) shows a blank sidebar and empty map
+for 1-2 seconds while JSON data loads. Please add:
+
+1. A skeleton loading state in the sidebar: while properties array is empty,
+   show 6 placeholder cards with animated grey shimmer blocks in place of
+   the rank badge, name, price and pills. Use a CSS @keyframes shimmer
+   animation (background gradient moving left to right).
+
+2. If the fetch('data/properties.json') call fails (network error or 404),
+   show a full-page error state instead of a blank app:
+   - Large 🏚 emoji
+   - "Couldn't load property data"
+   - "Try refreshing the page. If the problem persists, the site may be
+     updating — check back in a minute."
+   - A "Refresh" button that calls location.reload()
+
+3. If the properties array loads but is empty (length 0), show an empty
+   state in the sidebar: "No properties match your filters." with a
+   "Clear filters" button.
+
+4. Image load errors in the gallery should show a tasteful placeholder —
+   a light grey box with a small 🏠 icon centred in it — rather than a
+   broken image icon.
+
+Don't change any functionality. Return the full updated index.html.
+
+
+── PROMPT 11: Map marker clustering ────────────────────────────────────────
+
+My house hunt app (attached index.html) uses Leaflet for the map and currently
+shows 43+ individual markers, many of which overlap in clusters like Somerset,
+South Wales and Wiltshire.
+
+Please add Leaflet.markercluster from CDN:
+  https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js
+  https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.min.css
+
+Then:
+1. Group all property markers into a MarkerClusterGroup instead of adding
+   them directly to the map. Style clusters with the navy (#1F4E79) colour
+   scheme using custom iconCreateFunction.
+
+2. When a property is selected from the sidebar, if it's inside a cluster,
+   call clusterGroup.zoomToShowLayer(marker) before opening the popup.
+
+3. Cluster count badges should use the same rank-badge visual style as the
+   individual markers.
+
+4. Filtering (show/hide markers based on sidebar filters) should work with
+   the cluster group — remove non-matching markers from the cluster group
+   and add matching ones back, rather than using opacity.
+
+Don't change anything else. Return the full updated index.html.
+
+
+── PROMPT 12: Toast notifications for save/error feedback ──────────────────
+
+My house hunt app (attached index.html) silently succeeds or fails when
+pushing data to GitHub. Please add a toast notification system:
+
+1. Add a #toast-container div fixed to bottom-right (16px from each edge,
+   z-index 9999). Toasts stack vertically with 8px gap.
+
+2. Add a showToast(message, type, duration) function where type is
+   'success', 'warning' or 'error'. Each toast:
+   - Slides in from the right over 200ms
+   - Has a coloured left border matching the type
+   - Has a small icon (✓ / ⚠ / ✗) and the message text
+   - Auto-dismisses after [duration]ms (default 3000)
+   - Has an ✕ close button
+   - Maximum 3 toasts visible at once (oldest dismissed first)
+
+3. Call showToast() in:
+   - pushNotesFile() success: "✓ Notes saved"
+   - pushPropsFile() success: "✓ Properties updated"
+   - pushVotesFile() success: "✓ Vote saved"
+   - Any ghPut() catch block: "⚠ Save failed — changes stored locally"
+   - saveAgentEmail() success: "✓ Agent email saved"
+   - loadNotes() if all three sources fail: "⚠ Could not load latest data"
+
+4. Remove the existing inline .note-ok span ("Saved ✓") now that toasts
+   handle this feedback.
+
+Don't change anything else. Return the full updated index.html.
+
+
+── PROMPT 13: Keyboard navigation and accessibility ────────────────────────
+
+My house hunt app (attached index.html) is not keyboard-navigable and has
+accessibility gaps. Please fix the following:
+
+1. Add keyboard shortcuts (shown in a ? help overlay toggled with the ?
+   key or a ❓ button in the header):
+   - Escape: close detail panel / close any open modal
+   - Arrow Up / Arrow Down: navigate between properties in the sidebar list
+   - Enter: open the selected property's detail panel
+   - F: focus the search box
+   - 1-9: jump to property ranked 1-9
+
+2. Add aria-label attributes to all icon-only buttons (the ✕ close buttons,
+   panzoom +/−/⤢ buttons, vote buttons).
+
+3. The detail panel close button and modal close buttons should return focus
+   to the element that triggered them.
+
+4. Ensure the gallery thumbnail strip is keyboard-navigable (Tab between
+   thumbnails, Enter/Space to select).
+
+5. Add role="status" aria-live="polite" to the #result-count element so
+   screen readers announce filter changes.
+
+Don't change any functionality. Return the full updated index.html.
+
+
+── PROMPT 14: Consistent card design and visual hierarchy ──────────────────
+
+My house hunt app (attached index.html) has property cards in the sidebar
+that feel information-dense but lack visual breathing room and hierarchy.
+
+Please refine the card design:
+
+1. Increase card padding from 10px 12px to 12px 14px.
+
+2. Add a subtle left border accent (3px) colour-coded by annexe status:
+   - confirmed annexe: var(--color-success) green
+   - potential: var(--color-warning) amber
+   - unknown: var(--color-border) grey
+   This replaces the current selected-state left border (keep that too,
+   just make it navy and 4px wide).
+
+3. The rank badge should scale in size by rank importance:
+   - Rank 1-3: 30px diameter, font 11px, drop shadow
+   - Rank 4-10: 26px diameter, font 10px (current)
+   - Rank 11+: 22px diameter, font 9px, slightly lower opacity
+
+4. Add a thin progress bar at the bottom of each card showing the %
+   fit score as a coloured fill (green >70%, amber 50-70%, red <50%),
+   1px tall, full card width, no label.
+
+5. The "📧 Replied" agent indicator and "📝" note indicator should move
+   to a dedicated bottom row, separated from the main metadata by a
+   hairline rule.
+
+Don't change any functionality. Return the full updated index.html.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NOTES FOR RUNNING THESE PROMPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- Run in order. Each builds on the previous.
+- Always upload the OUTPUT of the previous step as input to the next.
+- After every 2-3 prompts: git add index.html && git commit -m "..."
+  && git push, then verify on the live site before continuing.
+- Prompts 1-7 are safe to run quickly. Prompts 8-14 touch more of
+  the codebase — allow more time and test carefully after each.
+- If a prompt produces a broken result, start from the last known-good
+  index.html and try again with a more specific instruction.
+- The data files (properties.json, scorecards.json, notes.json, votes.json)
+  do not need to change for any of these prompts.
+- Estimated total time to complete all 14 prompts: 3-4 hours.
