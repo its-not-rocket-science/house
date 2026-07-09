@@ -146,7 +146,7 @@
   {
     "ref": "89444523",
     "name": "Linnet Cottage, Chideock — Grade II Thatched",
-    "rank": 33,
+    "rank": 34,
     "price": 425000,
     "price_display": "£425,000",
     "location": "Chideock, Dorset",
@@ -287,7 +287,7 @@
   {
     "ref": "87890067",
     "name": "Maesycoed, Pontypridd — Detached with Annexe",
-    "rank": 15,
+    "rank": 16,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Pontypridd, South Wales",
@@ -406,7 +406,7 @@
   {
     "ref": "172773251",
     "name": "White Cliff Gardens, Blandford Forum",
-    "rank": 20,
+    "rank": 21,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Blandford Forum, Dorset",
@@ -587,7 +587,7 @@
   {
     "ref": "88996269",
     "name": "Newtown Rd, Penperlleni, Monmouthshire",
-    "rank": 21,
+    "rank": 22,
     "price": 430000,
     "price_display": "£430,000",
     "location": "Penperlleni, Monmouthshire",
@@ -649,7 +649,7 @@
   {
     "ref": "87130665",
     "name": "Wraxhill Rd, Yeovil — Det with Annexe",
-    "rank": 18,
+    "rank": 19,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Yeovil, Somerset",
@@ -783,7 +783,7 @@
   {
     "ref": "173219645",
     "name": "Allens Rd, Upton, Poole",
-    "rank": 29,
+    "rank": 30,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Upton, Poole",
@@ -835,7 +835,7 @@
   {
     "ref": "88185459",
     "name": "Pantygyfelia Farm, Bonymaen, Swansea",
-    "rank": 14,
+    "rank": 15,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Bonymaen, Swansea",
@@ -897,7 +897,7 @@
   {
     "ref": "89701968",
     "name": "Loders, Bridport — Det Character",
-    "rank": 22,
+    "rank": 23,
     "price": 470000,
     "price_display": "£470,000",
     "location": "Loders, Dorset",
@@ -964,7 +964,7 @@
   {
     "ref": "174415073",
     "name": "Killara, Piddletrenthide",
-    "rank": 37,
+    "rank": 38,
     "price": 400000,
     "price_display": "£400,000",
     "location": "Piddletrenthide, Dorset",
@@ -1031,7 +1031,7 @@
   {
     "ref": "174472451",
     "name": "Arch View, Tatworth / South Chard",
-    "rank": 16,
+    "rank": 17,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Tatworth, Somerset",
@@ -1098,7 +1098,7 @@
   {
     "ref": "88791255",
     "name": "Park Shaw, Sedlescombe",
-    "rank": 23,
+    "rank": 24,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Sedlescombe, East Sussex",
@@ -1217,7 +1217,7 @@
   {
     "ref": "89767338",
     "name": "Bibury Rd, Old Walcot, Swindon",
-    "rank": 24,
+    "rank": 25,
     "price": 440000,
     "price_display": "£440,000",
     "location": "Swindon, Wiltshire",
@@ -1269,7 +1269,7 @@
   {
     "ref": "88156767",
     "name": "Bramble Drive, Chippenham",
-    "rank": 31,
+    "rank": 32,
     "price": 470000,
     "price_display": "£470,000",
     "location": "Chippenham, Wiltshire",
@@ -1383,7 +1383,7 @@
   {
     "ref": "89236248",
     "name": "St Thomas Rd, Trowbridge",
-    "rank": 32,
+    "rank": 33,
     "price": 470000,
     "price_display": "£470,000",
     "location": "Trowbridge, Wiltshire",
@@ -1445,7 +1445,7 @@
   {
     "ref": "89784342",
     "name": "Gwyn St, Alltwen, Pontardawe",
-    "rank": 35,
+    "rank": 36,
     "price": 412500,
     "price_display": "£412,500",
     "location": "Pontardawe, South Wales",
@@ -1507,7 +1507,7 @@
   {
     "ref": "89415939",
     "name": "Queens Hill Cres, Newport",
-    "rank": 28,
+    "rank": 29,
     "price": 395000,
     "price_display": "£395,000",
     "location": "Newport, South Wales",
@@ -1569,7 +1569,7 @@
   {
     "ref": "170968559",
     "name": "South Newton, Salisbury — New Chalet",
-    "rank": 17,
+    "rank": 18,
     "price": 425000,
     "price_display": "£425,000",
     "location": "South Newton, Wiltshire",
@@ -1621,7 +1621,7 @@
   {
     "ref": "88318344",
     "name": "Thames Close, Cricklade ⚠ PRC",
-    "rank": 39,
+    "rank": 40,
     "price": 425000,
     "price_display": "£425,000",
     "location": "Cricklade, Wiltshire",
@@ -1668,7 +1668,7 @@
   {
     "ref": "170605958",
     "name": "Brook St, Bampton, Devon",
-    "rank": 36,
+    "rank": 37,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Bampton, Devon",
@@ -1777,7 +1777,7 @@
   {
     "ref": "90125946",
     "name": "Damerham Rd, Throop, Bournemouth",
-    "rank": 42,
+    "rank": 43,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Throop, Bournemouth",
@@ -1829,7 +1829,7 @@
   {
     "ref": "169598735",
     "name": "Hill Rd, Neath Abbey",
-    "rank": 27,
+    "rank": 28,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Neath Abbey, South Wales",
@@ -1891,7 +1891,7 @@
   {
     "ref": "174938813",
     "name": "Willow Way, Liskeard, Cornwall",
-    "rank": 26,
+    "rank": 27,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Liskeard, Cornwall",
@@ -1933,7 +1933,7 @@
   {
     "ref": "168382466",
     "name": "Brook Lane, Catcott ⚠ Flood",
-    "rank": 34,
+    "rank": 35,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Catcott, Somerset",
@@ -1985,7 +1985,7 @@
   {
     "ref": "88310844",
     "name": "Main Rd, Westonzoyland ⚠ Flood",
-    "rank": 19,
+    "rank": 20,
     "price": 445000,
     "price_display": "£445,000",
     "location": "Westonzoyland, Somerset",
@@ -2037,7 +2037,7 @@
   {
     "ref": "87545469",
     "name": "Chideock DT6 (Duplicate listing)",
-    "rank": 43,
+    "rank": 44,
     "price": 425000,
     "price_display": "£425,000",
     "location": "Chideock, Dorset",
@@ -2106,7 +2106,7 @@
   {
     "ref": "88055244",
     "name": "Victoria Place, Ryde IoW ⚠ Ferry",
-    "rank": 40,
+    "rank": 41,
     "price": 375000,
     "price_display": "£375,000",
     "location": "Ryde, Isle of Wight",
@@ -2153,7 +2153,7 @@
   {
     "ref": "171958844",
     "name": "Queen Bower, Sandown IoW ⚠ Ferry",
-    "rank": 38,
+    "rank": 39,
     "price": 465000,
     "price_display": "£465,000",
     "location": "Queen Bower, Isle of Wight",
@@ -2242,7 +2242,7 @@
       "asd_support": "Welsh Integrated Autism Services (IAS) — legal right to assessment. Withybush Hospital Haverfordwest has paediatric services.",
       "notes": "Wales has stronger legal ASD framework than England. Rural isolation of Narberth area means community travel needed."
     },
-    "rank": 25
+    "rank": 26
   },
   {
     "ref": "89491017",
@@ -2289,7 +2289,7 @@
       "asd_support": "Welsh IAS model. Glangwili Hospital Carmarthen has paediatric teams. Strong legal framework for ASD support in Wales.",
       "notes": "Remote rural location — community access requires transport. Japanese Knotweed caveat takes priority in assessment."
     },
-    "rank": 30
+    "rank": 31
   },
   {
     "ref": "160507001",
@@ -2336,7 +2336,7 @@
       "asd_support": "Welsh IAS legal framework. Glangwili Hospital Carmarthen 8 miles.",
       "notes": "Project caveat is the primary concern here — home-ed community is secondary until viability is confirmed."
     },
-    "rank": 41
+    "rank": 42
   },
   {
     "ref": "90443352",
@@ -2493,5 +2493,57 @@
       "notes": "Trowbridge itself is functional; Bath proximity lifts the accessible provision considerably. Integrated Care Centre walking distance is a significant plus."
     },
     "rank": 9
+  },
+  {
+    "ref": "173546681",
+    "name": "Kents Close, Chard",
+    "price": 460000,
+    "price_display": "£460,000",
+    "location": "Chard, Somerset",
+    "cluster": "Somerset West",
+    "agent": "Greenslade Taylor Hunt, Chard",
+    "annexe": "confirmed",
+    "caveat": null,
+    "short_desc": "Property with confirmed self-contained attached annexe. Annexe has separate entrance, no internal access from main house, solid wall between — full smoke separation confirmed. Overhead shower in bath (not level access). Mains gas CH, mains drainage. Never flooded (<0.1%). Vendor looking to buy onwards but no property found yet. Price reduced to £460,000.",
+    "full_desc": "Property with confirmed self-contained attached annexe in Kents Close, Chard TA20. Annexe has own separate external entrance — cannot be accessed from main property. Solid wall between main living areas and annexe providing full smoke/air separation. Annexe shower: overhead shower within bath (not walk-in/level access). Mains gas central heating. Mains drainage. Flood risk <0.1%, never flooded. Vendor has onward chain but no specific property found yet. Price reduced from higher asking price to £460,000.",
+    "status": "active",
+    "lat": 50.8731,
+    "lng": -2.9627,
+    "rightmove_url": "https://www.rightmove.co.uk/properties/173546681",
+    "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F173546681&propertyId=173546681",
+    "duplicate_refs": [],
+    "journeys": {
+      "london_car_mins": 160,
+      "london_rail_mins": 130,
+      "coast_car_mins": 22,
+      "coast_name": "Lyme Regis / Charmouth",
+      "hospital_car_mins": 12,
+      "hospital_name": "Chard Community Hospital / Yeovil District Hospital",
+      "nearest_town": "Chard (1 mi)"
+    },
+    "home_ed": {
+      "rating": "excellent",
+      "summary": "Somerset West cluster — one of the best home-ed communities in England. Taunton 14 miles.",
+      "groups": [
+        {
+          "name": "Taunton Home Education Group",
+          "contact": "tauntonhomeeducation@gmail.com",
+          "notes": "Regular meetings; art, cookery, drama, science"
+        },
+        {
+          "name": "Home Education SW",
+          "contact": "homeeducationsw.org.uk",
+          "notes": "Regional hub"
+        },
+        {
+          "name": "Somerset Council EHE Team",
+          "contact": "eheteam@somerset.gov.uk",
+          "notes": "Supportive LEA"
+        }
+      ],
+      "asd_support": "Somerset Progressive School (West Hatch, Taunton). Strong neurodiversity awareness in Somerset community. Musgrove Park Hospital CAMHS (Taunton, 14 miles).",
+      "notes": "Chard is in the Somerset West home-ed cluster. Yeovil and Taunton groups accessible."
+    },
+    "rank": 14
   }
 ]

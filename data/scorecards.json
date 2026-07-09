@@ -4845,5 +4845,122 @@
       "Independent entrance not confirmed — must establish at viewing whether annexe has own external door",
       "Shower level access not confirmed — wet room conversion may be needed (£2,000–4,000 but £105k headroom)"
     ]
+  },
+  "173546681": {
+    "ref": "173546681",
+    "overall_pct": 57,
+    "scores": [
+      {
+        "cat": "Annexe",
+        "label": "Independent entrance",
+        "score": 3,
+        "note": "Separate entrance confirmed — cannot be accessed from main property ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Annexe",
+        "label": "Shower / wetroom",
+        "score": 1,
+        "note": "Overhead shower within bath — not level access. Conversion to wet room needed.",
+        "resolved": true
+      },
+      {
+        "cat": "Annexe",
+        "label": "Kitchen",
+        "score": 0,
+        "note": "Kitchen in annexe not mentioned — confirm",
+        "resolved": false
+      },
+      {
+        "cat": "Annexe",
+        "label": "Planning / BC",
+        "score": 0,
+        "note": "Planning/BC status not mentioned",
+        "resolved": false
+      },
+      {
+        "cat": "Smoke separation",
+        "label": "Physical separation",
+        "score": 3,
+        "note": "Solid wall between main living areas and annexe — full smoke/air separation confirmed ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Mobility",
+        "label": "Ground floor bedroom",
+        "score": 1,
+        "note": "Floor level of annexe not confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Mobility",
+        "label": "Walk-in shower",
+        "score": 1,
+        "note": "Bath/overhead shower only — level-access conversion needed",
+        "resolved": true
+      },
+      {
+        "cat": "Heating",
+        "label": "Fuel type",
+        "score": 3,
+        "note": "Mains gas central heating confirmed ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Drainage",
+        "label": "Drainage type",
+        "score": 3,
+        "note": "Mains drainage confirmed ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Connectivity",
+        "label": "Broadband",
+        "score": 0,
+        "note": "Broadband not confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Risk",
+        "label": "Flood risk",
+        "score": 3,
+        "note": "Never flooded, <0.1% risk confirmed ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Risk",
+        "label": "Listed building",
+        "score": 3,
+        "note": "Not listed",
+        "resolved": true
+      },
+      {
+        "cat": "Transaction",
+        "label": "Chain",
+        "score": 1,
+        "note": "Vendor has onward chain — no specific property found yet",
+        "resolved": true
+      },
+      {
+        "cat": "Transaction",
+        "label": "Budget headroom",
+        "score": 2,
+        "note": "£20,000 under £480k budget — tight but workable",
+        "resolved": true
+      }
+    ],
+    "questions": [
+      "Does the annexe have its own kitchen or kitchenette?",
+      "Are all the annexe rooms on a single ground floor level with no internal stairs?",
+      "Has the annexe been granted planning permission and building control approval? Does it have its own council tax band?",
+      "Is there space to convert the annexe bathroom from bath/overhead shower to a level-access wet room?",
+      "What broadband speeds are available — upload and download? Is full fibre (FTTP) available?",
+      "We would like to arrange a viewing — what dates are available?"
+    ],
+    "red_flags": [
+      "Shower is bath/overhead — level-access wet room conversion needed (budget £2,000–4,000)",
+      "Onward chain with no property found yet — could extend timescale",
+      "Budget headroom only £20k — tight after shower conversion costs"
+    ]
   }
 }

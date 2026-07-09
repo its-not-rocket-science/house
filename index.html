@@ -986,12 +986,17 @@ function selectProp(ref) {
   if(markers[ref]) { map.panTo([p.lat,p.lng]); markers[ref].openPopup(); }
   renderDetail(p);
   document.getElementById('detail-panel').classList.add('open');
+  history.pushState({panel: ref}, '', '#' + ref);
 }
 
-function closeDetail() {
+function closeDetail(fromPopState) {
   document.getElementById('detail-panel').classList.remove('open');
   selected=null;
   document.querySelectorAll('.prop-card').forEach(c=>c.classList.remove('selected'));
+  // If not triggered by popstate, go back in history to remove the # state
+  if (!fromPopState && history.state && history.state.panel) {
+    history.back();
+  }
 }
 
 // ── DETAIL ────────────────────────────────────────────────────────────────────
@@ -2494,6 +2499,32 @@ function copyCustomItinerary() {
   navigator.clipboard.writeText(lines.join('\n')).then(()=>{const btn=event.target;btn.textContent='✓ Copied!';setTimeout(()=>btn.textContent='📋 Copy',2000);});
 }
 
+
+// Handle browser back button and iOS swipe-back
+window.addEventListener('popstate', function(e) {
+  if (document.getElementById('detail-panel').classList.contains('open')) {
+    closeDetail(true);  // true = triggered by popstate, don't call history.back()
+  } else if (document.getElementById('planner-overlay').classList.contains('show')) {
+    hidePlanner();
+  } else if (document.getElementById('lightbox').classList.contains('show')) {
+    closeLightbox();
+  }
+});
+
+// On load, if URL has a # ref, open that property
+window.addEventListener('load', function() {
+  const hash = window.location.hash.slice(1);
+  if (hash && hash.length > 5) {
+    // Wait for data to load then select
+    const trySelect = setInterval(() => {
+      if (properties.length) {
+        clearInterval(trySelect);
+        const p = properties.find(x => x.ref === hash);
+        if (p) selectProp(hash);
+      }
+    }, 200);
+  }
+});
 
 init();
 </script>
