@@ -347,63 +347,6 @@
     }
   },
   {
-    "ref": "173348153",
-    "name": "Winterborne Stickland — 5-Bed Semi",
-    "rank": 6,
-    "price": 425000,
-    "price_display": "£425,000",
-    "location": "Winterborne Stickland, Dorset",
-    "cluster": "North Dorset",
-    "agent": "Connells, Blandford Forum",
-    "annexe": "confirmed",
-    "caveat": null,
-    "short_desc": "Nestled in the idyllic village of Winterborne Stickland, this spacious 5 bedroom home with Annex offers character, charm, and versatile family living across 2 well-appointed floors. Pretty Garden backing onto countryside.",
-    "rightmove_url": "https://www.rightmove.co.uk/properties/173348153",
-    "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F173348153&propertyId=173348153",
-    "lat": 50.8234,
-    "lng": -2.1567,
-    "status": "active",
-    "duplicate_refs": [],
-    "full_desc": "Nestled in the idyllic village of Winterborne Stickland, this spacious 5 bedroom home with Annex offers character, charm, and versatile family living across 2 well-appointed floors. Pretty Garden backing onto countryside.\nWinterborne Stickland is a picturesque Dorset village steeped in history, with origins dating back to the Domesday Book of 1086. Set within a classic chalk valley on the Dorset Downs, the village takes its name from the “winterborne” stream that flows seasonally through the area, while “Stickland” derives from Old English, meaning “steep place” or path. The area has been inhabited since prehistoric times, with ancient burial barrows nearby, and later prospered under the influence of Milton Abbey following the Norman Conquest. Today, the village retains much of its historic charm, with period properties, a beautiful 13th-century parish church, and a strong sense of rural heritage.\nThis beautifully presented five-bedroom home with added benefit of a self-contained annex that enjoys a prime position surrounded by rolling Dorset countryside. Renowned for its strong sense of community, picturesque setting, and traditional village character, Winterborne Stickland offers a peaceful rural lifestyle while remaining conveniently close to the market town of Blandford Forum.\nSet against a backdrop of scenic landscapes and far-reaching views, this impressive home combines character features with modern living, offering generous and versatile accommodation ideal for families. With a thoughtfully designed layout, attractive period touches, and inviting outdoor spaces, the property perfectly complements its idyllic surroundings.\nEntrance Door gives access to the Entrance Hall with Doors to Bedroom 4and Main Reception and Stairs to First floor.\nThe lounge has two double glazed windows to the front of the property. It has two radiators, a log burner and a sliding door to the conservatory.\nThe kitchen / diner has four double glazed windows to the front of the property, skylights and a door to the side of the property. It has base units, an extractor hood, a radiator, space for white goods and exposed beams.\nThe conservatory has double doors to the rear garden, a sliding door to the lounge and a radiator.\nBedroom 1 has two double glazed windows to the rear of the property and French doors to the rear garden. It has a radiator.\nThe en suite has a double glazed window to the side of the property. It has a shower cubicle, WC, hand wash basin, an extractor fan and a heated towel rail.\nBedroom 2 has three double glazed windows to the rear of the property and a radiator.\nBedroom 3 has two double glazed windows to the rear of the property and a radiator.\nBedroom 4 has two double glazed windows to the rear of the property and an integrated double wardrobe.\nThe tiled bathroom has a double glazed window. It has a bath, a shower cubicle, a WC and a radiator.\nThe rear garden is patio with steps to the lawn. It has shrub and fence borders, external lights, side access to the front of the property and beautiful countryside views.\n1. MONEY LAUNDERING REGULATIONS - Intending purchasers will be asked to produce identification documentation at a later stage and we would ask for your co-operation in order that there will be no delay in agreeing the sale.\n3: The measurements indicated are supplied for guidance only and as such must be considered incorrect.\n4: Potential buyers are advised to recheck the measurements before committing to any expense.\n5: Connells has not tested any apparatus, equipment, fixtures, fittings or services and it is the buyers interests to check the working condition of any appliances.\n6: Connells has not sought to verify the legal title of the property and the buyers must obtain verification from their solicitor.\nCOUNCIL TAXA payment made to your local authority in order to pay for local services like schools, libraries, and refuse collection. The amount you pay depends on the value of the property.Read more about council Tax in our glossary page.\nPARKINGDetails of how and where vehicles can be parked, and any associated costs.Read more about parking in our glossary page.\nGARDENA property has access to an outdoor space, which could be private or shared.\nACCESSIBILITYHow a property has been adapted to meet the needs of vulnerable or disabled individuals.Read more about accessibility in our glossary page.\nAdd an important place to see how long it'd take to get there from our property listings.\nThese results are estimates and are only intended as a guide. Make sure you obtain accurate figures from your lender before committing to any mortgage. Your home may be repossessed if you do not keep up repayments on a mortgage.\nWhether you’re selling, letting or searching for your next home, our experienced team is here to help. Established in 1936, Connells has been helping people move home for generations and as the UK’s largest high-street estate agency network, we provide a wide range of services including sales, lettings, mortgages, conveyancing and surveying. With expert advice and support at every stage, we’re here to make your move as straightforward as possible - get in touch with the team today.\nEnsure you're up to date with our latest advice on how to avoid fraud or scams when looking for property online.",
-    "home_ed": {
-      "rating": "good",
-      "summary": "Blandford Forum area has home-ed families; Dorset-wide groups accessible. Less dense than Bridport.",
-      "groups": [
-        {
-          "name": "North Dorset Home Educators",
-          "contact": "Via home-ed.info/local_groups",
-          "notes": "Dedicated North Dorset group"
-        },
-        {
-          "name": "Dorset Home Education",
-          "contact": "Facebook group",
-          "notes": "County-wide coordination"
-        },
-        {
-          "name": "Home Education SW",
-          "contact": "homeeducationsw.org.uk",
-          "notes": "Regional hub"
-        },
-        {
-          "name": "Dorset Council EHE Team",
-          "contact": "Via Dorset Council website",
-          "notes": "Supportive authority"
-        }
-      ],
-      "asd_support": "Dorset Council EHE team is experienced. Blandford is 15 miles from Dorchester which has more specialist provision. Weymouth and Portland have autism-specific groups.",
-      "notes": "Smaller community than Bridport but still viable. Proximity to both Dorset and Somerset groups gives good access range."
-    },
-    "journeys": {
-      "london_car_mins": 155,
-      "london_rail_mins": 135,
-      "coast_car_mins": 30,
-      "coast_name": "Poole / Bournemouth",
-      "hospital_car_mins": 20,
-      "hospital_name": "Blandford Community Hospital / Dorchester County Hospital",
-      "nearest_town": "Blandford Forum (5 mi)"
-    }
-  },
-  {
     "ref": "172773251",
     "name": "White Cliff Gardens, Blandford Forum",
     "rank": 21,
