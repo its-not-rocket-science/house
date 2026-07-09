@@ -533,7 +533,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 <!-- ADD PROPERTY MODAL -->
 <div class="modal-overlay" id="add-modal">
   <div class="modal-box">
-    <h2>Add property</h2>
+    <h2 id="add-modal-title">Add property</h2>
     <div class="modal-grid">
       <div class="modal-field full">
         <label>Rightmove URL or ref number</label>
@@ -602,7 +602,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
       <a href="https://www.latlong.net/" target="_blank">latlong.net</a>.
     </div>
     <div class="modal-btns">
-      <button class="mbtn p" onclick="addProperty()">Add property</button>
+      <button class="mbtn p" id="add-modal-submit" onclick="addProperty()">Add property</button>
       <button class="mbtn s" onclick="hideAddModal()">Cancel</button>
     </div>
   </div>
@@ -1194,7 +1194,12 @@ function renderDetail(p) {
       ${renderHomeEd(p)}
 
       <!-- DELETE -->
-      <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--border)">
+      <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--border);display:flex;gap:8px;flex-wrap:wrap">
+        <button onclick="showEditModal('${p.ref}')"
+          style="background:#f0f4f8;color:var(--navy);border:1px solid var(--border);
+          padding:6px 13px;border-radius:4px;cursor:pointer;font-size:12px;font-weight:600">
+          ✏ Edit details
+        </button>
         <button onclick="confirmDelete('${p.ref}')"
           style="background:#FFE4E4;color:var(--red);border:1px solid #ffc4c4;
           padding:6px 13px;border-radius:4px;cursor:pointer;font-size:12px;font-weight:600">
@@ -1709,10 +1714,99 @@ function updateStats() {
 
 // ── ADD PROPERTY ──────────────────────────────────────────────────────────────
 function showAddModal() {
+  // Reset to "add" mode
+  document.getElementById('add-modal-title').textContent = 'Add property';
+  document.getElementById('add-modal-submit').textContent = 'Add property';
+  document.getElementById('add-modal-submit').onclick = addProperty;
+  document.getElementById('add-ref').closest('.modal-field.full').style.display = '';
+  document.getElementById('add-geo-hint').style.display = 'none';
+  // Clear all fields
+  ['add-ref','add-name','add-price','add-location','add-cluster',
+   'add-agent','add-caveat','add-lat','add-lng','add-desc','add-dup']
+    .forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
+  document.getElementById('add-annexe').value = 'potential';
   document.getElementById('add-modal').classList.add('show');
+}
+
+function showEditModal(ref) {
+  const p = properties.find(x => x.ref === ref);
+  if (!p) return;
+
+  // Switch to "edit" mode
+  document.getElementById('add-modal-title').textContent = 'Edit property';
+  document.getElementById('add-modal-submit').textContent = 'Save changes';
+  document.getElementById('add-modal-submit').onclick = () => saveEditedProperty(ref);
+
+  // Hide the ref/fetch row — can't change the ref
+  const refRow = document.getElementById('add-ref').closest('.modal-field.full');
+  if (refRow) refRow.style.display = 'none';
+
+  // Pre-populate all fields
+  document.getElementById('add-name').value    = p.name || '';
+  document.getElementById('add-price').value   = p.price || '';
+  document.getElementById('add-location').value= p.location || '';
+  document.getElementById('add-cluster').value = p.cluster || '';
+  document.getElementById('add-agent').value   = p.agent || '';
+  document.getElementById('add-annexe').value  = p.annexe || 'potential';
+  document.getElementById('add-caveat').value  = p.caveat || '';
+  document.getElementById('add-lat').value     = p.lat || '';
+  document.getElementById('add-lng').value     = p.lng || '';
+  document.getElementById('add-desc').value    = p.short_desc || p.full_desc || '';
+  document.getElementById('add-dup').value     = (p.duplicate_refs||[]).join(', ');
+  document.getElementById('add-geo-hint').style.display = 'none';
+
+  document.getElementById('add-modal').classList.add('show');
+}
+
+async function saveEditedProperty(ref) {
+  const p = properties.find(x => x.ref === ref);
+  if (!p) return;
+
+  const name     = document.getElementById('add-name').value.trim();
+  const price    = parseInt(document.getElementById('add-price').value) || p.price;
+  const location = document.getElementById('add-location').value.trim();
+  const cluster  = document.getElementById('add-cluster').value.trim();
+  const agent    = document.getElementById('add-agent').value.trim();
+  const annexe   = document.getElementById('add-annexe').value;
+  const caveat   = document.getElementById('add-caveat').value.trim() || null;
+  const lat      = parseFloat(document.getElementById('add-lat').value) || p.lat;
+  const lng      = parseFloat(document.getElementById('add-lng').value) || p.lng;
+  const desc     = document.getElementById('add-desc').value.trim();
+  const dupRaw   = document.getElementById('add-dup').value.trim();
+  const dupRefs  = dupRaw ? dupRaw.split(/[,\s]+/).map(s=>s.trim()).filter(Boolean) : [];
+
+  // Apply changes
+  if (name)     p.name           = name;
+  if (price)    { p.price = price; p.price_display = '£' + price.toLocaleString(); }
+  if (location) p.location       = location;
+  if (cluster)  p.cluster        = cluster;
+  if (agent)    p.agent          = agent;
+  p.annexe                        = annexe;
+  p.caveat                        = caveat;
+  p.lat                           = lat;
+  p.lng                           = lng;
+  if (desc)     p.short_desc     = desc;
+  p.duplicate_refs                = dupRefs;
+
+  // Update map marker position if lat/lng changed
+  if (markers[ref]) {
+    markers[ref].setLatLng([lat, lng]);
+  }
+
+  hideAddModal();
+  applyFilters();
+  renderDetail(p);
+  updateStats();
+
+  const btn = document.getElementById('add-modal-submit');
+  await pushPropsFile('Edit property ' + ref + ': ' + name);
+  showToast && showToast('✓ Property updated', 'success');
 }
 function hideAddModal() {
   document.getElementById('add-modal').classList.remove('show');
+  // Restore ref row visibility for next Add use
+  const refRow = document.getElementById('add-ref')?.closest?.('.modal-field.full');
+  if (refRow) refRow.style.display = '';
 }
 
 function inferFromRef() {
