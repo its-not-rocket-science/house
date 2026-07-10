@@ -1158,58 +1158,6 @@
     }
   },
   {
-    "ref": "89767338",
-    "name": "Bibury Rd, Old Walcot, Swindon",
-    "rank": 25,
-    "price": 440000,
-    "price_display": "£440,000",
-    "location": "Swindon, Wiltshire",
-    "cluster": "Wiltshire / Swindon",
-    "agent": "Charles Harding, Swindon",
-    "annexe": "confirmed",
-    "caveat": null,
-    "short_desc": "Extended semi-detached bay-fronted home in Old Walcot, Swindon. 4/5 bedrooms, en-suite to master, modern family bathroom, two reception rooms, large kitchen/breakfast room. Detached annexe in enclosed rear garden. Gas CH, uPVC double glazing, front parking.",
-    "rightmove_url": "https://www.rightmove.co.uk/properties/89767338",
-    "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F89767338&propertyId=89767338",
-    "lat": 51.5512,
-    "lng": -1.7423,
-    "status": "active",
-    "duplicate_refs": [],
-    "full_desc": "An extended semi detached bay fronted home situated in the ever popular Old Walcot area.\nThe property now benefits from flexible generous accommodation including 4/5 bedrooms, an ensuite to the master bedroom, a modern family bathroom suite, two good sized reception rooms and a large kitchen/breakfast room.\nExternally there is parking to the front and a neat fully enclosed rear garden with the useful addition of a detached annexe.\nWith gas radiator central heating, uPVC double glazing and being conveniently located for schooling and local amenties, viewing are highly recommended.\nCOUNCIL TAXA payment made to your local authority in order to pay for local services like schools, libraries, and refuse collection. The amount you pay depends on the value of the property.Read more about council Tax in our glossary page.\nPARKINGDetails of how and where vehicles can be parked, and any associated costs.Read more about parking in our glossary page.\nGARDENA property has access to an outdoor space, which could be private or shared.\nACCESSIBILITYHow a property has been adapted to meet the needs of vulnerable or disabled individuals.Read more about accessibility in our glossary page.\nAdd an important place to see how long it'd take to get there from our property listings.\nThese results are estimates and are only intended as a guide. Make sure you obtain accurate figures from your lender before committing to any mortgage. Your home may be repossessed if you do not keep up repayments on a mortgage.\nAs one of Swindon?s leading independent estate agencies, Charles Harding has been helping people move successfully since 1977. We?re proud of our excellent reputation within the community for offering unrivalled local knowledge and personal service.\nEnsure you're up to date with our latest advice on how to avoid fraud or scams when looking for property online.\nDisclaimer - Property reference OLT260082. The information displayed about this property comprises a property advertisement. Rightmove.co.uk makes no warranty as to the accuracy or completeness of the advertisement or any linked or associated information, and Rightmove has no control over the content. This property advertisement does not constitute property particulars. The information is provided and maintained by Charles Harding Estate Agents, Old Town, Swindon. Please contact the selling agent or developer directly to obtain any information which may be available under the terms of The Energy Performance of Buildings (Certificates and Inspections) (England and Wales) Regulations 2007 or the Home Report if in relation to a residential property in Scotland.\n*This is the average speed from the provider with the fastest broadband package available at this postcode. The average speed displayed is based on the download speeds of at least 50% of customers at peak time (8pm to 10pm). Fibre/cable services at the postcode are subject to availability and may differ between properties within a postcode. Speeds can be affected by a range of technical and environmental factors. The speed at the property may be lower than that listed above. You can check the estimated speed and confirm availability to a property prior to purchasing on the broadband provider's website. Providers may increase charges. The information is provided and maintained by Decision Technologies Limited.\n**This is indicative only and based on a 2-person household with multiple devices and simultaneous usage. Broadband performance is affected by multiple factors including number of occupants and devices, simultaneous usage, router range etc. For more information speak to your broadband provider.\nSite map Help Cookies Safety and Security Terms of Use Privacy Policy New updates\nCopyright © 2000-2026 Rightmove Group Limited. All rights reserved. Rightmove prohibits the scraping of its content. You can find further details here.",
-    "home_ed": {
-      "rating": "moderate",
-      "summary": "Swindon has a home-ed community but the town itself has limited alternative culture. Wiltshire-wide groups accessible.",
-      "groups": [
-        {
-          "name": "Home Education in Wiltshire",
-          "contact": "Facebook page",
-          "notes": "County-wide; Swindon families included"
-        },
-        {
-          "name": "Wiltshire Autism Hub",
-          "contact": "wsun.co.uk/wiltshire-autism-hub",
-          "notes": "County-wide ASD support; accessible from Swindon"
-        },
-        {
-          "name": "BSW Neurodevelopmental Pathway",
-          "contact": "bswcommunityservices.co.uk",
-          "notes": "Bath, Swindon and Wiltshire — Swindon explicitly covered"
-        }
-      ],
-      "asd_support": "BSW Neurodevelopmental Pathway specifically covers Swindon. Great Western Hospital (GWH) in Swindon has CAMHS and paediatric teams. Wiltshire Autism Hub accessible.",
-      "notes": "Swindon's home-ed community exists but is not as vibrant as Somerset or Bath. GWH is a genuine plus for ASD families given reduced waiting times vs rural areas."
-    },
-    "journeys": {
-      "london_car_mins": 80,
-      "london_rail_mins": 60,
-      "coast_car_mins": 70,
-      "coast_name": "Bournemouth / Weymouth",
-      "hospital_car_mins": 10,
-      "hospital_name": "Great Western Hospital, Swindon",
-      "nearest_town": "Swindon (town)"
-    }
-  },
-  {
     "ref": "88156767",
     "name": "Bramble Drive, Chippenham",
     "rank": 32,
