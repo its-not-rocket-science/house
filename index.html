@@ -448,8 +448,62 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   #app{grid-template-columns:1fr;grid-template-rows:55vh 1fr}
   #main{grid-row:1}
   #sidebar{grid-row:2;max-height:45vh}
-  #detail-panel{width:100%}
+  #detail-panel{width:100%;height:90%;top:auto;bottom:0;left:0;right:0;
+    border-left:none;border-top:1px solid var(--border);border-radius:14px 14px 0 0;
+    transform:translateY(100%);box-shadow:0 -4px 20px rgba(0,0,0,.15)}
+  #detail-panel.open{transform:translateY(0)}
+  #detail-drag-handle{display:block}
 }
+@media(max-width:600px){
+  #mobile-filters-toggle{display:inline-block}
+  #filters.filters-collapsed .mobile-collapsible-filter{display:none}
+  #header-stats,#planner-btn,#sync-status,#voting-as{display:none}
+  #sort-btns .sort-btn{font-size:10px;padding:2px 6px}
+}
+@media(max-width:480px){
+  .gallery-main{height:160px}
+}
+
+/* READ-ONLY / UNSAVED BANNERS */
+#readonly-banner{display:none;background:var(--navy);color:#fff;font-size:12px;
+  padding:8px 34px 8px 16px;text-align:center;position:relative}
+#readonly-banner.show{display:block}
+#readonly-banner-close{position:absolute;right:12px;top:50%;transform:translateY(-50%);
+  background:none;border:none;color:#fff;font-size:15px;cursor:pointer;line-height:1}
+#unsaved-banner{display:none;background:#FFEB9C;color:#7F4F00;font-size:12px;
+  padding:6px 16px;text-align:center}
+#unsaved-banner.show{display:block}
+
+/* VOTER LABEL */
+#voting-as{font-size:11px;opacity:.85;white-space:nowrap}
+
+/* SYNC STATUS */
+#sync-status{display:flex;align-items:center;gap:5px;font-size:11px;white-space:nowrap}
+#sync-dot{font-size:13px;line-height:1}
+#sync-dot.idle{color:rgba(255,255,255,.35)}
+#sync-dot.pushing{color:#FFC24B;animation:sync-spin 1s linear infinite}
+#sync-dot.success{color:#7BE39A}
+#sync-dot.error{color:#FF8A8A}
+@keyframes sync-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+#sync-retry-btn{display:none;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);
+  color:#fff;font-size:10px;padding:1px 7px;border-radius:3px;cursor:pointer}
+#sync-retry-btn:hover{background:rgba(255,255,255,.32)}
+
+/* INFO TOOLTIP */
+.info-tip{position:relative;display:inline-block;cursor:help}
+.info-tip .tip-icon{font-size:10px;color:inherit;margin-left:2px}
+.info-tip .tip-bubble{display:none;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);
+  background:#1a1a2e;color:#fff;font-size:11px;line-height:1.4;padding:8px 10px;border-radius:6px;
+  width:230px;z-index:2000;margin-bottom:6px;box-shadow:0 4px 14px rgba(0,0,0,.25);text-align:left;
+  font-weight:400;white-space:normal}
+.info-tip:hover .tip-bubble,.info-tip.show-tip .tip-bubble{display:block}
+
+/* DETAIL PANEL DRAG HANDLE (mobile) */
+#detail-drag-handle{display:none;position:absolute;top:6px;left:50%;transform:translateX(-50%);
+  width:40px;height:4px;border-radius:2px;background:var(--border);z-index:11}
+
+/* MOBILE FILTERS TOGGLE */
+#mobile-filters-toggle{display:none}
 </style>
 </head>
 <body>
@@ -459,20 +513,36 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   <div id="header-stats">
     <span id="stat-active">—</span>
     <span id="stat-viewing">—</span>
-    <span id="stat-offer">—</span>
+    <span id="stat-toppick">—</span>
   </div>
+  <span id="sync-status">
+    <span id="sync-dot" class="idle" title="Idle">●</span>
+    <span id="sync-label"></span>
+    <button id="sync-retry-btn" onclick="retrySync()">Retry</button>
+  </span>
+  <span id="voting-as"></span>
   <button class="hdr-btn" onclick="showPlanner()" id="planner-btn">🗓 Day Planner</button>
   <button class="hdr-btn add" onclick="showAddModal()">＋ Add property</button>
-  <button class="hdr-btn" id="token-btn" onclick="showTokenModal()">⚙ GitHub Token</button>
+  <button class="hdr-btn" id="token-btn" onclick="showTokenModal()"
+    title="Sync settings — allows your votes and notes to be seen by other family members.">⚙ GitHub Token</button>
 </div>
+
+<div id="readonly-banner">
+  👀 Read-only mode — votes and notes are visible but won't be saved. Ask the organiser for a token to contribute.
+  <button id="readonly-banner-close" onclick="dismissReadonlyBanner()" aria-label="Dismiss">✕</button>
+</div>
+<div id="unsaved-banner">⚠ You have unsaved local changes — connect GitHub to sync them.</div>
 
 <div id="app">
   <!-- SIDEBAR -->
   <div id="sidebar">
     <div id="filters">
       <h2>Sort</h2>
-      <div class="filter-row sort-row" id="sort-btns">
-        <button class="sort-btn active" data-sort="fit" onclick="setSort(this)">% Fit ★</button>
+      <button id="mobile-filters-toggle" class="filter-btn" onclick="toggleMobileFilters()" style="margin-bottom:6px">Filters ▼</button>
+      <div class="filter-row sort-row mobile-collapsible-filter" id="sort-btns">
+        <button class="sort-btn active info-tip" data-sort="fit" onclick="setSort(this)">% Fit ⓘ
+          <span class="tip-bubble">Sorts by how well each property meets your confirmed criteria. Updates as agents reply to questions.</span>
+        </button>
         <button class="sort-btn" data-sort="rank" onclick="setSort(this)">Rank</button>
         <button class="sort-btn" data-sort="price-asc" onclick="setSort(this)">Price ↑</button>
         <button class="sort-btn" data-sort="price-desc" onclick="setSort(this)">Price ↓</button>
@@ -487,7 +557,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
       </div>
       <h2 style="margin-top:6px">Filter</h2>
       <input id="search-box" type="text" placeholder="Search name, location, agent…" oninput="applyFilters()">
-      <div class="filter-row" id="cluster-filters"></div>
+      <div class="filter-row mobile-collapsible-filter" id="cluster-filters"></div>
       <div class="filter-row">
         <button class="filter-btn active" data-f="annexe" data-v="all" onclick="toggleF(this)">All annexe</button>
         <button class="filter-btn g" data-f="annexe" data-v="confirmed" onclick="toggleF(this)">✓ Confirmed</button>
@@ -498,7 +568,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
         <button class="filter-btn" data-f="status" data-v="active" onclick="toggleF(this)">Active</button>
         <button class="filter-btn" data-f="status" data-v="viewing-booked" onclick="toggleF(this)">Viewing</button>
         <button class="filter-btn" data-f="status" data-v="offer-made" onclick="toggleF(this)">Offer</button>
-        <button class="filter-btn" data-f="status" data-v="rejected" onclick="toggleF(this)">Rejected</button>
+        <button class="filter-btn" data-f="status" data-v="rejected" onclick="toggleF(this)" style="display:none">Rejected</button>
+        <button class="filter-btn" id="toggle-show-all" onclick="toggleShowAll()">Show all incl. rejected</button>
       </div>
       <div class="filter-row">
         <button class="filter-btn active" data-f="caveat" data-v="all" onclick="toggleF(this)">All</button>
@@ -523,7 +594,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
       <div id="map"></div>
       <div id="route-info"><button id="route-close" onclick="clearRoute()">✕</button><div id="route-text"></div></div>
       <div id="detail-panel">
-        <button id="detail-close" onclick="closeDetail()">✕</button>
+        <div id="detail-drag-handle"></div>
+        <button id="detail-close" onclick="closeDetail()" aria-label="Close detail panel">✕</button>
         <div id="detail-content"></div>
       </div>
     </div>
@@ -623,9 +695,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 <!-- TOKEN MODAL -->
 <div id="token-modal">
   <div class="modal-box" style="max-width:440px">
-    <h2>GitHub Personal Access Token</h2>
+    <h2>Sync Settings</h2>
     <p style="font-size:12.5px;color:var(--muted);margin-bottom:14px;line-height:1.5">
-      Fine-grained token for <strong>its-not-rocket-science/house</strong>.
+      Sync settings — allows your votes and notes to be seen by other family members.
       Stored in your browser's localStorage only.
     </p>
     <div class="modal-field" style="margin-bottom:12px">
@@ -635,6 +707,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
       <button class="mbtn p" onclick="saveToken()">Save</button>
       <button class="mbtn s" onclick="hideTokenModal()">Cancel</button>
       <button class="mbtn s" onclick="clearToken()">Clear</button>
+    </div>
+  </div>
+</div>
+
+<!-- VOTER NAME MODAL -->
+<div class="modal-overlay" id="voter-modal">
+  <div class="modal-box" style="max-width:360px;text-align:center">
+    <h2>What's your name?</h2>
+    <p style="font-size:12.5px;color:var(--muted);margin-bottom:14px">So we know who's voting.</p>
+    <div class="modal-field" style="margin-bottom:12px">
+      <input type="text" id="voter-name-input" placeholder="Your name" onkeydown="if(event.key==='Enter')saveVoterName()">
+    </div>
+    <div class="modal-btns" style="justify-content:center">
+      <button class="mbtn p" onclick="saveVoterName()">Let's go →</button>
     </div>
   </div>
 </div>
@@ -670,8 +756,11 @@ const PHOTOS_DIR = 'data/photos';
 let properties = [], notes = {notes:{},visits:{},photos:{}}, scorecards = {}, votes = {};
 let filtered = [], selected = null, currentSort = 'fit';
 let activeF = {cluster:'all',annexe:'all',status:'all',caveat:'all'};
+let showAllStatuses = false;
 let map = null, markers = {};
 let lbImages = [], lbIndex = 0;
+let syncState = 'idle', lastFailedPush = null, syncSuccessTimer = null;
+let staticNotesSnapshot = null;
 
 // ── RANK COLOUR ───────────────────────────────────────────────────────────────
 const rc = r => r<=2?'#1F4E79':r<=6?'#375623':r<=12?'#7F4F00':r<=20?'#555':'#888';
@@ -736,6 +825,10 @@ async function init() {
   applyFilters();
   updateStats();
   updateTokenBtn();
+  initReadonlyBanner();
+  initVoterNameModal();
+  initMobileFilters();
+  renderSyncState();
 
   // Event delegation for card vote buttons — handles dynamically rendered cards
   document.getElementById('prop-list').addEventListener('click', function(e) {
@@ -788,6 +881,95 @@ async function init() {
     });
     renderList();
   });
+}
+
+// ── READ-ONLY BANNER & VOTER NAME ────────────────────────────────────────────
+function initReadonlyBanner() {
+  const banner = document.getElementById('readonly-banner');
+  if (!banner) return;
+  if (!getToken() && localStorage.getItem('readonly_banner_dismissed') !== '1') {
+    banner.classList.add('show');
+  }
+}
+function dismissReadonlyBanner() {
+  localStorage.setItem('readonly_banner_dismissed', '1');
+  document.getElementById('readonly-banner')?.classList.remove('show');
+}
+
+function updateVoterLabel() {
+  const el = document.getElementById('voting-as');
+  if (el) el.textContent = 'Voting as: ' + (localStorage.getItem('voter_name') || 'Anonymous');
+}
+
+function initVoterNameModal() {
+  updateVoterLabel();
+  if (localStorage.getItem('voter_name')) return;
+  setTimeout(() => {
+    if (!localStorage.getItem('voter_name')) document.getElementById('voter-modal')?.classList.add('show');
+  }, 1000);
+}
+
+function saveVoterName() {
+  const val = document.getElementById('voter-name-input')?.value.trim();
+  localStorage.setItem('voter_name', val || 'Anonymous');
+  document.getElementById('voter-modal')?.classList.remove('show');
+  updateVoterLabel();
+}
+
+document.getElementById('voter-modal')?.addEventListener('click', e => {
+  if (e.target === document.getElementById('voter-modal')) saveVoterName();
+});
+
+// ── MOBILE FILTERS TOGGLE ─────────────────────────────────────────────────────
+function toggleMobileFilters() {
+  const f = document.getElementById('filters');
+  if (!f) return;
+  f.classList.toggle('filters-collapsed');
+  const btn = document.getElementById('mobile-filters-toggle');
+  if (btn) btn.textContent = f.classList.contains('filters-collapsed') ? 'Filters ▼' : 'Filters ▲';
+}
+function initMobileFilters() {
+  if (window.innerWidth < 600) document.getElementById('filters')?.classList.add('filters-collapsed');
+}
+
+// ── INFO TOOLTIP (click-to-toggle on mobile) ─────────────────────────────────
+function toggleInfoTip(el, ev) {
+  ev.stopPropagation();
+  const tip = el.closest('.info-tip');
+  document.querySelectorAll('.info-tip.show-tip').forEach(t => { if (t !== tip) t.classList.remove('show-tip'); });
+  tip?.classList.toggle('show-tip');
+}
+document.addEventListener('click', () => {
+  document.querySelectorAll('.info-tip.show-tip').forEach(t => t.classList.remove('show-tip'));
+});
+
+// ── SYNC STATUS ────────────────────────────────────────────────────────────────
+function renderSyncState() {
+  const dot = document.getElementById('sync-dot');
+  if (!dot) return;
+  dot.classList.remove('idle', 'pushing', 'success', 'error');
+  dot.classList.add(syncState);
+  const titles = {idle: 'Idle', pushing: 'Saving…', success: 'Saved', error: 'Not saved'};
+  dot.title = titles[syncState] || '';
+  const label = document.getElementById('sync-label');
+  const labels = {idle: '', pushing: '', success: '✓ Saved', error: '⚠ Not saved'};
+  if (label) label.textContent = labels[syncState] || '';
+  const retry = document.getElementById('sync-retry-btn');
+  if (retry) retry.style.display = syncState === 'error' ? 'inline' : 'none';
+}
+
+function retrySync() {
+  if (!lastFailedPush) return;
+  const {path, b64, message} = lastFailedPush;
+  ghPut(path, b64, message).catch(() => {});
+}
+
+// ── UNSAVED CHANGES DETECTION ─────────────────────────────────────────────────
+function checkUnsavedChanges() {
+  const banner = document.getElementById('unsaved-banner');
+  if (!banner) return;
+  const differs = staticNotesSnapshot && JSON.stringify(notes) !== JSON.stringify(staticNotesSnapshot);
+  banner.classList.toggle('show', !getToken() && !!differs);
 }
 
 function buildClusterFilters() {
@@ -902,12 +1084,31 @@ function toggleF(btn) {
   applyFilters();
 }
 
+function toggleShowAll() {
+  showAllStatuses = !showAllStatuses;
+  const btn = document.getElementById('toggle-show-all');
+  if (btn) btn.textContent = showAllStatuses ? 'Active only' : 'Show all incl. rejected';
+  const rejBtn = document.querySelector('[data-f="status"][data-v="rejected"]');
+  if (rejBtn) rejBtn.style.display = showAllStatuses ? '' : 'none';
+  if (!showAllStatuses && activeF.status === 'rejected') {
+    activeF.status = 'all';
+    document.querySelectorAll('[data-f="status"]').forEach(b=>b.classList.toggle('active', b.dataset.v==='all'));
+  }
+  applyFilters();
+}
+
+function passesStatusFilter(p) {
+  if (activeF.status !== 'all') return p.status === activeF.status;
+  if (showAllStatuses) return true;
+  return ['active','viewing-booked','offer-made'].includes(p.status);
+}
+
 function applyFilters() {
   const q=document.getElementById('search-box').value.toLowerCase();
   let res=properties.filter(p=>{
     if(activeF.cluster!=='all'&&p.cluster!==activeF.cluster) return false;
     if(activeF.annexe!=='all'&&p.annexe!==activeF.annexe) return false;
-    if(activeF.status!=='all'&&p.status!==activeF.status) return false;
+    if(!passesStatusFilter(p)) return false;
     if(activeF.caveat==='none'&&p.caveat) return false;
     if(activeF.caveat==='has'&&!p.caveat) return false;
     if(q&&!`${p.name} ${p.location} ${p.agent} ${p.cluster}`.toLowerCase().includes(q)) return false;
@@ -963,6 +1164,7 @@ function renderList() {
           <span style="color:${sCol(p.status)};font-weight:600">${sLabel(p.status)}</span>
           ${(()=>{const as=(notes.agentStatus||{})[p.ref];return as&&as!=='not-contacted'?
             `<span style="font-size:10px;color:var(--navy)">📧 ${agentStatusLabel(as)}</span>`:''})()}
+          ${(notes.agentPhone||{})[p.ref]?'<span style="font-size:10px;color:var(--navy)">📞</span>':''}
         </div>
       </div>
       <div class="status-dot" style="background:${sCol(p.status)}"></div>
@@ -1039,7 +1241,7 @@ function renderDetail(p) {
               onclick="pickPhoto(this,${i})" alt="Photo ${i+1}">`).join('')}
           </div>` :
           `<div class="gallery-empty">
-            Photos not yet downloaded — run scripts/rightmove_image_scraper.py then push to repo.<br>
+            Photos for this property will appear here once available.<br>
             <a href="${p.rightmove_url}" target="_blank" style="color:#4d9fff">View on Rightmove ↗</a>
           </div>`}
       </div>
@@ -1148,6 +1350,27 @@ function renderDetail(p) {
           </button>`;
       })()}
       <div class="detail-agent" style="margin-top:8px">Agent: ${p.agent}</div>
+      <div class="ds"><h3>Agent contact details</h3></div>
+      <div style="margin-bottom:4px">
+        ${(notes.agentEmail||{})[p.ref]
+          ? `<a href="mailto:${(notes.agentEmail||{})[p.ref]}" style="font-size:12px;color:var(--navy);font-weight:600">📧 ${(notes.agentEmail||{})[p.ref]}</a>`
+          : '<span style="font-size:12px;color:var(--muted)">📧 No email saved</span>'}
+      </div>
+      <div style="display:flex;gap:6px;align-items:center;margin-bottom:8px">
+        <input id="agent-email-input-${p.ref}" placeholder="agent@example.com" value="${(notes.agentEmail||{})[p.ref]||''}"
+          style="flex:1;padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:12px">
+        <button class="save-btn" onclick="saveAgentEmail('${p.ref}')">Save</button>
+      </div>
+      <div style="margin-bottom:4px">
+        ${(notes.agentPhone||{})[p.ref]
+          ? `<a href="tel:${(notes.agentPhone||{})[p.ref]}" style="font-size:12px;color:var(--navy);font-weight:600">📞 ${(notes.agentPhone||{})[p.ref]}</a>`
+          : '<span style="font-size:12px;color:var(--muted)">📞 No phone saved</span>'}
+      </div>
+      <div style="display:flex;gap:6px;align-items:center;margin-bottom:8px">
+        <input id="agent-phone-input-${p.ref}" placeholder="01234 567890" value="${(notes.agentPhone||{})[p.ref]||''}"
+          style="flex:1;padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:12px">
+        <button class="save-btn" onclick="saveAgentPhone('${p.ref}')">Save</button>
+      </div>
 
       <!-- SCORECARD -->
       ${renderScorecard(p.ref)}
@@ -1205,6 +1428,9 @@ function renderDetail(p) {
           padding:6px 13px;border-radius:4px;cursor:pointer;font-size:12px;font-weight:600">
           🗑 Remove this property
         </button>
+      </div>
+      <div style="font-size:10px;color:var(--muted);margin-top:10px">
+        Data last updated: ${(notes.agentStatusDate||{})[p.ref] || new Date().toLocaleDateString('en-GB')}
       </div>
     </div>`;
 
@@ -1294,6 +1520,29 @@ function setAgentStatus(ref, status) {
   const noteEl = document.getElementById('agent-status-note-' + ref);
   if (noteEl) noteEl.textContent = 'Last updated: ' + notes.agentStatusDate[ref];
   renderList(); // update card indicators
+}
+
+// ── AGENT EMAIL / PHONE ───────────────────────────────────────────────────────
+async function saveAgentEmail(ref) {
+  const val = document.getElementById('agent-email-input-'+ref)?.value.trim();
+  if (!notes.agentEmail) notes.agentEmail = {};
+  if (val) notes.agentEmail[ref] = val; else delete notes.agentEmail[ref];
+  localStorage.setItem('house_notes', JSON.stringify(notes));
+  await pushNotesFile('Update agent email for '+ref);
+  const p = properties.find(x=>x.ref===ref);
+  if (p) renderDetail(p);
+  renderList();
+}
+
+async function saveAgentPhone(ref) {
+  const val = document.getElementById('agent-phone-input-'+ref)?.value.trim();
+  if (!notes.agentPhone) notes.agentPhone = {};
+  if (val) notes.agentPhone[ref] = val; else delete notes.agentPhone[ref];
+  localStorage.setItem('house_notes', JSON.stringify(notes));
+  await pushNotesFile('Update agent phone for '+ref);
+  const p = properties.find(x=>x.ref===ref);
+  if (p) renderDetail(p);
+  renderList();
 }
 
 // ── QUESTIONS POPUP ──────────────────────────────────────────────────────────
@@ -1490,7 +1739,7 @@ async function pushVotesFile(message) {
   try {
     const content = btoa(unescape(encodeURIComponent(JSON.stringify(votes, null, 2))));
     await ghPut('data/votes.json', content, message);
-  } catch(e) { console.warn('Votes push failed:', e); }
+  } catch(e) { console.warn('Save failed, changes stored locally.', e); }
 }
 
 // ── JOURNEY TIMES ─────────────────────────────────────────────────────────────
@@ -1704,12 +1953,14 @@ function setStatus(ref,status) {
 }
 
 function updateStats() {
-  const a=properties.filter(p=>p.status==='active').length;
-  const v=properties.filter(p=>p.status==='viewing-booked').length;
-  const o=properties.filter(p=>p.status==='offer-made').length;
-  document.getElementById('stat-active').textContent=`${a} active`;
-  document.getElementById('stat-viewing').textContent=`${v} viewing`;
-  document.getElementById('stat-offer').textContent=`${o} offer`;
+  const activeCount = properties.filter(p=>['active','viewing-booked','offer-made'].includes(p.status)).length;
+  const v = properties.filter(p=>p.status==='viewing-booked').length;
+  document.getElementById('stat-active').textContent=`🏠 ${activeCount} properties`;
+  document.getElementById('stat-viewing').textContent=`📅 ${v} viewings booked`;
+  const top = [...properties].sort((a,b)=>a.rank-b.rank)[0];
+  let topName = top ? top.name : '';
+  if (topName.length > 25) topName = topName.slice(0,25) + '…';
+  document.getElementById('stat-toppick').textContent = top ? `🌟 Top pick: ${topName}` : '—';
 }
 
 // ── ADD PROPERTY ──────────────────────────────────────────────────────────────
@@ -1900,8 +2151,7 @@ async function fetchRmDetails() {
       ? `✓ Details fetched — check and complete the form below`
       : `⚠ Partial details only — please complete the form manually`;
 
-    // Note: images will be scraped next time rightmove_image_scraper.py is run
-    status.textContent += '. Run scripts/rightmove_image_scraper.py to fetch images.';
+    status.textContent += ' Images will be added automatically when available.';
 
   } catch(e) {
     status.style.color = 'var(--red)';
@@ -1989,15 +2239,17 @@ async function deleteProperty(ref) {
 
 // ── NOTES ─────────────────────────────────────────────────────────────────────
 async function loadNotes() {
+  try { const sr = await fetch('data/notes.json'); if (sr.ok) staticNotesSnapshot = await sr.json(); } catch(e) {}
   const token=getToken();
   if(token) {
     try {
       const r=await ghGet(NOTES_PATH);
-      if(r.ok){const d=await r.json();notes=JSON.parse(atob(d.content));return;}
+      if(r.ok){const d=await r.json();notes=JSON.parse(atob(d.content));checkUnsavedChanges();return;}
     } catch(e){}
   }
   const local=localStorage.getItem('house_notes');
   if(local){try{notes=JSON.parse(local);}catch(e){}}
+  checkUnsavedChanges();
 }
 
 async function saveNote(ref) {
@@ -2065,15 +2317,24 @@ const ghHdrs=()=>({'Authorization':`Bearer ${getToken()}`,'Accept':'application/
 const ghGet=path=>fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`,{headers:ghHdrs()});
 
 async function ghPut(path,b64,message){
-  let sha=null;
-  const ex=await ghGet(path);
-  if(ex.ok){const d=await ex.json();sha=d.sha;}
-  const body={message,content:b64};
-  if(sha) body.sha=sha;
-  const r=await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`,
-    {method:'PUT',headers:{...ghHdrs(),'Content-Type':'application/json'},body:JSON.stringify(body)});
-  if(!r.ok) throw new Error(`GitHub API ${r.status}: ${r.statusText}`);
-  return r;
+  syncState = 'pushing'; renderSyncState();
+  try {
+    let sha=null;
+    const ex=await ghGet(path);
+    if(ex.ok){const d=await ex.json();sha=d.sha;}
+    const body={message,content:b64};
+    if(sha) body.sha=sha;
+    const r=await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`,
+      {method:'PUT',headers:{...ghHdrs(),'Content-Type':'application/json'},body:JSON.stringify(body)});
+    if(!r.ok) throw new Error(`GitHub API ${r.status}: ${r.statusText}`);
+    syncState = 'success'; lastFailedPush = null; renderSyncState();
+    clearTimeout(syncSuccessTimer);
+    syncSuccessTimer = setTimeout(()=>{ syncState='idle'; renderSyncState(); }, 3000);
+    return r;
+  } catch(e) {
+    syncState = 'error'; lastFailedPush = {path,b64,message}; renderSyncState();
+    throw e;
+  }
 }
 
 async function pushPropsFile(message) {
@@ -2082,16 +2343,17 @@ async function pushPropsFile(message) {
   try {
     const content=btoa(unescape(encodeURIComponent(JSON.stringify(properties,null,2))));
     await ghPut(PROPS_PATH,content,message);
-  } catch(e){console.warn('Props push failed:',e);}
+  } catch(e){console.warn('Save failed, changes stored locally.',e);}
 }
 
 async function pushNotesFile(message) {
   const token=getToken();
-  if(!token) return;
+  if(!token) { checkUnsavedChanges(); return; }
   try {
     const content=btoa(unescape(encodeURIComponent(JSON.stringify(notes,null,2))));
     await ghPut(NOTES_PATH,content,message);
-  } catch(e){console.warn('Notes push failed (saved locally):',e);}
+    checkUnsavedChanges();
+  } catch(e){console.warn('Save failed, changes stored locally.',e);}
 }
 
 // ── TOKEN ─────────────────────────────────────────────────────────────────────
@@ -2267,7 +2529,7 @@ function renderScorecard(ref) {
             stroke-dashoffset="${dispOffset.toFixed(1)}"/>
         </svg>
         <div>
-          <div class="sc-pct">${dispPct}% fit${hasOverrides?' <span style="font-size:9px;color:var(--amber)">✎ edited</span>':''}</div>
+          <div class="sc-pct"><span id="sc-pct-text-${ref}">${dispPct}% fit</span><span class="info-tip" onclick="toggleInfoTip(this, event)"><span class="tip-icon">ⓘ</span><span class="tip-bubble">Score across 14 criteria: annexe quality, independent entrance, shower access, smoke separation, ground floor mobility, heating type, drainage, broadband, flood risk, listed building status, chain, and budget headroom. Caveats (flood, ferry, PRC) reduce the score further.</span></span>${hasOverrides?' <span style="font-size:9px;color:var(--amber)">✎ edited</span>':''}</div>
           <div style="font-size:11px;color:var(--muted)">${sc.scores.length} criteria · change dropdowns to update</div>
         </div>
       </div>
@@ -2311,7 +2573,7 @@ function updateScorecard(ref, key, newScore, selectEl) {
     return overrides[k]!==undefined?overrides[k]:s.score;
   });
   const pct = Math.round(effectiveScores.reduce((a,b)=>a+b,0)/(sc.scores.length*3)*100);
-  const pctEl = document.querySelector('.sc-pct');
+  const pctEl = document.getElementById('sc-pct-text-'+ref);
   if (pctEl) pctEl.textContent = pct+'% fit ✎ edited';
   // Push to notes
   pushNotesFile('Update scorecard for '+ref);
