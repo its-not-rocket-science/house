@@ -1752,37 +1752,7 @@ function openFloorWindow() {
     +'img.zoomed{max-width:none;max-height:none;cursor:zoom-out}'
     +'</style></head><body>'
     +'<img src="'+src+'" onclick="this.classList.toggle(\'zoomed\')" alt="Floorplan">'
-    +'
-<!-- FLAG MODAL -->
-<div id="flag-modal" onclick="if(event.target===this)hideFlagModal()">
-  <div class="flag-box">
-    <h2>🚩 Flag for attention</h2>
-    <p id="flag-modal-subtitle">What needs following up on this property?</p>
-    <div id="flag-existing" style="display:none" class="flag-existing">
-      <span id="flag-existing-text"></span>
-      <button class="flag-clear-btn" onclick="clearFlag()">✕ Clear flag</button>
-    </div>
-    <div class="flag-presets">
-      <button class="flag-preset" onclick="pickFlagPreset(this)">📞 Call agent back</button>
-      <button class="flag-preset" onclick="pickFlagPreset(this)">📧 Send questions</button>
-      <button class="flag-preset" onclick="pickFlagPreset(this)">📅 Book viewing</button>
-      <button class="flag-preset" onclick="pickFlagPreset(this)">⚠ Check flood risk</button>
-      <button class="flag-preset" onclick="pickFlagPreset(this)">📶 Check broadband</button>
-      <button class="flag-preset" onclick="pickFlagPreset(this)">🔎 Check planning/BC</button>
-      <button class="flag-preset" onclick="pickFlagPreset(this)">💬 Discuss with family</button>
-      <button class="flag-preset" onclick="pickFlagPreset(this)">💰 Revisit offer price</button>
-    </div>
-    <input class="flag-custom-input" id="flag-custom-input" type="text"
-      placeholder="Or type your own reason…"
-      onkeydown="if(event.key==='Enter')saveFlagModal()">
-    <div style="display:flex;gap:8px">
-      <button class="mbtn p" onclick="saveFlagModal()">Save flag</button>
-      <button class="mbtn s" onclick="hideFlagModal()">Cancel</button>
-    </div>
-  </div>
-</div>
-
-</body></html>');
+    +'</body></html>');
   w.document.close();
 }
 
