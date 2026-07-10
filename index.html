@@ -61,13 +61,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 
 /* PROPERTY LIST */
 #prop-list{flex:1;overflow-y:auto}
-.prop-card{padding:10px 12px;border-bottom:1px solid var(--color-border);cursor:pointer;
-  display:flex;gap:9px;align-items:flex-start;transition:background .1s;position:relative}
+.prop-card{padding:12px 14px;border-bottom:1px solid var(--color-border);cursor:pointer;
+  display:flex;gap:9px;align-items:flex-start;transition:background .1s;position:relative;
+  border-left:3px solid var(--color-border)}
+.prop-card.annexe-confirmed{border-left-color:var(--color-success)}
+.prop-card.annexe-potential{border-left-color:var(--color-warning)}
 .prop-card:hover{background:var(--color-surface)}
-.prop-card.selected{background:var(--color-primary-bg);border-left:3px solid var(--color-primary)}
+.prop-card.selected{background:var(--color-primary-bg);border-left:4px solid var(--color-primary)}
+.prop-card-fit-bar{position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--color-border)}
+.prop-card-fit-bar-fill{height:100%}
 .rank-badge-col{display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0}
 .rank-badge{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;
   justify-content:center;font-weight:700;font-size:var(--text-xs);color:#fff;flex-shrink:0}
+.rank-badge.tier-top{width:30px;height:30px;font-size:11px;box-shadow:0 2px 5px rgba(0,0,0,.35)}
+.rank-badge.tier-low{width:22px;height:22px;font-size:9px;opacity:.75}
+.prop-card-footer{display:flex;gap:6px;align-items:center;margin-top:4px;padding-top:4px;
+  border-top:1px solid var(--color-border);font-size:var(--text-xs)}
 .card-vote-btns{display:flex;gap:2px}
 .card-vote-btn{background:none;border:1px solid var(--color-border);border-radius:3px;
   font-size:var(--text-xs);cursor:pointer;padding:1px 3px;line-height:1.4;transition:all .1s}
@@ -170,7 +179,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   border-radius:4px;cursor:pointer;font-size:var(--text-sm);font-weight:600}
 .save-btn:hover{opacity:.85}
 .save-btn:disabled{background:var(--grey);cursor:default}
-.note-ok{font-size:var(--text-sm);color:var(--color-success);margin-left:8px}
 .existing-note{background:var(--color-surface);border:1px solid var(--color-border);border-radius:4px;
   padding:8px 10px;font-size:var(--text-sm);line-height:1.6;margin-bottom:8px;white-space:pre-wrap}
 .note-meta{font-size:var(--text-xs);color:var(--color-muted);margin-bottom:3px}
@@ -542,9 +550,37 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 .cluster-marker-badge{background:var(--color-primary);width:32px;height:32px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:var(--text-sm);
   border:2px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.4)}
+
+/* TOASTS */
+#toast-container{position:fixed;bottom:16px;right:16px;z-index:9999;
+  display:flex;flex-direction:column-reverse;gap:8px;align-items:flex-end}
+.toast{display:flex;align-items:center;gap:8px;background:#fff;color:var(--color-text);
+  border-left:4px solid var(--color-border);border-radius:4px;padding:10px 12px;
+  font-size:var(--text-sm);box-shadow:0 4px 14px rgba(0,0,0,.18);min-width:220px;max-width:320px;
+  transform:translateX(120%);transition:transform .2s ease}
+.toast.show{transform:translateX(0)}
+.toast.success{border-left-color:var(--color-success)}
+.toast.warning{border-left-color:var(--color-warning)}
+.toast.error{border-left-color:var(--color-danger)}
+.toast-icon{flex-shrink:0;font-weight:700}
+.toast.success .toast-icon{color:var(--color-success)}
+.toast.warning .toast-icon{color:var(--color-warning)}
+.toast.error .toast-icon{color:var(--color-danger)}
+.toast-msg{flex:1;line-height:1.4}
+.toast-close{background:none;border:none;color:var(--color-muted);cursor:pointer;font-size:var(--text-base);
+  line-height:1;flex-shrink:0;padding:0}
+.toast-close:hover{color:var(--color-text)}
+
+/* KEYBOARD HELP & FOCUS */
+.kbd-help-list{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;font-size:var(--text-sm)}
+.kbd-help-list kbd{display:inline-block;background:var(--color-surface);border:1px solid var(--color-border);
+  border-radius:4px;padding:1px 6px;font-family:inherit;font-size:var(--text-xs);margin-right:2px}
+.prop-card.kbd-focused{outline:2px solid var(--color-primary);outline-offset:-2px}
 </style>
 </head>
 <body>
+
+<div id="toast-container"></div>
 
 <div id="load-error">
   <div class="load-error-box">
@@ -572,6 +608,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   <button class="hdr-btn add" onclick="showAddModal()">＋ Add property</button>
   <button class="hdr-btn" id="token-btn" onclick="showTokenModal()"
     title="Sync settings — allows your votes and notes to be seen by other family members.">⚙ GitHub Token</button>
+  <button class="hdr-btn" onclick="toggleKbdHelp()" title="Keyboard shortcuts" aria-label="Keyboard shortcuts help">❓</button>
 </div>
 
 <div id="readonly-banner">
@@ -624,7 +661,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
         <button class="filter-btn" data-f="caveat" data-v="has" onclick="toggleF(this)">⚠ Has caveat</button>
       </div>
       <div style="display:flex;align-items:center;justify-content:space-between;margin-top:2px">
-        <div id="result-count"></div>
+        <div id="result-count" role="status" aria-live="polite"></div>
         <button id="reset-sort-btn" onclick="resetToFit()"
           style="display:none;background:none;border:none;color:var(--color-primary);
           font-size:11px;cursor:pointer;text-decoration:underline;padding:0">
@@ -639,7 +676,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   <div id="main">
     <div id="map-container">
       <div id="map"></div>
-      <div id="route-info"><button id="route-close" onclick="clearRoute()">✕</button><div id="route-text"></div></div>
+      <div id="route-info"><button id="route-close" onclick="clearRoute()" aria-label="Close route info">✕</button><div id="route-text"></div></div>
       <div id="detail-panel">
         <div id="detail-drag-handle"></div>
         <button id="detail-close" onclick="closeDetail()" aria-label="Close detail panel">✕</button>
@@ -758,6 +795,24 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   </div>
 </div>
 
+<!-- KEYBOARD SHORTCUTS HELP -->
+<div class="modal-overlay" id="kbd-help">
+  <div class="modal-box" style="max-width:380px">
+    <h2>Keyboard shortcuts</h2>
+    <div class="kbd-help-list">
+      <div><kbd>Esc</kbd> Close panel / modal</div>
+      <div><kbd>↑</kbd> <kbd>↓</kbd> Navigate properties</div>
+      <div><kbd>Enter</kbd> Open selected property</div>
+      <div><kbd>F</kbd> Focus search</div>
+      <div><kbd>1</kbd>–<kbd>9</kbd> Jump to ranked property</div>
+      <div><kbd>?</kbd> Toggle this help</div>
+    </div>
+    <div class="modal-btns">
+      <button class="mbtn s" onclick="hideKbdHelp()">Close</button>
+    </div>
+  </div>
+</div>
+
 <!-- VOTER NAME MODAL -->
 <div class="modal-overlay" id="voter-modal">
   <div class="modal-box" style="max-width:360px;text-align:center">
@@ -774,20 +829,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 
 <!-- LIGHTBOX -->
 <div id="lightbox" onclick="handleLightboxClick(event)">
-  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button id="lightbox-close" onclick="closeLightbox()" aria-label="Close lightbox">✕</button>
   <div id="lightbox-img-wrap">
     <img id="lightbox-img" src="" alt="" draggable="false">
   </div>
   <div id="lightbox-toolbar">
     <div id="lightbox-nav">
-      <button class="lb-nav-btn" onclick="lbNav(-1)">◀ Prev</button>
-      <button class="lb-nav-btn" onclick="lbNav(1)">Next ▶</button>
+      <button class="lb-nav-btn" onclick="lbNav(-1)" aria-label="Previous image">◀ Prev</button>
+      <button class="lb-nav-btn" onclick="lbNav(1)" aria-label="Next image">Next ▶</button>
     </div>
     <span id="lightbox-counter"></span>
-    <button class="lb-zoom-btn" onclick="lbZoomIn()"  title="Zoom in">+</button>
-    <button class="lb-zoom-btn" onclick="lbZoomOut()" title="Zoom out">−</button>
-    <button class="lb-zoom-btn" onclick="lbZoomReset()" title="Reset zoom" style="font-size:13px">⤢</button>
-    <button class="lb-zoom-btn" onclick="openImgNewTab('lightbox-img')" title="Open in new tab">↗</button>
+    <button class="lb-zoom-btn" onclick="lbZoomIn()"  title="Zoom in" aria-label="Zoom in">+</button>
+    <button class="lb-zoom-btn" onclick="lbZoomOut()" title="Zoom out" aria-label="Zoom out">−</button>
+    <button class="lb-zoom-btn" onclick="lbZoomReset()" title="Reset zoom" aria-label="Reset zoom" style="font-size:13px">⤢</button>
+    <button class="lb-zoom-btn" onclick="openImgNewTab('lightbox-img')" title="Open in new tab" aria-label="Open image in new tab">↗</button>
   </div>
 </div>
 
@@ -809,6 +864,31 @@ let map = null, markers = {}, clusterGroup = null;
 let lbImages = [], lbIndex = 0;
 let syncState = 'idle', lastFailedPush = null, syncSuccessTimer = null;
 let staticNotesSnapshot = null;
+
+// ── FOCUS RETURN (accessibility) ─────────────────────────────────────────────
+let lastFocusedEl = null;
+function trackFocusTrigger() { lastFocusedEl = document.activeElement; }
+function restoreFocusTrigger() {
+  if (lastFocusedEl && document.body.contains(lastFocusedEl)) lastFocusedEl.focus();
+  lastFocusedEl = null;
+}
+
+// ── TOASTS ────────────────────────────────────────────────────────────────────
+function showToast(message, type = 'success', duration = 3000) {
+  const container = document.getElementById('toast-container');
+  if (!container) return;
+  while (container.children.length >= 3) container.removeChild(container.firstChild);
+  const icon = type === 'success' ? '✓' : type === 'warning' ? '⚠' : '✗';
+  const toast = document.createElement('div');
+  toast.className = 'toast ' + type;
+  toast.innerHTML = `<span class="toast-icon">${icon}</span><span class="toast-msg"></span><button class="toast-close" aria-label="Dismiss">✕</button>`;
+  toast.querySelector('.toast-msg').textContent = message;
+  const dismiss = () => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 200); };
+  toast.querySelector('.toast-close').onclick = dismiss;
+  container.appendChild(toast);
+  requestAnimationFrame(() => toast.classList.add('show'));
+  setTimeout(dismiss, duration);
+}
 
 // ── RANK COLOUR ───────────────────────────────────────────────────────────────
 // rc() feeds inline style="background:..." only (never a raw SVG attribute), so var() is safe here
@@ -926,8 +1006,8 @@ async function init() {
       const dislikes = pv.filter(v=>v.type==='dislike').length;
       const net = likes - dislikes;
       const myV = localStorage.getItem('vote_'+ref);
-      wrap.innerHTML = '<button class="dv-btn like '+(myV==='like'?'voted':'')+'" data-ref="'+ref+'" data-type="like" title="Like">👍</button>'
-        +'<button class="dv-btn dislike '+(myV==='dislike'?'voted':'')+'" data-ref="'+ref+'" data-type="dislike" title="Dislike">👎</button>'
+      wrap.innerHTML = '<button class="dv-btn like '+(myV==='like'?'voted':'')+'" data-ref="'+ref+'" data-type="like" title="Like" aria-label="Like this property">👍</button>'
+        +'<button class="dv-btn dislike '+(myV==='dislike'?'voted':'')+'" data-ref="'+ref+'" data-type="dislike" title="Dislike" aria-label="Dislike this property">👎</button>'
         +(net!==0?'<span class="dv-net" style="color:'+(net>0?'var(--color-success)':'var(--color-danger)')+'">'+(net>0?'+':'')+net+'</span>':'');
     }
     // Also refresh card
@@ -1093,30 +1173,29 @@ function resetToFit() {
   if (btn) setSort(btn);
 }
 
+function getFitScore(p) {
+  const sc = scorecards[p.ref];
+  if (!sc) return 0;
+  const overrides = (notes.scorecardOverrides||{})[p.ref]||{};
+  const cats={};
+  for(const s of sc.scores){if(!cats[s.cat])cats[s.cat]=[];cats[s.cat].push(s);}
+  const eff=sc.scores.map(s=>{
+    const cat=Object.keys(cats).find(c=>cats[c].includes(s));
+    const idx=cat?cats[cat].indexOf(s):-1;
+    const k=cat+'__'+idx;
+    return overrides[k]!==undefined?overrides[k]:s.score;
+  });
+  const raw=Math.round(eff.reduce((a,b)=>a+b,0)/(sc.scores.length*3)*100);
+  // Apply caveat penalties (same as rerank logic)
+  const penalties={flood:-15,'flood-check':-8,ferry:-20,prc:-12,logistics:-10,duplicate:-50,bungalow:-5};
+  return raw+(penalties[p.caveat]||0);
+}
+
 function sortProps(arr) {
   const a=[...arr];
   const statusOrder={active:0,'viewing-booked':1,'offer-made':2,rejected:3};
   switch(currentSort) {
-    case 'fit': return a.sort((x,y)=>{
-      const getScore = p => {
-        const sc = scorecards[p.ref];
-        if (!sc) return 0;
-        const overrides = (notes.scorecardOverrides||{})[p.ref]||{};
-        const cats={};
-        for(const s of sc.scores){if(!cats[s.cat])cats[s.cat]=[];cats[s.cat].push(s);}
-        const eff=sc.scores.map(s=>{
-          const cat=Object.keys(cats).find(c=>cats[c].includes(s));
-          const idx=cat?cats[cat].indexOf(s):-1;
-          const k=cat+'__'+idx;
-          return overrides[k]!==undefined?overrides[k]:s.score;
-        });
-        const raw=Math.round(eff.reduce((a,b)=>a+b,0)/(sc.scores.length*3)*100);
-        // Apply caveat penalties (same as rerank logic)
-        const penalties={flood:-15,'flood-check':-8,ferry:-20,prc:-12,logistics:-10,duplicate:-50,bungalow:-5};
-        return raw+(penalties[p.caveat]||0);
-      };
-      return getScore(y)-getScore(x);
-    });
+    case 'fit': return a.sort((x,y)=>getFitScore(y)-getFitScore(x));
     case 'rank':       return a.sort((x,y)=>x.rank-y.rank);
     case 'price-asc':  return a.sort((x,y)=>x.price-y.price);
     case 'price-desc': return a.sort((x,y)=>y.price-x.price);
@@ -1229,18 +1308,29 @@ function renderList() {
     const hasNote=notes.notes[p.ref];
     const photoCount=(notes.photos[p.ref]||[]).length;
     const isDup=p.duplicate_of||p.duplicate_refs?.length;
+    const rankTier = p.rank<=3?'tier-top':p.rank>=11?'tier-low':'';
+    const fitPct = Math.max(0, Math.min(100, getFitScore(p)));
+    const fitColor = fitPct>70?'var(--color-success)':fitPct>=50?'var(--color-warning)':'var(--color-danger)';
+    const as=(notes.agentStatus||{})[p.ref];
+    const hasPhone=(notes.agentPhone||{})[p.ref];
+    const footerItems = [
+      hasNote?'<span style="font-size:10px">📝</span>':'',
+      photoCount?`<span style="font-size:10px">📷${photoCount}</span>`:'',
+      (as&&as!=='not-contacted')?`<span style="font-size:10px;color:var(--color-primary)">📧 ${agentStatusLabel(as)}</span>`:'',
+      hasPhone?'<span style="font-size:10px;color:var(--color-primary)">📞</span>':'',
+    ].filter(Boolean).join('');
     const div=document.createElement('div');
-    div.className='prop-card'+(selected===p.ref?' selected':'');
+    div.className='prop-card annexe-'+p.annexe+(selected===p.ref?' selected':'');
     div.dataset.ref=p.ref;
     div.onclick=()=>selectProp(p.ref);
     div.innerHTML=`
       <div class="rank-badge-col">
-        <div class="rank-badge" style="background:${rc(p.rank)}">${p.rank}</div>
+        <div class="rank-badge ${rankTier}" style="background:${rc(p.rank)}">${p.rank}</div>
         <div class="card-vote-btns">
           <button class="card-vote-btn like ${localStorage.getItem('vote_'+p.ref)==='like'?'voted':''}"
-            data-ref="${p.ref}" data-type="like" title="Like">👍</button>
+            data-ref="${p.ref}" data-type="like" title="Like" aria-label="Like this property">👍</button>
           <button class="card-vote-btn dislike ${localStorage.getItem('vote_'+p.ref)==='dislike'?'voted':''}"
-            data-ref="${p.ref}" data-type="dislike" title="Dislike">👎</button>
+            data-ref="${p.ref}" data-type="dislike" title="Dislike" aria-label="Dislike this property">👎</button>
         </div>
         ${(()=>{const net=(votes[p.ref]||[]).reduce((s,v)=>s+(v.type==='like'?1:-1),0);
           return net!==0?'<div class="card-vote-net" style="color:'+(net>0?'var(--color-success)':'var(--color-danger)')+'">'+(net>0?'+':'')+net+'</div>':'';})()}
@@ -1255,19 +1345,16 @@ function renderList() {
           <span class="pill ${p.annexe}">${p.annexe==='confirmed'?'✓ Annexe':'~ Potential'}</span>
           ${p.caveat?`<span class="pill caveat">⚠ ${p.caveat}</span>`:''}
           ${isDup?'<span class="pill dup">duplicate</span>':''}
-          ${hasNote?'<span style="font-size:10px">📝</span>':''}
-          ${photoCount?`<span style="font-size:10px">📷${photoCount}</span>`:''}
         </div>
         <div class="prop-card-meta" style="margin-top:2px">
           <span>${p.cluster}</span>
           <span style="color:${sCol(p.status)};font-weight:600">${sLabel(p.status)}</span>
-          ${(()=>{const as=(notes.agentStatus||{})[p.ref];return as&&as!=='not-contacted'?
-            `<span style="font-size:10px;color:var(--color-primary)">📧 ${agentStatusLabel(as)}</span>`:''})()}
-          ${(notes.agentPhone||{})[p.ref]?'<span style="font-size:10px;color:var(--color-primary)">📞</span>':''}
         </div>
+        ${footerItems?`<div class="prop-card-footer">${footerItems}</div>`:''}
       </div>
       <div class="status-dot" style="background:${sCol(p.status)}"></div>
-      <button class="card-del-btn" title="Delete" onclick="event.stopPropagation();confirmDelete('${p.ref}')">✕</button>`;
+      <button class="card-del-btn" title="Delete" aria-label="Delete property" onclick="event.stopPropagation();confirmDelete('${p.ref}')">✕</button>
+      <div class="prop-card-fit-bar"><div class="prop-card-fit-bar-fill" style="width:${fitPct}%;background:${fitColor}"></div></div>`;
     list.appendChild(div);
   });
 }
@@ -1283,6 +1370,7 @@ function updateMapMarkers() {
 
 // ── SELECT ────────────────────────────────────────────────────────────────────
 function selectProp(ref) {
+  trackFocusTrigger();
   selected=ref;
   const p=properties.find(x=>x.ref===ref);
   if(!p) return;
@@ -1302,6 +1390,7 @@ function closeDetail(fromPopState) {
   document.getElementById('detail-panel').classList.remove('open');
   selected=null;
   document.querySelectorAll('.prop-card').forEach(c=>c.classList.remove('selected'));
+  restoreFocusTrigger();
   // If not triggered by popstate, go back in history to remove the # state
   if (!fromPopState && history.state && history.state.panel) {
     history.back();
@@ -1337,16 +1426,18 @@ function renderDetail(p) {
               onclick="galleryLb(0)">
             <div class="gallery-main img-placeholder">🏠</div>
             <div class="pz-controls">
-              <button class="pz-btn" onclick="pzIn('listing-wrap')" title="Zoom in">+</button>
-              <button class="pz-btn" onclick="pzOut('listing-wrap')" title="Zoom out">−</button>
-              <button class="pz-btn" onclick="pzReset('listing-wrap')" title="Reset">⤢</button>
-              <button class="pz-btn" onclick="openImgNewTab('gallery-main-img')" title="Open in new tab">↗</button>
+              <button class="pz-btn" onclick="pzIn('listing-wrap')" title="Zoom in" aria-label="Zoom in">+</button>
+              <button class="pz-btn" onclick="pzOut('listing-wrap')" title="Zoom out" aria-label="Zoom out">−</button>
+              <button class="pz-btn" onclick="pzReset('listing-wrap')" title="Reset" aria-label="Reset zoom">⤢</button>
+              <button class="pz-btn" onclick="openImgNewTab('gallery-main-img')" title="Open in new tab" aria-label="Open image in new tab">↗</button>
             </div>
           </div>
           <div class="gallery-thumbs">
             ${rmImgs.map((src,i)=>`<img src="${src}" data-idx="${i}" class="${i===0?'active-thumb':''}"
               onerror="this.style.display='none'"
-              onclick="pickPhoto(this,${i})" alt="Photo ${i+1}">`).join('')}
+              onclick="pickPhoto(this,${i})" alt="Photo ${i+1}"
+              tabindex="0" role="button" aria-label="Select photo ${i+1}"
+              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">`).join('')}
           </div>` :
           `<div class="gallery-empty">
             Photos for this property will appear here once available.<br>
@@ -1357,10 +1448,10 @@ function renderDetail(p) {
         ${rmFloors.length ? `
           <div style="display:flex;gap:6px;padding:4px 6px;background:#1a1a1a;align-items:center">
             <span style="color:#aaa;font-size:11px;flex:1">Scroll or pinch to zoom · drag to pan</span>
-            <button class="pz-btn" onclick="pzIn('floor-wrap')" title="Zoom in" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2)">+</button>
-            <button class="pz-btn" onclick="pzOut('floor-wrap')" title="Zoom out" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2)">−</button>
-            <button class="pz-btn" onclick="pzReset('floor-wrap')" title="Reset zoom" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2)">⤢</button>
-            <button class="pz-btn" onclick="openFloorWindow()" title="Open in new window" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2);padding:0 6px;font-size:11px;width:auto">⊞ New window</button>
+            <button class="pz-btn" onclick="pzIn('floor-wrap')" title="Zoom in" aria-label="Zoom in" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2)">+</button>
+            <button class="pz-btn" onclick="pzOut('floor-wrap')" title="Zoom out" aria-label="Zoom out" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2)">−</button>
+            <button class="pz-btn" onclick="pzReset('floor-wrap')" title="Reset zoom" aria-label="Reset zoom" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2)">⤢</button>
+            <button class="pz-btn" onclick="openFloorWindow()" title="Open in new window" aria-label="Open floorplan in new window" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2);padding:0 6px;font-size:11px;width:auto">⊞ New window</button>
           </div>
           <div class="gallery-main-wrap" id="floor-wrap" style="cursor:grab">
             <img class="gallery-main" id="gallery-floor-main"
@@ -1371,7 +1462,9 @@ function renderDetail(p) {
           ${rmFloors.length > 1 ? `<div class="gallery-thumbs">
             ${rmFloors.map((src,i)=>`<img src="${src}" data-idx="${i}" class="${i===0?'active-thumb':''}"
               onerror="this.style.display='none'"
-              onclick="pickFloor(this,${i})" alt="Floorplan ${i+1}">`).join('')}
+              onclick="pickFloor(this,${i})" alt="Floorplan ${i+1}"
+              tabindex="0" role="button" aria-label="Select floorplan ${i+1}"
+              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">`).join('')}
           </div>` : ''}` :
           `<div class="gallery-empty">
             No floorplan available — <a href="${p.rightmove_url}" target="_blank" style="color:#4d9fff">view on Rightmove ↗</a>
@@ -1400,8 +1493,8 @@ function renderDetail(p) {
             const dislikes=pv.filter(v=>v.type==='dislike').length;
             const net=likes-dislikes;
             const myV=localStorage.getItem('vote_'+p.ref);
-            return '<button class="dv-btn like '+(myV==='like'?'voted':'')+'" data-ref="${p.ref}" data-type="like" title="Like this property">👍</button>'
-              +'<button class="dv-btn dislike '+(myV==='dislike'?'voted':'')+'" data-ref="${p.ref}" data-type="dislike" title="Dislike this property">👎</button>'
+            return '<button class="dv-btn like '+(myV==='like'?'voted':'')+'" data-ref="${p.ref}" data-type="like" title="Like this property" aria-label="Like this property">👍</button>'
+              +'<button class="dv-btn dislike '+(myV==='dislike'?'voted':'')+'" data-ref="${p.ref}" data-type="dislike" title="Dislike this property" aria-label="Dislike this property">👎</button>'
               +(net!==0?'<span class="dv-net" style="color:'+(net>0?'var(--color-success)':'var(--color-danger)')+'">'+(net>0?'+':'')+net+'</span>':'');
           })()}
         </div>
@@ -1494,7 +1587,6 @@ function renderDetail(p) {
       <textarea id="notes-area" placeholder="Add notes — impressions, questions for agent, what you noticed on the viewing…">${existingNote?existingNote.text:''}</textarea>
       <div style="display:flex;align-items:center">
         <button class="save-btn" onclick="saveNote('${p.ref}')">Save note</button>
-        <span class="note-ok" id="note-ok"></span>
       </div>
 
       <!-- UPLOAD -->
@@ -1646,6 +1738,7 @@ async function saveAgentEmail(ref) {
   if (val) notes.agentEmail[ref] = val; else delete notes.agentEmail[ref];
   localStorage.setItem('house_notes', JSON.stringify(notes));
   await pushNotesFile('Update agent email for '+ref);
+  showToast('✓ Agent email saved', 'success');
   const p = properties.find(x=>x.ref===ref);
   if (p) renderDetail(p);
   renderList();
@@ -1665,6 +1758,7 @@ async function saveAgentPhone(ref) {
 // ── QUESTIONS POPUP ──────────────────────────────────────────────────────────
 let currentQsRef = null;
 function showQuestions(ref) {
+  trackFocusTrigger();
   const sc = scorecards[ref];
   const p  = properties.find(x => x.ref === ref);
   currentQsRef = ref;
@@ -1679,6 +1773,7 @@ function showQuestions(ref) {
 function hideQuestions() {
   document.getElementById('qs-popup').classList.remove('show');
   currentQsRef = null;
+  restoreFocusTrigger();
 }
 function copyQsFromPopup() {
   const sc = currentQsRef ? scorecards[currentQsRef] : null;
@@ -1856,6 +1951,7 @@ async function pushVotesFile(message) {
   try {
     const content = btoa(unescape(encodeURIComponent(JSON.stringify(votes, null, 2))));
     await ghPut('data/votes.json', content, message);
+    showToast('✓ Vote saved', 'success');
   } catch(e) { console.warn('Save failed, changes stored locally.', e); }
 }
 
@@ -2084,6 +2180,7 @@ function updateStats() {
 
 // ── ADD PROPERTY ──────────────────────────────────────────────────────────────
 function showAddModal() {
+  trackFocusTrigger();
   // Reset to "add" mode
   document.getElementById('add-modal-title').textContent = 'Add property';
   document.getElementById('add-modal-submit').textContent = 'Add property';
@@ -2174,6 +2271,7 @@ async function saveEditedProperty(ref) {
 }
 function hideAddModal() {
   document.getElementById('add-modal').classList.remove('show');
+  restoreFocusTrigger();
   // Restore ref row visibility for next Add use
   const refRow = document.getElementById('add-ref')?.closest?.('.modal-field.full');
   if (refRow) refRow.style.display = '';
@@ -2332,6 +2430,7 @@ async function addProperty() {
 
 // ── DELETE PROPERTY ───────────────────────────────────────────────────────────
 function confirmDelete(ref) {
+  trackFocusTrigger();
   const p=properties.find(x=>x.ref===ref);
   if(!p) return;
   document.getElementById('confirm-msg').textContent=
@@ -2342,6 +2441,7 @@ function confirmDelete(ref) {
 
 function hideConfirm() {
   document.getElementById('confirm-modal').classList.remove('show');
+  restoreFocusTrigger();
 }
 
 async function deleteProperty(ref) {
@@ -2358,16 +2458,18 @@ async function deleteProperty(ref) {
 
 // ── NOTES ─────────────────────────────────────────────────────────────────────
 async function loadNotes() {
-  try { const sr = await fetch('data/notes.json'); if (sr.ok) staticNotesSnapshot = await sr.json(); } catch(e) {}
+  let staticOk = false, githubOk = false, localOk = false;
+  try { const sr = await fetch('data/notes.json'); if (sr.ok) { staticNotesSnapshot = await sr.json(); staticOk = true; } } catch(e) {}
   const token=getToken();
   if(token) {
     try {
       const r=await ghGet(NOTES_PATH);
-      if(r.ok){const d=await r.json();notes=JSON.parse(atob(d.content));checkUnsavedChanges();return;}
+      if(r.ok){const d=await r.json();notes=JSON.parse(atob(d.content));githubOk=true;checkUnsavedChanges();return;}
     } catch(e){}
   }
   const local=localStorage.getItem('house_notes');
-  if(local){try{notes=JSON.parse(local);}catch(e){}}
+  if(local){try{notes=JSON.parse(local);localOk=true;}catch(e){}}
+  if (!staticOk && !githubOk && !localOk) showToast('⚠ Could not load latest data', 'error');
   checkUnsavedChanges();
 }
 
@@ -2377,8 +2479,6 @@ async function saveNote(ref) {
   notes.notes[ref]={text,date:new Date().toLocaleDateString('en-GB')};
   localStorage.setItem('house_notes',JSON.stringify(notes));
   await pushNotesFile('Update note for '+ref);
-  const ok=document.getElementById('note-ok');
-  if(ok){ok.textContent='Saved ✓';setTimeout(()=>ok.textContent='',2500);}
   renderList();
 }
 
@@ -2452,6 +2552,7 @@ async function ghPut(path,b64,message){
     return r;
   } catch(e) {
     syncState = 'error'; lastFailedPush = {path,b64,message}; renderSyncState();
+    showToast('⚠ Save failed — changes stored locally', 'error');
     throw e;
   }
 }
@@ -2462,6 +2563,7 @@ async function pushPropsFile(message) {
   try {
     const content=btoa(unescape(encodeURIComponent(JSON.stringify(properties,null,2))));
     await ghPut(PROPS_PATH,content,message);
+    showToast('✓ Properties updated', 'success');
   } catch(e){console.warn('Save failed, changes stored locally.',e);}
 }
 
@@ -2471,13 +2573,14 @@ async function pushNotesFile(message) {
   try {
     const content=btoa(unescape(encodeURIComponent(JSON.stringify(notes,null,2))));
     await ghPut(NOTES_PATH,content,message);
+    showToast('✓ Notes saved', 'success');
     checkUnsavedChanges();
   } catch(e){console.warn('Save failed, changes stored locally.',e);}
 }
 
 // ── TOKEN ─────────────────────────────────────────────────────────────────────
-function showTokenModal(){document.getElementById('token-modal').classList.add('show');}
-function hideTokenModal(){document.getElementById('token-modal').classList.remove('show');}
+function showTokenModal(){trackFocusTrigger();document.getElementById('token-modal').classList.add('show');}
+function hideTokenModal(){document.getElementById('token-modal').classList.remove('show');restoreFocusTrigger();}
 function saveToken(){
   const t=document.getElementById('token-input').value.trim();
   if(!t) return;
@@ -2501,6 +2604,7 @@ function updateTokenBtn(){
 let lbPz = null;
 
 function openLb(srcs, startIndex) {
+  trackFocusTrigger();
   lbImages = (srcs||[]).filter(Boolean);
   lbIndex  = (typeof startIndex === 'number' && startIndex >= 0) ? startIndex : 0;
   if (!lbImages.length) return;
@@ -2528,6 +2632,7 @@ function lbSetImage(idx) {
 }
 function closeLightbox() {
   document.getElementById('lightbox').classList.remove('show');
+  restoreFocusTrigger();
   const wrap = document.getElementById('lightbox-img-wrap');
   wrap.removeEventListener('wheel', lbWheelHandler);
   if (lbPz) { try { lbPz.destroy(); } catch(e){} lbPz = null; }
@@ -2547,6 +2652,58 @@ document.addEventListener('keydown', e => {
   if (e.key==='+'||e.key==='=') lbZoomIn();
   if (e.key==='-')          lbZoomOut();
   if (e.key==='0')          lbZoomReset();
+});
+
+// ── APP-WIDE KEYBOARD SHORTCUTS ───────────────────────────────────────────────
+function toggleKbdHelp() {
+  const el = document.getElementById('kbd-help');
+  if (el.classList.contains('show')) hideKbdHelp(); else showKbdHelp();
+}
+function showKbdHelp() { trackFocusTrigger(); document.getElementById('kbd-help').classList.add('show'); }
+function hideKbdHelp() { document.getElementById('kbd-help').classList.remove('show'); restoreFocusTrigger(); }
+
+let kbdFocusIndex = -1;
+function moveKbdFocus(delta) {
+  if (!filtered.length) return;
+  kbdFocusIndex = Math.min(filtered.length - 1, Math.max(0, kbdFocusIndex + delta));
+  const cards = document.querySelectorAll('#prop-list .prop-card');
+  cards.forEach((c, i) => c.classList.toggle('kbd-focused', i === kbdFocusIndex));
+  cards[kbdFocusIndex]?.scrollIntoView({block: 'nearest'});
+}
+
+function isTypingTarget(e) {
+  const t = e.target;
+  return t.matches?.('input, textarea, select') || t.isContentEditable;
+}
+
+document.addEventListener('keydown', e => {
+  if (document.getElementById('lightbox').classList.contains('show')) return;
+
+  if (e.key === '?' && !isTypingTarget(e)) { toggleKbdHelp(); return; }
+
+  if (e.key === 'Escape') {
+    if (document.getElementById('kbd-help').classList.contains('show')) { hideKbdHelp(); return; }
+    const openModal = document.querySelector(
+      '.modal-overlay.show, #confirm-modal.show, #token-modal.show, .qs-popup.show, #planner-overlay.show');
+    if (openModal) { openModal.classList.remove('show'); restoreFocusTrigger(); return; }
+    if (document.getElementById('detail-panel').classList.contains('open')) { closeDetail(); return; }
+    return;
+  }
+
+  if (isTypingTarget(e)) return;
+
+  if (e.key === 'f' || e.key === 'F') { e.preventDefault(); document.getElementById('search-box')?.focus(); return; }
+  if (e.key === 'ArrowDown') { e.preventDefault(); moveKbdFocus(1); return; }
+  if (e.key === 'ArrowUp')   { e.preventDefault(); moveKbdFocus(-1); return; }
+  if (e.key === 'Enter') {
+    if (kbdFocusIndex >= 0 && filtered[kbdFocusIndex]) selectProp(filtered[kbdFocusIndex].ref);
+    return;
+  }
+  if (/^[1-9]$/.test(e.key)) {
+    const rank = parseInt(e.key, 10);
+    const p = properties.find(x => x.rank === rank);
+    if (p) selectProp(p.ref);
+  }
 });
 
 const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
@@ -2792,13 +2949,14 @@ async function loadClusters() {
 }
 
 function showPlanner() {
+  trackFocusTrigger();
   loadClusters().then(() => {
     renderSuggestedTab();
     renderCustomTab();
     document.getElementById('planner-overlay').classList.add('show');
   });
 }
-function hidePlanner() { document.getElementById('planner-overlay').classList.remove('show'); }
+function hidePlanner() { document.getElementById('planner-overlay').classList.remove('show'); restoreFocusTrigger(); }
 function handlePlannerClick(e) { if(e.target===document.getElementById('planner-overlay')) hidePlanner(); }
 function switchPlannerTab(btn, tab) {
   document.querySelectorAll('.planner-tab').forEach(b=>b.classList.remove('active'));
@@ -3023,7 +3181,7 @@ init();
     <div id="planner-header">
       <span>🗓</span>
       <h2>Viewing Day Planner</h2>
-      <button class="planner-close" onclick="hidePlanner()">✕</button>
+      <button class="planner-close" onclick="hidePlanner()" aria-label="Close viewing day planner">✕</button>
     </div>
     <div id="planner-body">
       <div class="planner-tabs">
