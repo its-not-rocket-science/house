@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>House Hunt 2026</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.min.css"/>
 <style>:root {
   --color-primary:#1F4E79; --color-primary-bg:#E6F1FB;
   --color-success:#1E7145; --color-success-bg:#C6EFCE;
@@ -509,9 +510,50 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 
 /* MOBILE FILTERS TOGGLE */
 #mobile-filters-toggle{display:none}
+
+/* SKELETON LOADING */
+@keyframes shimmer{0%{background-position:-200px 0}100%{background-position:200px 0}}
+.skeleton-block{background:linear-gradient(90deg,var(--color-border) 25%,var(--color-surface) 37%,var(--color-border) 63%);
+  background-size:400px 100%;animation:shimmer 1.4s ease-in-out infinite;border-radius:4px}
+.skeleton-card{padding:12px 14px;border-bottom:1px solid var(--color-border);display:flex;gap:9px;align-items:flex-start}
+.skeleton-badge{width:26px;height:26px;border-radius:50%;flex-shrink:0}
+.skeleton-body{flex:1;display:flex;flex-direction:column;gap:6px}
+.skeleton-line{height:10px}
+.skeleton-line.name{width:70%;height:12px}
+.skeleton-line.price{width:40%}
+.skeleton-line.pills{width:55%}
+
+/* LOAD ERROR / EMPTY STATES */
+#load-error{display:none;position:fixed;inset:0;background:var(--bg);z-index:20000;
+  align-items:center;justify-content:center;text-align:center;padding:24px}
+#load-error.show{display:flex}
+.load-error-box{max-width:360px}
+.load-error-emoji{font-size:56px;margin-bottom:12px;line-height:1}
+.load-error-box h2{font-size:var(--text-lg);margin-bottom:8px;color:var(--color-text)}
+.load-error-box p{font-size:var(--text-sm);color:var(--color-muted);line-height:1.6;margin-bottom:16px}
+.empty-state{padding:36px 20px;text-align:center;color:var(--color-muted);font-size:var(--text-sm)}
+.empty-state p{margin-bottom:12px}
+
+/* IMAGE ERROR PLACEHOLDER */
+.img-placeholder{display:none;align-items:center;justify-content:center;
+  background:var(--color-surface);color:var(--color-muted);font-size:32px}
+
+/* MARKER CLUSTERS */
+.cluster-marker-badge{background:var(--color-primary);width:32px;height:32px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:var(--text-sm);
+  border:2px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.4)}
 </style>
 </head>
 <body>
+
+<div id="load-error">
+  <div class="load-error-box">
+    <div class="load-error-emoji">🏚</div>
+    <h2>Couldn't load property data</h2>
+    <p>Try refreshing the page. If the problem persists, the site may be updating — check back in a minute.</p>
+    <button class="mbtn p" onclick="location.reload()">Refresh</button>
+  </div>
+</div>
 
 <div id="header">
   <h1>🏡 House Hunt 2026</h1>
@@ -750,6 +792,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/panzoom/9.4.3/panzoom.min.js"></script>
 <script>
 // ── CONFIG ────────────────────────────────────────────────────────────────────
@@ -762,7 +805,7 @@ let properties = [], notes = {notes:{},visits:{},photos:{}}, scorecards = {}, vo
 let filtered = [], selected = null, currentSort = 'fit';
 let activeF = {cluster:'all',annexe:'all',status:'all',caveat:'all'};
 let showAllStatuses = false;
-let map = null, markers = {};
+let map = null, markers = {}, clusterGroup = null;
 let lbImages = [], lbIndex = 0;
 let syncState = 'idle', lastFailedPush = null, syncSuccessTimer = null;
 let staticNotesSnapshot = null;
@@ -797,12 +840,19 @@ function localFloorplans(ref) {
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
 async function init() {
+  renderSkeletonList();
   await loadManifest();
   loadClusters();
   try { const sc = await fetch('data/scorecards.json'); scorecards = await sc.json(); } catch(e) {}
   try { const vr = await fetch('data/votes.json'); votes = await vr.json(); } catch(e) { votes = {}; }
-  const r = await fetch('data/properties.json');
-  properties = await r.json();
+  try {
+    const r = await fetch('data/properties.json');
+    if (!r.ok) throw new Error('HTTP '+r.status);
+    properties = await r.json();
+  } catch (e) {
+    document.getElementById('load-error')?.classList.add('show');
+    return;
+  }
   await loadNotes();
   // Restore scorecard overrides into notes if present
   if (!notes.scorecardOverrides) notes.scorecardOverrides = {};
@@ -1002,6 +1052,14 @@ function initMap() {
   map = L.map('map').setView([51.5,-2.5],7);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     {attribution:'© OpenStreetMap contributors',maxZoom:18}).addTo(map);
+  clusterGroup = L.markerClusterGroup({
+    iconCreateFunction: cluster => L.divIcon({
+      // Real inline style="" attribute (not a raw SVG attribute), so var() resolves fine here
+      html:`<div class="cluster-marker-badge">${cluster.getChildCount()}</div>`,
+      iconSize:[32,32], className:''
+    })
+  });
+  map.addLayer(clusterGroup);
   properties.forEach(addMarker);
 }
 
@@ -1014,12 +1072,13 @@ function addMarker(p) {
       <span style="color:#fff;font-size:10px;font-weight:700">${p.rank}</span></div>`,
     iconSize:[26,26],iconAnchor:[13,13],className:''
   });
-  const m = L.marker([p.lat,p.lng],{icon}).addTo(map);
+  const m = L.marker([p.lat,p.lng],{icon});
   m.bindPopup(`<strong>${p.name}</strong><br>${p.price_display}<br>
     <a href="#" style="font-size:11px;color:var(--color-primary)"
       onclick="event.preventDefault();selectProp('${p.ref}')">View details →</a>`);
   m.on('click',()=>selectProp(p.ref));
   markers[p.ref]=m;
+  clusterGroup.addLayer(m);
 }
 
 // ── SORT ──────────────────────────────────────────────────────────────────────
@@ -1129,8 +1188,42 @@ function applyFilters() {
   if (resetBtn) resetBtn.style.display = currentSort !== 'fit' ? 'block' : 'none';
 }
 
+function renderSkeletonList() {
+  const list=document.getElementById('prop-list');
+  if (!list) return;
+  list.innerHTML = Array.from({length:6}).map(()=>`
+    <div class="skeleton-card">
+      <div class="skeleton-block skeleton-badge"></div>
+      <div class="skeleton-body">
+        <div class="skeleton-block skeleton-line name"></div>
+        <div class="skeleton-block skeleton-line price"></div>
+        <div class="skeleton-block skeleton-line pills"></div>
+      </div>
+    </div>`).join('');
+}
+
+function clearAllFilters() {
+  activeF = {cluster:'all',annexe:'all',status:'all',caveat:'all'};
+  showAllStatuses = false;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.toggle('active', b.dataset.v==='all'));
+  const searchBox = document.getElementById('search-box');
+  if (searchBox) searchBox.value = '';
+  const toggleBtn = document.getElementById('toggle-show-all');
+  if (toggleBtn) toggleBtn.textContent = 'Show all incl. rejected';
+  const rejBtn = document.querySelector('[data-f="status"][data-v="rejected"]');
+  if (rejBtn) rejBtn.style.display = 'none';
+  applyFilters();
+}
+
 function renderList() {
   const list=document.getElementById('prop-list');
+  if (filtered.length === 0) {
+    list.innerHTML = `<div class="empty-state">
+      <p>No properties match your filters.</p>
+      <button class="mbtn s" onclick="clearAllFilters()">Clear filters</button>
+    </div>`;
+    return;
+  }
   list.innerHTML='';
   filtered.forEach(p=>{
     const hasNote=notes.notes[p.ref];
@@ -1181,7 +1274,11 @@ function renderList() {
 
 function updateMapMarkers() {
   const refs=new Set(filtered.map(p=>p.ref));
-  Object.entries(markers).forEach(([ref,m])=>m.setOpacity(refs.has(ref)?1:0.2));
+  Object.entries(markers).forEach(([ref,m])=>{
+    const inGroup = clusterGroup.hasLayer(m);
+    if (refs.has(ref) && !inGroup) clusterGroup.addLayer(m);
+    else if (!refs.has(ref) && inGroup) clusterGroup.removeLayer(m);
+  });
 }
 
 // ── SELECT ────────────────────────────────────────────────────────────────────
@@ -1191,7 +1288,11 @@ function selectProp(ref) {
   if(!p) return;
   document.querySelectorAll('.prop-card').forEach(c=>
     c.classList.toggle('selected',c.dataset.ref===ref));
-  if(markers[ref]) { map.panTo([p.lat,p.lng]); markers[ref].openPopup(); }
+  if(markers[ref]) {
+    map.panTo([p.lat,p.lng]);
+    if (clusterGroup.hasLayer(markers[ref])) clusterGroup.zoomToShowLayer(markers[ref], () => markers[ref].openPopup());
+    else markers[ref].openPopup();
+  }
   renderDetail(p);
   document.getElementById('detail-panel').classList.add('open');
   history.pushState({panel: ref}, '', '#' + ref);
@@ -1232,8 +1333,9 @@ function renderDetail(p) {
           <div class="gallery-main-wrap" id="listing-wrap">
             <img class="gallery-main" id="gallery-main-img"
               src="${rmImgs[0]}" alt="Photo 1"
-              onerror="this.style.display='none'"
+              onerror="imgError(this)"
               onclick="galleryLb(0)">
+            <div class="gallery-main img-placeholder">🏠</div>
             <div class="pz-controls">
               <button class="pz-btn" onclick="pzIn('listing-wrap')" title="Zoom in">+</button>
               <button class="pz-btn" onclick="pzOut('listing-wrap')" title="Zoom out">−</button>
@@ -1277,8 +1379,11 @@ function renderDetail(p) {
       </div>
       <div id="gtab-visit" style="display:none">
         ${visitPhotos.length ? `<div style="padding:6px"><div class="photo-grid">
-          ${visitPhotos.map((ph,i)=>`<img class="photo-thumb" src="${ph.url}"
-            onclick="visitLb(${i})" alt="${ph.name}">`).join('')}
+          ${visitPhotos.map((ph,i)=>`<span style="position:relative;display:block">
+            <img class="photo-thumb" src="${ph.url}" onerror="imgError(this)"
+              onclick="visitLb(${i})" alt="${ph.name}">
+            <div class="photo-thumb img-placeholder" style="position:absolute;inset:0;font-size:22px">🏠</div>
+          </span>`).join('')}
         </div></div>` : `<div class="gallery-empty">No visit photos yet</div>`}
       </div>
     </div>
@@ -1446,6 +1551,12 @@ function renderDetail(p) {
   window._vPhotos = notes.photos[p.ref] || [];
 }
 
+
+function imgError(img) {
+  img.style.display = 'none';
+  const placeholder = img.parentElement?.querySelector('.img-placeholder');
+  if (placeholder) placeholder.style.display = 'flex';
+}
 
 function switchGalleryTab(btn, tab) {
   document.querySelectorAll('.gallery-tab').forEach(b=>b.classList.remove('active'));
@@ -2237,7 +2348,7 @@ async function deleteProperty(ref) {
   hideConfirm();
   if(selected===ref) closeDetail();
   // Remove marker
-  if(markers[ref]) { map.removeLayer(markers[ref]); delete markers[ref]; }
+  if(markers[ref]) { clusterGroup.removeLayer(markers[ref]); delete markers[ref]; }
   // Remove from array
   properties=properties.filter(p=>p.ref!==ref);
   applyFilters();
