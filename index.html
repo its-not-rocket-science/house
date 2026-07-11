@@ -452,6 +452,36 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 .cp-name{flex:1;font-weight:500}.cp-dist{font-size:var(--text-sm);color:var(--color-muted);white-space:nowrap}
 .custom-result{background:var(--color-surface);border:1px solid var(--color-border);border-radius:6px;padding:12px 14px;margin-top:8px}
 
+/* FLAG BUTTON */
+.card-flag-btn{background:none;border:1px solid var(--color-border);border-radius:3px;
+  font-size:9px;cursor:pointer;padding:1px 4px;line-height:1.2;transition:all .12s;
+  color:var(--color-muted);margin-left:2px}
+.card-flag-btn:hover{background:#FFF3CD;border-color:#ffc107;color:#664d03}
+.card-flag-btn.flagged{background:#FFF3CD;border-color:#ffc107;color:#664d03}
+.dv-flag-btn{border:1.5px solid var(--color-border);border-radius:14px;
+  padding:3px 10px;cursor:pointer;font-size:12px;background:#fff;
+  transition:all .12s;font-weight:600;color:var(--color-muted)}
+.dv-flag-btn:hover,.dv-flag-btn.flagged{background:#FFF3CD;border-color:#ffc107;color:#664d03}
+/* FLAG MODAL */
+#flag-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);
+  z-index:9000;align-items:center;justify-content:center}
+#flag-modal.show{display:flex}
+.flag-box{background:#fff;border-radius:8px;padding:20px;width:420px;max-width:95vw;
+  box-shadow:0 8px 32px rgba(0,0,0,.2)}
+.flag-box h2{font-size:14px;margin:0 0 4px;color:var(--color-primary)}
+.flag-box p{font-size:12px;color:var(--color-muted);margin:0 0 12px}
+.flag-presets{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.flag-preset{font-size:11px;padding:4px 10px;border-radius:10px;
+  border:1px solid var(--color-border);background:#fff;cursor:pointer;transition:all .1s}
+.flag-preset:hover,.flag-preset.chosen{background:#FFF3CD;border-color:#ffc107;color:#664d03}
+.flag-custom-input{width:100%;padding:7px 9px;border:1px solid var(--color-border);
+  border-radius:4px;font-size:12.5px;font-family:inherit;margin-bottom:10px;box-sizing:border-box}
+.flag-existing{background:#FFF3CD;border:1px solid #ffc107;border-radius:4px;
+  padding:8px 10px;font-size:12px;color:#664d03;margin-bottom:10px;
+  display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.flag-clear-btn{background:none;border:none;cursor:pointer;font-size:11px;
+  color:#664d03;text-decoration:underline;white-space:nowrap;flex-shrink:0}
+
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-thumb{background:#ccc;border-radius:3px}
@@ -975,6 +1005,8 @@ async function init() {
 
   // Event delegation for card vote buttons — handles dynamically rendered cards
   document.getElementById('prop-list').addEventListener('click', function(e) {
+    const flagBtn = e.target.closest('.card-flag-btn');
+    if (flagBtn) { e.stopPropagation(); showFlagModal(flagBtn.dataset.ref); return; }
     const btn = e.target.closest('.card-vote-btn');
     if (!btn) return;
     e.stopPropagation();
@@ -1337,7 +1369,9 @@ function renderList() {
     const fitColor = fitPct>70?'var(--color-success)':fitPct>=50?'var(--color-warning)':'var(--color-danger)';
     const as=(notes.agentStatus||{})[p.ref];
     const hasPhone=(notes.agentPhone||{})[p.ref];
+    const flagText = (notes.flags||{})[p.ref];
     const footerItems = [
+      flagText?('<span title="'+(flagText||'').replace(/"/g,'&quot;')+'" style="font-size:10px;color:#664d03;background:#FFF3CD;padding:1px 5px;border-radius:6px;font-weight:600">🚩</span>'):'',
       hasNote?'<span style="font-size:10px">📝</span>':'',
       photoCount?`<span style="font-size:10px">📷${photoCount}</span>`:'',
       (as&&as!=='not-contacted')?`<span style="font-size:10px;color:var(--color-primary)">📧 ${agentStatusLabel(as)}</span>`:'',
@@ -1356,6 +1390,7 @@ function renderList() {
           <button class="card-vote-btn dislike ${localStorage.getItem('vote_'+p.ref)==='dislike'?'voted':''}"
             data-ref="${p.ref}" data-type="dislike" title="Dislike" aria-label="Dislike this property">👎</button>
         </div>
+        ${(()=>{const fl=(notes.flags||{})[p.ref];const tip=fl?fl.replace(/"/g,'&quot;'):'Flag for attention';return '<button class="card-flag-btn '+(fl?'flagged':'')+'" data-ref="${p.ref}" title="'+tip+'" aria-label="Flag for attention">🚩</button>';})()}
         ${(()=>{const net=(votes[p.ref]||[]).reduce((s,v)=>s+(v.type==='like'?1:-1),0);
           return net!==0?'<div class="card-vote-net" style="color:'+(net>0?'var(--color-success)':'var(--color-danger)')+'">'+(net>0?'+':'')+net+'</div>':'';})()}
       </div>
@@ -1523,6 +1558,7 @@ function renderDetail(p) {
               +(net!==0?'<span class="dv-net" style="color:'+(net>0?'var(--color-success)':'var(--color-danger)')+'">'+(net>0?'+':'')+net+'</span>':'');
           })()}
         </div>
+        ${(()=>{const fl=(notes.flags||{})[p.ref];const tip=fl?fl.replace(/"/g,'&quot;'):'Flag for attention';return '<button class="dv-flag-btn '+(fl?'flagged':'')+'" data-ref="${p.ref}" onclick="showFlagModal(\'${p.ref}\')" title="'+tip+'" aria-label="Flag for attention">🚩</button>';})()}
       </div>
       <div class="detail-name">${p.name}</div>
       <div class="detail-location">📍 ${p.location}</div>
@@ -3184,6 +3220,75 @@ window.addEventListener('load', function() {
   }
 });
 
+// ── FLAGS ──────────────────────────────────────────────────────────────────────
+let currentFlagRef = null;
+
+function showFlagModal(ref) {
+  currentFlagRef = ref;
+  const p = properties.find(x => x.ref === ref);
+  document.getElementById('flag-modal-subtitle').textContent =
+    'What needs following up on ' + (p ? p.name : ref) + '?';
+  const existing = (notes.flags||{})[ref];
+  const existEl = document.getElementById('flag-existing');
+  if (existing) {
+    existEl.style.display = 'flex';
+    document.getElementById('flag-existing-text').textContent = '🚩 ' + existing;
+  } else {
+    existEl.style.display = 'none';
+  }
+  document.getElementById('flag-custom-input').value = existing || '';
+  document.querySelectorAll('.flag-preset').forEach(b => b.classList.remove('chosen'));
+  document.getElementById('flag-modal').classList.add('show');
+  setTimeout(() => document.getElementById('flag-custom-input').focus(), 100);
+}
+
+function hideFlagModal() {
+  document.getElementById('flag-modal').classList.remove('show');
+  currentFlagRef = null;
+}
+
+function pickFlagPreset(btn) {
+  document.querySelectorAll('.flag-preset').forEach(b => b.classList.remove('chosen'));
+  btn.classList.add('chosen');
+  document.getElementById('flag-custom-input').value = btn.textContent.trim();
+}
+
+async function saveFlagModal() {
+  if (!currentFlagRef) return;
+  const text = document.getElementById('flag-custom-input').value.trim();
+  if (!text) return;
+  if (!notes.flags) notes.flags = {};
+  notes.flags[currentFlagRef] = text;
+  localStorage.setItem('house_notes', JSON.stringify(notes));
+  await pushNotesFile('Flag ' + currentFlagRef);
+  hideFlagModal();
+  refreshFlagDisplay(currentFlagRef);
+  showToast('🚩 Flag saved', 'success');
+}
+
+async function clearFlag() {
+  if (!currentFlagRef) return;
+  if (!notes.flags) notes.flags = {};
+  delete notes.flags[currentFlagRef];
+  localStorage.setItem('house_notes', JSON.stringify(notes));
+  await pushNotesFile('Clear flag ' + currentFlagRef);
+  hideFlagModal();
+  refreshFlagDisplay(currentFlagRef);
+  showToast('Flag cleared', 'success');
+}
+
+function refreshFlagDisplay(ref) {
+  const flagged  = !!(notes.flags||{})[ref];
+  const flagText = (notes.flags||{})[ref] || 'Flag for attention';
+  const tip      = flagText.replace(/"/g, '&quot;');
+  document.querySelectorAll('.card-flag-btn[data-ref="'+ref+'"]').forEach(b => {
+    b.classList.toggle('flagged', flagged);
+    b.title = flagText;
+  });
+  const dv = document.querySelector('.dv-flag-btn[data-ref="'+ref+'"]');
+  if (dv) { dv.classList.toggle('flagged', flagged); dv.title = flagText; }
+}
+
 init();
 </script>
 
@@ -3219,5 +3324,34 @@ init();
   </div>
 </div>
 
+
+<!-- FLAG MODAL -->
+<div id="flag-modal" onclick="if(event.target===this)hideFlagModal()">
+  <div class="flag-box">
+    <h2>🚩 Flag for attention</h2>
+    <p id="flag-modal-subtitle">What needs following up?</p>
+    <div id="flag-existing" style="display:none" class="flag-existing">
+      <span id="flag-existing-text"></span>
+      <button class="flag-clear-btn" onclick="clearFlag()">✕ Clear flag</button>
+    </div>
+    <div class="flag-presets">
+      <button class="flag-preset" onclick="pickFlagPreset(this)">📞 Call agent back</button>
+      <button class="flag-preset" onclick="pickFlagPreset(this)">📧 Send questions</button>
+      <button class="flag-preset" onclick="pickFlagPreset(this)">📅 Book viewing</button>
+      <button class="flag-preset" onclick="pickFlagPreset(this)">⚠ Check flood risk</button>
+      <button class="flag-preset" onclick="pickFlagPreset(this)">📶 Check broadband</button>
+      <button class="flag-preset" onclick="pickFlagPreset(this)">🔎 Check planning/BC</button>
+      <button class="flag-preset" onclick="pickFlagPreset(this)">💬 Discuss with family</button>
+      <button class="flag-preset" onclick="pickFlagPreset(this)">💰 Revisit offer price</button>
+    </div>
+    <input class="flag-custom-input" id="flag-custom-input" type="text"
+      placeholder="Or type your own reason…"
+      onkeydown="if(event.key==='Enter')saveFlagModal()">
+    <div style="display:flex;gap:8px">
+      <button class="mbtn p" onclick="saveFlagModal()">Save flag</button>
+      <button class="mbtn s" onclick="hideFlagModal()">Cancel</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
