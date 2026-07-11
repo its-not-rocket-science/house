@@ -1,7 +1,7 @@
 {
   "173985596": {
     "ref": "173985596",
-    "overall_pct": 57,
+    "overall_pct": 58,
     "scores": [
       {
         "cat": "Annexe",
@@ -100,6 +100,13 @@
         "score": 0,
         "note": "£5,000 under budget — no room for works",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 2,
+        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "resolved": true
       }
     ],
     "questions": [
@@ -114,7 +121,7 @@
   },
   "89061840": {
     "ref": "89061840",
-    "overall_pct": 76,
+    "overall_pct": 71,
     "scores": [
       {
         "cat": "Annexe",
@@ -220,6 +227,13 @@
         "score": 2,
         "note": "Agent confirms: 22-inch stone walls + garden + hedgerow; not noticeable inside with windows closed — assess at viewing",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 0,
+        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "resolved": false
       }
     ],
     "questions": [
@@ -240,7 +254,7 @@
   },
   "89444523": {
     "ref": "89444523",
-    "overall_pct": 38,
+    "overall_pct": 40,
     "scores": [
       {
         "cat": "Annexe",
@@ -339,6 +353,13 @@
         "score": 2,
         "note": "£55,000 under budget — some scope",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 2,
+        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "resolved": true
       }
     ],
     "questions": [
@@ -358,7 +379,7 @@
   },
   "169862942": {
     "ref": "169862942",
-    "overall_pct": 83,
+    "overall_pct": 78,
     "scores": [
       {
         "cat": "Annexe",
@@ -457,6 +478,13 @@
         "score": 2,
         "note": "£55,000 under budget — some scope",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 0,
+        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "resolved": false
       }
     ],
     "questions": [
@@ -690,6 +718,13 @@
         "score": 2,
         "note": "£55,000 under budget — some scope",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 2,
+        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "resolved": true
       }
     ],
     "questions": [
@@ -709,7 +744,7 @@
   },
   "172773251": {
     "ref": "172773251",
-    "overall_pct": 45,
+    "overall_pct": 47,
     "scores": [
       {
         "cat": "Annexe",
@@ -808,6 +843,13 @@
         "score": 0,
         "note": "£5,000 under budget — no room for works",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 2,
+        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "resolved": true
       }
     ],
     "questions": [
@@ -823,7 +865,7 @@
   },
   "89951784": {
     "ref": "89951784",
-    "overall_pct": 76,
+    "overall_pct": 75,
     "scores": [
       {
         "cat": "Annexe",
@@ -929,6 +971,13 @@
         "score": 1,
         "note": "No ground floor shower currently. Utility room + WC could be converted — not yet done.",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 2,
+        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "resolved": true
       }
     ],
     "questions": [
@@ -947,7 +996,7 @@
   },
   "168359045": {
     "ref": "168359045",
-    "overall_pct": 57,
+    "overall_pct": 56,
     "scores": [
       {
         "cat": "Annexe",
@@ -1046,6 +1095,13 @@
         "score": 0,
         "note": "£5,000 under budget — no room for works",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 1,
+        "note": "Possible — has reception rooms but no confirmed dedicated space",
+        "resolved": false
       }
     ],
     "questions": [
@@ -1060,7 +1116,7 @@
   },
   "88996269": {
     "ref": "88996269",
-    "overall_pct": 48,
+    "overall_pct": 49,
     "scores": [
       {
         "cat": "Annexe",
@@ -1159,6 +1215,13 @@
         "score": 2,
         "note": "£50,000 under budget — some scope",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 2,
+        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "resolved": true
       }
     ],
     "questions": [
@@ -1175,7 +1238,7 @@
   },
   "87130665": {
     "ref": "87130665",
-    "overall_pct": 55,
+    "overall_pct": 51,
     "scores": [
       {
         "cat": "Annexe",
@@ -1274,6 +1337,13 @@
         "score": 2,
         "note": "£30,000 under budget — some scope",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 0,
+        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "resolved": false
       }
     ],
     "questions": [
@@ -1291,7 +1361,7 @@
   },
   "172902734": {
     "ref": "172902734",
-    "overall_pct": 57,
+    "overall_pct": 53,
     "scores": [
       {
         "cat": "Annexe",
@@ -1390,6 +1460,13 @@
         "score": 0,
         "note": "£5,000 under budget — no room for works",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 0,
+        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "resolved": false
       }
     ],
     "questions": [
@@ -1404,7 +1481,7 @@
   },
   "173219645": {
     "ref": "173219645",
-    "overall_pct": 43,
+    "overall_pct": 44,
     "scores": [
       {
         "cat": "Annexe",
@@ -1502,6 +1579,13 @@
         "label": "Budget headroom",
         "score": 2,
         "note": "£30,000 under budget — some scope",
+        "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 2,
+        "note": "Likely — 5+ beds or confirmed extra reception room",
         "resolved": true
       }
     ],
@@ -1605,6 +1689,13 @@
         "score": 2,
         "note": "£30,000 under budget — some scope",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 2,
+        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "resolved": true
       }
     ],
     "questions": [
@@ -1618,7 +1709,7 @@
   },
   "89701968": {
     "ref": "89701968",
-    "overall_pct": 48,
+    "overall_pct": 44,
     "scores": [
       {
         "cat": "Annexe",
@@ -1717,6 +1808,13 @@
         "score": 1,
         "note": "Only £10,000 under budget — very tight",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 0,
+        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "resolved": false
       }
     ],
     "questions": [
@@ -1735,7 +1833,7 @@
   },
   "174415073": {
     "ref": "174415073",
-    "overall_pct": 41,
+    "overall_pct": 43,
     "scores": [
       {
         "cat": "Annexe",
@@ -1827,6 +1925,13 @@
         "score": 0,
         "note": "NO bathroom downstairs — significant mobility barrier ✗",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 2,
+        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "resolved": true
       }
     ],
     "questions": [
@@ -1846,7 +1951,7 @@
   },
   "174472451": {
     "ref": "174472451",
-    "overall_pct": 55,
+    "overall_pct": 56,
     "scores": [
       {
         "cat": "Annexe",
@@ -1944,6 +2049,13 @@
         "label": "Budget headroom",
         "score": 2,
         "note": "£30,000 under budget — some scope",
+        "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 2,
+        "note": "Likely — 5+ beds or confirmed extra reception room",
         "resolved": true
       }
     ],
@@ -2077,7 +2189,7 @@
   },
   "168243473": {
     "ref": "168243473",
-    "overall_pct": 57,
+    "overall_pct": 53,
     "scores": [
       {
         "cat": "Annexe",
@@ -2176,6 +2288,13 @@
         "score": 2,
         "note": "£30,000 under budget — some scope",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 0,
+        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "resolved": false
       }
     ],
     "questions": [
@@ -2191,7 +2310,7 @@
   },
   "89767338": {
     "ref": "89767338",
-    "overall_pct": 48,
+    "overall_pct": 49,
     "scores": [
       {
         "cat": "Annexe",
@@ -2290,6 +2409,13 @@
         "score": 2,
         "note": "£40,000 under budget — some scope",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 2,
+        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "resolved": true
       }
     ],
     "questions": [
@@ -2305,7 +2431,7 @@
   },
   "88156767": {
     "ref": "88156767",
-    "overall_pct": 40,
+    "overall_pct": 42,
     "scores": [
       {
         "cat": "Annexe",
@@ -2404,6 +2530,13 @@
         "score": 1,
         "note": "Only £10,000 under budget — very tight",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 2,
+        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "resolved": true
       }
     ],
     "questions": [
@@ -2421,7 +2554,7 @@
   },
   "87791562": {
     "ref": "87791562",
-    "overall_pct": 67,
+    "overall_pct": 64,
     "scores": [
       {
         "cat": "Annexe",
@@ -2520,6 +2653,13 @@
         "score": 1,
         "note": "£15,000 under budget — very tight",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 1,
+        "note": "Possible — 4-bed with reception rooms",
+        "resolved": false
       }
     ],
     "questions": [
@@ -2538,7 +2678,7 @@
   },
   "89236248": {
     "ref": "89236248",
-    "overall_pct": 39,
+    "overall_pct": 41,
     "scores": [
       {
         "cat": "Annexe",
@@ -2622,6 +2762,13 @@
         "label": "Budget headroom",
         "score": 1,
         "note": "Only £10,000 under budget — very tight",
+        "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 2,
+        "note": "Likely — 5+ beds or confirmed extra reception room",
         "resolved": true
       }
     ],
@@ -2739,7 +2886,7 @@
   },
   "89415939": {
     "ref": "89415939",
-    "overall_pct": 44,
+    "overall_pct": 46,
     "scores": [
       {
         "cat": "Annexe",
@@ -2823,6 +2970,13 @@
         "label": "Budget headroom",
         "score": 3,
         "note": "£85,000 under budget — good scope for works",
+        "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 2,
+        "note": "Likely — 5+ beds or confirmed extra reception room",
         "resolved": true
       }
     ],
@@ -2953,7 +3107,7 @@
   },
   "88318344": {
     "ref": "88318344",
-    "overall_pct": 44,
+    "overall_pct": 42,
     "scores": [
       {
         "cat": "Annexe",
@@ -3059,6 +3213,13 @@
         "score": 0,
         "note": "Non-standard PRC construction — some lenders won't mortgage",
         "resolved": false
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 0,
+        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "resolved": false
       }
     ],
     "questions": [
@@ -3078,7 +3239,7 @@
   },
   "170605958": {
     "ref": "170605958",
-    "overall_pct": 36,
+    "overall_pct": 38,
     "scores": [
       {
         "cat": "Annexe",
@@ -3163,6 +3324,13 @@
         "score": 2,
         "note": "£30,000 under budget — some scope",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 2,
+        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "resolved": true
       }
     ],
     "questions": [
@@ -3179,7 +3347,7 @@
   },
   "166496951": {
     "ref": "166496951",
-    "overall_pct": 78,
+    "overall_pct": 77,
     "scores": [
       {
         "cat": "Annexe",
@@ -3264,6 +3432,13 @@
         "score": 3,
         "note": "£90,000 under budget — good scope for works",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 2,
+        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "resolved": true
       }
     ],
     "questions": [
@@ -3283,7 +3458,7 @@
   },
   "90125946": {
     "ref": "90125946",
-    "overall_pct": 33,
+    "overall_pct": 36,
     "scores": [
       {
         "cat": "Annexe",
@@ -3368,6 +3543,13 @@
         "score": 0,
         "note": "£5,000 under budget — no room for works",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 2,
+        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "resolved": true
       }
     ],
     "questions": [
@@ -3385,7 +3567,7 @@
   },
   "169598735": {
     "ref": "169598735",
-    "overall_pct": 45,
+    "overall_pct": 47,
     "scores": [
       {
         "cat": "Annexe",
@@ -3483,6 +3665,13 @@
         "label": "Budget headroom",
         "score": 0,
         "note": "£5,000 under budget — no room for works",
+        "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 2,
+        "note": "Likely — 5+ beds or confirmed extra reception room",
         "resolved": true
       }
     ],
@@ -3587,6 +3776,13 @@
         "score": 0,
         "note": "£5,000 under budget — no room for works",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 2,
+        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "resolved": true
       }
     ],
     "questions": [
@@ -3604,7 +3800,7 @@
   },
   "168382466": {
     "ref": "168382466",
-    "overall_pct": 52,
+    "overall_pct": 49,
     "scores": [
       {
         "cat": "Annexe",
@@ -3703,6 +3899,13 @@
         "score": 2,
         "note": "£30,000 under budget — some scope",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 0,
+        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "resolved": false
       }
     ],
     "questions": [
@@ -3721,7 +3924,7 @@
   },
   "88310844": {
     "ref": "88310844",
-    "overall_pct": 64,
+    "overall_pct": 60,
     "scores": [
       {
         "cat": "Annexe",
@@ -3820,6 +4023,13 @@
         "score": 2,
         "note": "£35,000 under budget — some scope",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 0,
+        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "resolved": false
       }
     ],
     "questions": [
@@ -3958,7 +4168,7 @@
   },
   "88055244": {
     "ref": "88055244",
-    "overall_pct": 51,
+    "overall_pct": 52,
     "scores": [
       {
         "cat": "Annexe",
@@ -4049,6 +4259,13 @@
         "label": "Ferry dependency",
         "score": 0,
         "note": "Isle of Wight — ferry required for all mainland access",
+        "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 2,
+        "note": "Likely — 5+ beds or confirmed extra reception room",
         "resolved": true
       }
     ],
@@ -4189,7 +4406,7 @@
   },
   "167437883": {
     "ref": "167437883",
-    "overall_pct": 48,
+    "overall_pct": 44,
     "scores": [
       {
         "cat": "Annexe",
@@ -4267,6 +4484,13 @@
         "score": 3,
         "note": "£92,900 under budget — good scope for works",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 0,
+        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "resolved": false
       }
     ],
     "questions": [
@@ -4283,7 +4507,7 @@
   },
   "89491017": {
     "ref": "89491017",
-    "overall_pct": 53,
+    "overall_pct": 52,
     "scores": [
       {
         "cat": "Annexe",
@@ -4389,6 +4613,13 @@
         "score": 2,
         "note": "£55,000 under budget",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 1,
+        "note": "Possible — has reception rooms but no confirmed dedicated space",
+        "resolved": false
       }
     ],
     "questions": [
@@ -4408,7 +4639,7 @@
   },
   "160507001": {
     "ref": "160507001",
-    "overall_pct": 31,
+    "overall_pct": 28,
     "scores": [
       {
         "cat": "Annexe",
@@ -4493,6 +4724,13 @@
         "score": 1,
         "note": "£15,000 under budget — tight",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 0,
+        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "resolved": false
       }
     ],
     "questions": [
@@ -4511,7 +4749,7 @@
   },
   "90443352": {
     "ref": "90443352",
-    "overall_pct": 81,
+    "overall_pct": 76,
     "scores": [
       {
         "cat": "Annexe",
@@ -4610,6 +4848,13 @@
         "score": 2,
         "note": "£40,000 under budget",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 0,
+        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "resolved": false
       }
     ],
     "questions": [
@@ -4712,6 +4957,13 @@
         "score": 3,
         "note": "£55,000–80,000 under budget at guide price — good scope for annexe works",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 2,
+        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "resolved": true
       }
     ],
     "questions": [
@@ -4731,7 +4983,7 @@
   },
   "90542934": {
     "ref": "90542934",
-    "overall_pct": 62,
+    "overall_pct": 58,
     "scores": [
       {
         "cat": "Annexe",
@@ -4830,6 +5082,13 @@
         "score": 3,
         "note": "£105,000 under budget — excellent scope for works and wet room conversion",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 0,
+        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "resolved": false
       }
     ],
     "questions": [
@@ -4848,7 +5107,7 @@
   },
   "173546681": {
     "ref": "173546681",
-    "overall_pct": 57,
+    "overall_pct": 53,
     "scores": [
       {
         "cat": "Annexe",
@@ -4947,6 +5206,13 @@
         "score": 2,
         "note": "£20,000 under £480k budget — tight but workable",
         "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 0,
+        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "resolved": false
       }
     ],
     "questions": [

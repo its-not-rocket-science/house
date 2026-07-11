@@ -74,7 +74,7 @@
   {
     "ref": "89061840",
     "name": "Oakfields, Ham — Stone Cottage 0.6ac",
-    "rank": 5,
+    "rank": 7,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Ham, Combe St Nicholas",
@@ -287,7 +287,7 @@
   {
     "ref": "87890067",
     "name": "Maesycoed, Pontypridd — Detached with Annexe",
-    "rank": 16,
+    "rank": 14,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Pontypridd, South Wales",
@@ -349,7 +349,7 @@
   {
     "ref": "173348153",
     "name": "Winterborne Stickland — 5-Bed Semi",
-    "rank": 7,
+    "rank": 6,
     "price": 425000,
     "price_display": "£425,000",
     "location": "Winterborne Stickland, Dorset",
@@ -406,7 +406,7 @@
   {
     "ref": "172773251",
     "name": "White Cliff Gardens, Blandford Forum",
-    "rank": 25,
+    "rank": 19,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Blandford Forum, Dorset",
@@ -587,7 +587,7 @@
   {
     "ref": "88996269",
     "name": "Newtown Rd, Penperlleni, Monmouthshire",
-    "rank": 23,
+    "rank": 21,
     "price": 430000,
     "price_display": "£430,000",
     "location": "Penperlleni, Monmouthshire",
@@ -649,7 +649,7 @@
   {
     "ref": "87130665",
     "name": "Wraxhill Rd, Yeovil — Det with Annexe",
-    "rank": 19,
+    "rank": 25,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Yeovil, Somerset",
@@ -721,7 +721,7 @@
   {
     "ref": "172902734",
     "name": "Halfway Close, Trowbridge",
-    "rank": 12,
+    "rank": 17,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Trowbridge, Wiltshire",
@@ -783,7 +783,7 @@
   {
     "ref": "173219645",
     "name": "Allens Rd, Upton, Poole",
-    "rank": 31,
+    "rank": 29,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Upton, Poole",
@@ -835,7 +835,7 @@
   {
     "ref": "88185459",
     "name": "Pantygyfelia Farm, Bonymaen, Swansea",
-    "rank": 15,
+    "rank": 11,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Bonymaen, Swansea",
@@ -897,7 +897,7 @@
   {
     "ref": "89701968",
     "name": "Loders, Bridport — Det Character",
-    "rank": 22,
+    "rank": 28,
     "price": 470000,
     "price_display": "£470,000",
     "location": "Loders, Dorset",
@@ -964,7 +964,7 @@
   {
     "ref": "174415073",
     "name": "Killara, Piddletrenthide",
-    "rank": 37,
+    "rank": 36,
     "price": 400000,
     "price_display": "£400,000",
     "location": "Piddletrenthide, Dorset",
@@ -1031,7 +1031,7 @@
   {
     "ref": "174472451",
     "name": "Arch View, Tatworth / South Chard",
-    "rank": 17,
+    "rank": 12,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Tatworth, Somerset",
@@ -1098,7 +1098,7 @@
   {
     "ref": "88791255",
     "name": "Park Shaw, Sedlescombe",
-    "rank": 24,
+    "rank": 22,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Sedlescombe, East Sussex",
@@ -1165,7 +1165,7 @@
   {
     "ref": "168243473",
     "name": "Stroud Park Ave, Christchurch — Bungalow",
-    "rank": 14,
+    "rank": 18,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Christchurch, Dorset",
@@ -1217,7 +1217,7 @@
   {
     "ref": "89767338",
     "name": "Bibury Rd, Old Walcot, Swindon",
-    "rank": 21,
+    "rank": 20,
     "price": 440000,
     "price_display": "£440,000",
     "location": "Swindon, Wiltshire",
@@ -1507,7 +1507,7 @@
   {
     "ref": "89415939",
     "name": "Queens Hill Cres, Newport",
-    "rank": 29,
+    "rank": 24,
     "price": 395000,
     "price_display": "£395,000",
     "location": "Newport, South Wales",
@@ -1569,7 +1569,7 @@
   {
     "ref": "170968559",
     "name": "South Newton, Salisbury — New Chalet",
-    "rank": 18,
+    "rank": 15,
     "price": 425000,
     "price_display": "£425,000",
     "location": "South Newton, Wiltshire",
@@ -1621,7 +1621,7 @@
   {
     "ref": "88318344",
     "name": "Thames Close, Cricklade ⚠ PRC",
-    "rank": 39,
+    "rank": 40,
     "price": 425000,
     "price_display": "£425,000",
     "location": "Cricklade, Wiltshire",
@@ -1668,7 +1668,7 @@
   {
     "ref": "170605958",
     "name": "Brook St, Bampton, Devon",
-    "rank": 36,
+    "rank": 35,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Bampton, Devon",
@@ -1777,7 +1777,7 @@
   {
     "ref": "90125946",
     "name": "Damerham Rd, Throop, Bournemouth",
-    "rank": 42,
+    "rank": 41,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Throop, Bournemouth",
@@ -1829,7 +1829,7 @@
   {
     "ref": "169598735",
     "name": "Hill Rd, Neath Abbey",
-    "rank": 28,
+    "rank": 23,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Neath Abbey, South Wales",
@@ -1891,7 +1891,7 @@
   {
     "ref": "174938813",
     "name": "Willow Way, Liskeard, Cornwall",
-    "rank": 27,
+    "rank": 26,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Liskeard, Cornwall",
@@ -1933,7 +1933,7 @@
   {
     "ref": "168382466",
     "name": "Brook Lane, Catcott ⚠ Flood",
-    "rank": 35,
+    "rank": 37,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Catcott, Somerset",
@@ -1985,7 +1985,7 @@
   {
     "ref": "88310844",
     "name": "Main Rd, Westonzoyland ⚠ Flood",
-    "rank": 20,
+    "rank": 27,
     "price": 445000,
     "price_display": "£445,000",
     "location": "Westonzoyland, Somerset",
@@ -2106,7 +2106,7 @@
   {
     "ref": "88055244",
     "name": "Victoria Place, Ryde IoW ⚠ Ferry",
-    "rank": 40,
+    "rank": 39,
     "price": 375000,
     "price_display": "£375,000",
     "location": "Ryde, Isle of Wight",
@@ -2242,7 +2242,7 @@
       "asd_support": "Welsh Integrated Autism Services (IAS) — legal right to assessment. Withybush Hospital Haverfordwest has paediatric services.",
       "notes": "Wales has stronger legal ASD framework than England. Rural isolation of Narberth area means community travel needed."
     },
-    "rank": 26
+    "rank": 30
   },
   {
     "ref": "89491017",
@@ -2289,7 +2289,7 @@
       "asd_support": "Welsh IAS model. Glangwili Hospital Carmarthen has paediatric teams. Strong legal framework for ASD support in Wales.",
       "notes": "Remote rural location — community access requires transport. Japanese Knotweed caveat takes priority in assessment."
     },
-    "rank": 30
+    "rank": 31
   },
   {
     "ref": "160507001",
@@ -2336,7 +2336,7 @@
       "asd_support": "Welsh IAS legal framework. Glangwili Hospital Carmarthen 8 miles.",
       "notes": "Project caveat is the primary concern here — home-ed community is secondary until viability is confirmed."
     },
-    "rank": 41
+    "rank": 42
   },
   {
     "ref": "90443352",
@@ -2440,7 +2440,7 @@
       "asd_support": "Welsh IAS legal framework — stronger than English equivalent. Morriston Hospital 15 min. Swansea NAS branch with community activities.",
       "notes": "Already have 88 Gwyn St Alltwen in tracker — this is number 60, a larger property. Different listing."
     },
-    "rank": 6
+    "rank": 5
   },
   {
     "ref": "90542934",
@@ -2544,6 +2544,6 @@
       "asd_support": "Somerset Progressive School (West Hatch, Taunton). Strong neurodiversity awareness in Somerset community. Musgrove Park Hospital CAMHS (Taunton, 14 miles).",
       "notes": "Chard is in the Somerset West home-ed cluster. Yeovil and Taunton groups accessible."
     },
-    "rank": 11
+    "rank": 16
   }
 ]
