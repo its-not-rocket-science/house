@@ -105,8 +105,8 @@
         "cat": "Space",
         "label": "Play room",
         "score": 2,
-        "note": "Likely — 5+ beds or confirmed extra reception room",
-        "resolved": true
+        "note": "Likely — five bed, 5-bed",
+        "resolved": false
       }
     ],
     "questions": [
@@ -121,7 +121,7 @@
   },
   "89061840": {
     "ref": "89061840",
-    "overall_pct": 71,
+    "overall_pct": 73,
     "scores": [
       {
         "cat": "Annexe",
@@ -231,8 +231,8 @@
       {
         "cat": "Space",
         "label": "Play room",
-        "score": 0,
-        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "score": 1,
+        "note": "Possible — reception room, dining room, but no dedicated room confirmed",
         "resolved": false
       }
     ],
@@ -358,7 +358,7 @@
         "cat": "Space",
         "label": "Play room",
         "score": 2,
-        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "note": "Confirmed extra room(s): garden room, sitting room",
         "resolved": true
       }
     ],
@@ -379,7 +379,7 @@
   },
   "169862942": {
     "ref": "169862942",
-    "overall_pct": 78,
+    "overall_pct": 80,
     "scores": [
       {
         "cat": "Annexe",
@@ -482,8 +482,8 @@
       {
         "cat": "Space",
         "label": "Play room",
-        "score": 0,
-        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "score": 1,
+        "note": "Possible — breakfast room, but no dedicated room confirmed",
         "resolved": false
       }
     ],
@@ -723,7 +723,7 @@
         "cat": "Space",
         "label": "Play room",
         "score": 2,
-        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "note": "Confirmed extra room(s): conservatory",
         "resolved": true
       }
     ],
@@ -848,7 +848,7 @@
         "cat": "Space",
         "label": "Play room",
         "score": 2,
-        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "note": "Confirmed extra room(s): study, sitting room",
         "resolved": true
       }
     ],
@@ -976,7 +976,7 @@
         "cat": "Space",
         "label": "Play room",
         "score": 2,
-        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "note": "Confirmed extra room(s): utility room",
         "resolved": true
       }
     ],
@@ -996,7 +996,7 @@
   },
   "168359045": {
     "ref": "168359045",
-    "overall_pct": 56,
+    "overall_pct": 58,
     "scores": [
       {
         "cat": "Annexe",
@@ -1099,8 +1099,8 @@
       {
         "cat": "Space",
         "label": "Play room",
-        "score": 1,
-        "note": "Possible — has reception rooms but no confirmed dedicated space",
+        "score": 2,
+        "note": "Likely — four-bed",
         "resolved": false
       }
     ],
@@ -1220,7 +1220,7 @@
         "cat": "Space",
         "label": "Play room",
         "score": 2,
-        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "note": "Confirmed extra room(s): utility room",
         "resolved": true
       }
     ],
@@ -1238,7 +1238,7 @@
   },
   "87130665": {
     "ref": "87130665",
-    "overall_pct": 51,
+    "overall_pct": 53,
     "scores": [
       {
         "cat": "Annexe",
@@ -1341,8 +1341,8 @@
       {
         "cat": "Space",
         "label": "Play room",
-        "score": 0,
-        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "score": 1,
+        "note": "Possible — dining room, but no dedicated room confirmed",
         "resolved": false
       }
     ],
@@ -1361,7 +1361,7 @@
   },
   "172902734": {
     "ref": "172902734",
-    "overall_pct": 53,
+    "overall_pct": 56,
     "scores": [
       {
         "cat": "Annexe",
@@ -1464,8 +1464,8 @@
       {
         "cat": "Space",
         "label": "Play room",
-        "score": 0,
-        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "score": 1,
+        "note": "Possible — dining room, family room, but no dedicated room confirmed",
         "resolved": false
       }
     ],
@@ -1481,7 +1481,7 @@
   },
   "173219645": {
     "ref": "173219645",
-    "overall_pct": 44,
+    "overall_pct": 40,
     "scores": [
       {
         "cat": "Annexe",
@@ -1584,8 +1584,8 @@
       {
         "cat": "Space",
         "label": "Play room",
-        "score": 2,
-        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "score": 0,
+        "note": "3-bed or smaller — unlikely to have a spare play room",
         "resolved": true
       }
     ],
@@ -1694,7 +1694,7 @@
         "cat": "Space",
         "label": "Play room",
         "score": 2,
-        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "note": "Confirmed extra room(s): sitting room",
         "resolved": true
       }
     ],
@@ -1813,7 +1813,7 @@
         "cat": "Space",
         "label": "Play room",
         "score": 0,
-        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "note": "No spare room mentioned in description",
         "resolved": false
       }
     ],
@@ -1930,7 +1930,7 @@
         "cat": "Space",
         "label": "Play room",
         "score": 2,
-        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "note": "Confirmed extra room(s): home office, snug, garden room",
         "resolved": true
       }
     ],
@@ -2055,7 +2055,7 @@
         "cat": "Space",
         "label": "Play room",
         "score": 2,
-        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "note": "Confirmed extra room(s): home office, snug, utility room",
         "resolved": true
       }
     ],
@@ -2293,7 +2293,7 @@
         "cat": "Space",
         "label": "Play room",
         "score": 0,
-        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "note": "No spare room mentioned in description",
         "resolved": false
       }
     ],
@@ -2414,8 +2414,8 @@
         "cat": "Space",
         "label": "Play room",
         "score": 2,
-        "note": "Likely — 5+ beds or confirmed extra reception room",
-        "resolved": true
+        "note": "Likely — 5 bed",
+        "resolved": false
       }
     ],
     "questions": [
@@ -2535,8 +2535,8 @@
         "cat": "Space",
         "label": "Play room",
         "score": 2,
-        "note": "Likely — 5+ beds or confirmed extra reception room",
-        "resolved": true
+        "note": "Likely — five-bed, four bed",
+        "resolved": false
       }
     ],
     "questions": [
@@ -2554,7 +2554,7 @@
   },
   "87791562": {
     "ref": "87791562",
-    "overall_pct": 64,
+    "overall_pct": 67,
     "scores": [
       {
         "cat": "Annexe",
@@ -2657,8 +2657,8 @@
       {
         "cat": "Space",
         "label": "Play room",
-        "score": 1,
-        "note": "Possible — 4-bed with reception rooms",
+        "score": 2,
+        "note": "Likely — four bed, 4-bed",
         "resolved": false
       }
     ],
@@ -2768,7 +2768,7 @@
         "cat": "Space",
         "label": "Play room",
         "score": 2,
-        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "note": "Confirmed extra room(s): study, home office, utility room",
         "resolved": true
       }
     ],
@@ -2886,7 +2886,7 @@
   },
   "89415939": {
     "ref": "89415939",
-    "overall_pct": 46,
+    "overall_pct": 44,
     "scores": [
       {
         "cat": "Annexe",
@@ -2975,9 +2975,9 @@
       {
         "cat": "Space",
         "label": "Play room",
-        "score": 2,
-        "note": "Likely — 5+ beds or confirmed extra reception room",
-        "resolved": true
+        "score": 1,
+        "note": "Possible — dining room, family room, but no dedicated room confirmed",
+        "resolved": false
       }
     ],
     "questions": [
@@ -3107,7 +3107,7 @@
   },
   "88318344": {
     "ref": "88318344",
-    "overall_pct": 42,
+    "overall_pct": 44,
     "scores": [
       {
         "cat": "Annexe",
@@ -3217,8 +3217,8 @@
       {
         "cat": "Space",
         "label": "Play room",
-        "score": 0,
-        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "score": 1,
+        "note": "Possible — reception room, but no dedicated room confirmed",
         "resolved": false
       }
     ],
@@ -3329,8 +3329,8 @@
         "cat": "Space",
         "label": "Play room",
         "score": 2,
-        "note": "Likely — 5+ beds or confirmed extra reception room",
-        "resolved": true
+        "note": "Likely — five bed, 5-bed",
+        "resolved": false
       }
     ],
     "questions": [
@@ -3437,7 +3437,7 @@
         "cat": "Space",
         "label": "Play room",
         "score": 2,
-        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "note": "Confirmed extra room(s): study, conservatory",
         "resolved": true
       }
     ],
@@ -3548,7 +3548,7 @@
         "cat": "Space",
         "label": "Play room",
         "score": 2,
-        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "note": "Confirmed extra room(s): study, utility room",
         "resolved": true
       }
     ],
@@ -3671,8 +3671,8 @@
         "cat": "Space",
         "label": "Play room",
         "score": 2,
-        "note": "Likely — 5+ beds or confirmed extra reception room",
-        "resolved": true
+        "note": "Likely — five bed, five-bed",
+        "resolved": false
       }
     ],
     "questions": [
@@ -3781,7 +3781,7 @@
         "cat": "Space",
         "label": "Play room",
         "score": 2,
-        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "note": "Confirmed extra room(s): hobby room, utility room",
         "resolved": true
       }
     ],
@@ -3800,7 +3800,7 @@
   },
   "168382466": {
     "ref": "168382466",
-    "overall_pct": 49,
+    "overall_pct": 53,
     "scores": [
       {
         "cat": "Annexe",
@@ -3903,8 +3903,8 @@
       {
         "cat": "Space",
         "label": "Play room",
-        "score": 0,
-        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "score": 2,
+        "note": "Likely — four-bed",
         "resolved": false
       }
     ],
@@ -4028,8 +4028,8 @@
         "cat": "Space",
         "label": "Play room",
         "score": 0,
-        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
-        "resolved": false
+        "note": "3-bed or smaller — unlikely to have a spare play room",
+        "resolved": true
       }
     ],
     "questions": [
@@ -4265,7 +4265,7 @@
         "cat": "Space",
         "label": "Play room",
         "score": 2,
-        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "note": "Confirmed extra room(s): home office, garden room, sitting room",
         "resolved": true
       }
     ],
@@ -4406,7 +4406,7 @@
   },
   "167437883": {
     "ref": "167437883",
-    "overall_pct": 44,
+    "overall_pct": 50,
     "scores": [
       {
         "cat": "Annexe",
@@ -4488,8 +4488,8 @@
       {
         "cat": "Space",
         "label": "Play room",
-        "score": 0,
-        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "score": 2,
+        "note": "Likely — five-bed",
         "resolved": false
       }
     ],
@@ -4507,7 +4507,7 @@
   },
   "89491017": {
     "ref": "89491017",
-    "overall_pct": 52,
+    "overall_pct": 54,
     "scores": [
       {
         "cat": "Annexe",
@@ -4617,8 +4617,8 @@
       {
         "cat": "Space",
         "label": "Play room",
-        "score": 1,
-        "note": "Possible — has reception rooms but no confirmed dedicated space",
+        "score": 2,
+        "note": "Likely — five-bed",
         "resolved": false
       }
     ],
@@ -4729,7 +4729,7 @@
         "cat": "Space",
         "label": "Play room",
         "score": 0,
-        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "note": "No spare room mentioned in description",
         "resolved": false
       }
     ],
@@ -4853,8 +4853,8 @@
         "cat": "Space",
         "label": "Play room",
         "score": 0,
-        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
-        "resolved": false
+        "note": "3-bed or smaller — unlikely to have a spare play room",
+        "resolved": true
       }
     ],
     "questions": [
@@ -4962,7 +4962,7 @@
         "cat": "Space",
         "label": "Play room",
         "score": 2,
-        "note": "Likely — 5+ beds or confirmed extra reception room",
+        "note": "Confirmed extra room(s): garden room, utility room",
         "resolved": true
       }
     ],
@@ -4983,7 +4983,7 @@
   },
   "90542934": {
     "ref": "90542934",
-    "overall_pct": 58,
+    "overall_pct": 60,
     "scores": [
       {
         "cat": "Annexe",
@@ -5086,8 +5086,8 @@
       {
         "cat": "Space",
         "label": "Play room",
-        "score": 0,
-        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "score": 1,
+        "note": "Possible — dining room, family room, but no dedicated room confirmed",
         "resolved": false
       }
     ],
@@ -5211,7 +5211,7 @@
         "cat": "Space",
         "label": "Play room",
         "score": 0,
-        "note": "Unlikely — 3-bed or smaller, no extra rooms confirmed",
+        "note": "No spare room mentioned in description",
         "resolved": false
       }
     ],
