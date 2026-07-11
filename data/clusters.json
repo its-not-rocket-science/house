@@ -1,356 +1,384 @@
 [
   {
     "id": 1,
-    "score": 13.4,
+    "score": 79.1,
     "total_day_mins": 547,
     "total_drive_mins": 427,
-    "properties": [
-      {
-        "ref": "90443352",
-        "name": "Manor Road, Taunton",
-        "rank": 2,
-        "price_display": "\u00a3440,000",
-        "location": "Taunton, Somerset",
-        "lat": 51.0154,
-        "lng": -3.1075,
-        "ub7_drive_mins": 208,
-        "from_prev_mins": 208,
-        "annexe": "confirmed",
-        "caveat": null
-      },
-      {
-        "ref": "169862942",
-        "name": "Tithill, Bishops Lydeard",
-        "rank": 1,
-        "price_display": "\u00a3425,000",
-        "location": "Bishops Lydeard, Somerset",
-        "lat": 51.0678,
-        "lng": -3.1789,
-        "ub7_drive_mins": 211,
-        "from_prev_mins": 8,
-        "annexe": "confirmed",
-        "caveat": null
-      }
-    ],
     "legs_mins": [
       208,
       8,
       211
-    ]
-  },
-  {
-    "id": 2,
-    "score": 15.3,
-    "total_day_mins": 388,
-    "total_drive_mins": 268,
-    "properties": [
-      {
-        "ref": "87791562",
-        "name": "Halifax Rd, Bowerhill, Melksham",
-        "rank": 6,
-        "price_display": "\u00a3465,000",
-        "location": "Melksham, Wiltshire",
-        "lat": 51.3734,
-        "lng": -2.1345,
-        "ub7_drive_mins": 126,
-        "from_prev_mins": 126,
-        "annexe": "confirmed",
-        "caveat": null
-      },
-      {
-        "ref": "90542934",
-        "name": "Avonvale Road, Trowbridge",
-        "rank": 8,
-        "price_display": "\u00a3375,000 OIEO",
-        "location": "Trowbridge, Wiltshire",
-        "lat": 51.3195,
-        "lng": -2.2091,
-        "ub7_drive_mins": 133,
-        "from_prev_mins": 9,
-        "annexe": "confirmed",
-        "caveat": null
-      }
     ],
-    "legs_mins": [
-      126,
-      9,
-      133
-    ]
-  },
-  {
-    "id": 3,
-    "score": 15.3,
-    "total_day_mins": 387,
-    "total_drive_mins": 267,
     "properties": [
-      {
-        "ref": "90542934",
-        "name": "Avonvale Road, Trowbridge",
-        "rank": 8,
-        "price_display": "\u00a3375,000 OIEO",
-        "location": "Trowbridge, Wiltshire",
-        "lat": 51.3195,
-        "lng": -2.2091,
-        "ub7_drive_mins": 133,
-        "from_prev_mins": 133,
-        "annexe": "confirmed",
-        "caveat": null
-      },
-      {
-        "ref": "172902734",
-        "name": "Halfway Close, Trowbridge",
-        "rank": 10,
-        "price_display": "\u00a3475,000",
-        "location": "Trowbridge, Wiltshire",
-        "lat": 51.3123,
-        "lng": -2.2134,
-        "ub7_drive_mins": 133,
-        "from_prev_mins": 1,
-        "annexe": "confirmed",
-        "caveat": null
-      }
-    ],
-    "legs_mins": [
-      133,
-      1,
-      133
-    ]
-  },
-  {
-    "id": 4,
-    "score": 15.7,
-    "total_day_mins": 449,
-    "total_drive_mins": 269,
-    "properties": [
-      {
-        "ref": "87791562",
-        "name": "Halifax Rd, Bowerhill, Melksham",
-        "rank": 6,
-        "price_display": "\u00a3465,000",
-        "location": "Melksham, Wiltshire",
-        "lat": 51.3734,
-        "lng": -2.1345,
-        "ub7_drive_mins": 126,
-        "from_prev_mins": 126,
-        "annexe": "confirmed",
-        "caveat": null
-      },
-      {
-        "ref": "90542934",
-        "name": "Avonvale Road, Trowbridge",
-        "rank": 8,
-        "price_display": "\u00a3375,000 OIEO",
-        "location": "Trowbridge, Wiltshire",
-        "lat": 51.3195,
-        "lng": -2.2091,
-        "ub7_drive_mins": 133,
-        "from_prev_mins": 9,
-        "annexe": "confirmed",
-        "caveat": null
-      },
-      {
-        "ref": "172902734",
-        "name": "Halfway Close, Trowbridge",
-        "rank": 10,
-        "price_display": "\u00a3475,000",
-        "location": "Trowbridge, Wiltshire",
-        "lat": 51.3123,
-        "lng": -2.2134,
-        "ub7_drive_mins": 133,
-        "from_prev_mins": 1,
-        "annexe": "confirmed",
-        "caveat": null
-      }
-    ],
-    "legs_mins": [
-      126,
-      9,
-      1,
-      133
-    ]
-  },
-  {
-    "id": 5,
-    "score": 16.2,
-    "total_day_mins": 621,
-    "total_drive_mins": 441,
-    "properties": [
-      {
-        "ref": "89061840",
-        "name": "Oakfields, Ham \u2014 Stone Cottage 0.6ac",
-        "rank": 4,
-        "price_display": "\u00a3450,000",
-        "location": "Ham, Combe St Nicholas",
-        "lat": 50.9012,
-        "lng": -3.0234,
-        "ub7_drive_mins": 207,
-        "from_prev_mins": 207,
-        "annexe": "confirmed",
-        "caveat": null
-      },
       {
         "ref": "90443352",
         "name": "Manor Road, Taunton",
-        "rank": 2,
+        "rank": 1,
         "price_display": "\u00a3440,000",
         "location": "Taunton, Somerset",
         "lat": 51.0154,
         "lng": -3.1075,
         "ub7_drive_mins": 208,
-        "from_prev_mins": 15,
         "annexe": "confirmed",
-        "caveat": null
+        "caveat": null,
+        "rightmove_url": "https://www.rightmove.co.uk/properties/90443352"
       },
       {
         "ref": "169862942",
         "name": "Tithill, Bishops Lydeard",
-        "rank": 1,
+        "rank": 2,
         "price_display": "\u00a3425,000",
         "location": "Bishops Lydeard, Somerset",
         "lat": 51.0678,
         "lng": -3.1789,
         "ub7_drive_mins": 211,
-        "from_prev_mins": 8,
         "annexe": "confirmed",
-        "caveat": null
+        "caveat": null,
+        "rightmove_url": "https://www.rightmove.co.uk/properties/169862942"
       }
-    ],
+    ]
+  },
+  {
+    "id": 2,
+    "score": 72.1,
+    "total_day_mins": 621,
+    "total_drive_mins": 441,
     "legs_mins": [
       207,
       15,
       8,
       211
-    ]
-  },
-  {
-    "id": 6,
-    "score": 16.6,
-    "total_day_mins": 389,
-    "total_drive_mins": 269,
-    "properties": [
-      {
-        "ref": "87791562",
-        "name": "Halifax Rd, Bowerhill, Melksham",
-        "rank": 6,
-        "price_display": "\u00a3465,000",
-        "location": "Melksham, Wiltshire",
-        "lat": 51.3734,
-        "lng": -2.1345,
-        "ub7_drive_mins": 126,
-        "from_prev_mins": 126,
-        "annexe": "confirmed",
-        "caveat": null
-      },
-      {
-        "ref": "172902734",
-        "name": "Halfway Close, Trowbridge",
-        "rank": 10,
-        "price_display": "\u00a3475,000",
-        "location": "Trowbridge, Wiltshire",
-        "lat": 51.3123,
-        "lng": -2.2134,
-        "ub7_drive_mins": 133,
-        "from_prev_mins": 10,
-        "annexe": "confirmed",
-        "caveat": null
-      }
     ],
-    "legs_mins": [
-      126,
-      10,
-      133
-    ]
-  },
-  {
-    "id": 7,
-    "score": 16.7,
-    "total_day_mins": 550,
-    "total_drive_mins": 430,
     "properties": [
       {
         "ref": "89061840",
         "name": "Oakfields, Ham \u2014 Stone Cottage 0.6ac",
-        "rank": 4,
+        "rank": 5,
         "price_display": "\u00a3450,000",
         "location": "Ham, Combe St Nicholas",
         "lat": 50.9012,
         "lng": -3.0234,
         "ub7_drive_mins": 207,
-        "from_prev_mins": 207,
         "annexe": "confirmed",
-        "caveat": null
+        "caveat": null,
+        "rightmove_url": "https://www.rightmove.co.uk/properties/89061840"
       },
       {
         "ref": "90443352",
         "name": "Manor Road, Taunton",
-        "rank": 2,
+        "rank": 1,
         "price_display": "\u00a3440,000",
         "location": "Taunton, Somerset",
         "lat": 51.0154,
         "lng": -3.1075,
         "ub7_drive_mins": 208,
-        "from_prev_mins": 15,
         "annexe": "confirmed",
-        "caveat": null
-      }
-    ],
-    "legs_mins": [
-      207,
-      15,
-      208
-    ]
-  },
-  {
-    "id": 8,
-    "score": 17.0,
-    "total_day_mins": 611,
-    "total_drive_mins": 431,
-    "properties": [
-      {
-        "ref": "173985596",
-        "name": "5-Bed Semi with 1-Bed Annexe",
-        "rank": 9,
-        "price_display": "\u00a3475,000",
-        "location": "Bridgwater, Somerset",
-        "lat": 51.1279,
-        "lng": -3.0011,
-        "ub7_drive_mins": 196,
-        "from_prev_mins": 196,
-        "annexe": "confirmed",
-        "caveat": null
-      },
-      {
-        "ref": "90443352",
-        "name": "Manor Road, Taunton",
-        "rank": 2,
-        "price_display": "\u00a3440,000",
-        "location": "Taunton, Somerset",
-        "lat": 51.0154,
-        "lng": -3.1075,
-        "ub7_drive_mins": 208,
-        "from_prev_mins": 16,
-        "annexe": "confirmed",
-        "caveat": null
+        "caveat": null,
+        "rightmove_url": "https://www.rightmove.co.uk/properties/90443352"
       },
       {
         "ref": "169862942",
         "name": "Tithill, Bishops Lydeard",
-        "rank": 1,
+        "rank": 2,
         "price_display": "\u00a3425,000",
         "location": "Bishops Lydeard, Somerset",
         "lat": 51.0678,
         "lng": -3.1789,
         "ub7_drive_mins": 211,
-        "from_prev_mins": 8,
         "annexe": "confirmed",
-        "caveat": null
+        "caveat": null,
+        "rightmove_url": "https://www.rightmove.co.uk/properties/169862942"
       }
+    ]
+  },
+  {
+    "id": 3,
+    "score": 69.8,
+    "total_day_mins": 550,
+    "total_drive_mins": 430,
+    "legs_mins": [
+      207,
+      15,
+      208
     ],
+    "properties": [
+      {
+        "ref": "89061840",
+        "name": "Oakfields, Ham \u2014 Stone Cottage 0.6ac",
+        "rank": 5,
+        "price_display": "\u00a3450,000",
+        "location": "Ham, Combe St Nicholas",
+        "lat": 50.9012,
+        "lng": -3.0234,
+        "ub7_drive_mins": 207,
+        "annexe": "confirmed",
+        "caveat": null,
+        "rightmove_url": "https://www.rightmove.co.uk/properties/89061840"
+      },
+      {
+        "ref": "90443352",
+        "name": "Manor Road, Taunton",
+        "rank": 1,
+        "price_display": "\u00a3440,000",
+        "location": "Taunton, Somerset",
+        "lat": 51.0154,
+        "lng": -3.1075,
+        "ub7_drive_mins": 208,
+        "annexe": "confirmed",
+        "caveat": null,
+        "rightmove_url": "https://www.rightmove.co.uk/properties/90443352"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "score": 67.5,
+    "total_day_mins": 561,
+    "total_drive_mins": 441,
+    "legs_mins": [
+      207,
+      23,
+      211
+    ],
+    "properties": [
+      {
+        "ref": "89061840",
+        "name": "Oakfields, Ham \u2014 Stone Cottage 0.6ac",
+        "rank": 5,
+        "price_display": "\u00a3450,000",
+        "location": "Ham, Combe St Nicholas",
+        "lat": 50.9012,
+        "lng": -3.0234,
+        "ub7_drive_mins": 207,
+        "annexe": "confirmed",
+        "caveat": null,
+        "rightmove_url": "https://www.rightmove.co.uk/properties/89061840"
+      },
+      {
+        "ref": "169862942",
+        "name": "Tithill, Bishops Lydeard",
+        "rank": 2,
+        "price_display": "\u00a3425,000",
+        "location": "Bishops Lydeard, Somerset",
+        "lat": 51.0678,
+        "lng": -3.1789,
+        "ub7_drive_mins": 211,
+        "annexe": "confirmed",
+        "caveat": null,
+        "rightmove_url": "https://www.rightmove.co.uk/properties/169862942"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "score": 66.6,
+    "total_day_mins": 611,
+    "total_drive_mins": 431,
     "legs_mins": [
       196,
       16,
       8,
       211
+    ],
+    "properties": [
+      {
+        "ref": "173985596",
+        "name": "5-Bed Semi with 1-Bed Annexe",
+        "rank": 10,
+        "price_display": "\u00a3475,000",
+        "location": "Bridgwater, Somerset",
+        "lat": 51.1279,
+        "lng": -3.0011,
+        "ub7_drive_mins": 196,
+        "annexe": "confirmed",
+        "caveat": null,
+        "rightmove_url": "https://www.rightmove.co.uk/properties/173985596"
+      },
+      {
+        "ref": "90443352",
+        "name": "Manor Road, Taunton",
+        "rank": 1,
+        "price_display": "\u00a3440,000",
+        "location": "Taunton, Somerset",
+        "lat": 51.0154,
+        "lng": -3.1075,
+        "ub7_drive_mins": 208,
+        "annexe": "confirmed",
+        "caveat": null,
+        "rightmove_url": "https://www.rightmove.co.uk/properties/90443352"
+      },
+      {
+        "ref": "169862942",
+        "name": "Tithill, Bishops Lydeard",
+        "rank": 2,
+        "price_display": "\u00a3425,000",
+        "location": "Bishops Lydeard, Somerset",
+        "lat": 51.0678,
+        "lng": -3.1789,
+        "ub7_drive_mins": 211,
+        "annexe": "confirmed",
+        "caveat": null,
+        "rightmove_url": "https://www.rightmove.co.uk/properties/169862942"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "score": 64.9,
+    "total_day_mins": 624,
+    "total_drive_mins": 444,
+    "legs_mins": [
+      204,
+      21,
+      8,
+      211
+    ],
+    "properties": [
+      {
+        "ref": "173546681",
+        "name": "Kents Close, Chard",
+        "rank": 11,
+        "price_display": "\u00a3460,000",
+        "location": "Chard, Somerset",
+        "lat": 50.8731,
+        "lng": -2.9627,
+        "ub7_drive_mins": 204,
+        "annexe": "confirmed",
+        "caveat": null,
+        "rightmove_url": "https://www.rightmove.co.uk/properties/173546681"
+      },
+      {
+        "ref": "90443352",
+        "name": "Manor Road, Taunton",
+        "rank": 1,
+        "price_display": "\u00a3440,000",
+        "location": "Taunton, Somerset",
+        "lat": 51.0154,
+        "lng": -3.1075,
+        "ub7_drive_mins": 208,
+        "annexe": "confirmed",
+        "caveat": null,
+        "rightmove_url": "https://www.rightmove.co.uk/properties/90443352"
+      },
+      {
+        "ref": "169862942",
+        "name": "Tithill, Bishops Lydeard",
+        "rank": 2,
+        "price_display": "\u00a3425,000",
+        "location": "Bishops Lydeard, Somerset",
+        "lat": 51.0678,
+        "lng": -3.1789,
+        "ub7_drive_mins": 211,
+        "annexe": "confirmed",
+        "caveat": null,
+        "rightmove_url": "https://www.rightmove.co.uk/properties/169862942"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "score": 64.1,
+    "total_day_mins": 622,
+    "total_drive_mins": 442,
+    "legs_mins": [
+      202,
+      21,
+      8,
+      211
+    ],
+    "properties": [
+      {
+        "ref": "174472451",
+        "name": "Arch View, Tatworth / South Chard",
+        "rank": 17,
+        "price_display": "\u00a3450,000",
+        "location": "Tatworth, Somerset",
+        "lat": 50.8712,
+        "lng": -2.9456,
+        "ub7_drive_mins": 202,
+        "annexe": "confirmed",
+        "caveat": null,
+        "rightmove_url": "https://www.rightmove.co.uk/properties/174472451"
+      },
+      {
+        "ref": "90443352",
+        "name": "Manor Road, Taunton",
+        "rank": 1,
+        "price_display": "\u00a3440,000",
+        "location": "Taunton, Somerset",
+        "lat": 51.0154,
+        "lng": -3.1075,
+        "ub7_drive_mins": 208,
+        "annexe": "confirmed",
+        "caveat": null,
+        "rightmove_url": "https://www.rightmove.co.uk/properties/90443352"
+      },
+      {
+        "ref": "169862942",
+        "name": "Tithill, Bishops Lydeard",
+        "rank": 2,
+        "price_display": "\u00a3425,000",
+        "location": "Bishops Lydeard, Somerset",
+        "lat": 51.0678,
+        "lng": -3.1789,
+        "ub7_drive_mins": 211,
+        "annexe": "confirmed",
+        "caveat": null,
+        "rightmove_url": "https://www.rightmove.co.uk/properties/169862942"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "score": 63.6,
+    "total_day_mins": 609,
+    "total_drive_mins": 429,
+    "legs_mins": [
+      193,
+      17,
+      8,
+      211
+    ],
+    "properties": [
+      {
+        "ref": "88310844",
+        "name": "Main Rd, Westonzoyland \u26a0 Flood",
+        "rank": 20,
+        "price_display": "\u00a3445,000",
+        "location": "Westonzoyland, Somerset",
+        "lat": 51.1056,
+        "lng": -2.9423,
+        "ub7_drive_mins": 193,
+        "annexe": "confirmed",
+        "caveat": "flood",
+        "rightmove_url": "https://www.rightmove.co.uk/properties/88310844"
+      },
+      {
+        "ref": "90443352",
+        "name": "Manor Road, Taunton",
+        "rank": 1,
+        "price_display": "\u00a3440,000",
+        "location": "Taunton, Somerset",
+        "lat": 51.0154,
+        "lng": -3.1075,
+        "ub7_drive_mins": 208,
+        "annexe": "confirmed",
+        "caveat": null,
+        "rightmove_url": "https://www.rightmove.co.uk/properties/90443352"
+      },
+      {
+        "ref": "169862942",
+        "name": "Tithill, Bishops Lydeard",
+        "rank": 2,
+        "price_display": "\u00a3425,000",
+        "location": "Bishops Lydeard, Somerset",
+        "lat": 51.0678,
+        "lng": -3.1789,
+        "ub7_drive_mins": 211,
+        "annexe": "confirmed",
+        "caveat": null,
+        "rightmove_url": "https://www.rightmove.co.uk/properties/169862942"
+      }
     ]
   }
 ]
