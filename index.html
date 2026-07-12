@@ -482,6 +482,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 .flag-clear-btn{background:none;border:none;cursor:pointer;font-size:11px;
   color:#664d03;text-decoration:underline;white-space:nowrap;flex-shrink:0}
 
+/* PHOTO SECTIONS */
+.photo-section-hdr{font-size:9px;text-transform:uppercase;letter-spacing:.07em;
+  color:#888;background:#111;padding:2px 8px;font-weight:700;margin-top:2px}
+.photo-section-hdr:first-child{margin-top:0}
+/* CHAIN PILLS */
+.pill.no-chain{background:#C6EFCE;color:#1E7145;border-color:#1E7145}
+.pill.chain-flex{background:#FFF3CD;color:#7F4F00;border-color:#ffc107}
+.pill.chain-slow{background:#FFE4E4;color:#9C0006;border-color:#9C0006}
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-thumb{background:#ccc;border-radius:3px}
@@ -1204,6 +1212,12 @@ function addMarker(p) {
 function setSort(btn) {
   currentSort = btn.dataset.sort;
   document.querySelectorAll('.sort-btn').forEach(b=>b.classList.toggle('active',b===btn));
+  // Backfill known chain statuses that agents confirmed
+  const knownChain = {"90443352": "no_chain", "169862942": "chain_breaker", "160507001": "no_chain", "166496951": "park_home", "173348153": "chain_breaker"};
+  if (!notes.chainStatus) notes.chainStatus = {};
+  Object.entries(knownChain).forEach(([ref, cs]) => {
+    if (!notes.chainStatus[ref]) notes.chainStatus[ref] = cs;
+  });
   applyFilters();
 }
 
@@ -1404,6 +1418,13 @@ function renderList() {
           <span class="pill ${p.annexe}">${p.annexe==='confirmed'?'✓ Annexe':'~ Potential'}</span>
           ${(()=>{const sc=scorecards[p.ref];const pr=sc?.scores?.find(s=>s.label==='Play room');if(!pr||pr.score<0)return '';if(pr.score>=2)return '<span class="pill confirmed" style="font-size:9px">🧸</span>';if(pr.score===1)return '<span class="pill potential" style="font-size:9px">🧸?</span>';return '';})()}
           ${p.caveat?`<span class="pill caveat">⚠ ${p.caveat}</span>`:''}
+          ${(()=>{
+            const cs=(notes.chainStatus||{})[p.ref]||'unknown';
+            if(cs==='no_chain')      return '<span class="pill no-chain" title="No onward chain">⛓️‍💥 No chain</span>';
+            if(cs==='chain_breaker') return '<span class="pill chain-flex" title="Vendor can chain-break">⛓ Flexible chain</span>';
+            if(cs==='park_home')     return '<span class="pill chain-flex" title="Vendor buying park home — fast">⛓ Park home</span>';
+            return '';
+          })()}
           ${isDup?'<span class="pill dup">duplicate</span>':''}
         </div>
         <div class="prop-card-meta" style="margin-top:2px">
@@ -1492,12 +1513,8 @@ function renderDetail(p) {
               <button class="pz-btn" onclick="openImgNewTab('gallery-main-img')" title="Open in new tab" aria-label="Open image in new tab">↗</button>
             </div>
           </div>
-          <div class="gallery-thumbs">
-            ${rmImgs.map((src,i)=>`<img src="${src}" data-idx="${i}" class="${i===0?'active-thumb':''}"
-              onerror="this.style.display='none'"
-              onclick="pickPhoto(this,${i})" alt="Photo ${i+1}"
-              tabindex="0" role="button" aria-label="Select photo ${i+1}"
-              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">`).join('')}
+          <div id="gallery-thumbs-wrap">
+            ${renderPhotoSections(p.ref, rmImgs)}
           </div>` :
           `<div class="gallery-empty">
             Photos for this property will appear here once available.<br>
@@ -1568,6 +1585,13 @@ function renderDetail(p) {
         <span class="dpill ${p.annexe==='confirmed'?'ac':'ap'}">
           ${p.annexe==='confirmed'?'✓ Confirmed annexe':'~ Annexe potential'}</span>
         ${p.caveat?`<span class="dpill cav">⚠ ${p.caveat}</span>`:''}
+        ${(()=>{
+          const cs=(notes.chainStatus||{})[p.ref]||'unknown';
+          if(cs==='no_chain')      return '<span class="dpill ac" title="No onward chain">⛓️‍💥 No chain</span>';
+          if(cs==='chain_breaker') return '<span class="dpill" style="background:#FFF3CD;color:#7F4F00;border-color:#ffc107" title="Vendor can chain-break">⛓ Flexible chain</span>';
+          if(cs==='park_home')     return '<span class="dpill" style="background:#FFF3CD;color:#7F4F00;border-color:#ffc107" title="Vendor buying park home">⛓ Park home</span>';
+          return '';
+        })()}
       </div>
 
       <!-- LINKS -->
@@ -1699,9 +1723,10 @@ function renderDetail(p) {
     </div>`;
 
   // Store image sets as globals for lightbox access
-  window._gImgs   = rmImgs;
-  window._fImgs   = rmFloors;
-  window._vPhotos = notes.photos[p.ref] || [];
+  window._gImgs      = rmImgs;
+  window._fImgs      = rmFloors;
+  window._vPhotos    = notes.photos[p.ref] || [];
+  window._currentProp = p;
 }
 
 
@@ -2188,6 +2213,57 @@ function renderHomeEd(p) {
 }
 
 
+// ── PHOTO SECTIONS ───────────────────────────────────────────────────────────
+function getPhotoSections(ref, imgs) {
+  if (!imgs.length) return {'': imgs.map((s,i)=>({src:s,idx:i}))};
+  // Manual override stored in notes
+  const override = (notes.photoSections||{})[ref];
+  if (override) {
+    const secs = {};
+    imgs.forEach((src,i) => {
+      const cat = override[i] || 'Main house';
+      if (!secs[cat]) secs[cat] = [];
+      secs[cat].push({src, idx:i});
+    });
+    return secs;
+  }
+  // Auto-heuristic: only split for confirmed annexe with 6+ photos
+  const p = window._currentProp;
+  if (!p || p.annexe !== 'confirmed' || imgs.length < 6) {
+    return {'': imgs.map((s,i)=>({src:s,idx:i}))};
+  }
+  const n = imgs.length;
+  const mainEnd   = Math.round(n * 0.55);
+  const annexeEnd = Math.round(n * 0.78);
+  const secs = {
+    'Main house':        imgs.slice(0, mainEnd).map((s,i)=>({src:s,idx:i})),
+    'Annexe':            imgs.slice(mainEnd, annexeEnd).map((s,i)=>({src:s,idx:mainEnd+i})),
+    'Garden & exterior': imgs.slice(annexeEnd).map((s,i)=>({src:s,idx:annexeEnd+i})),
+  };
+  // Drop empty sections
+  Object.keys(secs).forEach(k => { if (!secs[k].length) delete secs[k]; });
+  return secs;
+}
+
+function renderPhotoSections(ref, imgs) {
+  const secs   = getPhotoSections(ref, imgs);
+  const labels = Object.keys(secs);
+  const multi  = labels.length > 1 || (labels.length === 1 && labels[0] !== '');
+  return labels.map(label => {
+    const hdr = (multi && label)
+      ? `<div class="photo-section-hdr">${label}</div>` : '';
+    const thumbs = secs[label].map(({src, idx}) =>
+      `<img src="${src}" data-idx="${idx}"
+        class="${idx===0 ? 'active-thumb' : ''}"
+        onerror="this.style.display='none'"
+        onclick="pickPhoto(this,${idx})" alt="Photo ${idx+1}"
+        tabindex="0" role="button" aria-label="Select photo ${idx+1}"
+        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">`
+    ).join('');
+    return `${hdr}<div class="gallery-thumbs">${thumbs}</div>`;
+  }).join('');
+}
+
 // Gallery helpers — all use window._gImgs / _fImgs / _vPhotos set in renderDetail
 function galleryLb(i)  { openLb(window._gImgs,   i); }
 function floorLb(i)    { openLb(window._fImgs,    i); }
@@ -2196,7 +2272,7 @@ function visitLb(i)    { openLb(window._vPhotos.map(p=>p.url), i); }
 function pickPhoto(thumb, i) {
   const main = document.getElementById('gallery-main-img');
   if (main) { main.src = window._gImgs[i]; main.onclick = ()=>galleryLb(i); }
-  document.querySelectorAll('#gtab-listing .gallery-thumbs img').forEach(t=>t.classList.remove('active-thumb'));
+  document.querySelectorAll('#gtab-listing img').forEach(t=>t.classList.remove('active-thumb'));
   thumb.classList.add('active-thumb');
 }
 
