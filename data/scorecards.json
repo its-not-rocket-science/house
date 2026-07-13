@@ -1,7 +1,7 @@
 {
   "173985596": {
     "ref": "173985596",
-    "overall_pct": 58,
+    "overall_pct": 54,
     "scores": [
       {
         "cat": "Annexe",
@@ -107,6 +107,13 @@
         "score": 2,
         "note": "Likely — five bed, 5-bed",
         "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 0,
+        "note": "Renewable energy status unknown",
+        "resolved": false
       }
     ],
     "questions": [
@@ -121,7 +128,7 @@
   },
   "89061840": {
     "ref": "89061840",
-    "overall_pct": 73,
+    "overall_pct": 71,
     "scores": [
       {
         "cat": "Annexe",
@@ -233,6 +240,13 @@
         "label": "Play room",
         "score": 1,
         "note": "Possible — reception room, dining room, but no dedicated room confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 1,
+        "note": "Gas CH — heat pump viable upgrade (BUS grant £7,500); no solar mentioned",
         "resolved": false
       }
     ],
@@ -360,6 +374,13 @@
         "score": 2,
         "note": "Confirmed extra room(s): garden room, sitting room",
         "resolved": true
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 1,
+        "note": "Listed building — heat pump/solar may need Listed Building Consent",
+        "resolved": false
       }
     ],
     "questions": [
@@ -379,7 +400,7 @@
   },
   "169862942": {
     "ref": "169862942",
-    "overall_pct": 80,
+    "overall_pct": 77,
     "scores": [
       {
         "cat": "Annexe",
@@ -484,6 +505,13 @@
         "label": "Play room",
         "score": 1,
         "note": "Possible — breakfast room, but no dedicated room confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 1,
+        "note": "Gas CH — heat pump viable upgrade (BUS grant £7,500); no solar mentioned",
         "resolved": false
       }
     ],
@@ -619,7 +647,7 @@
   },
   "173348153": {
     "ref": "173348153",
-    "overall_pct": 64,
+    "overall_pct": 60,
     "scores": [
       {
         "cat": "Annexe",
@@ -725,6 +753,13 @@
         "score": 2,
         "note": "Confirmed extra room(s): conservatory",
         "resolved": true
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 0,
+        "note": "Oil/LPG/electric — priority candidate for heat pump upgrade; solar worth assessing",
+        "resolved": false
       }
     ],
     "questions": [
@@ -744,7 +779,7 @@
   },
   "172773251": {
     "ref": "172773251",
-    "overall_pct": 47,
+    "overall_pct": 46,
     "scores": [
       {
         "cat": "Annexe",
@@ -850,6 +885,13 @@
         "score": 2,
         "note": "Confirmed extra room(s): study, sitting room",
         "resolved": true
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 1,
+        "note": "Gas CH — heat pump viable upgrade (BUS grant £7,500); no solar mentioned",
+        "resolved": false
       }
     ],
     "questions": [
@@ -865,7 +907,7 @@
   },
   "89951784": {
     "ref": "89951784",
-    "overall_pct": 75,
+    "overall_pct": 76,
     "scores": [
       {
         "cat": "Annexe",
@@ -978,6 +1020,13 @@
         "score": 2,
         "note": "Confirmed extra room(s): utility room",
         "resolved": true
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 3,
+        "note": "Heat pump + solar panels confirmed ✓ — excellent low-carbon setup",
+        "resolved": true
       }
     ],
     "questions": [
@@ -996,7 +1045,7 @@
   },
   "168359045": {
     "ref": "168359045",
-    "overall_pct": 58,
+    "overall_pct": 56,
     "scores": [
       {
         "cat": "Annexe",
@@ -1102,6 +1151,13 @@
         "score": 2,
         "note": "Likely — four-bed",
         "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 1,
+        "note": "Gas CH — heat pump viable upgrade (BUS grant £7,500); no solar mentioned",
+        "resolved": false
       }
     ],
     "questions": [
@@ -1116,7 +1172,7 @@
   },
   "88996269": {
     "ref": "88996269",
-    "overall_pct": 49,
+    "overall_pct": 46,
     "scores": [
       {
         "cat": "Annexe",
@@ -1222,6 +1278,13 @@
         "score": 2,
         "note": "Confirmed extra room(s): utility room",
         "resolved": true
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 0,
+        "note": "Renewable energy status unknown",
+        "resolved": false
       }
     ],
     "questions": [
@@ -1238,7 +1301,7 @@
   },
   "87130665": {
     "ref": "87130665",
-    "overall_pct": 53,
+    "overall_pct": 50,
     "scores": [
       {
         "cat": "Annexe",
@@ -1344,6 +1407,13 @@
         "score": 1,
         "note": "Possible — dining room, but no dedicated room confirmed",
         "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 0,
+        "note": "Renewable energy status unknown",
+        "resolved": false
       }
     ],
     "questions": [
@@ -1361,7 +1431,7 @@
   },
   "172902734": {
     "ref": "172902734",
-    "overall_pct": 56,
+    "overall_pct": 54,
     "scores": [
       {
         "cat": "Annexe",
@@ -1466,6 +1536,13 @@
         "label": "Play room",
         "score": 1,
         "note": "Possible — dining room, family room, but no dedicated room confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 1,
+        "note": "Gas CH — heat pump viable upgrade (BUS grant £7,500); no solar mentioned",
         "resolved": false
       }
     ],
@@ -1604,7 +1681,7 @@
   },
   "88185459": {
     "ref": "88185459",
-    "overall_pct": 56,
+    "overall_pct": 64,
     "scores": [
       {
         "cat": "Annexe",
@@ -1644,8 +1721,8 @@
       {
         "cat": "Heating",
         "label": "Fuel type",
-        "score": 1,
-        "note": "Electric heating — high running costs",
+        "score": 3,
+        "note": "Heat pump + solar panels confirmed (EPC 84). Only gym has electric radiator. ✓",
         "resolved": true
       },
       {
@@ -1696,6 +1773,13 @@
         "score": 2,
         "note": "Confirmed extra room(s): sitting room",
         "resolved": true
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 3,
+        "note": "Heat pump + solar panels confirmed ✓ — excellent low-carbon setup",
+        "resolved": true
       }
     ],
     "questions": [
@@ -1709,7 +1793,7 @@
   },
   "89701968": {
     "ref": "89701968",
-    "overall_pct": 44,
+    "overall_pct": 42,
     "scores": [
       {
         "cat": "Annexe",
@@ -1814,6 +1898,13 @@
         "label": "Play room",
         "score": 0,
         "note": "No spare room mentioned in description",
+        "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 0,
+        "note": "Renewable energy status unknown",
         "resolved": false
       }
     ],
@@ -1951,7 +2042,7 @@
   },
   "174472451": {
     "ref": "174472451",
-    "overall_pct": 56,
+    "overall_pct": 54,
     "scores": [
       {
         "cat": "Annexe",
@@ -2057,6 +2148,13 @@
         "score": 2,
         "note": "Confirmed extra room(s): home office, snug, utility room",
         "resolved": true
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 1,
+        "note": "EPC A/B or well-insulated — suitable for heat pump installation",
+        "resolved": false
       }
     ],
     "questions": [
@@ -2189,7 +2287,7 @@
   },
   "168243473": {
     "ref": "168243473",
-    "overall_pct": 53,
+    "overall_pct": 54,
     "scores": [
       {
         "cat": "Annexe",
@@ -2295,6 +2393,13 @@
         "score": 0,
         "note": "No spare room mentioned in description",
         "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 2,
+        "note": "Heat pump confirmed ✓ — solar not mentioned",
+        "resolved": true
       }
     ],
     "questions": [
@@ -2431,7 +2536,7 @@
   },
   "88156767": {
     "ref": "88156767",
-    "overall_pct": 42,
+    "overall_pct": 40,
     "scores": [
       {
         "cat": "Annexe",
@@ -2537,6 +2642,13 @@
         "score": 2,
         "note": "Likely — five-bed, four bed",
         "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 0,
+        "note": "Renewable energy status unknown",
+        "resolved": false
       }
     ],
     "questions": [
@@ -2554,7 +2666,7 @@
   },
   "87791562": {
     "ref": "87791562",
-    "overall_pct": 67,
+    "overall_pct": 65,
     "scores": [
       {
         "cat": "Annexe",
@@ -2660,6 +2772,13 @@
         "score": 2,
         "note": "Likely — four bed, 4-bed",
         "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 1,
+        "note": "Gas CH — heat pump viable upgrade (BUS grant £7,500); no solar mentioned",
+        "resolved": false
       }
     ],
     "questions": [
@@ -2678,7 +2797,7 @@
   },
   "89236248": {
     "ref": "89236248",
-    "overall_pct": 41,
+    "overall_pct": 38,
     "scores": [
       {
         "cat": "Annexe",
@@ -2770,6 +2889,13 @@
         "score": 2,
         "note": "Confirmed extra room(s): study, home office, utility room",
         "resolved": true
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 0,
+        "note": "Renewable energy status unknown",
+        "resolved": false
       }
     ],
     "questions": [
@@ -2886,7 +3012,7 @@
   },
   "89415939": {
     "ref": "89415939",
-    "overall_pct": 44,
+    "overall_pct": 40,
     "scores": [
       {
         "cat": "Annexe",
@@ -2977,6 +3103,13 @@
         "label": "Play room",
         "score": 1,
         "note": "Possible — dining room, family room, but no dedicated room confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 0,
+        "note": "Renewable energy status unknown",
         "resolved": false
       }
     ],
@@ -3107,7 +3240,7 @@
   },
   "88318344": {
     "ref": "88318344",
-    "overall_pct": 44,
+    "overall_pct": 41,
     "scores": [
       {
         "cat": "Annexe",
@@ -3220,6 +3353,13 @@
         "score": 1,
         "note": "Possible — reception room, but no dedicated room confirmed",
         "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 0,
+        "note": "Renewable energy status unknown",
+        "resolved": false
       }
     ],
     "questions": [
@@ -3239,7 +3379,7 @@
   },
   "170605958": {
     "ref": "170605958",
-    "overall_pct": 38,
+    "overall_pct": 36,
     "scores": [
       {
         "cat": "Annexe",
@@ -3331,6 +3471,13 @@
         "score": 2,
         "note": "Likely — five bed, 5-bed",
         "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 0,
+        "note": "Oil/LPG/electric — priority candidate for heat pump upgrade; solar worth assessing",
+        "resolved": false
       }
     ],
     "questions": [
@@ -3347,7 +3494,7 @@
   },
   "166496951": {
     "ref": "166496951",
-    "overall_pct": 77,
+    "overall_pct": 74,
     "scores": [
       {
         "cat": "Annexe",
@@ -3439,6 +3586,13 @@
         "score": 2,
         "note": "Confirmed extra room(s): study, conservatory",
         "resolved": true
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 1,
+        "note": "Gas CH — heat pump viable upgrade (BUS grant £7,500); no solar mentioned",
+        "resolved": false
       }
     ],
     "questions": [
@@ -3458,7 +3612,7 @@
   },
   "90125946": {
     "ref": "90125946",
-    "overall_pct": 36,
+    "overall_pct": 33,
     "scores": [
       {
         "cat": "Annexe",
@@ -3550,6 +3704,13 @@
         "score": 2,
         "note": "Confirmed extra room(s): study, utility room",
         "resolved": true
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 0,
+        "note": "Renewable energy status unknown",
+        "resolved": false
       }
     ],
     "questions": [
@@ -3567,7 +3728,7 @@
   },
   "169598735": {
     "ref": "169598735",
-    "overall_pct": 47,
+    "overall_pct": 44,
     "scores": [
       {
         "cat": "Annexe",
@@ -3672,6 +3833,13 @@
         "label": "Play room",
         "score": 2,
         "note": "Likely — five bed, five-bed",
+        "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 0,
+        "note": "Renewable energy status unknown",
         "resolved": false
       }
     ],
@@ -3800,7 +3968,7 @@
   },
   "168382466": {
     "ref": "168382466",
-    "overall_pct": 53,
+    "overall_pct": 54,
     "scores": [
       {
         "cat": "Annexe",
@@ -3906,6 +4074,13 @@
         "score": 2,
         "note": "Likely — four-bed",
         "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 2,
+        "note": "Heat pump confirmed ✓ — solar not mentioned",
+        "resolved": true
       }
     ],
     "questions": [
@@ -3924,7 +4099,7 @@
   },
   "88310844": {
     "ref": "88310844",
-    "overall_pct": 60,
+    "overall_pct": 56,
     "scores": [
       {
         "cat": "Annexe",
@@ -4030,6 +4205,13 @@
         "score": 0,
         "note": "3-bed or smaller — unlikely to have a spare play room",
         "resolved": true
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 0,
+        "note": "Oil/LPG/electric — priority candidate for heat pump upgrade; solar worth assessing",
+        "resolved": false
       }
     ],
     "questions": [
@@ -4406,7 +4588,7 @@
   },
   "167437883": {
     "ref": "167437883",
-    "overall_pct": 50,
+    "overall_pct": 51,
     "scores": [
       {
         "cat": "Annexe",
@@ -4491,6 +4673,13 @@
         "score": 2,
         "note": "Likely — five-bed",
         "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 2,
+        "note": "Heat pump confirmed ✓ — solar not mentioned",
+        "resolved": true
       }
     ],
     "questions": [
@@ -4507,7 +4696,7 @@
   },
   "89491017": {
     "ref": "89491017",
-    "overall_pct": 54,
+    "overall_pct": 55,
     "scores": [
       {
         "cat": "Annexe",
@@ -4620,6 +4809,13 @@
         "score": 2,
         "note": "Likely — five-bed",
         "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 2,
+        "note": "Heat pump confirmed ✓ — solar not mentioned",
+        "resolved": true
       }
     ],
     "questions": [
@@ -4639,7 +4835,7 @@
   },
   "160507001": {
     "ref": "160507001",
-    "overall_pct": 28,
+    "overall_pct": 26,
     "scores": [
       {
         "cat": "Annexe",
@@ -4731,6 +4927,13 @@
         "score": 0,
         "note": "No spare room mentioned in description",
         "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 0,
+        "note": "Renewable energy status unknown",
+        "resolved": false
       }
     ],
     "questions": [
@@ -4749,7 +4952,7 @@
   },
   "90443352": {
     "ref": "90443352",
-    "overall_pct": 76,
+    "overall_pct": 73,
     "scores": [
       {
         "cat": "Annexe",
@@ -4855,6 +5058,13 @@
         "score": 0,
         "note": "3-bed or smaller — unlikely to have a spare play room",
         "resolved": true
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 1,
+        "note": "Gas CH — heat pump viable upgrade (BUS grant £7,500); no solar mentioned",
+        "resolved": false
       }
     ],
     "questions": [
@@ -4872,7 +5082,7 @@
   },
   "apex27_885144": {
     "ref": "apex27_885144",
-    "overall_pct": 72,
+    "overall_pct": 74,
     "scores": [
       {
         "cat": "Annexe",
@@ -4964,6 +5174,13 @@
         "score": 2,
         "note": "Confirmed extra room(s): garden room, utility room",
         "resolved": true
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 3,
+        "note": "Heat pump + solar panels confirmed ✓ — excellent low-carbon setup",
+        "resolved": true
       }
     ],
     "questions": [
@@ -4983,7 +5200,7 @@
   },
   "90542934": {
     "ref": "90542934",
-    "overall_pct": 60,
+    "overall_pct": 58,
     "scores": [
       {
         "cat": "Annexe",
@@ -5089,6 +5306,13 @@
         "score": 1,
         "note": "Possible — dining room, family room, but no dedicated room confirmed",
         "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 1,
+        "note": "Gas CH — heat pump viable upgrade (BUS grant £7,500); no solar mentioned",
+        "resolved": false
       }
     ],
     "questions": [
@@ -5107,7 +5331,7 @@
   },
   "173546681": {
     "ref": "173546681",
-    "overall_pct": 53,
+    "overall_pct": 52,
     "scores": [
       {
         "cat": "Annexe",
@@ -5212,6 +5436,13 @@
         "label": "Play room",
         "score": 0,
         "note": "No spare room mentioned in description",
+        "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 1,
+        "note": "Gas CH — heat pump viable upgrade (BUS grant £7,500); no solar mentioned",
         "resolved": false
       }
     ],

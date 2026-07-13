@@ -489,7 +489,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 /* CHAIN PILLS */
 .pill.no-chain{background:#C6EFCE;color:#1E7145;border-color:#1E7145}
 .pill.chain-flex{background:#FFF3CD;color:#7F4F00;border-color:#ffc107}
-.pill.chain-slow{background:#FFE4E4;color:#9C0006;border-color:#9C0006}
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-thumb{background:#ccc;border-radius:3px}
@@ -677,6 +676,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
         <button class="sort-btn" data-sort="hospital" onclick="setSort(this)">→ Hospital</button>
         <button class="sort-btn" data-sort="popularity" onclick="setSort(this)">👍 Votes</button>
         <button class="sort-btn" data-sort="playroom" onclick="setSort(this)">🧸 Playroom</button>
+        <button class="sort-btn" data-sort="solar" onclick="setSort(this)">☀️ Solar/HP</button>
       </div>
       <h2 style="margin-top:6px">Filter</h2>
       <input id="search-box" type="text" placeholder="Search name, location, agent…" oninput="applyFilters()">
@@ -704,6 +704,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
         <button class="filter-btn g" data-f="playroom" data-v="yes" onclick="toggleF(this)">🧸 Has room</button>
         <button class="filter-btn a" data-f="playroom" data-v="maybe" onclick="toggleF(this)">~ Possible</button>
         <button class="filter-btn" data-f="playroom" data-v="no" onclick="toggleF(this)">✗ Unlikely</button>
+      </div>
+      <div class="filter-row mobile-collapsible-filter">
+        <button class="filter-btn active" data-f="solar" data-v="all" onclick="toggleF(this)">All solar/HP</button>
+        <button class="filter-btn g" data-f="solar" data-v="yes" onclick="toggleF(this)">☀️ Has solar/HP</button>
+        <button class="filter-btn a" data-f="solar" data-v="viable" onclick="toggleF(this)">~ Viable</button>
+        <button class="filter-btn" data-f="solar" data-v="no" onclick="toggleF(this)">✗ None/unknown</button>
       </div>
       <div style="display:flex;align-items:center;justify-content:space-between;margin-top:2px">
         <div id="result-count" role="status" aria-live="polite"></div>
@@ -903,7 +909,7 @@ const PHOTOS_DIR = 'data/photos';
 // ── STATE ─────────────────────────────────────────────────────────────────────
 let properties = [], notes = {notes:{},visits:{},photos:{}}, scorecards = {}, votes = {};
 let filtered = [], selected = null, currentSort = 'fit';
-let activeF = {cluster:'all',annexe:'all',status:'all',caveat:'all', playroom:'all' };
+let activeF = {cluster:'all',annexe:'all',status:'all',caveat:'all', playroom:'all', solar:'all' };
 let showAllStatuses = false;
 let map = null, markers = {}, clusterGroup = null;
 let lbImages = [], lbIndex = 0;
@@ -1212,12 +1218,9 @@ function addMarker(p) {
 function setSort(btn) {
   currentSort = btn.dataset.sort;
   document.querySelectorAll('.sort-btn').forEach(b=>b.classList.toggle('active',b===btn));
-  // Backfill known chain statuses that agents confirmed
-  const knownChain = {"90443352": "no_chain", "169862942": "chain_breaker", "160507001": "no_chain", "166496951": "park_home", "173348153": "chain_breaker"};
+  const knownChain = {"90443352":"no_chain","169862942":"chain_breaker","160507001":"no_chain","166496951":"park_home","173348153":"chain_breaker"};
   if (!notes.chainStatus) notes.chainStatus = {};
-  Object.entries(knownChain).forEach(([ref, cs]) => {
-    if (!notes.chainStatus[ref]) notes.chainStatus[ref] = cs;
-  });
+  Object.entries(knownChain).forEach(([r,cs])=>{if(!notes.chainStatus[r])notes.chainStatus[r]=cs;});
   applyFilters();
 }
 
@@ -1277,6 +1280,15 @@ function sortProps(arr) {
       };
       return sc(y) - sc(x) || x.rank - y.rank;
     });
+    case 'solar': return a.sort((x,y) => {
+      const sc = s => {
+        const c = scorecards[s.ref];
+        if (!c) return -1;
+        const pr = c.scores.find(s => s.label === 'Solar / Heat pump');
+        return pr ? pr.score : -1;
+      };
+      return sc(y) - sc(x) || x.rank - y.rank;
+    });
     default: return a;
   }
 }
@@ -1324,6 +1336,14 @@ function applyFilters() {
       if (activeF.playroom==='yes'   && score < 2) return false;
       if (activeF.playroom==='maybe' && score !== 1) return false;
       if (activeF.playroom==='no'    && score >= 1) return false;
+    }
+    if(activeF.solar&&activeF.solar!=='all') {
+      const sc = scorecards[p.ref];
+      const pr = sc?.scores?.find(s=>s.label==='Solar / Heat pump');
+      const score = pr ? pr.score : -1;
+      if (activeF.solar==='yes'    && score < 2) return false;
+      if (activeF.solar==='viable' && score !== 1) return false;
+      if (activeF.solar==='no'     && score >= 1) return false;
     }
     if(q&&!`${p.name} ${p.location} ${p.agent} ${p.cluster}`.toLowerCase().includes(q)) return false;
     return true;
@@ -1417,14 +1437,9 @@ function renderList() {
             ${net>0?'👍':''}${net<0?'👎':''}${Math.abs(net)>0?Math.abs(net):''}</span>`:'';})()}
           <span class="pill ${p.annexe}">${p.annexe==='confirmed'?'✓ Annexe':'~ Potential'}</span>
           ${(()=>{const sc=scorecards[p.ref];const pr=sc?.scores?.find(s=>s.label==='Play room');if(!pr||pr.score<0)return '';if(pr.score>=2)return '<span class="pill confirmed" style="font-size:9px">🧸</span>';if(pr.score===1)return '<span class="pill potential" style="font-size:9px">🧸?</span>';return '';})()}
+          ${(()=>{const sc=scorecards[p.ref];const sr=sc?.scores?.find(s=>s.label==='Solar / Heat pump');if(!sr||sr.score<1)return '';if(sr.score>=2)return '<span class="pill confirmed" style="font-size:9px">☀️</span>';return '<span class="pill potential" style="font-size:9px">☀️~</span>';})()}
           ${p.caveat?`<span class="pill caveat">⚠ ${p.caveat}</span>`:''}
-          ${(()=>{
-            const cs=(notes.chainStatus||{})[p.ref]||'unknown';
-            if(cs==='no_chain')      return '<span class="pill no-chain" title="No onward chain">⛓️‍💥 No chain</span>';
-            if(cs==='chain_breaker') return '<span class="pill chain-flex" title="Vendor can chain-break">⛓ Flexible chain</span>';
-            if(cs==='park_home')     return '<span class="pill chain-flex" title="Vendor buying park home — fast">⛓ Park home</span>';
-            return '';
-          })()}
+          ${(()=>{const cs=(notes.chainStatus||{})[p.ref]||'unknown';if(cs==='no_chain')return '<span class="pill no-chain" title="No onward chain">⛓️‍💥 No chain</span>';if(cs==='chain_breaker')return '<span class="pill chain-flex" title="Vendor can chain-break">⛓ Flexible chain</span>';if(cs==='park_home')return '<span class="pill chain-flex" title="Vendor buying park home">⛓ Park home</span>';return '';})()}
           ${isDup?'<span class="pill dup">duplicate</span>':''}
         </div>
         <div class="prop-card-meta" style="margin-top:2px">
@@ -1585,13 +1600,7 @@ function renderDetail(p) {
         <span class="dpill ${p.annexe==='confirmed'?'ac':'ap'}">
           ${p.annexe==='confirmed'?'✓ Confirmed annexe':'~ Annexe potential'}</span>
         ${p.caveat?`<span class="dpill cav">⚠ ${p.caveat}</span>`:''}
-        ${(()=>{
-          const cs=(notes.chainStatus||{})[p.ref]||'unknown';
-          if(cs==='no_chain')      return '<span class="dpill ac" title="No onward chain">⛓️‍💥 No chain</span>';
-          if(cs==='chain_breaker') return '<span class="dpill" style="background:#FFF3CD;color:#7F4F00;border-color:#ffc107" title="Vendor can chain-break">⛓ Flexible chain</span>';
-          if(cs==='park_home')     return '<span class="dpill" style="background:#FFF3CD;color:#7F4F00;border-color:#ffc107" title="Vendor buying park home">⛓ Park home</span>';
-          return '';
-        })()}
+        ${(()=>{const cs=(notes.chainStatus||{})[p.ref]||'unknown';if(cs==='no_chain')return '<span class="dpill ac">⛓️‍💥 No chain</span>';if(cs==='chain_breaker')return '<span class="dpill" style="background:#FFF3CD;color:#7F4F00;border-color:#ffc107">⛓ Flexible chain</span>';if(cs==='park_home')return '<span class="dpill" style="background:#FFF3CD;color:#7F4F00;border-color:#ffc107">⛓ Park home</span>';return '';})()}
       </div>
 
       <!-- LINKS -->
@@ -2216,7 +2225,6 @@ function renderHomeEd(p) {
 // ── PHOTO SECTIONS ───────────────────────────────────────────────────────────
 function getPhotoSections(ref, imgs) {
   if (!imgs.length) return {'': imgs.map((s,i)=>({src:s,idx:i}))};
-  // Manual override stored in notes
   const override = (notes.photoSections||{})[ref];
   if (override) {
     const secs = {};
@@ -2227,37 +2235,28 @@ function getPhotoSections(ref, imgs) {
     });
     return secs;
   }
-  // Auto-heuristic: only split for confirmed annexe with 6+ photos
   const p = window._currentProp;
-  if (!p || p.annexe !== 'confirmed' || imgs.length < 6) {
+  if (!p || p.annexe !== 'confirmed' || imgs.length < 6)
     return {'': imgs.map((s,i)=>({src:s,idx:i}))};
-  }
   const n = imgs.length;
-  const mainEnd   = Math.round(n * 0.55);
-  const annexeEnd = Math.round(n * 0.78);
+  const mainEnd = Math.round(n*0.55), annexeEnd = Math.round(n*0.78);
   const secs = {
-    'Main house':        imgs.slice(0, mainEnd).map((s,i)=>({src:s,idx:i})),
-    'Annexe':            imgs.slice(mainEnd, annexeEnd).map((s,i)=>({src:s,idx:mainEnd+i})),
+    'Main house':        imgs.slice(0,mainEnd).map((s,i)=>({src:s,idx:i})),
+    'Annexe':            imgs.slice(mainEnd,annexeEnd).map((s,i)=>({src:s,idx:mainEnd+i})),
     'Garden & exterior': imgs.slice(annexeEnd).map((s,i)=>({src:s,idx:annexeEnd+i})),
   };
-  // Drop empty sections
-  Object.keys(secs).forEach(k => { if (!secs[k].length) delete secs[k]; });
+  Object.keys(secs).forEach(k=>{if(!secs[k].length)delete secs[k];});
   return secs;
 }
-
 function renderPhotoSections(ref, imgs) {
-  const secs   = getPhotoSections(ref, imgs);
-  const labels = Object.keys(secs);
-  const multi  = labels.length > 1 || (labels.length === 1 && labels[0] !== '');
-  return labels.map(label => {
-    const hdr = (multi && label)
-      ? `<div class="photo-section-hdr">${label}</div>` : '';
-    const thumbs = secs[label].map(({src, idx}) =>
-      `<img src="${src}" data-idx="${idx}"
-        class="${idx===0 ? 'active-thumb' : ''}"
-        onerror="this.style.display='none'"
-        onclick="pickPhoto(this,${idx})" alt="Photo ${idx+1}"
-        tabindex="0" role="button" aria-label="Select photo ${idx+1}"
+  const secs=getPhotoSections(ref,imgs), labels=Object.keys(secs);
+  const multi=labels.length>1||(labels.length===1&&labels[0]!=='');
+  return labels.map(label=>{
+    const hdr=multi&&label?`<div class="photo-section-hdr">${label}</div>`:'';
+    const thumbs=secs[label].map(({src,idx})=>
+      `<img src="${src}" data-idx="${idx}" class="${idx===0?'active-thumb':''}"
+        onerror="this.style.display='none'" onclick="pickPhoto(this,${idx})"
+        alt="Photo ${idx+1}" tabindex="0" role="button" aria-label="Select photo ${idx+1}"
         onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">`
     ).join('');
     return `${hdr}<div class="gallery-thumbs">${thumbs}</div>`;
