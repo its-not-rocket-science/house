@@ -2223,53 +2223,6 @@
     "rank": 25
   },
   {
-    "ref": "160507001",
-    "name": "Llanpumsaint Farmstead, Carmarthen",
-    "price": 465000,
-    "price_display": "£465,000",
-    "location": "Llanpumsaint, Carmarthen, Carmarthenshire",
-    "cluster": "West Wales",
-    "agent": "Blackbear Estate Agents",
-    "annexe": "potential",
-    "caveat": "project",
-    "short_desc": "Three buildings on 6.5 acres — one move-in ready (EPC C), two requiring conversion. Nine bedrooms total across complex. Live in finished building while pursuing barn conversion consent for main house. Carmarthen 8 miles. Welsh planning for rural conversions is complex — pre-application advice essential before purchase.",
-    "full_desc": "Three separate buildings on 6.5 acres. One building move-in ready (EPC C). Two unconverted agricultural buildings with planning potential. Nine bedrooms total across complex. Carmarthen 8 miles, coast accessible. The proposition is to live in the finished building as annexe while pursuing residential conversion consent for one of the barns as the main house — or vice versa. Welsh rural planning is complex; Carmarthenshire County Council pre-application advice essential. Budget minimum £80k-150k for barn conversion on top of purchase price. Guide price £465k leaves almost nothing for works. Exceptional potential if planning succeeds.",
-    "status": "active",
-    "lat": 51.9643,
-    "lng": -4.1876,
-    "rightmove_url": "https://www.rightmove.co.uk/properties/160507001",
-    "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F160507001&propertyId=160507001",
-    "duplicate_refs": [],
-    "journeys": {
-      "london_car_mins": 215,
-      "london_rail_mins": 205,
-      "coast_car_mins": 20,
-      "coast_name": "Pendine / Llansteffan",
-      "hospital_car_mins": 15,
-      "hospital_name": "Glangwili Hospital, Carmarthen",
-      "nearest_town": "Carmarthen (8 mi)"
-    },
-    "home_ed": {
-      "rating": "good",
-      "summary": "Welsh IAS model. Rural location — community access requires transport.",
-      "groups": [
-        {
-          "name": "Home Education West Wales",
-          "contact": "Facebook group",
-          "notes": "County-wide group"
-        },
-        {
-          "name": "Carmarthenshire IAS",
-          "contact": "Via Hywel Dda UHB",
-          "notes": "Integrated Autism Service"
-        }
-      ],
-      "asd_support": "Welsh IAS legal framework. Glangwili Hospital Carmarthen 8 miles.",
-      "notes": "Project caveat is the primary concern here — home-ed community is secondary until viability is confirmed."
-    },
-    "rank": 42
-  },
-  {
     "ref": "90443352",
     "name": "Manor Road, Taunton",
     "price": 440000,
