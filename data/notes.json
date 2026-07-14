@@ -141,8 +141,8 @@
       "date": "11/07/2026"
     },
     "173985596": {
-      "text": "Anex and house look good \nBut the garden is horrible and itâs oil fired so will need changing and it is more expensive already \nIâd take it off the list\n\n---\nFAMILY NOTE (updated):\nAnex and house look good \nBut the garden is horrible and itÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂs oil fired so will need changing and it is more expensive already \nIÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂd take it off the list",
-      "date": "09/07/2026"
+      "date": "14/07/2026",
+      "text": "VOICEMAIL — Caitlin, Gibbons Richards (14/07/2026)\nCall back: 01278 444488\nReceived our online inquiry. Call back to discuss.\nNOTE: Partner's note says to remove this property (oil fired, bad garden). Discuss before calling back."
     },
     "174472451": {
       "text": "Nice house, not sure about the garden some grass in the front which seem to face the kitchen \nAdminister is probably a closer he community \nLooks like nice green street",
@@ -184,7 +184,8 @@
     "173348153": "replied",
     "169598735": "replied",
     "167437883": "replied",
-    "173546681": "replied"
+    "173546681": "replied",
+    "173985596": "replied"
   },
   "agentStatusDate": {
     "89061840": "06/07/2026",
@@ -212,7 +213,8 @@
     "169598735": "07/07/2026",
     "167437883": "07/07/2026",
     "168359045": "08/07/2026",
-    "173546681": "09/07/2026"
+    "173546681": "09/07/2026",
+    "173985596": "14/07/2026"
   },
   "agentEmail": {
     "89061840": "zoe@paul-fenton.com",
@@ -247,7 +249,8 @@
     "173348153": "01258 452327",
     "169598735": "01639 635115",
     "167437883": "01834 861812",
-    "173546681": "01460 238382"
+    "173546681": "01460 238382",
+    "173985596": "01278 444488"
   },
   "statusOverrides": {
     "88055244": "rejected",
@@ -256,5 +259,6 @@
     "174415073": "rejected",
     "174938813": "rejected"
   },
-  "chainStatus": {}
+  "chainStatus": {},
+  "callStatus": {}
 }

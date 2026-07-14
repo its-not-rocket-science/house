@@ -482,13 +482,88 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 .flag-clear-btn{background:none;border:none;cursor:pointer;font-size:11px;
   color:#664d03;text-decoration:underline;white-space:nowrap;flex-shrink:0}
 
-/* PHOTO SECTIONS */
-.photo-section-hdr{font-size:9px;text-transform:uppercase;letter-spacing:.07em;
-  color:#888;background:#111;padding:2px 8px;font-weight:700;margin-top:2px}
-.photo-section-hdr:first-child{margin-top:0}
-/* CHAIN PILLS */
+
+/* ── AGENT CALLS PANEL ───────────────────────────────────────────────────── */
+#calls-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);
+  z-index:8500;align-items:flex-start;justify-content:center;
+  padding:20px 12px;overflow-y:auto}
+#calls-overlay.show{display:flex}
+#calls-box{background:#fff;border-radius:10px;width:820px;max-width:99vw;
+  box-shadow:0 8px 40px rgba(0,0,0,.25);display:flex;flex-direction:column;
+  max-height:calc(100vh - 40px)}
+#calls-header{background:var(--color-primary);color:#fff;padding:14px 18px;
+  border-radius:10px 10px 0 0;display:flex;align-items:center;gap:10px;flex-shrink:0}
+#calls-header h2{font-size:14px;font-weight:700;flex:1;margin:0}
+.calls-close{background:none;border:none;color:rgba(255,255,255,.7);
+  font-size:20px;cursor:pointer;line-height:1}
+.calls-close:hover{color:#fff}
+#calls-filter-row{display:flex;gap:6px;padding:10px 16px;border-bottom:1px solid var(--color-border);
+  flex-wrap:wrap;flex-shrink:0;background:#f8f9fb}
+.calls-filt-btn{font-size:11px;padding:3px 10px;border-radius:10px;cursor:pointer;
+  border:1px solid var(--color-border);background:#fff;font-weight:500}
+.calls-filt-btn.on{background:var(--color-primary);color:#fff;border-color:var(--color-primary)}
+#calls-list{overflow-y:auto;flex:1;padding:12px 16px;display:flex;flex-direction:column;gap:10px}
+/* Call card */
+.call-card{border:1.5px solid var(--color-border);border-radius:8px;overflow:hidden}
+.call-card.email-card{border-left:4px solid var(--color-primary)}
+.call-card.phone-card{border-left:4px solid var(--color-warning)}
+.call-card.nocontact-card{border-left:4px solid #ccc}
+.call-card-hdr{display:flex;align-items:center;gap:8px;padding:8px 12px;
+  background:#f8f9fb;cursor:pointer}
+.call-rank-badge{width:22px;height:22px;border-radius:50%;background:var(--color-primary);
+  color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0}
+.call-name{font-size:12.5px;font-weight:600;flex:1}
+.call-agent{font-size:10.5px;color:var(--color-muted)}
+.call-contact{font-size:10.5px;font-weight:600}
+.call-contact.email{color:var(--color-primary)}
+.call-contact.phone{color:#7F4F00}
+.call-status-pill{font-size:9.5px;padding:1px 7px;border-radius:8px;font-weight:600;
+  border:1px solid currentColor}
+.call-status-pill.need-to-call{color:#9C0006;background:#FFE4E4;border-color:#9C0006}
+.call-status-pill.called{color:#1E7145;background:#C6EFCE;border-color:#1E7145}
+.call-status-pill.replied{color:var(--color-primary);background:#E6F1FB;border-color:var(--color-primary)}
+.call-chevron{color:var(--color-muted);font-size:12px;transition:transform .15s}
+.call-chevron.open{transform:rotate(180deg)}
+.call-card-body{padding:10px 14px 14px;display:none}
+.call-card-body.open{display:block}
+/* Questions editor */
+.call-qs-label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--color-muted);font-weight:700;margin-bottom:6px}
+.call-qs-list{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+.call-q-row{display:flex;align-items:flex-start;gap:6px;font-size:12px;
+  padding:5px 8px;background:#f8f9fb;border-radius:4px;
+  border-left:2px solid var(--color-border)}
+.call-q-row.checked{opacity:.55;text-decoration:line-through;
+  border-left-color:var(--color-success)}
+.call-q-check{flex-shrink:0;margin-top:1px;cursor:pointer;accent-color:var(--color-success)}
+.call-q-text{flex:1;line-height:1.4}
+.call-q-del{background:none;border:none;color:#ccc;cursor:pointer;font-size:12px;
+  padding:0 2px;flex-shrink:0}
+.call-q-del:hover{color:var(--color-danger)}
+.call-add-q{display:flex;gap:6px;margin-bottom:8px}
+.call-add-q input{flex:1;padding:5px 8px;border:1px solid var(--color-border);
+  border-radius:4px;font-size:12px;font-family:inherit}
+.call-add-q button{padding:5px 10px;background:var(--color-primary);color:#fff;
+  border:none;border-radius:4px;cursor:pointer;font-size:11px;font-weight:600}
+.call-actions{display:flex;gap:6px;flex-wrap:wrap}
+.call-act-btn{font-size:11px;padding:5px 12px;border-radius:4px;cursor:pointer;
+  font-weight:600;border:1px solid var(--color-border)}
+.call-act-btn.primary{background:var(--color-primary);color:#fff;border-color:var(--color-primary)}
+.call-act-btn.primary:hover{opacity:.88}
+.call-act-btn:hover{background:#f0f4f8}
+.call-status-toggle{display:flex;gap:4px;align-items:center;margin-bottom:8px}
+.call-status-toggle span{font-size:11px;color:var(--color-muted)}
+.cst-btn{font-size:10.5px;padding:2px 8px;border-radius:8px;cursor:pointer;
+  border:1px solid var(--color-border);background:#fff;font-weight:600}
+.cst-btn.on.need-to-call{background:#FFE4E4;color:#9C0006;border-color:#9C0006}
+.cst-btn.on.called{background:#C6EFCE;color:#1E7145;border-color:#1E7145}
+.call-copy-all{font-size:11px;color:var(--color-primary);background:none;border:none;
+  cursor:pointer;text-decoration:underline;padding:0;margin-left:auto}
+
 .pill.no-chain{background:#C6EFCE;color:#1E7145;border-color:#1E7145}
 .pill.chain-flex{background:#FFF3CD;color:#7F4F00;border-color:#ffc107}
+.photo-section-hdr{font-size:9px;text-transform:uppercase;letter-spacing:.07em;color:#888;background:#111;padding:2px 8px;font-weight:700;margin-top:2px}
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-thumb{background:#ccc;border-radius:3px}
@@ -642,6 +717,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   </span>
   <span id="voting-as"></span>
   <button class="hdr-btn" onclick="showPlanner()" id="planner-btn">🗓 Day Planner</button>
+  <button class="hdr-btn" onclick="showCallsList()" id="calls-btn">📞 Agent Calls</button>
   <button class="hdr-btn add" onclick="showAddModal()">＋ Add property</button>
   <button class="hdr-btn" id="token-btn" onclick="showTokenModal()"
     title="Sync settings — allows your votes and notes to be seen by other family members.">⚙ GitHub Token</button>
@@ -1218,9 +1294,6 @@ function addMarker(p) {
 function setSort(btn) {
   currentSort = btn.dataset.sort;
   document.querySelectorAll('.sort-btn').forEach(b=>b.classList.toggle('active',b===btn));
-  const knownChain = {"90443352":"no_chain","169862942":"chain_breaker","160507001":"no_chain","166496951":"park_home","173348153":"chain_breaker"};
-  if (!notes.chainStatus) notes.chainStatus = {};
-  Object.entries(knownChain).forEach(([r,cs])=>{if(!notes.chainStatus[r])notes.chainStatus[r]=cs;});
   applyFilters();
 }
 
@@ -1272,22 +1345,12 @@ function sortProps(arr) {
       return netB - netA;
     });
     case 'playroom': return a.sort((x,y) => {
-      const sc = s => {
-        const c = scorecards[s.ref];
-        if (!c) return -1;
-        const pr = c.scores.find(s => s.label === 'Play room');
-        return pr ? pr.score : -1;
-      };
-      return sc(y) - sc(x) || x.rank - y.rank;
+      const sc = s => { const c=scorecards[s.ref]; if(!c)return -1; const pr=c.scores.find(s=>s.label==='Play room'); return pr?pr.score:-1; };
+      return sc(y)-sc(x)||x.rank-y.rank;
     });
     case 'solar': return a.sort((x,y) => {
-      const sc = s => {
-        const c = scorecards[s.ref];
-        if (!c) return -1;
-        const pr = c.scores.find(s => s.label === 'Solar / Heat pump');
-        return pr ? pr.score : -1;
-      };
-      return sc(y) - sc(x) || x.rank - y.rank;
+      const sc = s => { const c=scorecards[s.ref]; if(!c)return -1; const pr=c.scores.find(s=>s.label==='Solar / Heat pump'); return pr?pr.score:-1; };
+      return sc(y)-sc(x)||x.rank-y.rank;
     });
     default: return a;
   }
@@ -1437,7 +1500,6 @@ function renderList() {
             ${net>0?'👍':''}${net<0?'👎':''}${Math.abs(net)>0?Math.abs(net):''}</span>`:'';})()}
           <span class="pill ${p.annexe}">${p.annexe==='confirmed'?'✓ Annexe':'~ Potential'}</span>
           ${(()=>{const sc=scorecards[p.ref];const pr=sc?.scores?.find(s=>s.label==='Play room');if(!pr||pr.score<0)return '';if(pr.score>=2)return '<span class="pill confirmed" style="font-size:9px">🧸</span>';if(pr.score===1)return '<span class="pill potential" style="font-size:9px">🧸?</span>';return '';})()}
-          ${(()=>{const sc=scorecards[p.ref];const sr=sc?.scores?.find(s=>s.label==='Solar / Heat pump');if(!sr||sr.score<1)return '';if(sr.score>=2)return '<span class="pill confirmed" style="font-size:9px">☀️</span>';return '<span class="pill potential" style="font-size:9px">☀️~</span>';})()}
           ${p.caveat?`<span class="pill caveat">⚠ ${p.caveat}</span>`:''}
           ${(()=>{const cs=(notes.chainStatus||{})[p.ref]||'unknown';if(cs==='no_chain')return '<span class="pill no-chain" title="No onward chain">⛓️‍💥 No chain</span>';if(cs==='chain_breaker')return '<span class="pill chain-flex" title="Vendor can chain-break">⛓ Flexible chain</span>';if(cs==='park_home')return '<span class="pill chain-flex" title="Vendor buying park home">⛓ Park home</span>';return '';})()}
           ${isDup?'<span class="pill dup">duplicate</span>':''}
@@ -1528,9 +1590,7 @@ function renderDetail(p) {
               <button class="pz-btn" onclick="openImgNewTab('gallery-main-img')" title="Open in new tab" aria-label="Open image in new tab">↗</button>
             </div>
           </div>
-          <div id="gallery-thumbs-wrap">
-            ${renderPhotoSections(p.ref, rmImgs)}
-          </div>` :
+          <div id="gallery-thumbs-wrap">${renderPhotoSections(p.ref,rmImgs)}</div>` :
           `<div class="gallery-empty">
             Photos for this property will appear here once available.<br>
             <a href="${p.rightmove_url}" target="_blank" style="color:#4d9fff">View on Rightmove ↗</a>
@@ -1733,9 +1793,9 @@ function renderDetail(p) {
 
   // Store image sets as globals for lightbox access
   window._gImgs      = rmImgs;
-  window._fImgs      = rmFloors;
-  window._vPhotos    = notes.photos[p.ref] || [];
   window._currentProp = p;
+  window._fImgs   = rmFloors;
+  window._vPhotos = notes.photos[p.ref] || [];
 }
 
 
@@ -2222,46 +2282,8 @@ function renderHomeEd(p) {
 }
 
 
-// ── PHOTO SECTIONS ───────────────────────────────────────────────────────────
-function getPhotoSections(ref, imgs) {
-  if (!imgs.length) return {'': imgs.map((s,i)=>({src:s,idx:i}))};
-  const override = (notes.photoSections||{})[ref];
-  if (override) {
-    const secs = {};
-    imgs.forEach((src,i) => {
-      const cat = override[i] || 'Main house';
-      if (!secs[cat]) secs[cat] = [];
-      secs[cat].push({src, idx:i});
-    });
-    return secs;
-  }
-  const p = window._currentProp;
-  if (!p || p.annexe !== 'confirmed' || imgs.length < 6)
-    return {'': imgs.map((s,i)=>({src:s,idx:i}))};
-  const n = imgs.length;
-  const mainEnd = Math.round(n*0.55), annexeEnd = Math.round(n*0.78);
-  const secs = {
-    'Main house':        imgs.slice(0,mainEnd).map((s,i)=>({src:s,idx:i})),
-    'Annexe':            imgs.slice(mainEnd,annexeEnd).map((s,i)=>({src:s,idx:mainEnd+i})),
-    'Garden & exterior': imgs.slice(annexeEnd).map((s,i)=>({src:s,idx:annexeEnd+i})),
-  };
-  Object.keys(secs).forEach(k=>{if(!secs[k].length)delete secs[k];});
-  return secs;
-}
-function renderPhotoSections(ref, imgs) {
-  const secs=getPhotoSections(ref,imgs), labels=Object.keys(secs);
-  const multi=labels.length>1||(labels.length===1&&labels[0]!=='');
-  return labels.map(label=>{
-    const hdr=multi&&label?`<div class="photo-section-hdr">${label}</div>`:'';
-    const thumbs=secs[label].map(({src,idx})=>
-      `<img src="${src}" data-idx="${idx}" class="${idx===0?'active-thumb':''}"
-        onerror="this.style.display='none'" onclick="pickPhoto(this,${idx})"
-        alt="Photo ${idx+1}" tabindex="0" role="button" aria-label="Select photo ${idx+1}"
-        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">`
-    ).join('');
-    return `${hdr}<div class="gallery-thumbs">${thumbs}</div>`;
-  }).join('');
-}
+function getPhotoSections(ref,imgs){if(!imgs.length)return{'':imgs.map((s,i)=>({src:s,idx:i}))};const ov=(notes.photoSections||{})[ref];if(ov){const secs={};imgs.forEach((src,i)=>{const cat=ov[i]||'Main house';if(!secs[cat])secs[cat]=[];secs[cat].push({src,idx:i});});return secs;}const p=window._currentProp;if(!p||p.annexe!=='confirmed'||imgs.length<6)return{'':imgs.map((s,i)=>({src:s,idx:i}))};const n=imgs.length,me=Math.round(n*.55),ae=Math.round(n*.78);const secs={'Main house':imgs.slice(0,me).map((s,i)=>({src:s,idx:i})),'Annexe':imgs.slice(me,ae).map((s,i)=>({src:s,idx:me+i})),'Garden & exterior':imgs.slice(ae).map((s,i)=>({src:s,idx:ae+i}))};Object.keys(secs).forEach(k=>{if(!secs[k].length)delete secs[k];});return secs;}
+function renderPhotoSections(ref,imgs){const secs=getPhotoSections(ref,imgs),labels=Object.keys(secs),multi=labels.length>1||(labels.length===1&&labels[0]!=='');return labels.map(label=>{const hdr=multi&&label?`<div class="photo-section-hdr">${label}</div>`:'';const thumbs=secs[label].map(({src,idx})=>`<img src="${src}" data-idx="${idx}" class="${idx===0?'active-thumb':''}" onerror="this.style.display='none'" onclick="pickPhoto(this,${idx})" alt="Photo ${idx+1}" tabindex="0" role="button" aria-label="Select photo ${idx+1}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">`).join('');return `${hdr}<div class="gallery-thumbs">${thumbs}</div>`;}).join('');}
 
 // Gallery helpers — all use window._gImgs / _fImgs / _vPhotos set in renderDetail
 function galleryLb(i)  { openLb(window._gImgs,   i); }
@@ -3364,6 +3386,227 @@ function refreshFlagDisplay(ref) {
   if (dv) { dv.classList.toggle('flagged', flagged); dv.title = flagText; }
 }
 
+// ── AGENT CALLS ───────────────────────────────────────────────────────────────
+let agentCallsData = [], callsFilter = 'all';
+
+async function loadAgentCalls() {
+  if (agentCallsData.length) return;
+  try {
+    const r = await fetch('data/agent_calls.json?_='+Date.now());
+    if (r.ok) agentCallsData = await r.json();
+  } catch(e) {}
+  // Merge live questions from scorecards (may have been updated since file was generated)
+  agentCallsData.forEach(ac => {
+    const sc = scorecards[ac.ref];
+    if (sc && sc.questions && sc.questions.length) {
+      // Merge: add any scorecard questions not already in list
+      const existing = new Set(ac.questions.map(q=>q.toLowerCase().trim()));
+      sc.questions.forEach(q => {
+        if (!existing.has(q.toLowerCase().trim())) ac.questions.push(q);
+      });
+    }
+    // Load call status from notes
+    ac.callStatus = (notes.callStatus||{})[ac.ref] || ac.callStatus || (ac.phone && !ac.email ? 'need-to-call' : '');
+  });
+}
+
+function showCallsList() {
+  loadAgentCalls().then(() => {
+    renderCallsList();
+    document.getElementById('calls-overlay').classList.add('show');
+  });
+}
+function hideCallsList() { document.getElementById('calls-overlay').classList.remove('show'); }
+
+function filterCalls(btn) {
+  document.querySelectorAll('.calls-filt-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  callsFilter = btn.dataset.cf;
+  renderCallsList();
+}
+
+function renderCallsList() {
+  const el = document.getElementById('calls-list');
+  let data = agentCallsData;
+  if (callsFilter === 'email')       data = data.filter(ac=>ac.email);
+  if (callsFilter === 'phone')       data = data.filter(ac=>ac.phone && !ac.email);
+  if (callsFilter === 'need-to-call')data = data.filter(ac=>ac.callStatus==='need-to-call');
+  if (callsFilter === 'called')      data = data.filter(ac=>ac.callStatus==='called');
+  if (callsFilter === 'no-contact')  data = data.filter(ac=>!ac.email && !ac.phone);
+
+  if (!data.length) {
+    el.innerHTML = '<p style="color:var(--color-muted);font-size:13px;padding:20px">No agents match this filter.</p>';
+    return;
+  }
+
+  el.innerHTML = data.map((ac, i) => {
+    const hasEmail   = !!ac.email;
+    const hasPhone   = !!ac.phone;
+    const cardClass  = hasEmail ? 'email-card' : hasPhone ? 'phone-card' : 'nocontact-card';
+    const contactHtml = hasEmail
+      ? `<span class="call-contact email">✉ ${ac.email}</span>`
+      : hasPhone
+      ? `<span class="call-contact phone">📞 ${ac.phone}</span>`
+      : `<span class="call-contact" style="color:#aaa">⚠ No contact on file</span>`;
+
+    const cs = ac.callStatus;
+    const statusPill = cs
+      ? `<span class="call-status-pill ${cs}">${cs==='need-to-call'?'🔴 Need to call':'✅ Called'}</span>`
+      : '';
+
+    const statusToggle = (hasPhone && !hasEmail) ? `
+      <div class="call-status-toggle">
+        <span>Call status:</span>
+        <button class="cst-btn need-to-call ${cs==='need-to-call'?'on':''}"
+          onclick="setCallStatus('${ac.ref}','need-to-call',this)">🔴 Need to call</button>
+        <button class="cst-btn called ${cs==='called'?'on':''}"
+          onclick="setCallStatus('${ac.ref}','called',this)">✅ Called</button>
+      </div>` : '';
+
+    const qsHtml = ac.questions.map((q,qi) => {
+      const checked = (notes.checkedQuestions||{})[ac.ref+'_'+qi];
+      return `<div class="call-q-row ${checked?'checked':''}" id="qrow-${ac.ref}-${qi}">
+        <input type="checkbox" class="call-q-check" ${checked?'checked':''}
+          onchange="toggleQCheck('${ac.ref}',${qi},this)">
+        <span class="call-q-text">${q}</span>
+        <button class="call-q-del" onclick="deleteCallQ('${ac.ref}',${qi})" title="Remove question">✕</button>
+      </div>`;
+    }).join('');
+
+    const emailLink = hasEmail ? (() => {
+      const sc  = scorecards[ac.ref];
+      const qs  = ac.questions.filter((_,qi)=>!(notes.checkedQuestions||{})[ac.ref+'_'+qi]);
+      const sub = encodeURIComponent('Enquiry re: '+ac.name);
+      const bod = encodeURIComponent('Dear '+ac.agent.split(',')[0]+',\n\n'
+        +'I am interested in '+ac.name+' and have the following questions:\n\n'
+        +qs.map((q,i)=>(i+1)+'. '+q).join('\n')
+        +'\n\nI would also like to arrange a viewing at your earliest convenience.\n\nKind regards');
+      return `<a class="call-act-btn primary" href="mailto:${ac.email}?subject=${sub}&body=${bod}">✉ Open email</a>`;
+    })() : '';
+
+    const copyBtn = `<button class="call-act-btn" onclick="copyCallQs('${ac.ref}')">📋 Copy questions</button>`;
+    const viewBtn = `<button class="call-act-btn" onclick="hideCallsList();selectProp('${ac.ref}')">→ Open property</button>`;
+
+    return `<div class="call-card ${cardClass}" id="callcard-${ac.ref}">
+      <div class="call-card-hdr" onclick="toggleCallCard('${ac.ref}')">
+        <div class="call-rank-badge" style="background:${rc(ac.rank)}">${ac.rank}</div>
+        <div style="flex:1;min-width:0">
+          <div class="call-name">${ac.name}</div>
+          <div class="call-agent">${ac.agent}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px">
+          ${contactHtml}
+          ${statusPill}
+        </div>
+        <span class="call-chevron" id="callchev-${ac.ref}">▼</span>
+      </div>
+      <div class="call-card-body" id="callbody-${ac.ref}">
+        ${statusToggle}
+        <div style="display:flex;align-items:center;margin-bottom:6px">
+          <div class="call-qs-label">${ac.questions.length} questions</div>
+          <button class="call-copy-all" onclick="copyCallQs('${ac.ref}')">📋 Copy all</button>
+        </div>
+        <div class="call-qs-list" id="qlist-${ac.ref}">${qsHtml}</div>
+        <div class="call-add-q">
+          <input type="text" id="newq-${ac.ref}" placeholder="Add a question…"
+            onkeydown="if(event.key==='Enter')addCallQ('${ac.ref}')">
+          <button onclick="addCallQ('${ac.ref}')">+ Add</button>
+        </div>
+        <div class="call-actions">
+          ${emailLink}
+          ${copyBtn}
+          ${viewBtn}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleCallCard(ref) {
+  const body = document.getElementById('callbody-'+ref);
+  const chev = document.getElementById('callchev-'+ref);
+  const open = body.classList.toggle('open');
+  chev.classList.toggle('open', open);
+}
+
+async function setCallStatus(ref, status, btn) {
+  if (!notes.callStatus) notes.callStatus = {};
+  notes.callStatus[ref] = status;
+  // Update in agentCallsData
+  const ac = agentCallsData.find(x=>x.ref===ref);
+  if (ac) ac.callStatus = status;
+  localStorage.setItem('house_notes', JSON.stringify(notes));
+  await pushNotesFile('Call status '+ref+' → '+status);
+  // Update UI without full re-render
+  const card  = document.getElementById('callcard-'+ref);
+  const badge = card?.querySelector('.call-status-pill');
+  if (badge) { badge.className='call-status-pill '+status; badge.textContent=status==='need-to-call'?'🔴 Need to call':'✅ Called'; }
+  card?.querySelectorAll('.cst-btn').forEach(b=>{
+    b.classList.toggle('on', b.classList.contains(status));
+  });
+  showToast(status==='called'?'✅ Marked as called':'🔴 Marked as need to call','success');
+}
+
+async function toggleQCheck(ref, qi, checkbox) {
+  if (!notes.checkedQuestions) notes.checkedQuestions = {};
+  const key = ref+'_'+qi;
+  if (checkbox.checked) notes.checkedQuestions[key] = true;
+  else delete notes.checkedQuestions[key];
+  const row = document.getElementById('qrow-'+ref+'-'+qi);
+  if (row) row.classList.toggle('checked', checkbox.checked);
+  localStorage.setItem('house_notes', JSON.stringify(notes));
+  await pushNotesFile('Check question '+key);
+}
+
+async function addCallQ(ref) {
+  const input = document.getElementById('newq-'+ref);
+  const text = input?.value.trim();
+  if (!text) return;
+  const ac = agentCallsData.find(x=>x.ref===ref);
+  if (!ac) return;
+  ac.questions.push(text);
+  // Also add to scorecard
+  const sc = scorecards[ref];
+  if (sc) { if (!sc.questions) sc.questions=[]; sc.questions.push(text); }
+  input.value = '';
+  // Re-render just this card's question list
+  const qi = ac.questions.length - 1;
+  const ql = document.getElementById('qlist-'+ref);
+  if (ql) ql.insertAdjacentHTML('beforeend',
+    `<div class="call-q-row" id="qrow-${ref}-${qi}">
+      <input type="checkbox" class="call-q-check" onchange="toggleQCheck('${ref}',${qi},this)">
+      <span class="call-q-text">${text}</span>
+      <button class="call-q-del" onclick="deleteCallQ('${ref}',${qi})" title="Remove">✕</button>
+    </div>`);
+  // Update count label
+  const lbl = document.getElementById('callbody-'+ref)?.querySelector('.call-qs-label');
+  if (lbl) lbl.textContent = ac.questions.length + ' questions';
+  localStorage.setItem('house_notes', JSON.stringify(notes));
+  await pushPropsFile('Add question for '+ref);
+  showToast('Question added', 'success');
+}
+
+async function deleteCallQ(ref, qi) {
+  const ac = agentCallsData.find(x=>x.ref===ref);
+  if (!ac) return;
+  ac.questions.splice(qi, 1);
+  const sc = scorecards[ref];
+  if (sc && sc.questions) sc.questions.splice(qi, 1);
+  renderCallsList();
+  await pushPropsFile('Delete question for '+ref);
+}
+
+function copyCallQs(ref) {
+  const ac = agentCallsData.find(x=>x.ref===ref);
+  if (!ac) return;
+  const unchecked = ac.questions.filter((_,qi)=>!(notes.checkedQuestions||{})[ref+'_'+qi]);
+  const text = 'Questions for '+ac.name+':\n\n'
+    + unchecked.map((q,i)=>(i+1)+'. '+q).join('\n');
+  navigator.clipboard.writeText(text).then(()=>{
+    showToast('📋 Questions copied','success');
+  });
+}
+
 init();
 </script>
 
@@ -3428,5 +3671,26 @@ init();
     </div>
   </div>
 </div>
+
+<!-- AGENT CALLS PANEL -->
+<div id="calls-overlay" onclick="if(event.target===this)hideCallsList()">
+  <div id="calls-box">
+    <div id="calls-header">
+      <span>📞</span>
+      <h2>Agent Calls &amp; Questions</h2>
+      <button class="calls-close" onclick="hideCallsList()">✕</button>
+    </div>
+    <div id="calls-filter-row">
+      <button class="calls-filt-btn on" data-cf="all" onclick="filterCalls(this)">All</button>
+      <button class="calls-filt-btn" data-cf="email" onclick="filterCalls(this)">✉ Email only</button>
+      <button class="calls-filt-btn" data-cf="phone" onclick="filterCalls(this)">📞 Phone only</button>
+      <button class="calls-filt-btn" data-cf="need-to-call" onclick="filterCalls(this)">🔴 Need to call</button>
+      <button class="calls-filt-btn" data-cf="called" onclick="filterCalls(this)">✅ Called</button>
+      <button class="calls-filt-btn" data-cf="no-contact" onclick="filterCalls(this)">⚠ No contact</button>
+    </div>
+    <div id="calls-list"></div>
+  </div>
+</div>
+
 </body>
 </html>
