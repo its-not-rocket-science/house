@@ -1,3 +1,10 @@
 {
-  "${p.ref}": []
+  "${p.ref}": [
+    {
+      "type": "dislike",
+      "reason": "",
+      "voter": "Anonymous",
+      "date": "14/07/2026"
+    }
+  ]
 }
