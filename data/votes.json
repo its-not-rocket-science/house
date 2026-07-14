@@ -1,7 +1,7 @@
 {
   "${p.ref}": [
     {
-      "type": "dislike",
+      "type": "like",
       "reason": "",
       "voter": "Anonymous",
       "date": "14/07/2026"
