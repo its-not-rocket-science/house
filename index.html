@@ -508,8 +508,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 .call-card.email-card{border-left:4px solid var(--color-primary)}
 .call-card.phone-card{border-left:4px solid var(--color-warning)}
 .call-card.nocontact-card{border-left:4px solid #ccc}
-.call-card-hdr{display:flex;align-items:center;gap:8px;padding:8px 12px;
-  background:#f8f9fb;cursor:pointer}
+.call-card-hdr{display:flex;align-items:center;gap:8px;padding:9px 12px;
+  background:#f0f4f8;cursor:pointer;border-bottom:1px solid transparent}
+.call-card-hdr:hover{background:#e6edf5}
+.call-card.open-card>.call-card-hdr{background:#e6edf5;border-bottom-color:var(--color-border)}
 .call-rank-badge{width:22px;height:22px;border-radius:50%;background:var(--color-primary);
   color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;
   justify-content:center;flex-shrink:0}
@@ -541,6 +543,24 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 .call-q-del{background:none;border:none;color:#ccc;cursor:pointer;font-size:12px;
   padding:0 2px;flex-shrink:0}
 .call-q-del:hover{color:var(--color-danger)}
+/* Question answer notes */
+.call-q-answer{display:none;margin:4px 0 4px 22px;border-left:2px solid var(--color-border);
+  padding-left:8px}
+.call-q-row.has-answer .call-q-answer{display:block}
+.call-q-row.answered{border-left-color:var(--color-success)}
+.call-q-row.answered .call-q-answer{border-left-color:var(--color-success)}
+.call-q-answer-input{width:100%;padding:5px 8px;border:1px solid var(--color-border);
+  border-radius:4px;font-size:12px;font-family:inherit;resize:vertical;min-height:44px;
+  background:#fff}
+.call-q-answer-input:focus{outline:none;border-color:var(--color-primary)}
+.call-q-answer-saved{font-size:11px;color:var(--color-success);margin-top:3px;display:none}
+.call-q-note-btn{font-size:10px;color:var(--color-primary);background:none;border:none;
+  cursor:pointer;padding:0 4px;text-decoration:underline;flex-shrink:0}
+.call-q-note-btn:hover{opacity:.7}
+/* Header summary line */
+.call-hdr-summary{font-size:10px;color:var(--color-muted);margin-top:2px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:380px}
+.call-hdr-summary .answered-count{color:var(--color-success);font-weight:600}
 .call-add-q{display:flex;gap:6px;margin-bottom:8px}
 .call-add-q input{flex:1;padding:5px 8px;border:1px solid var(--color-border);
   border-radius:4px;font-size:12px;font-family:inherit}
@@ -3447,6 +3467,10 @@ function filterCalls(btn) {
   renderCallsList();
 }
 
+function getQAnswers(ref) {
+  return (notes.questionAnswers||{})[ref] || {};
+}
+
 function renderCallsList() {
   const el = document.getElementById('calls-list');
   let data = agentCallsData;
@@ -3485,13 +3509,29 @@ function renderCallsList() {
           onclick="setCallStatus('${ac.ref}','called',this)">✅ Called</button>
       </div>` : '';
 
+    const qAnswers = getQAnswers(ac.ref);
+    const answeredCount = Object.keys(qAnswers).filter(k=>qAnswers[k]&&qAnswers[k].trim()).length;
     const qsHtml = ac.questions.map((q,qi) => {
       const checked = (notes.checkedQuestions||{})[ac.ref+'_'+qi];
-      return `<div class="call-q-row ${checked?'checked':''}" id="qrow-${ac.ref}-${qi}">
-        <input type="checkbox" class="call-q-check" ${checked?'checked':''}
-          onchange="toggleQCheck('${ac.ref}',${qi},this)">
-        <span class="call-q-text">${q}</span>
-        <button class="call-q-del" onclick="deleteCallQ('${ac.ref}',${qi})" title="Remove question">✕</button>
+      const answer  = qAnswers[qi] || '';
+      const hasAns  = !!answer.trim();
+      return `<div class="call-q-row ${checked?'checked':''} ${hasAns?'has-answer answered':''}" id="qrow-${ac.ref}-${qi}">
+        <div style="display:flex;align-items:flex-start;gap:6px;width:100%">
+          <input type="checkbox" class="call-q-check" ${checked?'checked':''}
+            onchange="toggleQCheck('${ac.ref}',${qi},this)" style="margin-top:3px">
+          <div style="flex:1;min-width:0">
+            <div class="call-q-text">${q}</div>
+            <div class="call-q-answer">
+              <textarea class="call-q-answer-input" rows="2"
+                id="qans-${ac.ref}-${qi}"
+                placeholder="Type answer here…"
+                onblur="saveQAnswer('${ac.ref}',${qi},this.value)">${answer}</textarea>
+              <div class="call-q-answer-saved" id="qans-saved-${ac.ref}-${qi}">✓ Saved</div>
+            </div>
+            ${!hasAns?`<button class="call-q-note-btn" onclick="toggleQAnswer('${ac.ref}',${qi})">+ Add answer</button>`:''}
+          </div>
+          <button class="call-q-del" onclick="deleteCallQ('${ac.ref}',${qi})" title="Remove question">✕</button>
+        </div>
       </div>`;
     }).join('');
 
@@ -3509,12 +3549,25 @@ function renderCallsList() {
     const copyBtn = `<button class="call-act-btn" onclick="copyCallQs('${ac.ref}')">📋 Copy questions</button>`;
     const viewBtn = `<button class="call-act-btn" onclick="hideCallsList();selectProp('${ac.ref}')">→ Open property</button>`;
 
+    const summaryLine = (() => {
+      const total = ac.questions.length;
+      const answered = Object.values(qAnswers).filter(v=>v&&v.trim()).length;
+      const checked  = ac.questions.filter((_,qi)=>(notes.checkedQuestions||{})[ac.ref+'_'+qi]).length;
+      const parts = [];
+      if (total)    parts.push(`${total} question${total===1?'':'s'}`);
+      if (answered) parts.push(`<span class="answered-count">${answered} answered</span>`);
+      if (checked)  parts.push(`${checked} ticked`);
+      return parts.join(' · ');
+    })();
     return `<div class="call-card ${cardClass}" id="callcard-${ac.ref}">
       <div class="call-card-hdr" onclick="toggleCallCard('${ac.ref}')">
         <div class="call-rank-badge" style="background:${rc(ac.rank)}">${ac.rank}</div>
         <div style="flex:1;min-width:0">
           <div class="call-name">${ac.name}</div>
-          <div class="call-agent">${ac.agent}</div>
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+            <div class="call-agent">${ac.agent}</div>
+            <div class="call-hdr-summary">${summaryLine}</div>
+          </div>
         </div>
         <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px">
           ${contactHtml}
@@ -3547,8 +3600,121 @@ function renderCallsList() {
 function toggleCallCard(ref) {
   const body = document.getElementById('callbody-'+ref);
   const chev = document.getElementById('callchev-'+ref);
+  const card = document.getElementById('callcard-'+ref);
   const open = body.classList.toggle('open');
   chev.classList.toggle('open', open);
+  card.classList.toggle('open-card', open);
+}
+
+function toggleQAnswer(ref, qi) {
+  const row = document.getElementById('qrow-'+ref+'-'+qi);
+  if (!row) return;
+  const ans = row.querySelector('.call-q-answer');
+  const btn = row.querySelector('.call-q-note-btn');
+  if (ans) { ans.style.display = ans.style.display==='none'||!ans.style.display ? 'block' : 'none'; }
+  if (btn) btn.style.display = 'none';
+  const ta = row.querySelector('.call-q-answer-input');
+  if (ta) ta.focus();
+}
+
+async function saveQAnswer(ref, qi, value) {
+  if (!notes.questionAnswers) notes.questionAnswers = {};
+  if (!notes.questionAnswers[ref]) notes.questionAnswers[ref] = {};
+  const prev = notes.questionAnswers[ref][qi] || '';
+  if (value.trim() === prev.trim()) return;  // no change
+  notes.questionAnswers[ref][qi] = value;
+
+  // Show saved indicator
+  const saved = document.getElementById('qans-saved-'+ref+'-'+qi);
+  if (saved) { saved.style.display='block'; setTimeout(()=>saved.style.display='none',2000); }
+
+  // Mark question row as answered
+  const row = document.getElementById('qrow-'+ref+'-'+qi);
+  if (row) row.classList.toggle('answered', !!value.trim());
+
+  // Update the summary line in the header
+  const ac = agentCallsData.find(x=>x.ref===ref);
+  if (ac) {
+    const answered = Object.values(notes.questionAnswers[ref]).filter(v=>v&&v.trim()).length;
+    const summEl = document.querySelector('#callcard-'+ref+' .call-hdr-summary');
+    if (summEl) {
+      const total = ac.questions.length;
+      const checked = ac.questions.filter((_,qi2)=>(notes.checkedQuestions||{})[ref+'_'+qi2]).length;
+      const parts = [];
+      if (total)    parts.push(total+' question'+(total===1?'':'s'));
+      if (answered) parts.push('<span class="answered-count">'+answered+' answered</span>');
+      if (checked)  parts.push(checked+' ticked');
+      summEl.innerHTML = parts.join(' · ');
+    }
+  }
+
+  // Try to auto-update scorecard based on answer content
+  autoUpdateScorecard(ref, qi, value);
+
+  localStorage.setItem('house_notes', JSON.stringify(notes));
+  await pushNotesFile('Answer to question '+qi+' for '+ref);
+}
+
+function autoUpdateScorecard(ref, qi, answer) {
+  const sc = scorecards[ref];
+  if (!sc) return;
+  const ac = agentCallsData.find(x=>x.ref===ref);
+  if (!ac) return;
+  const q = (ac.questions[qi]||'').toLowerCase();
+  const a = answer.toLowerCase();
+
+  // Detect positive/negative signals in the answer
+  const positive = /yes|✓|confirmed|available|full fibre|fttp|mains|no chain|chain.free|level.access|walk.in|walk in|separate entrance|no onward/i.test(answer);
+  const negative = /no|not available|not confirmed|unknown|chain|step|bath only|oil|lpg|septic|cesspit/i.test(answer);
+
+  let changed = false;
+  sc.scores.forEach(s => {
+    if (s.resolved) return;
+    const label = s.label.toLowerCase();
+    // Match question to scorecard criterion
+    if ((q.includes('shower') || q.includes('wet room')) && label.includes('shower')) {
+      if (positive && !negative) { s.score=3; s.note='Answer: '+answer.trim().slice(0,80); s.resolved=true; changed=true; }
+      else if (negative)         { s.score=1; s.note='Step/bath confirmed — conversion needed. Answer: '+answer.trim().slice(0,60); s.resolved=true; changed=true; }
+    }
+    if ((q.includes('entrance') || q.includes('external door')) && label.includes('entrance')) {
+      if (positive) { s.score=3; s.note='Confirmed. Answer: '+answer.trim().slice(0,80); s.resolved=true; changed=true; }
+      else if (negative) { s.score=0; s.note='No separate entrance. Answer: '+answer.trim().slice(0,80); s.resolved=true; changed=true; }
+    }
+    if ((q.includes('drainage') || q.includes('septic') || q.includes('sewage')) && label.includes('drainage')) {
+      if (/mains/i.test(answer)) { s.score=3; s.note='Mains drainage confirmed. Answer: '+answer.trim().slice(0,60); s.resolved=true; changed=true; }
+      else if (/septic|cesspit|private/i.test(answer)) { s.score=1; s.note='Private drainage. Answer: '+answer.trim().slice(0,60); s.resolved=true; changed=true; }
+    }
+    if ((q.includes('broadband') || q.includes('fibre') || q.includes('fttp')) && label.includes('broadband')) {
+      if (/full fibre|fttp|ultrafast|900|1000|1800/i.test(answer)) { s.score=3; s.note='Full fibre confirmed. Answer: '+answer.trim().slice(0,80); s.resolved=true; changed=true; }
+      else if (/superfast|fttc|[3-9]\d mbps/i.test(answer)) { s.score=2; s.note='Superfast. Answer: '+answer.trim().slice(0,60); s.resolved=true; changed=true; }
+    }
+    if ((q.includes('chain') || q.includes('onward')) && label.includes('chain')) {
+      if (/no chain|chain.free|nothing to sell|vacant/i.test(answer)) { s.score=3; s.note='No chain confirmed. Answer: '+answer.trim().slice(0,60); s.resolved=true; changed=true;
+        if (!notes.chainStatus) notes.chainStatus={};
+        notes.chainStatus[ref] = 'no_chain';
+      }
+      else if (/chain.break|flexible|move into|temporary/i.test(answer)) { s.score=2; s.note='Flexible chain. Answer: '+answer.trim().slice(0,60); s.resolved=true; changed=true;
+        if (!notes.chainStatus) notes.chainStatus={};
+        notes.chainStatus[ref] = 'chain_breaker';
+      }
+    }
+    if ((q.includes('smoke') || q.includes('separation') || q.includes('air')) && label.includes('separation')) {
+      if (positive && !negative) { s.score=3; s.note='Smoke separation confirmed. Answer: '+answer.trim().slice(0,80); s.resolved=true; changed=true; }
+    }
+    if ((q.includes('heating') || q.includes('fuel') || q.includes('boiler')) && label.includes('fuel')) {
+      if (/gas/i.test(answer) && !/oil|lpg/i.test(answer)) { s.score=3; s.note='Gas CH confirmed. Answer: '+answer.trim().slice(0,60); s.resolved=true; changed=true; }
+      else if (/heat pump|ashp/i.test(answer)) { s.score=3; s.note='Heat pump confirmed. Answer: '+answer.trim().slice(0,60); s.resolved=true; changed=true; }
+    }
+  });
+
+  if (changed) {
+    // Recalculate score
+    const mx = sc.scores.length * 3;
+    sc.overall_pct = Math.round(sc.scores.reduce((t,s)=>t+s.score,0) / mx * 100);
+    // Re-sort the sidebar list
+    applyFilters();
+    showToast('📊 Scorecard updated from answer', 'success');
+  }
 }
 
 async function setCallStatus(ref, status, btn) {
