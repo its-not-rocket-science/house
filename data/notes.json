@@ -277,7 +277,11 @@
     "173348153": "chain_breaker"
   },
   "callStatus": {},
-  "scorecardOverrides": {},
+  "scorecardOverrides": {
+    "88185459": {
+      "Smoke separation__0": 3
+    }
+  },
   "checkedQuestions": {},
   "flags": {}
 }
