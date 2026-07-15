@@ -191,16 +191,22 @@
     "status": "not-contacted",
     "callStatus": "",
     "questions": [
-      "What is the realistic scope for creating a self-contained annexe — outbuilding, garage conversion or extension?",
-      "Is there a ground floor bedroom accessible without stairs, for a person with limited mobility?",
-      "Is the electric heating storage heaters or panel heaters? What are approximate annual bills?",
-      "Is the drainage mains or private (septic tank / sewage treatment plant)?",
-      "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?"
+      "The on-site gym — does it currently have any plumbing (water supply and/or waste pipe) or is it a dry structure? This is the key factor in the cost and complexity of adding a shower room and kitchenette.",
+      "What are the internal dimensions of the gym floor area?",
+      "Is the gym connected to the mains electricity supply independently, or does it run off the main house consumer unit?",
+      "What is the construction of the gym — brick/block, timber frame, or garden room style? Is it insulated? Would it be suitable for year-round occupation without major insulation works?",
+      "The main house has a heat pump — does the heat pump circuit extend to the gym, or would the gym need its own heating system? An air-to-air unit (£2,000–4,000 installed) would be the simplest option.",
+      "Has any planning advice been sought for converting the gym to a self-contained granny annexe? In Wales, permitted development for outbuilding conversion to ancillary residential use is generally allowed — has the vendor or their solicitor confirmed this?",
+      "Is the property on mains drainage (Welsh Water / Dŵr Cymru) or private drainage (septic tank or sewage treatment plant)? If private, when was it last emptied and is it compliant with the 2020 EA General Binding Rules?",
+      "What broadband speeds are available at SA6 — upload as well as download? Is full fibre (FTTP) available? The property's home working suitability is important to us.",
+      "Is there a level or ramped access route from the main house to the gym — no steps — suitable for a person with limited mobility and a walking frame?",
+      "The description mentions three bathrooms upstairs. Is there any shower room or wet room on the ground floor of the main house, or only the ground floor WC?",
+      "We would like to arrange a viewing — what dates are available? We would particularly like to assess the gym in person."
     ],
     "flags": "",
     "annexe": "potential",
     "contactFirstName": "the agent",
-    "contactFullName": "Anderson Group",
+    "contactFullName": "The Anderson Group",
     "agentLine": "The Anderson Group, Swansea"
   },
   {
