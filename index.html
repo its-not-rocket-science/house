@@ -2628,6 +2628,11 @@ async function loadNotes() {
   const local=localStorage.getItem('house_notes');
   if(local){try{notes=JSON.parse(local);localOk=true;}catch(e){}}
   if (!staticOk && !githubOk && !localOk) showToast('⚠ Could not load latest data', 'error');
+  // Ensure all expected keys exist to avoid undefined errors
+  ['agentStatus','agentStatusDate','agentEmail','agentPhone','chainStatus',
+   'callStatus','statusOverrides','flags','checkedQuestions','scorecardOverrides',
+   'visits','photos'].forEach(k => { if(!notes[k]) notes[k]={}; });
+  if(!notes.notes) notes.notes={};
   checkUnsavedChanges();
 }
 
@@ -2729,6 +2734,23 @@ async function pushNotesFile(message) {
   const token=getToken();
   if(!token) { checkUnsavedChanges(); return; }
   try {
+    // Fetch the latest remote version and merge before pushing
+    // This prevents conflicts when two users push simultaneously
+    try {
+      const cur = await ghGet(NOTES_PATH);
+      if (cur.ok) {
+        const curData = await cur.json();
+        const remote = JSON.parse(atob(curData.content));
+        // Merge: for each section, remote is base, our in-memory changes override
+        Object.keys(remote).forEach(section => {
+          if (remote[section] && typeof remote[section]==='object' && !Array.isArray(remote[section])) {
+            notes[section] = {...remote[section], ...(notes[section]||{})};
+          }
+        });
+        // Add any remote sections we don't have locally
+        Object.keys(remote).forEach(section => { if (!(section in notes)) notes[section]=remote[section]; });
+      }
+    } catch(mergeErr) { /* proceed with local notes if merge fails */ }
     const content=btoa(unescape(encodeURIComponent(JSON.stringify(notes,null,2))));
     await ghPut(NOTES_PATH,content,message);
     showToast('✓ Notes saved', 'success');
