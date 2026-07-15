@@ -510,6 +510,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 .call-card.nocontact-card{border-left:4px solid #ccc}
 .call-card-hdr{display:flex;align-items:center;gap:8px;padding:9px 12px;
   background:#f0f4f8;cursor:pointer;border-bottom:1px solid transparent}
+.call-card-hdr a{pointer-events:auto;position:relative;z-index:2}
 .call-card-hdr:hover{background:#e6edf5}
 .call-card.open-card>.call-card-hdr{background:#e6edf5;border-bottom-color:var(--color-border)}
 .call-rank-badge{width:22px;height:22px;border-radius:50%;background:var(--color-primary);
@@ -517,9 +518,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   justify-content:center;flex-shrink:0}
 .call-name{font-size:12.5px;font-weight:600;flex:1}
 .call-agent{font-size:10.5px;color:var(--color-muted)}
-.call-contact{font-size:10.5px;font-weight:600}
+.call-contact{font-size:10.5px;font-weight:600;text-decoration:none}
 .call-contact.email{color:var(--color-primary)}
+.call-contact.email:hover{text-decoration:underline}
 .call-contact.phone{color:#7F4F00}
+.call-contact.phone:hover{text-decoration:underline}
 .call-status-pill{font-size:9.5px;padding:1px 7px;border-radius:8px;font-weight:600;
   border:1px solid currentColor}
 .call-status-pill.need-to-call{color:#9C0006;background:#FFE4E4;border-color:#9C0006}
@@ -3489,10 +3492,11 @@ function renderCallsList() {
     const hasEmail   = !!ac.email;
     const hasPhone   = !!ac.phone;
     const cardClass  = hasEmail ? 'email-card' : hasPhone ? 'phone-card' : 'nocontact-card';
+    const firstName = ac.contactFirstName || '';
     const contactHtml = hasEmail
-      ? `<span class="call-contact email">✉ ${ac.email}</span>`
+      ? `<a class="call-contact email" href="mailto:${ac.email}">✉ ${ac.email}</a>`
       : hasPhone
-      ? `<span class="call-contact phone">📞 ${ac.phone}</span>`
+      ? `<a class="call-contact phone" href="tel:${ac.phone.replace(/\s/g,'')}">📞 ${ac.phone}</a>`
       : `<span class="call-contact" style="color:#aaa">⚠ No contact on file</span>`;
 
     const cs = ac.callStatus;
@@ -3500,13 +3504,28 @@ function renderCallsList() {
       ? `<span class="call-status-pill ${cs}">${cs==='need-to-call'?'🔴 Need to call':'✅ Called'}</span>`
       : '';
 
+    const agentIntro = (() => {
+      const fname  = ac.contactFirstName;
+      const agency = (ac.agentLine||ac.agent||'').split(',')[0].trim();
+      const prop   = ac.name;
+      const intro  = fname
+        ? `Hi ${fname}, this is Avital Biran calling about ${prop} — `
+        : `Hi, I'm calling about ${prop} — `;
+      return intro + `I have a few questions if that's OK.`;
+    })();
+
     const statusToggle = (hasPhone && !hasEmail) ? `
-      <div class="call-status-toggle">
-        <span>Call status:</span>
-        <button class="cst-btn need-to-call ${cs==='need-to-call'?'on':''}"
-          onclick="setCallStatus('${ac.ref}','need-to-call',this)">🔴 Need to call</button>
-        <button class="cst-btn called ${cs==='called'?'on':''}"
-          onclick="setCallStatus('${ac.ref}','called',this)">✅ Called</button>
+      <div style="background:#f8f9fb;border:1px solid var(--color-border);border-radius:6px;padding:10px 12px;margin-bottom:10px">
+        <div style="font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--color-muted);font-weight:700;margin-bottom:6px">📞 Call opener</div>
+        <div style="font-size:12.5px;color:var(--color-text);line-height:1.5;margin-bottom:8px;font-style:italic">"${agentIntro}"</div>
+        <a class="call-act-btn primary" href="tel:${(ac.phone||'').replace(/\s/g,'')}" style="display:inline-block;margin-bottom:8px">📞 Call ${ac.phone}</a>
+        <div class="call-status-toggle" style="margin-top:6px">
+          <span>After call:</span>
+          <button class="cst-btn need-to-call ${cs==='need-to-call'?'on':''}"
+            onclick="setCallStatus('${ac.ref}','need-to-call',this)">🔴 Need to call</button>
+          <button class="cst-btn called ${cs==='called'?'on':''}"
+            onclick="setCallStatus('${ac.ref}','called',this)">✅ Called</button>
+        </div>
       </div>` : '';
 
     const qAnswers = getQAnswers(ac.ref);
@@ -3536,13 +3555,23 @@ function renderCallsList() {
     }).join('');
 
     const emailLink = hasEmail ? (() => {
-      const sc  = scorecards[ac.ref];
-      const qs  = ac.questions.filter((_,qi)=>!(notes.checkedQuestions||{})[ac.ref+'_'+qi]);
-      const sub = encodeURIComponent('Enquiry re: '+ac.name);
-      const bod = encodeURIComponent('Dear '+ac.agent.split(',')[0]+',\n\n'
-        +'I am interested in '+ac.name+' and have the following questions:\n\n'
-        +qs.map((q,i)=>(i+1)+'. '+q).join('\n')
-        +'\n\nI would also like to arrange a viewing at your earliest convenience.\n\nKind regards');
+      const fname = ac.contactFirstName || ac.agent.split(/[,\s]/)[0];
+      const qs    = ac.questions.filter((_,qi)=>!(notes.checkedQuestions||{})[ac.ref+'_'+qi]);
+      const qAnswers = getQAnswers(ac.ref);
+      // Build rich email body including any answers already recorded
+      const qLines = qs.map((q,i) => {
+        const ans = qAnswers[ac.questions.indexOf(q)];
+        return (i+1)+'. '+q+(ans ? '\n   [Noted: '+ans+']' : '');
+      }).join('\n\n');
+      const sub = encodeURIComponent('Enquiry: '+ac.name+', '+
+        (ac.agentLine||ac.agent).split(',').slice(-1)[0].trim());
+      const bod = encodeURIComponent(
+        'Dear '+fname+',\n\n'
+        +'Thank you for your time regarding '+ac.name+'. '
+        +(qs.length ? 'I have the following outstanding questions:\n\n'+qLines : '')
+        +'\n\nWe would like to arrange a viewing at your earliest convenience.'
+        +'\n\nKind regards,\nAvital'
+      );
       return `<a class="call-act-btn primary" href="mailto:${ac.email}?subject=${sub}&body=${bod}">✉ Open email</a>`;
     })() : '';
 
