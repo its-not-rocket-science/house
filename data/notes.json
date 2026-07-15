@@ -272,5 +272,7 @@
     "173348153": "chain_breaker"
   },
   "callStatus": {},
-  "scorecardOverrides": {}
+  "scorecardOverrides": {},
+  "checkedQuestions": {},
+  "flags": {}
 }
