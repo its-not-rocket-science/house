@@ -1681,14 +1681,14 @@
   },
   "88185459": {
     "ref": "88185459",
-    "overall_pct": 74,
+    "overall_pct": 86,
     "scores": [
       {
         "cat": "Annexe",
         "label": "Annexe status",
-        "score": 2,
-        "note": "Gym on-site — confirmed suitable for granny annexe conversion. Plumbing, insulation and planning to confirm.",
-        "resolved": false
+        "score": 3,
+        "note": "Gym foundations BUILT for annexe. 10.8m × 4.4m = 47.5m². Comfortably fits: double bedroom (4×3.5m), shower room (2×2m), open-plan kitchen/living (4×4.4m) with space to spare. No planning required. Solar + mains electric. ✓",
+        "resolved": true
       },
       {
         "cat": "Annexe",
@@ -1700,16 +1700,16 @@
       {
         "cat": "Smoke separation",
         "label": "Physical separation",
-        "score": 2,
-        "note": "Gym is a separate outbuilding — excellent smoke/air separation expected. Confirm no shared ventilation.",
-        "resolved": false
+        "score": 3,
+        "note": "Separate outbuilding — full smoke/air separation ✓",
+        "resolved": true
       },
       {
         "cat": "Mobility",
         "label": "Ground floor bedroom",
-        "score": 2,
-        "note": "Gym conversion would be single-storey ground level — confirm all accommodation on one level.",
-        "resolved": false
+        "score": 3,
+        "note": "Outbuilding — single storey, all ground floor. 47.5m² total. ✓",
+        "resolved": true
       },
       {
         "cat": "Mobility",
@@ -1722,15 +1722,15 @@
         "cat": "Heating",
         "label": "Fuel type",
         "score": 3,
-        "note": "Heat pump + solar panels confirmed (EPC 84). Only gym has electric radiator. ✓",
+        "note": "Solar primary + mains electric backup. Heat pump for main house. Gym on main house electric circuit. ✓",
         "resolved": true
       },
       {
         "cat": "Drainage",
         "label": "Drainage type",
-        "score": 0,
-        "note": "Drainage type not confirmed",
-        "resolved": false
+        "score": 2,
+        "note": "Mains drainage confirmed — BUT currently routed via neighbour's property. Seller pays £50/month. Quote of £3k to reroute direct. Needs clarification before exchange.",
+        "resolved": true
       },
       {
         "cat": "Connectivity",
@@ -1778,28 +1778,25 @@
         "cat": "Heating",
         "label": "Solar / Heat pump",
         "score": 3,
-        "note": "Heat pump + solar panels confirmed ✓ — excellent low-carbon setup",
+        "note": "Solar panels primary power source + mains backup. Heat pump confirmed. Gym powered from main house circuit. ✓",
         "resolved": true
       }
     ],
     "questions": [
-      "The on-site gym — does it currently have any plumbing (water supply and/or waste pipe) or is it a dry structure? This is the key factor in the cost and complexity of adding a shower room and kitchenette.",
-      "What are the internal dimensions of the gym floor area?",
-      "Is the gym connected to the mains electricity supply independently, or does it run off the main house consumer unit?",
-      "What is the construction of the gym — brick/block, timber frame, or garden room style? Is it insulated? Would it be suitable for year-round occupation without major insulation works?",
-      "The main house has a heat pump — does the heat pump circuit extend to the gym, or would the gym need its own heating system? An air-to-air unit (£2,000–4,000 installed) would be the simplest option.",
-      "Has any planning advice been sought for converting the gym to a self-contained granny annexe? In Wales, permitted development for outbuilding conversion to ancillary residential use is generally allowed — has the vendor or their solicitor confirmed this?",
-      "Is the property on mains drainage (Welsh Water / Dŵr Cymru) or private drainage (septic tank or sewage treatment plant)? If private, when was it last emptied and is it compliant with the 2020 EA General Binding Rules?",
-      "What broadband speeds are available at SA6 — upload as well as download? Is full fibre (FTTP) available? The property's home working suitability is important to us.",
-      "Is there a level or ramped access route from the main house to the gym — no steps — suitable for a person with limited mobility and a walking frame?",
-      "The description mentions three bathrooms upstairs. Is there any shower room or wet room on the ground floor of the main house, or only the ground floor WC?",
-      "We would like to arrange a viewing — what dates are available? We would particularly like to assess the gym in person."
+      "The water and sewage connection runs via the neighbour's property — can we get written confirmation from the neighbour that this arrangement is permanent and will transfer with the sale? Has it been formalised in any legal agreement (easement or deed)?",
+      "The £3,000 quote to reroute the water/sewage direct — is the seller open to completing this before exchange (or reducing the price by £3,000 to allow us to do it)?",
+      "The gym runs off the main house electric circuit — is there a separate sub-board or fuse in the gym, and what is the supply capacity (i.e. enough for an electric shower and appliances simultaneously)?",
+      "Can you confirm the gym has a shower room or wet room, or is there currently no shower at all?",
+      "The agent mentioned no planning required — can the solicitor confirm this via the Swansea planning portal before exchange? Has any certificate of lawful use been issued?",
+      "Is there level or ramped access from the main house to the gym — no steps — suitable for a person with limited mobility?",
+      "What broadband speeds are available at SA6? We'd appreciate if you could check next time you visit.",
+      "We would like to arrange a viewing — what dates are available?"
     ],
     "red_flags": [
-      "No plumbing in gym yet — adding water supply + waste for shower and kitchenette is the main conversion cost (estimate £8,000–20,000 depending on distance from mains)",
-      "Drainage type unknown — must confirm before offer",
-      "Broadband unknown — confirm FTTP availability for SA6 postcode",
-      "Planning for gym-to-annexe conversion in Wales should be straightforward but confirm with Swansea Council before exchange"
+      "Water/sewage via neighbour's property — must have written legal agreement transferring with sale before exchange. If not in place, budget £3k to reroute direct.",
+      "No shower or kitchen in gym yet — plumbing feasible (water available) but fit-out cost needed (estimate £5k–10k for shower room + kitchenette)",
+      "Broadband unknown — check Ofcom for SA6 5QL",
+      "Planning confirmation recommended — agent says no planning needed but solicitor should verify via planning search"
     ]
   },
   "89701968": {
