@@ -70,7 +70,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed",
+        "note": "Postcode TA6 5DH not in Ofcom dataset",
         "resolved": false
       },
       {
@@ -338,7 +338,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed",
+        "note": "Postcode DT6 6JN not in Ofcom dataset",
         "resolved": false
       },
       {
@@ -648,7 +648,7 @@
   },
   "173348153": {
     "ref": "173348153",
-    "overall_pct": 77,
+    "overall_pct": 73,
     "scores": [
       {
         "cat": "Annexe",
@@ -716,9 +716,9 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 2,
-        "note": "Superfast 74Mb confirmed — not full fibre",
-        "resolved": true
+        "score": 0,
+        "note": "Postcode DT11 0NQ not in Ofcom dataset",
+        "resolved": false
       },
       {
         "cat": "Risk",
@@ -848,7 +848,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed",
+        "note": "Postcode DT11 7BU not in Ofcom dataset",
         "resolved": false
       },
       {
@@ -907,7 +907,7 @@
   },
   "89951784": {
     "ref": "89951784",
-    "overall_pct": 76,
+    "overall_pct": 73,
     "scores": [
       {
         "cat": "Annexe",
@@ -975,9 +975,9 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 2,
-        "note": "Fibre fitted and in use — speeds not specified; confirm FTTP vs FTTC",
-        "resolved": true
+        "score": 0,
+        "note": "Postcode NP4 8PH not in Ofcom dataset",
+        "resolved": false
       },
       {
         "cat": "Risk",
@@ -1248,7 +1248,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed",
+        "note": "Postcode NP4 0BG not in Ofcom dataset",
         "resolved": false
       },
       {
@@ -1378,7 +1378,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed",
+        "note": "Postcode BA22 8RR not in Ofcom dataset",
         "resolved": false
       },
       {
@@ -1748,7 +1748,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed",
+        "note": "Postcode SA6 5QL not in Ofcom dataset",
         "resolved": false
       },
       {
@@ -1882,7 +1882,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed",
+        "note": "Postcode DT6 3SA not in Ofcom dataset",
         "resolved": false
       },
       {
@@ -2376,7 +2376,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed",
+        "note": "Postcode BH23 2NA not in Ofcom dataset",
         "resolved": false
       },
       {
@@ -2627,7 +2627,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed",
+        "note": "Postcode SN15 1AS not in Ofcom dataset",
         "resolved": false
       },
       {
@@ -2757,7 +2757,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed in listing",
+        "note": "Postcode SN12 6JR not in Ofcom dataset",
         "resolved": false
       },
       {
@@ -2874,7 +2874,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed",
+        "note": "Postcode BA14 8SP not in Ofcom dataset",
         "resolved": false
       },
       {
@@ -3089,7 +3089,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed",
+        "note": "Postcode NP20 3QH not in Ofcom dataset",
         "resolved": false
       },
       {
@@ -3333,7 +3333,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed",
+        "note": "Postcode SN6 6AU not in Ofcom dataset",
         "resolved": false
       },
       {
@@ -3458,7 +3458,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed",
+        "note": "Postcode EX16 9LJ not in Ofcom dataset",
         "resolved": false
       },
       {
@@ -3697,7 +3697,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed",
+        "note": "Postcode BH8 9PQ not in Ofcom dataset",
         "resolved": false
       },
       {
@@ -3827,7 +3827,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed",
+        "note": "Postcode SA10 7DT not in Ofcom dataset",
         "resolved": false
       },
       {
@@ -3999,7 +3999,7 @@
   },
   "168382466": {
     "ref": "168382466",
-    "overall_pct": 54,
+    "overall_pct": 50,
     "scores": [
       {
         "cat": "Annexe",
@@ -4067,9 +4067,9 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 2,
-        "note": "Superfast broadband available",
-        "resolved": true
+        "score": 0,
+        "note": "Postcode TA7 9AD not in Ofcom dataset",
+        "resolved": false
       },
       {
         "cat": "Risk",
@@ -4199,7 +4199,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed",
+        "note": "Postcode TA7 0EB not in Ofcom dataset",
         "resolved": false
       },
       {
@@ -4801,7 +4801,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed",
+        "note": "Postcode SA34 0DS not in Ofcom dataset",
         "resolved": false
       },
       {
@@ -4919,7 +4919,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed",
+        "note": "Postcode SA33 6JP not in Ofcom dataset",
         "resolved": false
       },
       {
@@ -5304,7 +5304,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband not mentioned — check Ofcom for BA14",
+        "note": "Postcode BA14 8EP not in Ofcom dataset",
         "resolved": false
       },
       {

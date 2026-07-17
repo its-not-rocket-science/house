@@ -2,7 +2,7 @@
   {
     "ref": "173985596",
     "name": "5-Bed Semi with 1-Bed Annexe",
-    "rank": 15,
+    "rank": 16,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Bridgwater, Somerset",
@@ -287,7 +287,7 @@
   {
     "ref": "87890067",
     "name": "Maesycoed, Pontypridd — Detached with Annexe",
-    "rank": 12,
+    "rank": 13,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Pontypridd, South Wales",
@@ -349,7 +349,7 @@
   {
     "ref": "173348153",
     "name": "Winterborne Stickland — 5-Bed Semi",
-    "rank": 5,
+    "rank": 7,
     "price": 400000,
     "price_display": "£400,000",
     "location": "Winterborne Stickland, Dorset",
@@ -525,7 +525,7 @@
   {
     "ref": "168359045",
     "name": "Highmead Ave, Newton, Swansea",
-    "rank": 11,
+    "rank": 12,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Newton, Swansea",
@@ -721,7 +721,7 @@
   {
     "ref": "172902734",
     "name": "Halfway Close, Trowbridge",
-    "rank": 16,
+    "rank": 17,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Trowbridge, Wiltshire",
@@ -964,7 +964,7 @@
   {
     "ref": "174415073",
     "name": "Killara, Piddletrenthide",
-    "rank": 37,
+    "rank": 36,
     "price": 400000,
     "price_display": "£400,000",
     "location": "Piddletrenthide, Dorset",
@@ -1031,7 +1031,7 @@
   {
     "ref": "174472451",
     "name": "Arch View, Tatworth / South Chard",
-    "rank": 14,
+    "rank": 15,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Tatworth, Somerset",
@@ -1165,7 +1165,7 @@
   {
     "ref": "168243473",
     "name": "Stroud Park Ave, Christchurch — Bungalow",
-    "rank": 17,
+    "rank": 18,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Christchurch, Dorset",
@@ -1383,7 +1383,7 @@
   {
     "ref": "89236248",
     "name": "St Thomas Rd, Trowbridge",
-    "rank": 35,
+    "rank": 34,
     "price": 470000,
     "price_display": "£470,000",
     "location": "Trowbridge, Wiltshire",
@@ -1569,7 +1569,7 @@
   {
     "ref": "170968559",
     "name": "South Newton, Salisbury — New Chalet",
-    "rank": 13,
+    "rank": 14,
     "price": 425000,
     "price_display": "£425,000",
     "location": "South Newton, Wiltshire",
@@ -1668,7 +1668,7 @@
   {
     "ref": "170605958",
     "name": "Brook St, Bampton, Devon",
-    "rank": 36,
+    "rank": 35,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Bampton, Devon",
@@ -1933,7 +1933,7 @@
   {
     "ref": "168382466",
     "name": "Brook Lane, Catcott ⚠ Flood",
-    "rank": 34,
+    "rank": 37,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Catcott, Somerset",
@@ -2440,7 +2440,7 @@
       "asd_support": "Welsh IAS legal framework — stronger than English equivalent. Morriston Hospital 15 min. Swansea NAS branch with community activities.",
       "notes": "Already have 88 Gwyn St Alltwen in tracker — this is number 60, a larger property. Different listing."
     },
-    "rank": 7
+    "rank": 5
   },
   {
     "ref": "90542934",
@@ -2544,6 +2544,6 @@
       "asd_support": "Somerset Progressive School (West Hatch, Taunton). Strong neurodiversity awareness in Somerset community. Musgrove Park Hospital CAMHS (Taunton, 14 miles).",
       "notes": "Chard is in the Somerset West home-ed cluster. Yeovil and Taunton groups accessible."
     },
-    "rank": 18
+    "rank": 11
   }
 ]
