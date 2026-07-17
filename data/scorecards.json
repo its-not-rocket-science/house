@@ -122,7 +122,8 @@
       "Is there full air/smoke separation between the annexe and main house so a smoker in the annexe cannot affect the main living areas?",
       "What is the heating fuel — oil, gas, LPG, heat pump or electric? What are approximate annual costs?",
       "Is the drainage mains or private (septic tank / sewage treatment plant)?",
-      "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?"
+      "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?",
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?"
     ],
     "red_flags": []
   },
@@ -256,9 +257,9 @@
       "What broadband provider does the vendor use and approximately what speeds do they get — particularly upload?",
       "What are the approximate annual oil heating costs for the main house? When was the Worcester boiler last serviced and is there a service record?",
       "What are the approximate annual LPG costs for the annexe? How is the LPG supplied — bottles or a fixed tank — and where is it located on the plot?",
-      "Is there an onward chain on the vendor's side?",
       "Can the building control indemnity policy be obtained as a condition prior to exchange, rather than after survey? Our solicitor will need this confirmed early.",
-      "What is the approximate size of the paddock in acres? Is it currently grazed or maintained, and is there any form of pedestrian access to it?"
+      "What is the approximate size of the paddock in acres? Is it currently grazed or maintained, and is there any form of pedestrian access to it?",
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?"
     ],
     "red_flags": [
       "BC indemnity: vendor says 'after survey if needed' — this must be a pre-exchange condition; instruct solicitor to require it unconditionally",
@@ -392,7 +393,7 @@
       "Is the drainage mains or private (septic tank / sewage treatment plant)?",
       "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?",
       "Are there any outstanding listed building consent issues or works carried out without consent? Has an LBC application been made for any works?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?"
     ],
     "red_flags": [
       "Grade II listed — ASHP, solar panels and annexe works all need Listed Building Consent (LBC)"
@@ -647,7 +648,7 @@
   },
   "173348153": {
     "ref": "173348153",
-    "overall_pct": 60,
+    "overall_pct": 77,
     "scores": [
       {
         "cat": "Annexe",
@@ -680,16 +681,16 @@
       {
         "cat": "Smoke separation",
         "label": "Physical separation",
-        "score": 1,
-        "note": "Door can be closed but not confirmed completely airtight ⚠",
+        "score": 3,
+        "note": "Fire door ALREADY FITTED between studio and main house ✓",
         "resolved": true
       },
       {
         "cat": "Mobility",
         "label": "Ground floor bedroom",
-        "score": 1,
-        "note": "Not confirmed — check annexe layout",
-        "resolved": false
+        "score": 3,
+        "note": "Studio adapted for elderly mother with mobility issues ✓",
+        "resolved": true
       },
       {
         "cat": "Mobility",
@@ -701,8 +702,8 @@
       {
         "cat": "Heating",
         "label": "Fuel type",
-        "score": 1,
-        "note": "LPG + oil boiler — two systems. Annual costs unknown.",
+        "score": 2,
+        "note": "Oil throughout ~£800/yr total. LPG for cooking only ~£50/yr. Not heat pump yet.",
         "resolved": true
       },
       {
@@ -715,9 +716,9 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 0,
-        "note": "Broadband speed not confirmed",
-        "resolved": false
+        "score": 2,
+        "note": "Superfast 74Mb confirmed — not full fibre",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -736,8 +737,8 @@
       {
         "cat": "Transaction",
         "label": "Chain",
-        "score": 2,
-        "note": "Flexible — has property to buy but also somewhere to move into temporarily",
+        "score": 1,
+        "note": "Forward chain confirmed — vendor has property to buy. Heating details to follow.",
         "resolved": true
       },
       {
@@ -757,24 +758,23 @@
       {
         "cat": "Heating",
         "label": "Solar / Heat pump",
-        "score": 0,
-        "note": "Oil/LPG/electric — priority candidate for heat pump upgrade; solar worth assessing",
-        "resolved": false
+        "score": 2,
+        "note": "Not in conservation area — solar panels straightforward to get PP. Space for ASHP or GSHP (large garden). Not yet installed.",
+        "resolved": true
       }
     ],
     "questions": [
-      "The connecting door between annexe and main house — can it be sealed permanently or fitted with a tight fire door? Smoke separation is essential for our use case.",
-      "What are the annexe shower room dimensions? Is there space for a full level-access wet room (no step)?",
-      "Which system heats which building — is the LPG for the annexe and oil for the main house, or vice versa? Are they completely independent?",
-      "What are the approximate annual LPG and oil costs?",
-      "The vendor has somewhere to move into temporarily — what timescale to completion would work for them?",
-      "What broadband speeds are available at Winterborne Stickland — specifically upload speed? Is full fibre available?",
+      "Heating details: which rooms does the oil system serve, and is the studio (annexe) on the same oil boiler circuit as the main house or does it have its own controls?",
+      "What broadband speeds are available on upload specifically — 74Mb was the download; what's the upload?",
+      "The studio has been adapted for an elderly relative with mobility issues — can you describe what adaptations are in place? (e.g. grab rails, level-access shower, wider doorways)",
+      "Is there a walk-in/level-access shower in the studio, or only a bath or step-in shower?",
+      "The forward chain — has the vendor found a property to buy? How far along is that transaction?",
       "We would like to arrange a viewing — what dates are available?"
     ],
     "red_flags": [
-      "Smoke separation: connecting door can close but airtightness unconfirmed — critical to establish at viewing",
-      "Shower step — wet room conversion needed (£2,000–4,000)",
-      "LPG + oil dual system — budget for rationalisation and ASHP conversion longer term"
+      "Forward chain — vendor has property to buy; confirm how far along",
+      "Broadband only superfast 74Mb download — upload speed unknown; check Ofcom for DT11",
+      "Oil heating ~£800/yr — viable now, budget for ASHP upgrade; solar panels viable (no conservation area)"
     ]
   },
   "172773251": {
@@ -901,7 +901,7 @@
       "Is the drainage mains or private (septic tank / sewage treatment plant)?",
       "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?",
       "Has the property ever flooded? What is the Environment Agency flood risk designation?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?"
     ],
     "red_flags": []
   },
@@ -1035,7 +1035,14 @@
       "The internal garage access between annexe and main house — is there a fire door, or just a standard door? And can the garage be used as a garage, or is it part of the living space?",
       "Is there full smoke/air separation between the annexe and main house when the garage door is locked — i.e. no shared ventilation?",
       "Has the annexe been granted planning permission and building control approval? Does it have its own council tax band?",
-      "We would like to arrange a viewing — what dates are available?"
+      "The annexe shower — is it a level-access walk-in shower with no step, or does it have a step or bath?",
+      "The broadband — what speeds are available? Is it full fibre to the premises (FTTP)?",
+      "The internal garage access between annexe and main house — is there a fire door? When locked, is there full smoke/air separation between the two?",
+      "Has the annexe got planning permission and building control approval? Does it have its own council tax band?",
+      "The vendors said they can move out quickly — what's the realistic timescale to completion they'd be comfortable with? Could they vacate within 8–10 weeks of exchange if needed?",
+      "We would like to arrange a viewing — what dates are available?",
+      "What are the approximate dimensions of the rear garden?",
+      "We would like to arrange a viewing — what dates are available in the next two weeks?"
     ],
     "red_flags": [
       "Internal garage access exists — confirm this can be permanently locked for smoke separation",
@@ -1166,7 +1173,7 @@
       "Is there full air/smoke separation between the annexe and main house so a smoker in the annexe cannot affect the main living areas?",
       "Is there a walk-in or level-access shower — no step — accessible from the ground floor?",
       "Is the drainage mains or private (septic tank / sewage treatment plant)?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?"
     ],
     "red_flags": []
   },
@@ -1288,14 +1295,15 @@
       }
     ],
     "questions": [
-      "Does the annexe have its own completely separate external entrance?",
-      "Is the annexe shower a walk-in/level-access shower, or does it have a step or bath?",
-      "Is there full air/smoke separation between the annexe and main house so a smoker in the annexe cannot affect the main living areas?",
-      "Is there a walk-in or level-access shower — no step — accessible from the ground floor?",
-      "What is the heating fuel — oil, gas, LPG, heat pump or electric? What are approximate annual costs?",
-      "Is the drainage mains or private (septic tank / sewage treatment plant)?",
-      "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
+      "Does the annexe have its own completely separate external entrance, independent of the main house?",
+      "Is the annexe shower a level-access walk-in shower with no step, or does it have a step or bath?",
+      "Is there full smoke/air separation between the annexe and the main house — no shared doorway or ventilation?",
+      "Are all the annexe rooms on a single ground floor level with no internal stairs?",
+      "Has the annexe got planning permission and building control approval? Does it have its own council tax band?",
+      "What is the heating fuel — and is the annexe independently heated from the main house?",
+      "What broadband speeds are available — upload as well as download? Is full fibre available?",
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?",
+      "We would like to arrange a viewing — what dates are available in the next two weeks?"
     ],
     "red_flags": []
   },
@@ -1423,7 +1431,7 @@
       "What is the heating fuel — oil, gas, LPG, heat pump or electric? What are approximate annual costs?",
       "Is the drainage mains or private (septic tank / sewage treatment plant)?",
       "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?"
     ],
     "red_flags": [
       "Annexe accessed via main house — smoke/air separation may be inadequate"
@@ -1547,12 +1555,16 @@
       }
     ],
     "questions": [
-      "Does the annexe have its own completely separate external entrance?",
-      "Is the annexe shower a walk-in/level-access shower, or does it have a step or bath?",
-      "Is there full air/smoke separation between the annexe and main house so a smoker in the annexe cannot affect the main living areas?",
-      "Is there a walk-in or level-access shower — no step — accessible from the ground floor?",
-      "Is the drainage mains or private (septic tank / sewage treatment plant)?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
+      "Does the annexe have its own completely separate external entrance, independent of the main house?",
+      "Is the annexe shower a level-access wet room with no step, or does it have a step or bath?",
+      "Is there full smoke/air separation between the annexe and the main house?",
+      "Are all the annexe rooms on a single ground floor level with no internal stairs?",
+      "Has the annexe got planning permission and building control approval? Does it have its own council tax band?",
+      "What is the heating fuel — and is the annexe independently heated from the main house?",
+      "Is the drainage mains or private?",
+      "What broadband speeds are available at BA14 — is full fibre available?",
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?",
+      "We would like to arrange a viewing — what dates are available?"
     ],
     "red_flags": []
   },
@@ -1924,7 +1936,7 @@
       "What is the heating fuel — oil, gas, LPG, heat pump or electric? What are approximate annual costs?",
       "Is the drainage mains or private (septic tank / sewage treatment plant)?",
       "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?"
     ],
     "red_flags": [
       "Annexe accessed via main house — smoke/air separation may be inadequate"
@@ -2119,7 +2131,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast/full fibre confirmed",
+        "note": "Ultrafast 1000Mb down / 220Mb up (Openreach confirmed) ✓",
         "resolved": true
       },
       {
@@ -2172,7 +2184,7 @@
       "What is the heating fuel — oil, gas, LPG, heat pump or electric? What are approximate annual costs?",
       "Is the drainage mains or private (septic tank / sewage treatment plant)?",
       "Has the property ever flooded? What is the Environment Agency flood risk designation?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?"
     ],
     "red_flags": []
   },
@@ -2411,13 +2423,15 @@
       }
     ],
     "questions": [
-      "Does the annexe have its own completely separate external entrance?",
-      "Is the annexe shower a walk-in/level-access shower, or does it have a step or bath?",
-      "Is there a walk-in or level-access shower — no step — accessible from the ground floor?",
-      "What is the heating fuel — oil, gas, LPG, heat pump or electric? What are approximate annual costs?",
-      "Is the drainage mains or private (septic tank / sewage treatment plant)?",
-      "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
+      "Does the annexe have its own completely separate external entrance, independent of the main house?",
+      "Is the annexe shower a level-access wet room with no step, or does it have a step?",
+      "Is there full smoke/air separation between the annexe and the main house?",
+      "Are all the annexe rooms on a single ground floor level?",
+      "What is the heating fuel — and is the annexe independently heated?",
+      "Is the drainage mains or private?",
+      "What broadband speeds are available at BH23 — is full fibre available?",
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?",
+      "We would like to arrange a viewing — what dates are available?"
     ],
     "red_flags": []
   },
@@ -2668,7 +2682,7 @@
       "Is the drainage mains or private (septic tank / sewage treatment plant)?",
       "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?",
       "Has the property ever flooded? What is the Environment Agency flood risk designation?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?"
     ],
     "red_flags": []
   },
@@ -2792,9 +2806,9 @@
     "questions": [
       "We will need to convert the annexe bathroom from bath/shower-over to a level-access walk-in wet room — is the vendor open to a price reduction to reflect this cost (approximately £3,000–5,000)?",
       "What broadband speeds are available at SN12 6JR — upload and download? Is full fibre (FTTP) available?",
-      "Is there an onward chain on the vendor's side?",
       "What are the approximate annual gas bills for the main house and annexe separately?",
       "Are there any restrictive covenants or planning conditions attached to the annexe use?",
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?",
       "We would like to arrange a viewing — what dates are available?"
     ],
     "red_flags": [
@@ -2913,7 +2927,7 @@
       "What is the heating fuel — oil, gas, LPG, heat pump or electric? What are approximate annual costs?",
       "Is the drainage mains or private (septic tank / sewage treatment plant)?",
       "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?"
     ],
     "red_flags": []
   },
@@ -3122,13 +3136,15 @@
       }
     ],
     "questions": [
-      "What is the realistic scope for creating a self-contained annexe — outbuilding, garage conversion or extension?",
-      "Is there a ground floor bedroom accessible without stairs, for a person with limited mobility?",
-      "Is there a walk-in or level-access shower — no step — accessible from the ground floor?",
-      "What is the heating fuel — oil, gas, LPG, heat pump or electric? What are approximate annual costs?",
-      "Is the drainage mains or private (septic tank / sewage treatment plant)?",
-      "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
+      "Does the annexe have its own completely separate external entrance, independent of the main house?",
+      "Is the annexe shower a level-access wet room with no step, or does it have a step or bath?",
+      "Is there full smoke/air separation between the annexe and the main house?",
+      "Are all the annexe rooms on a single ground floor level with no internal stairs?",
+      "What is the heating — and is the annexe independently heated from the main house?",
+      "Is the drainage mains or private?",
+      "What broadband speeds are available at NP20 — is full fibre available?",
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?",
+      "We would like to arrange a viewing — what dates are available?"
     ],
     "red_flags": []
   },
@@ -3378,8 +3394,8 @@
       "What is the heating fuel — oil, gas, LPG, heat pump or electric? What are approximate annual costs?",
       "Is the drainage mains or private (septic tank / sewage treatment plant)?",
       "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?",
-      "Which specific PRC system is this property (Reema, Airey, Wimpey No-Fines etc)? Is a full Structural Certificate available?"
+      "Which specific PRC system is this property (Reema, Airey, Wimpey No-Fines etc)? Is a full Structural Certificate available?",
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?"
     ],
     "red_flags": [
       "PRC non-standard construction — confirm mortgage availability with broker BEFORE viewing"
@@ -3489,27 +3505,28 @@
       }
     ],
     "questions": [
-      "What is the realistic scope for creating a self-contained annexe — outbuilding, garage conversion or extension?",
-      "Is there a ground floor bedroom accessible without stairs, for a person with limited mobility?",
-      "Is there a walk-in or level-access shower — no step — accessible from the ground floor?",
-      "What is the heating fuel — oil, gas, LPG, heat pump or electric? What are approximate annual costs?",
-      "Is the drainage mains or private (septic tank / sewage treatment plant)?",
-      "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?",
-      "Has the property ever flooded? What is the Environment Agency flood risk designation?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
+      "Does the annexe have its own completely separate external entrance?",
+      "Is the annexe shower a level-access wet room, or does it have a step or bath?",
+      "Is there full smoke/air separation between the annexe and the main house?",
+      "Are all the annexe rooms on a single ground floor level with no internal stairs?",
+      "What is the heating fuel — and is the annexe on its own independent system?",
+      "Is the drainage mains or private?",
+      "What broadband speeds are available at EX16 — upload and download? Is full fibre available?",
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?",
+      "We would like to arrange a viewing — what dates are available?"
     ],
     "red_flags": []
   },
   "166496951": {
     "ref": "166496951",
-    "overall_pct": 74,
+    "overall_pct": 89,
     "scores": [
       {
         "cat": "Annexe",
         "label": "Annexe status",
-        "score": 1,
-        "note": "Annexe could be created within existing layout — not yet done; no detail on scope or cost",
-        "resolved": true
+        "score": 2,
+        "note": "Conservatory + utility room + garage conversion. Garage may need more work. Own entrance to be confirmed at viewing.",
+        "resolved": false
       },
       {
         "cat": "Annexe",
@@ -3521,8 +3538,8 @@
       {
         "cat": "Smoke separation",
         "label": "Physical separation",
-        "score": 0,
-        "note": "No annexe yet — separation depends on what is created",
+        "score": 2,
+        "note": "Outbuilding (garage) element gives good separation; conservatory/utility attached — smoke separation depends on layout",
         "resolved": false
       },
       {
@@ -3549,16 +3566,16 @@
       {
         "cat": "Drainage",
         "label": "Drainage type",
-        "score": 2,
-        "note": "Vendor believes mains drainage — not formally confirmed; standard Bournemouth neighbourhood suggests mains",
-        "resolved": false
+        "score": 3,
+        "note": "Mains drainage confirmed ✓",
+        "resolved": true
       },
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 1,
-        "note": "Standard neighbourhood — options available but speeds not confirmed. Older vendor, not technical.",
-        "resolved": false
+        "score": 3,
+        "note": "Ultrafast 5000Mb confirmed (spoke to George) ✓",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -3578,7 +3595,7 @@
         "cat": "Transaction",
         "label": "Chain",
         "score": 3,
-        "note": "Vendor buying park home — park homes transact very quickly, minimal chain risk ✓",
+        "note": "Vendor has mobile home to move to ALREADY ✓ — fast transaction confirmed",
         "resolved": true
       },
       {
@@ -3601,21 +3618,26 @@
         "score": 1,
         "note": "Gas CH — heat pump viable upgrade (BUS grant £7,500); no solar mentioned",
         "resolved": false
+      },
+      {
+        "cat": "?",
+        "label": "Walk-in shower",
+        "score": 3,
+        "note": "Wet room confirmed ✓",
+        "resolved": true
       }
     ],
     "questions": [
-      "What rooms within the existing layout could be converted to create the annexe — is it a garage, a ground floor bedroom wing, or another area? What works would be needed to make it self-contained?",
-      "Could the annexe have its own separate external entrance, or would it always be accessed through the main house?",
-      "Can you confirm mains drainage formally — is the property connected to Bournemouth Water / Wessex Water mains sewerage?",
-      "What broadband speeds are achievable at BH8 9NE — is full fibre (FTTP) available? This matters for home-schooling.",
-      "Is there a walk-in or level-access shower currently in the property, or would one need to be installed?",
-      "Is there an onward chain on the vendor's side — has she found a specific park home to purchase?",
+      "What is the existing condition of the garage — is it integral or detached, and does it have electricity and any plumbing?",
+      "Could the annexe unit (conservatory + utility + garage) have its own completely separate external entrance that doesn't go through the main house?",
+      "Is there full smoke/air separation between the proposed annexe and the main house when internal doors are closed?",
+      "Has the annexe got planning permission or building control approval? Would a change-of-use be needed for the garage?",
+      "The vendor has a mobile home to move to — how quickly could she vacate? Could she be out within 6–8 weeks of exchange?",
       "We would like to arrange a viewing — what dates are available?"
     ],
     "red_flags": [
-      "No confirmed annexe — conversion needed within existing layout; scope and cost completely unknown",
-      "Bungalow caveat applies — single-storey layout limits flexibility",
-      "Broadband unconfirmed — check Ofcom checker for BH8 9NE"
+      "Garage conversion may be complex depending on construction — assess at viewing",
+      "Smoke separation depends on layout — confirm internal door arrangement at viewing"
     ]
   },
   "90125946": {
@@ -3728,7 +3750,7 @@
       "Is the drainage mains or private (septic tank / sewage treatment plant)?",
       "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?",
       "Has the property or access road ever flooded — including during the 2013–14 Somerset Levels floods? What is the EA flood risk designation? Is it insurable for flood at a standard premium?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?"
     ],
     "red_flags": [
       "FLOOD RISK: Check gov.uk/check-long-term-flood-risk before booking viewing"
@@ -3852,14 +3874,15 @@
       }
     ],
     "questions": [
-      "Does the annexe have its own external entrance independent of the main house?",
-      "Is the annexe shower a walk-in/level-access shower, or does it have a step or bath?",
-      "Is there full air/smoke separation between the annexe and main house so a smoker in the annexe cannot affect the main living areas?",
-      "Is there a walk-in or level-access shower — no step — accessible from the ground floor?",
-      "What is the heating fuel — oil, gas, LPG, heat pump or electric? What are approximate annual costs?",
+      "Does the annexe have its own completely separate external entrance, independent of the main house?",
+      "Is the annexe shower a level-access walk-in shower, or does it have a step or bath?",
+      "Is there full smoke/air separation between the annexe and the main house?",
+      "Are all annexe rooms on a single ground floor level with no internal stairs?",
+      "What is the heating fuel — and is the annexe independently heated?",
       "Is the drainage mains or private (septic tank / sewage treatment plant)?",
-      "What broadband speeds are available — specifically upload as well as download? Is full fibre (FTTP) available?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
+      "What broadband speeds are available at SA10 — upload and download? Is full fibre available?",
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?",
+      "We would like to arrange a viewing — what dates are available?"
     ],
     "red_flags": [
       "Annexe accessed via main house — smoke/air separation may be inadequate"
@@ -4098,7 +4121,7 @@
       "What are the approximate annual oil heating costs? When was the boiler last serviced?",
       "Is the drainage mains or private (septic tank / sewage treatment plant)?",
       "Has the property or access road ever flooded — including during the 2013–14 Somerset Levels floods? What is the EA flood risk designation? Is it insurable for flood at a standard premium?",
-      "Is there an onward chain on the vendor's side? Are the vendors already under offer elsewhere?"
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?"
     ],
     "red_flags": [
       "Oil heating — budget £12k–18k for ASHP conversion (£7,500 BUS grant available)",
@@ -4230,7 +4253,7 @@
       "Has the property or the access road ever been affected by flooding? The property is in Westonzoyland on the Somerset Levels — what is the EA flood risk designation for TA7 0EB?",
       "Is it insurable for flood at standard market rates, or is a Flood Re scheme needed?",
       "What broadband speeds are available at TA7 0EB — upload as well as download? Is full fibre (FTTP) available?",
-      "Is there an onward chain on the vendor's side?"
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?"
     ],
     "red_flags": [
       "FLOOD RISK: Westonzoyland, Somerset Levels — check gov.uk/check-long-term-flood-risk at TA7 0EB before viewing",
@@ -4696,7 +4719,12 @@
       "Is there a walk-in or level-access shower (no step) accessible from the ground floor?",
       "What are the approximate annual oil heating costs? When was the boiler last serviced?",
       "Is drainage mains or private (septic tank/STP)?",
-      "What broadband speeds are available — upload as well as download? Is full fibre (FTTP) available?"
+      "What broadband speeds are available — upload as well as download? Is full fibre (FTTP) available?",
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?",
+      "The annexe is listed as Bedroom 5 with its own entrance — does it have a kitchen or kitchenette, or just a bedroom and en-suite?",
+      "Is the annexe on a single ground floor level with no internal stairs?",
+      "What is the heating for the annexe — same oil system as the main house, or its own independent heating?",
+      "What broadband speeds are available at SA67 — is full fibre available?"
     ],
     "red_flags": [
       "Oil heating — budget £10k–18k net for ASHP after £7,500 BUS grant"
@@ -4834,7 +4862,7 @@
       "Is the septic tank/STP compliant with 2020 EA General Binding Rules? When was it last emptied?",
       "What broadband speeds are available — upload as well as download? Is full fibre (FTTP) available?",
       "Which mortgage lender has confirmed they will lend on this property with knotweed present? Can you provide the full treatment plan documentation?",
-      "Is there an onward chain on the vendor's side?"
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?"
     ],
     "red_flags": [
       "Private drainage — confirm EA compliance; budget up to £20k if replacement needed",
@@ -4951,8 +4979,7 @@
       "What is the heating type and approximate annual cost?",
       "Is drainage mains or private (septic tank/STP)?",
       "What broadband speeds are available — upload as well as download? Is full fibre (FTTP) available?",
-      "Has any pre-application planning advice been sought from Carmarthenshire County Council for the unconverted buildings? What permitted development rights exist?",
-      "Is there an onward chain on the vendor's side?"
+      "Has any pre-application planning advice been sought from Carmarthenshire County Council for the unconverted buildings? What permitted development rights exist?"
     ],
     "red_flags": [
       "PLANNING RISK — Welsh rural conversion requires pre-application advice from Carmarthenshire CC; refusal possible"
@@ -5197,8 +5224,8 @@
       "Would the vendor consider a price at the lower end of the guide (£400,000)?",
       "Is there space and scope to add a kitchenette to the lower ground floor reception room to create a fully self-contained annexe?",
       "What is the approximate annual gas bill and how much electricity does the solar PV system generate?",
-      "Is there an onward chain on the vendor's side?",
-      "What are the dimensions and accessibility of the ground floor 'fifth room' — could it serve as a bedroom for a person with limited mobility?"
+      "What are the dimensions and accessibility of the ground floor 'fifth room' — could it serve as a bedroom for a person with limited mobility?",
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?"
     ],
     "red_flags": [
       "No confirmed self-contained annexe — lower ground is flexible space but needs kitchen and ideally external entrance to work for multi-generational living",
@@ -5329,7 +5356,7 @@
       "The annexe en-suite shower room — is it a level-access/walk-in shower with no step, or does it have a step or bath?",
       "Has the annexe been granted planning permission and building control approval? Does it have its own council tax band?",
       "What broadband speeds are available at BA14 — upload as well as download? Is full fibre (FTTP) available?",
-      "Is there an onward chain on the vendor's side?",
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?",
       "We would like to arrange a viewing as soon as possible — what dates are available?"
     ],
     "red_flags": [
@@ -5339,7 +5366,7 @@
   },
   "173546681": {
     "ref": "173546681",
-    "overall_pct": 52,
+    "overall_pct": 58,
     "scores": [
       {
         "cat": "Annexe",
@@ -5407,9 +5434,9 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 0,
-        "note": "Broadband not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Ultrafast 1000Mb down / 220Mb up (Openreach) ✓",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -5460,7 +5487,12 @@
       "Has the annexe been granted planning permission and building control approval? Does it have its own council tax band?",
       "Is there space to convert the annexe bathroom from bath/overhead shower to a level-access wet room?",
       "What broadband speeds are available — upload and download? Is full fibre (FTTP) available?",
-      "We would like to arrange a viewing — what dates are available?"
+      "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?",
+      "Is there space to convert the annexe bathroom — currently bath with overhead shower — to a level-access wet room?",
+      "What broadband speeds are available — upload and download? Is full fibre available?",
+      "We would like to arrange a viewing — what dates are available?",
+      "Can the internal connection between annexe and main house be permanently sealed?",
+      "We would like to arrange a viewing — what dates are available in the next two weeks?"
     ],
     "red_flags": [
       "Shower is bath/overhead — level-access wet room conversion needed (budget £2,000–4,000)",

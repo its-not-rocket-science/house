@@ -587,6 +587,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 .pill.no-chain{background:#C6EFCE;color:#1E7145;border-color:#1E7145}
 .pill.chain-flex{background:#FFF3CD;color:#7F4F00;border-color:#ffc107}
 .photo-section-hdr{font-size:9px;text-transform:uppercase;letter-spacing:.07em;color:#888;background:#111;padding:2px 8px;font-weight:700;margin-top:2px}
+.collapse-toggle{background:none;border:none;cursor:pointer;font-size:11px;
+  color:var(--color-muted);padding:2px 4px;border-radius:3px;transition:transform .2s}
+.collapse-toggle:hover{color:var(--color-primary);background:#f0f4f8}
+.collapse-toggle.collapsed{transform:rotate(180deg)}
+#sort-section,#filter-section{transition:all .2s ease;overflow:hidden}
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-thumb{background:#ccc;border-radius:3px}
@@ -757,7 +762,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   <!-- SIDEBAR -->
   <div id="sidebar">
     <div id="filters">
-      <h2>Sort</h2>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+        <h2 style="margin:0">Sort</h2>
+        <button class="collapse-toggle" id="sort-toggle" onclick="toggleSection('sort-section','sort-toggle')" title="Collapse sort">▲</button>
+      </div>
+      <div id="sort-section">
       <button id="mobile-filters-toggle" class="filter-btn" onclick="toggleMobileFilters()" style="margin-bottom:6px">Filters ▼</button>
       <div class="filter-row sort-row mobile-collapsible-filter" id="sort-btns">
         <button class="sort-btn active info-tip" data-sort="fit" onclick="setSort(this)">% Fit ⓘ
@@ -777,7 +786,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
         <button class="sort-btn" data-sort="playroom" onclick="setSort(this)">🧸 Playroom</button>
         <button class="sort-btn" data-sort="solar" onclick="setSort(this)">☀️ Solar/HP</button>
       </div>
-      <h2 style="margin-top:6px">Filter</h2>
+      </div><!-- /sort-section -->
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px;margin-bottom:4px">
+        <h2 style="margin:0">Filter</h2>
+        <button class="collapse-toggle" id="filter-toggle" onclick="toggleSection('filter-section','filter-toggle')" title="Collapse filters">▲</button>
+      </div>
+      <div id="filter-section">
       <input id="search-box" type="text" placeholder="Search name, location, agent…" oninput="applyFilters()">
       <div class="filter-row mobile-collapsible-filter" id="cluster-filters"></div>
       <div class="filter-row">
@@ -810,6 +824,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
         <button class="filter-btn a" data-f="solar" data-v="viable" onclick="toggleF(this)">~ Viable</button>
         <button class="filter-btn" data-f="solar" data-v="no" onclick="toggleF(this)">✗ None/unknown</button>
       </div>
+      </div><!-- /filter-section -->
       <div style="display:flex;align-items:center;justify-content:space-between;margin-top:2px">
         <div id="result-count" role="status" aria-live="polite"></div>
         <button id="reset-sort-btn" onclick="resetToFit()"
@@ -1318,6 +1333,7 @@ function setSort(btn) {
   currentSort = btn.dataset.sort;
   document.querySelectorAll('.sort-btn').forEach(b=>b.classList.toggle('active',b===btn));
   applyFilters();
+  restoreSections();
 }
 
 function resetToFit() {
@@ -3821,6 +3837,30 @@ function copyCallQs(ref) {
     + unchecked.map((q,i)=>(i+1)+'. '+q).join('\n');
   navigator.clipboard.writeText(text).then(()=>{
     showToast('📋 Questions copied','success');
+  });
+}
+
+function toggleSection(sectionId, toggleId) {
+  const sec = document.getElementById(sectionId);
+  const btn = document.getElementById(toggleId);
+  if (!sec) return;
+  const collapsed = sec.style.display === 'none';
+  sec.style.display = collapsed ? '' : 'none';
+  btn.classList.toggle('collapsed', !collapsed);
+  btn.title = collapsed ? 'Collapse' : 'Expand';
+  localStorage.setItem('section_' + sectionId, collapsed ? 'open' : 'closed');
+}
+
+// Restore collapsed state on load
+function restoreSections() {
+  ['sort-section','filter-section'].forEach(id => {
+    const state = localStorage.getItem('section_' + id);
+    if (state === 'closed') {
+      const sec = document.getElementById(id);
+      const btn = document.getElementById(id.replace('-section','-toggle'));
+      if (sec) sec.style.display = 'none';
+      if (btn) { btn.classList.add('collapsed'); btn.title = 'Expand'; }
+    }
   });
 }
 
