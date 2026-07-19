@@ -860,5 +860,29 @@
     "contactFirstName": "",
     "contactFullName": "",
     "agentLine": "Blackbear Estate Agents"
+  },
+  {
+    "ref": "174286715",
+    "rank": 45,
+    "name": "Goosegreen Cottages, Sutton Mallet",
+    "agent": "Charles Dickens Estate Agents, Bridgwater",
+    "phone": "01278 552711",
+    "email": "",
+    "contactFirstName": "",
+    "contactFullName": "Charles Dickens Estate Agents",
+    "agentLine": "Charles Dickens Estate Agents, Bridgwater",
+    "callStatus": "need-to-call",
+    "annexe": "confirmed",
+    "price": "£450,000",
+    "questions": [
+      "The annexe bedrooms are on the first floor — is there any possibility of creating a ground floor bedroom within the annexe (e.g. converting part of the large ground floor lounge 24'5\"x16'2\")?",
+      "The annexe shower room has a step-in tray — is there space to convert this to a fully level wet room (no step)?",
+      "Is there any flood history for the property? The Somerset Levels have experienced significant flooding (2013/14 etc) — can you confirm the EA flood zone for TA7?",
+      "What is the condition of the oil boiler in the main house — age, service history?",
+      "The extension (left-hand side) was completed internally in 2025 — was building regulations sign-off obtained?",
+      "What broadband speeds are available at Sutton Mallet TA7 — upload and download?",
+      "Is there an onward chain? The listing says no onward chain — can you confirm the vendor is chain-free?",
+      "We would like to arrange a viewing — what dates are available?"
+    ]
   }
 ]

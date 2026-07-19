@@ -2,7 +2,7 @@
   {
     "ref": "173985596",
     "name": "5-Bed Semi with 1-Bed Annexe",
-    "rank": 16,
+    "rank": 17,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Bridgwater, Somerset",
@@ -146,7 +146,7 @@
   {
     "ref": "89444523",
     "name": "Linnet Cottage, Chideock — Grade II Thatched",
-    "rank": 30,
+    "rank": 31,
     "price": 425000,
     "price_display": "£425,000",
     "location": "Chideock, Dorset",
@@ -287,7 +287,7 @@
   {
     "ref": "87890067",
     "name": "Maesycoed, Pontypridd — Detached with Annexe",
-    "rank": 13,
+    "rank": 14,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Pontypridd, South Wales",
@@ -349,7 +349,7 @@
   {
     "ref": "173348153",
     "name": "Winterborne Stickland — 5-Bed Semi",
-    "rank": 7,
+    "rank": 5,
     "price": 400000,
     "price_display": "£400,000",
     "location": "Winterborne Stickland, Dorset",
@@ -406,7 +406,7 @@
   {
     "ref": "172773251",
     "name": "White Cliff Gardens, Blandford Forum",
-    "rank": 24,
+    "rank": 25,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Blandford Forum, Dorset",
@@ -525,7 +525,7 @@
   {
     "ref": "168359045",
     "name": "Highmead Ave, Newton, Swansea",
-    "rank": 12,
+    "rank": 13,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Newton, Swansea",
@@ -587,7 +587,7 @@
   {
     "ref": "88996269",
     "name": "Newtown Rd, Penperlleni, Monmouthshire",
-    "rank": 22,
+    "rank": 23,
     "price": 430000,
     "price_display": "£430,000",
     "location": "Penperlleni, Monmouthshire",
@@ -649,7 +649,7 @@
   {
     "ref": "87130665",
     "name": "Wraxhill Rd, Yeovil — Det with Annexe",
-    "rank": 26,
+    "rank": 27,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Yeovil, Somerset",
@@ -721,7 +721,7 @@
   {
     "ref": "172902734",
     "name": "Halfway Close, Trowbridge",
-    "rank": 17,
+    "rank": 18,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Trowbridge, Wiltshire",
@@ -783,7 +783,7 @@
   {
     "ref": "173219645",
     "name": "Allens Rd, Upton, Poole",
-    "rank": 33,
+    "rank": 34,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Upton, Poole",
@@ -897,7 +897,7 @@
   {
     "ref": "89701968",
     "name": "Loders, Bridport — Det Character",
-    "rank": 28,
+    "rank": 29,
     "price": 470000,
     "price_display": "£470,000",
     "location": "Loders, Dorset",
@@ -964,7 +964,7 @@
   {
     "ref": "174415073",
     "name": "Killara, Piddletrenthide",
-    "rank": 36,
+    "rank": 38,
     "price": 400000,
     "price_display": "£400,000",
     "location": "Piddletrenthide, Dorset",
@@ -1031,7 +1031,7 @@
   {
     "ref": "174472451",
     "name": "Arch View, Tatworth / South Chard",
-    "rank": 15,
+    "rank": 16,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Tatworth, Somerset",
@@ -1098,7 +1098,7 @@
   {
     "ref": "88791255",
     "name": "Park Shaw, Sedlescombe",
-    "rank": 21,
+    "rank": 22,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Sedlescombe, East Sussex",
@@ -1165,7 +1165,7 @@
   {
     "ref": "168243473",
     "name": "Stroud Park Ave, Christchurch — Bungalow",
-    "rank": 18,
+    "rank": 19,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Christchurch, Dorset",
@@ -1217,7 +1217,7 @@
   {
     "ref": "89767338",
     "name": "Bibury Rd, Old Walcot, Swindon",
-    "rank": 20,
+    "rank": 21,
     "price": 440000,
     "price_display": "£440,000",
     "location": "Swindon, Wiltshire",
@@ -1269,7 +1269,7 @@
   {
     "ref": "88156767",
     "name": "Bramble Drive, Chippenham",
-    "rank": 32,
+    "rank": 33,
     "price": 470000,
     "price_display": "£470,000",
     "location": "Chippenham, Wiltshire",
@@ -1326,7 +1326,7 @@
   {
     "ref": "87791562",
     "name": "Halifax Rd, Bowerhill, Melksham",
-    "rank": 9,
+    "rank": 10,
     "price": 465000,
     "price_display": "£465,000",
     "location": "Melksham, Wiltshire",
@@ -1383,7 +1383,7 @@
   {
     "ref": "89236248",
     "name": "St Thomas Rd, Trowbridge",
-    "rank": 34,
+    "rank": 36,
     "price": 470000,
     "price_display": "£470,000",
     "location": "Trowbridge, Wiltshire",
@@ -1445,7 +1445,7 @@
   {
     "ref": "89784342",
     "name": "Gwyn St, Alltwen, Pontardawe",
-    "rank": 44,
+    "rank": 45,
     "price": 412500,
     "price_display": "£412,500",
     "location": "Pontardawe, South Wales",
@@ -1507,7 +1507,7 @@
   {
     "ref": "89415939",
     "name": "Queens Hill Cres, Newport",
-    "rank": 31,
+    "rank": 32,
     "price": 395000,
     "price_display": "£395,000",
     "location": "Newport, South Wales",
@@ -1569,7 +1569,7 @@
   {
     "ref": "170968559",
     "name": "South Newton, Salisbury — New Chalet",
-    "rank": 14,
+    "rank": 15,
     "price": 425000,
     "price_display": "£425,000",
     "location": "South Newton, Wiltshire",
@@ -1621,7 +1621,7 @@
   {
     "ref": "88318344",
     "name": "Thames Close, Cricklade ⚠ PRC",
-    "rank": 40,
+    "rank": 41,
     "price": 425000,
     "price_display": "£425,000",
     "location": "Cricklade, Wiltshire",
@@ -1668,7 +1668,7 @@
   {
     "ref": "170605958",
     "name": "Brook St, Bampton, Devon",
-    "rank": 35,
+    "rank": 37,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Bampton, Devon",
@@ -1777,7 +1777,7 @@
   {
     "ref": "90125946",
     "name": "Damerham Rd, Throop, Bournemouth",
-    "rank": 41,
+    "rank": 42,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Throop, Bournemouth",
@@ -1829,7 +1829,7 @@
   {
     "ref": "169598735",
     "name": "Hill Rd, Neath Abbey",
-    "rank": 27,
+    "rank": 28,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Neath Abbey, South Wales",
@@ -1891,7 +1891,7 @@
   {
     "ref": "174938813",
     "name": "Willow Way, Liskeard, Cornwall",
-    "rank": 23,
+    "rank": 24,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Liskeard, Cornwall",
@@ -1933,7 +1933,7 @@
   {
     "ref": "168382466",
     "name": "Brook Lane, Catcott ⚠ Flood",
-    "rank": 37,
+    "rank": 35,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Catcott, Somerset",
@@ -1985,7 +1985,7 @@
   {
     "ref": "88310844",
     "name": "Main Rd, Westonzoyland ⚠ Flood",
-    "rank": 29,
+    "rank": 30,
     "price": 445000,
     "price_display": "£445,000",
     "location": "Westonzoyland, Somerset",
@@ -2037,7 +2037,7 @@
   {
     "ref": "87545469",
     "name": "Chideock DT6 (Duplicate listing)",
-    "rank": 43,
+    "rank": 44,
     "price": 425000,
     "price_display": "£425,000",
     "location": "Chideock, Dorset",
@@ -2106,7 +2106,7 @@
   {
     "ref": "88055244",
     "name": "Victoria Place, Ryde IoW ⚠ Ferry",
-    "rank": 39,
+    "rank": 40,
     "price": 375000,
     "price_display": "£375,000",
     "location": "Ryde, Isle of Wight",
@@ -2153,7 +2153,7 @@
   {
     "ref": "171958844",
     "name": "Queen Bower, Sandown IoW ⚠ Ferry",
-    "rank": 38,
+    "rank": 39,
     "price": 465000,
     "price_display": "£465,000",
     "location": "Queen Bower, Isle of Wight",
@@ -2242,7 +2242,7 @@
       "asd_support": "Welsh Integrated Autism Services (IAS) — legal right to assessment. Withybush Hospital Haverfordwest has paediatric services.",
       "notes": "Wales has stronger legal ASD framework than England. Rural isolation of Narberth area means community travel needed."
     },
-    "rank": 19
+    "rank": 20
   },
   {
     "ref": "89491017",
@@ -2289,7 +2289,7 @@
       "asd_support": "Welsh IAS model. Glangwili Hospital Carmarthen has paediatric teams. Strong legal framework for ASD support in Wales.",
       "notes": "Remote rural location — community access requires transport. Japanese Knotweed caveat takes priority in assessment."
     },
-    "rank": 25
+    "rank": 26
   },
   {
     "ref": "160507001",
@@ -2336,7 +2336,7 @@
       "asd_support": "Welsh IAS legal framework. Glangwili Hospital Carmarthen 8 miles.",
       "notes": "Project caveat is the primary concern here — home-ed community is secondary until viability is confirmed."
     },
-    "rank": 42
+    "rank": 43
   },
   {
     "ref": "90443352",
@@ -2440,7 +2440,7 @@
       "asd_support": "Welsh IAS legal framework — stronger than English equivalent. Morriston Hospital 15 min. Swansea NAS branch with community activities.",
       "notes": "Already have 88 Gwyn St Alltwen in tracker — this is number 60, a larger property. Different listing."
     },
-    "rank": 5
+    "rank": 7
   },
   {
     "ref": "90542934",
@@ -2492,7 +2492,7 @@
       "asd_support": "Wiltshire Autism Hub. BSW Neurodevelopmental Pathway covers Trowbridge. RUH Bath 12 miles with CAMHS.",
       "notes": "Trowbridge itself is functional; Bath proximity lifts the accessible provision considerably. Integrated Care Centre walking distance is a significant plus."
     },
-    "rank": 10
+    "rank": 11
   },
   {
     "ref": "173546681",
@@ -2544,6 +2544,53 @@
       "asd_support": "Somerset Progressive School (West Hatch, Taunton). Strong neurodiversity awareness in Somerset community. Musgrove Park Hospital CAMHS (Taunton, 14 miles).",
       "notes": "Chard is in the Somerset West home-ed cluster. Yeovil and Taunton groups accessible."
     },
-    "rank": 11
+    "rank": 12
+  },
+  {
+    "ref": "174286715",
+    "name": "Goosegreen Cottages, Sutton Mallet",
+    "price": 450000,
+    "price_display": "£450,000",
+    "location": "Sutton Mallet, Bridgwater, Somerset",
+    "cluster": "Somerset Levels",
+    "agent": "Charles Dickens Estate Agents, Bridgwater",
+    "annexe": "confirmed",
+    "caveat": "flood-check",
+    "short_desc": "3+3 bed semi effectively split into two independent 3-bed houses with NO internal connection. Left-hand annexe has own front door, lounge (24'5\"x16'2\"), kitchen, 3 beds, shower room. No onward chain ✓. Mains water & drainage ✓. Main house oil CH; annexe electric heaters. Parking for 5-6 cars, garage. Somerset Levels — check flood risk.",
+    "full_desc": "1 Goosegreen Cottages, Sutton Mallet, Bridgwater TA7. £450,000, reduced 17/07/2026. NO ONWARD CHAIN confirmed in listing. 6 bedrooms total (3 main + 3 annexe), 3 bathrooms + ground floor WC. RIGHT HAND SIDE (main house): Oil CH, entrance porch/hall, lounge 17'1\"x9'8\", conservatory, dining room, kitchen with oil boiler. First floor: 3 bedrooms, bathroom with bath+shower. LEFT HAND SIDE (annexe): Own front UPVC door. Ground floor: entrance hall, large lounge 24'5\"x16'2\" with wood burner + electric radiators, kitchen 10'9\"x7'10\", door to side driveway. First floor: 3 bedrooms, shower room (step-in shower tray + electric shower). OUTSIDE: Front lawn, block paved parking for 5-6 cars, garage. Rear garden north-facing with afternoon/evening sun from west. Views over neighbouring fields. Services: Mains electricity, water & drainage ✓. Council Tax Band C. EPC D60. Sutton Mallet is a small village on Somerset Levels — check EA flood risk (TA7).",
+    "status": "active",
+    "lat": 51.1248,
+    "lng": -2.8956,
+    "rightmove_url": "https://www.rightmove.co.uk/properties/174286715",
+    "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F174286715&propertyId=174286715",
+    "duplicate_refs": [],
+    "journeys": {
+      "london_car_mins": 155,
+      "london_rail_mins": 120,
+      "coast_car_mins": 20,
+      "coast_name": "Burnham-on-Sea",
+      "hospital_car_mins": 18,
+      "hospital_name": "Musgrove Park Hospital, Taunton",
+      "nearest_town": "Bridgwater (6mi), Street (8mi), Taunton (10mi)"
+    },
+    "home_ed": {
+      "rating": "good",
+      "summary": "Somerset Levels — same home-ed community as Taunton/Street area. Good access to Glastonbury and Street.",
+      "groups": [
+        {
+          "name": "Taunton Home Education Group",
+          "contact": "tauntonhomeeducation@gmail.com",
+          "notes": "Regular meetings"
+        },
+        {
+          "name": "Somerset HE Network",
+          "contact": "Via HEAS",
+          "notes": "County-wide"
+        }
+      ],
+      "asd_support": "Musgrove Park CAMHS (Taunton, ~18 miles). Somerset Progressive School (West Hatch).",
+      "notes": "Same cluster as Westonzoyland. Glastonbury accessible (~15 min drive)."
+    },
+    "rank": 9
   }
 ]

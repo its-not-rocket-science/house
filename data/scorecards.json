@@ -70,7 +70,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Postcode TA6 5DH not in Ofcom dataset",
+        "note": "Broadband speed not confirmed",
         "resolved": false
       },
       {
@@ -338,7 +338,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Postcode DT6 6JN not in Ofcom dataset",
+        "note": "Broadband speed not confirmed",
         "resolved": false
       },
       {
@@ -648,7 +648,7 @@
   },
   "173348153": {
     "ref": "173348153",
-    "overall_pct": 73,
+    "overall_pct": 77,
     "scores": [
       {
         "cat": "Annexe",
@@ -716,9 +716,9 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 0,
-        "note": "Postcode DT11 0NQ not in Ofcom dataset",
-        "resolved": false
+        "score": 2,
+        "note": "Superfast 74Mb confirmed — not full fibre",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -848,7 +848,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Postcode DT11 7BU not in Ofcom dataset",
+        "note": "Broadband speed not confirmed",
         "resolved": false
       },
       {
@@ -907,7 +907,7 @@
   },
   "89951784": {
     "ref": "89951784",
-    "overall_pct": 73,
+    "overall_pct": 76,
     "scores": [
       {
         "cat": "Annexe",
@@ -975,9 +975,9 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 0,
-        "note": "Postcode NP4 8PH not in Ofcom dataset",
-        "resolved": false
+        "score": 2,
+        "note": "Fibre fitted and in use — speeds not specified; confirm FTTP vs FTTC",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -1248,7 +1248,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Postcode NP4 0BG not in Ofcom dataset",
+        "note": "Broadband speed not confirmed",
         "resolved": false
       },
       {
@@ -1378,7 +1378,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Postcode BA22 8RR not in Ofcom dataset",
+        "note": "Broadband speed not confirmed",
         "resolved": false
       },
       {
@@ -1748,7 +1748,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Postcode SA6 5QL not in Ofcom dataset",
+        "note": "Broadband speed not confirmed",
         "resolved": false
       },
       {
@@ -1882,7 +1882,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Postcode DT6 3SA not in Ofcom dataset",
+        "note": "Broadband speed not confirmed",
         "resolved": false
       },
       {
@@ -2376,7 +2376,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Postcode BH23 2NA not in Ofcom dataset",
+        "note": "Broadband speed not confirmed",
         "resolved": false
       },
       {
@@ -2627,7 +2627,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Postcode SN15 1AS not in Ofcom dataset",
+        "note": "Broadband speed not confirmed",
         "resolved": false
       },
       {
@@ -2757,7 +2757,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Postcode SN12 6JR not in Ofcom dataset",
+        "note": "Broadband speed not confirmed in listing",
         "resolved": false
       },
       {
@@ -2874,7 +2874,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Postcode BA14 8SP not in Ofcom dataset",
+        "note": "Broadband speed not confirmed",
         "resolved": false
       },
       {
@@ -3089,7 +3089,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Postcode NP20 3QH not in Ofcom dataset",
+        "note": "Broadband speed not confirmed",
         "resolved": false
       },
       {
@@ -3333,7 +3333,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Postcode SN6 6AU not in Ofcom dataset",
+        "note": "Broadband speed not confirmed",
         "resolved": false
       },
       {
@@ -3458,7 +3458,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Postcode EX16 9LJ not in Ofcom dataset",
+        "note": "Broadband speed not confirmed",
         "resolved": false
       },
       {
@@ -3697,7 +3697,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Postcode BH8 9PQ not in Ofcom dataset",
+        "note": "Broadband speed not confirmed",
         "resolved": false
       },
       {
@@ -3827,7 +3827,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Postcode SA10 7DT not in Ofcom dataset",
+        "note": "Broadband speed not confirmed",
         "resolved": false
       },
       {
@@ -3999,7 +3999,7 @@
   },
   "168382466": {
     "ref": "168382466",
-    "overall_pct": 50,
+    "overall_pct": 54,
     "scores": [
       {
         "cat": "Annexe",
@@ -4067,9 +4067,9 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 0,
-        "note": "Postcode TA7 9AD not in Ofcom dataset",
-        "resolved": false
+        "score": 2,
+        "note": "Superfast broadband available",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -4199,7 +4199,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Postcode TA7 0EB not in Ofcom dataset",
+        "note": "Broadband speed not confirmed",
         "resolved": false
       },
       {
@@ -4801,7 +4801,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Postcode SA34 0DS not in Ofcom dataset",
+        "note": "Broadband speed not confirmed",
         "resolved": false
       },
       {
@@ -4919,7 +4919,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Postcode SA33 6JP not in Ofcom dataset",
+        "note": "Broadband speed not confirmed",
         "resolved": false
       },
       {
@@ -5304,7 +5304,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Postcode BA14 8EP not in Ofcom dataset",
+        "note": "Broadband not mentioned — check Ofcom for BA14",
         "resolved": false
       },
       {
@@ -5498,6 +5498,140 @@
       "Shower is bath/overhead — level-access wet room conversion needed (budget £2,000–4,000)",
       "Onward chain with no property found yet — could extend timescale",
       "Budget headroom only £20k — tight after shower conversion costs"
+    ]
+  },
+  "174286715": {
+    "ref": "174286715",
+    "overall_pct": 67,
+    "scores": [
+      {
+        "cat": "Annexe",
+        "label": "Annexe status",
+        "score": 3,
+        "note": "Confirmed separate dwelling — NO internal connection between the two halves ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Annexe",
+        "label": "Independent entrance",
+        "score": 3,
+        "note": "Own UPVC front door confirmed ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Annexe",
+        "label": "Shower / wetroom",
+        "score": 1,
+        "note": "Step-in shower tray with glazed screen — not level access ⚠",
+        "resolved": true
+      },
+      {
+        "cat": "Annexe",
+        "label": "Kitchen",
+        "score": 3,
+        "note": "Full kitchen confirmed: wall/base units, oven, hob, sink, space for washing machine ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Annexe",
+        "label": "Planning / BC",
+        "score": 2,
+        "note": "Extension completed 2025 — building regs likely in place. Confirm with solicitor.",
+        "resolved": false
+      },
+      {
+        "cat": "Smoke",
+        "label": "Physical separation",
+        "score": 3,
+        "note": "No internal connection between houses — full smoke/air separation ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Mobility",
+        "label": "Ground floor bedroom",
+        "score": 0,
+        "note": "Annexe bedrooms all on FIRST FLOOR — significant issue for mobility ⚠",
+        "resolved": true
+      },
+      {
+        "cat": "Mobility",
+        "label": "Walk-in shower",
+        "score": 1,
+        "note": "Step-in shower tray — level access conversion needed",
+        "resolved": true
+      },
+      {
+        "cat": "Heating",
+        "label": "Fuel type",
+        "score": 1,
+        "note": "Annexe: electric heaters. Main house: oil CH. Neither ideal — ASHP viable upgrade.",
+        "resolved": true
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 1,
+        "note": "No solar/HP currently. Open aspect suggests solar viable. Space for ASHP.",
+        "resolved": false
+      },
+      {
+        "cat": "Drainage",
+        "label": "Drainage type",
+        "score": 3,
+        "note": "Mains water & drainage confirmed ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Risk",
+        "label": "Flood risk",
+        "score": 0,
+        "note": "Somerset Levels — TA7 area has known flood risk. Check EA flood map before proceeding.",
+        "resolved": false
+      },
+      {
+        "cat": "Risk",
+        "label": "Listed building",
+        "score": 3,
+        "note": "Not listed ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Transaction",
+        "label": "Chain",
+        "score": 3,
+        "note": "NO ONWARD CHAIN confirmed in listing ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Transaction",
+        "label": "Budget headroom",
+        "score": 2,
+        "note": "£30k under £480k budget — reasonable headroom for shower conversion",
+        "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 3,
+        "note": "6 beds total — multiple spare rooms available ✓",
+        "resolved": true
+      }
+    ],
+    "questions": [
+      "The annexe bedrooms are on the first floor — is there any possibility of creating a ground floor bedroom within the annexe (e.g. converting part of the large ground floor lounge 24'5\"x16'2\")?",
+      "The annexe shower room has a step-in tray — is there space to convert this to a fully level wet room (no step)?",
+      "Is there any flood history for the property? The Somerset Levels have experienced significant flooding (2013/14 etc) — can you confirm the EA flood zone for TA7?",
+      "What is the condition of the oil boiler in the main house — age, service history?",
+      "The extension (left-hand side) was completed internally in 2025 — was building regulations sign-off obtained?",
+      "What broadband speeds are available at Sutton Mallet TA7 — upload and download?",
+      "Is there an onward chain? The listing says no onward chain — can you confirm the vendor is chain-free?",
+      "We would like to arrange a viewing — what dates are available?"
+    ],
+    "red_flags": [
+      "ANNEXE BEDROOMS ON FIRST FLOOR — critical issue for elderly relative with mobility problems. Ground floor bedroom conversion from part of large lounge may be possible but needs assessing at viewing.",
+      "SOMERSET LEVELS FLOOD RISK — TA7 area. Check EA flood map before proceeding. The 2013/14 Somerset Levels floods affected many TA7 postcodes.",
+      "Electric heaters in annexe — running costs could be high. ASHP upgrade recommended.",
+      "Step-in shower in annexe — level-access wet room conversion needed (budget £3-5k)."
     ]
   }
 }
