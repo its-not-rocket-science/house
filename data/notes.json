@@ -159,6 +159,10 @@
     "paul_appleby_note": {
       "date": "07/07/2026",
       "text": "VOICEMAIL â Paul Appleby, Appleby & Townend (07/07/2026)\nCall back: 01225 983910\nProperty: 99 St Thomas Road (Trowbridge area, BA14) â NOT YET IN TRACKER\n2 bedrooms downstairs (possible 3). En-suite. Double garage conversion potential.\nUsed for generational living in the past. Similar nearby sold for Â£600k+."
+    },
+    "unknown_rose_dean": {
+      "date": "20/07/2026",
+      "text": "VOICEMAIL — Charlie, Express Estate Agency (20/07/2026)\nPhone: +44 161 711 2081 / 0161 711 2081\nCalled regarding a property called 'Rose Dean'.\nACTION: Call Charlie back on 0161 711 2081 to identify which property this is and get the Rightmove link. Express Estate Agency is a national online agent — Rose Dean is likely a property name. Could be a new listing or a property we enquired about via their website."
     }
   },
   "visits": {},
@@ -191,7 +195,9 @@
     "174415073": "replied",
     "174938813": "replied",
     "apex27_885144": "replied",
-    "174286715": "not-contacted"
+    "174286715": "not-contacted",
+    "unknown_rose_dean": "not-contacted",
+    "170954642": "not-contacted"
   },
   "agentStatusDate": {
     "87791562": "06/07/2026",
@@ -223,7 +229,9 @@
     "174938813": "06/07/2026",
     "apex27_885144": "06/07/2026",
     "174472451": "17/07/2026",
-    "174286715": "17/07/2026"
+    "174286715": "17/07/2026",
+    "unknown_rose_dean": "20/07/2026",
+    "170954642": "21/07/2026"
   },
   "agentEmail": {
     "87791562": "chloe@kingstons.biz",
@@ -262,7 +270,9 @@
     "173348153": "01258 452327",
     "173546681": "01460 238382",
     "173985596": "01278 444488",
-    "174286715": "01278 552711"
+    "174286715": "01278 552711",
+    "unknown_rose_dean": "0161 711 2081",
+    "170954642": "01458 558344"
   },
   "statusOverrides": {
     "87890067": "not-proceeding",
@@ -284,7 +294,8 @@
     "166496951": "park_home",
     "169862942": "chain_breaker",
     "173348153": "chain",
-    "174286715": "no_chain"
+    "174286715": "no_chain",
+    "170954642": "no_chain"
   },
   "callStatus": {},
   "scorecardOverrides": {},

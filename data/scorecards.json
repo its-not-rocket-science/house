@@ -5633,5 +5633,139 @@
       "Electric heaters in annexe — running costs could be high. ASHP upgrade recommended.",
       "Step-in shower in annexe — level-access wet room conversion needed (budget £3-5k)."
     ]
+  },
+  "170954642": {
+    "ref": "170954642",
+    "overall_pct": 83,
+    "scores": [
+      {
+        "cat": "Annexe",
+        "label": "Annexe status",
+        "score": 3,
+        "note": "Confirmed attached 2-room annexe: kitchen/dining/living + bedroom + en-suite shower ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Annexe",
+        "label": "Independent entrance",
+        "score": 2,
+        "note": "Annexe to front of property — own entrance likely but confirm at viewing",
+        "resolved": false
+      },
+      {
+        "cat": "Annexe",
+        "label": "Shower / wetroom",
+        "score": 2,
+        "note": "En-suite shower room confirmed — step-in or level access unknown",
+        "resolved": false
+      },
+      {
+        "cat": "Annexe",
+        "label": "Kitchen",
+        "score": 3,
+        "note": "Kitchen/dining/living room in annexe confirmed ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Annexe",
+        "label": "Planning / BC",
+        "score": 1,
+        "note": "Annexe attached — planning/BC status unknown. Confirm with agent.",
+        "resolved": false
+      },
+      {
+        "cat": "Smoke",
+        "label": "Physical separation",
+        "score": 2,
+        "note": "Attached annexe — smoke separation depends on internal door arrangement. Confirm at viewing.",
+        "resolved": false
+      },
+      {
+        "cat": "Mobility",
+        "label": "Ground floor bedroom",
+        "score": 3,
+        "note": "Main house has 2 ground floor rooms currently used as bedrooms ✓. Annexe also ground floor.",
+        "resolved": true
+      },
+      {
+        "cat": "Mobility",
+        "label": "Walk-in shower",
+        "score": 1,
+        "note": "En-suite shower type unknown — confirm level access or step-in",
+        "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Fuel type",
+        "score": 3,
+        "note": "Air Source Heat Pump confirmed ✓. EPC B.",
+        "resolved": true
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 3,
+        "note": "ASHP + solar panels both confirmed ✓. EPC B — excellent green credentials.",
+        "resolved": true
+      },
+      {
+        "cat": "Drainage",
+        "label": "Drainage type",
+        "score": 3,
+        "note": "Mains drainage confirmed ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Risk",
+        "label": "Flood risk",
+        "score": 2,
+        "note": "Polden Hills slopes — higher than Somerset Levels floor. TA7 9AD should be lower risk than valley floor. Check EA flood map.",
+        "resolved": false
+      },
+      {
+        "cat": "Risk",
+        "label": "Listed building",
+        "score": 3,
+        "note": "Not listed ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Transaction",
+        "label": "Chain",
+        "score": 3,
+        "note": "No onward chain confirmed in listing ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Transaction",
+        "label": "Budget headroom",
+        "score": 3,
+        "note": "Guide £400–450k — £30–80k under £480k budget ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 3,
+        "note": "4 beds in main house + sitting room — multiple spare rooms ✓",
+        "resolved": true
+      }
+    ],
+    "questions": [
+      "Does the annexe have its own completely separate external entrance, independent of the main house? Is there any internal door between the annexe and main house?",
+      "The annexe en-suite shower — is it a level-access wet room with no step, or a step-in shower tray?",
+      "Is there full smoke/air separation between the annexe and the main house when the internal door (if any) is closed?",
+      "Has the annexe got planning permission and building control approval? Does it have its own council tax band?",
+      "What broadband speeds are available at Stawell TA7 — upload and download? Is full fibre available?",
+      "What is the flood risk for this specific plot? The property is on the Polden Hills slopes — can you confirm it's not in the Levels flood zone?",
+      "The guide price is £400–450k — where are the vendors in terms of their expectations?",
+      "We would like to arrange a viewing — what dates are available?"
+    ],
+    "red_flags": [
+      "En-suite shower type unknown — confirm level access at viewing",
+      "Smoke separation depends on internal door arrangement — confirm at viewing",
+      "Flood risk: TA7 postcode area but on Polden Hills slopes — check EA flood map for TA7 9AD specifically",
+      "Guide price up to £450k leaves only £30k headroom — negotiate on price"
+    ]
   }
 }

@@ -884,5 +884,29 @@
       "Is there an onward chain? The listing says no onward chain — can you confirm the vendor is chain-free?",
       "We would like to arrange a viewing — what dates are available?"
     ]
+  },
+  {
+    "ref": "170954642",
+    "rank": 46,
+    "name": "Stawell Road, Stawell, Bridgwater",
+    "agent": "Roderick Thomas, Somerton",
+    "phone": "01458 558344",
+    "email": "",
+    "contactFirstName": "",
+    "contactFullName": "Roderick Thomas",
+    "agentLine": "Roderick Thomas, Somerton",
+    "callStatus": "need-to-call",
+    "annexe": "confirmed",
+    "price": "£400,000 guide",
+    "questions": [
+      "Does the annexe have its own completely separate external entrance, independent of the main house? Is there any internal door between the annexe and main house?",
+      "The annexe en-suite shower — is it a level-access wet room with no step, or a step-in shower tray?",
+      "Is there full smoke/air separation between the annexe and the main house when the internal door (if any) is closed?",
+      "Has the annexe got planning permission and building control approval? Does it have its own council tax band?",
+      "What broadband speeds are available at Stawell TA7 — upload and download? Is full fibre available?",
+      "What is the flood risk for this specific plot? The property is on the Polden Hills slopes — can you confirm it's not in the Levels flood zone?",
+      "The guide price is £400–450k — where are the vendors in terms of their expectations?",
+      "We would like to arrange a viewing — what dates are available?"
+    ]
   }
 ]
