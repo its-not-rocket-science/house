@@ -37,6 +37,7 @@
     "status": "replied",
     "callStatus": "",
     "questions": [
+      "Can we arrange a Zoom/video call viewing before travelling from London?",
       "Is the annexe shower a level-access/walk-in shower with no step, or does it have a step or bath?",
       "What are the broadband speeds available — upload and download? Is it full fibre to the premises (FTTP) or fibre to the cabinet (FTTC)?",
       "The internal garage access between annexe and main house — is there a fire door, or just a standard door? And can the garage be used as a garage, or is it part of the living space?",
@@ -67,6 +68,7 @@
     "status": "replied",
     "callStatus": "",
     "questions": [
+      "Can we arrange a Zoom/video call viewing before travelling from London?",
       "Does the lower ground floor have a separate external entrance — i.e. can it be accessed independently from outside without going through the main house?",
       "Is the lower ground floor shower room a level-access wet room, or does it have a step?",
       "Would the vendor consider a price at the lower end of the guide (£400,000)?",
@@ -93,6 +95,7 @@
     "status": "replied",
     "callStatus": "",
     "questions": [
+      "Can we arrange a Zoom/video call viewing before travelling from London?",
       "The kitchen appears to be open/shared between the annexe and main house — is there any structural wall or door that could be reinstated to create full separation, ideally so the annexe kitchen operates completely independently? This is essential for our use case.",
       "Following on from that, would the vendor consider a modest reduction in the asking price to reflect the cost of installing a partition wall and door to separate the two kitchens (approximately £2,000–4,000)?",
       "The annexe shower has a small step — is there space to remove the cubicle and create a fully level wet room? What are the approximate room dimensions?",
@@ -117,9 +120,8 @@
     "status": "replied",
     "callStatus": "",
     "questions": [
-      "Does the annexe have its own completely separate external entrance — i.e. can the occupant reach the annexe without passing through the main house at all?",
+      "Can we arrange a Zoom/video call viewing before travelling from London?",
       "Are all the annexe rooms (living/kitchen, bedroom, shower room) on a single ground level with no internal stairs?",
-      "What broadband provider does the vendor use and approximately what speeds do they get — particularly upload?",
       "What are the approximate annual oil heating costs for the main house? When was the Worcester boiler last serviced and is there a service record?",
       "What are the approximate annual LPG costs for the annexe? How is the LPG supplied — bottles or a fixed tank — and where is it located on the plot?",
       "Can the building control indemnity policy be obtained as a condition prior to exchange, rather than after survey? Our solicitor will need this confirmed early.",
@@ -200,6 +202,7 @@
     "status": "not-contacted",
     "callStatus": "",
     "questions": [
+      "Can we arrange a Zoom/video call viewing of the property before committing to the trip from London?",
       "The water and sewage connection runs via the neighbour's property — can we get written confirmation from the neighbour that this arrangement is permanent and will transfer with the sale? Has it been formalised in any legal agreement (easement or deed)?",
       "The £3,000 quote to reroute the water/sewage direct — is the seller open to completing this before exchange (or reducing the price by £3,000 to allow us to do it)?",
       "The gym runs off the main house electric circuit — is there a separate sub-board or fuse in the gym, and what is the supply capacity (i.e. enough for an electric shower and appliances simultaneously)?",
@@ -207,7 +210,6 @@
       "What are the internal dimensions of the gym floor area?",
       "The agent mentioned no planning required — can the solicitor confirm this via the Swansea planning portal before exchange? Has any certificate of lawful use been issued?",
       "Is there level or ramped access from the main house to the gym — no steps — suitable for a person with limited mobility?",
-      "What broadband speeds are available at SA6? We'd appreciate if you could check next time you visit.",
       "We would like to arrange a viewing — what dates are available?"
     ],
     "flags": "",
@@ -226,12 +228,12 @@
     "status": "replied",
     "callStatus": "need-to-call",
     "questions": [
+      "Can we arrange a Zoom/video call viewing before travelling from London?",
       "The connecting door between annexe and main house — can it be sealed permanently or fitted with a tight fire door? Smoke separation is essential for our use case.",
       "What are the annexe shower room dimensions? Is there space for a full level-access wet room (no step)?",
       "Which system heats which building — is the LPG for the annexe and oil for the main house, or vice versa? Are they completely independent?",
       "What are the approximate annual LPG and oil costs?",
       "The vendor has somewhere to move into temporarily — what timescale to completion would work for them?",
-      "What broadband speeds are available at Winterborne Stickland — specifically upload speed? Is full fibre available?",
       "The connecting door between annexe and main house — can it be permanently sealed or fitted with a tight fire door? Smoke separation is essential — a family member smokes in the annexe.",
       "The annexe shower has a small step — what are the shower room dimensions? Is there space for a fully level wet room?",
       "What are the approximate annual LPG and oil costs separately?",
@@ -899,12 +901,11 @@
     "annexe": "confirmed",
     "price": "£400,000 guide",
     "questions": [
+      "Can we arrange a Zoom/video call viewing before travelling from London?",
       "Does the annexe have its own completely separate external entrance, independent of the main house? Is there any internal door between the annexe and main house?",
       "The annexe en-suite shower — is it a level-access wet room with no step, or a step-in shower tray?",
       "Is there full smoke/air separation between the annexe and the main house when the internal door (if any) is closed?",
       "Has the annexe got planning permission and building control approval? Does it have its own council tax band?",
-      "What broadband speeds are available at Stawell TA7 — upload and download? Is full fibre available?",
-      "What is the flood risk for this specific plot? The property is on the Polden Hills slopes — can you confirm it's not in the Levels flood zone?",
       "The guide price is £400–450k — where are the vendors in terms of their expectations?",
       "We would like to arrange a viewing — what dates are available?"
     ]

@@ -129,14 +129,14 @@
   },
   "89061840": {
     "ref": "89061840",
-    "overall_pct": 71,
+    "overall_pct": 76,
     "scores": [
       {
         "cat": "Annexe",
         "label": "Independent entrance",
-        "score": 0,
-        "note": "Not confirmed in listing",
-        "resolved": false
+        "score": 3,
+        "note": "Definitely independent entrance for annexe confirmed ✓",
+        "resolved": true
       },
       {
         "cat": "Annexe",
@@ -198,7 +198,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast/full fibre confirmed",
+        "note": "Ultrafast 1800Mb↓ / 220Mb↑ confirmed (Openreach) ✓",
         "resolved": true
       },
       {
@@ -648,7 +648,7 @@
   },
   "173348153": {
     "ref": "173348153",
-    "overall_pct": 77,
+    "overall_pct": 83,
     "scores": [
       {
         "cat": "Annexe",
@@ -716,8 +716,8 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 2,
-        "note": "Superfast 74Mb confirmed — not full fibre",
+        "score": 3,
+        "note": "Ultrafast 1000Mb↓ / 1000Mb↑ confirmed ✓",
         "resolved": true
       },
       {
@@ -737,8 +737,8 @@
       {
         "cat": "Transaction",
         "label": "Chain",
-        "score": 1,
-        "note": "Forward chain confirmed — vendor has property to buy. Heating details to follow.",
+        "score": 3,
+        "note": "Vendor moving to park/mobile home — fast transaction, minimal chain risk ✓",
         "resolved": true
       },
       {
@@ -1693,7 +1693,7 @@
   },
   "88185459": {
     "ref": "88185459",
-    "overall_pct": 86,
+    "overall_pct": 93,
     "scores": [
       {
         "cat": "Annexe",
@@ -1747,9 +1747,9 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 0,
-        "note": "Broadband speed not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Ultrafast 1800Mb↓ / 220Mb↑ confirmed (Openreach) ✓",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -5172,7 +5172,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "FTTP (full fibre to premises) confirmed ✓",
+        "note": "Full fibre 910Mb available (Vodafone/EE/BT/Plusnet FTTP confirmed via uswitch) ✓",
         "resolved": true
       },
       {
@@ -5636,7 +5636,7 @@
   },
   "170954642": {
     "ref": "170954642",
-    "overall_pct": 83,
+    "overall_pct": 86,
     "scores": [
       {
         "cat": "Annexe",
@@ -5718,9 +5718,9 @@
       {
         "cat": "Risk",
         "label": "Flood risk",
-        "score": 2,
-        "note": "Polden Hills slopes — higher than Somerset Levels floor. TA7 9AD should be lower risk than valley floor. Check EA flood map.",
-        "resolved": false
+        "score": 3,
+        "note": "Very low flood risk confirmed — surface water, rivers/sea and groundwater all 'very low' ✓",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -5748,6 +5748,13 @@
         "label": "Play room",
         "score": 3,
         "note": "4 beds in main house + sitting room — multiple spare rooms ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Connectivity",
+        "label": "Broadband",
+        "score": 3,
+        "note": "Ultrafast 1000Mb↓ / 1000Mb↑ confirmed ✓",
         "resolved": true
       }
     ],

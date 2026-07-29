@@ -57,14 +57,13 @@
   {
     "id": 2,
     "title": "Somerset West — Day 2",
-    "note": "Oakfields Ham → Tithill Bishops Lydeard → Manor Road Taunton",
+    "note": "Oakfields Ham → Manor Road Taunton",
     "score": 88,
-    "total_day_mins": 626,
-    "total_drive_mins": 446,
+    "total_day_mins": 550,
+    "total_drive_mins": 430,
     "legs_mins": [
       207,
-      23,
-      8,
+      15,
       208
     ],
     "properties": [
@@ -80,19 +79,6 @@
         "annexe": "confirmed",
         "caveat": null,
         "rightmove_url": "https://www.rightmove.co.uk/properties/89061840"
-      },
-      {
-        "ref": "169862942",
-        "name": "Tithill, Bishops Lydeard",
-        "rank": 3,
-        "price_display": "£425,000",
-        "location": "Bishops Lydeard, Somerset",
-        "lat": 51.0678,
-        "lng": -3.1789,
-        "ub7_drive_mins": 211,
-        "annexe": "confirmed",
-        "caveat": null,
-        "rightmove_url": "https://www.rightmove.co.uk/properties/169862942"
       },
       {
         "ref": "90443352",
