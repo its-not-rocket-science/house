@@ -69,7 +69,8 @@
       "hospital_car_mins": 10,
       "hospital_name": "Bridgwater Community Hospital / Musgrove Park Taunton",
       "nearest_town": "Bridgwater (2 mi)"
-    }
+    },
+    "postcode": "TA6 5DH"
   },
   {
     "ref": "89061840",
@@ -141,7 +142,8 @@
       "hospital_car_mins": 20,
       "hospital_name": "Chard Community Hospital / Yeovil District Hospital",
       "nearest_town": "Chard (3 mi)"
-    }
+    },
+    "postcode": "TA20 3HG"
   },
   {
     "ref": "89444523",
@@ -210,7 +212,8 @@
       "hospital_car_mins": 25,
       "hospital_name": "Bridport Community Hospital",
       "nearest_town": "Bridport (4 mi)"
-    }
+    },
+    "postcode": "DT6 6JN"
   },
   {
     "ref": "169862942",
@@ -282,7 +285,8 @@
       "hospital_car_mins": 15,
       "hospital_name": "Musgrove Park Hospital, Taunton",
       "nearest_town": "Taunton (5 mi)"
-    }
+    },
+    "postcode": "TA4 3BJ"
   },
   {
     "ref": "87890067",
@@ -344,7 +348,8 @@
       "hospital_car_mins": 15,
       "hospital_name": "Royal Glamorgan Hospital / Prince Charles Hospital Merthyr",
       "nearest_town": "Pontypridd (1 mi)"
-    }
+    },
+    "postcode": "CF37 1PX"
   },
   {
     "ref": "173348153",
@@ -401,7 +406,8 @@
       "hospital_car_mins": 20,
       "hospital_name": "Blandford Community Hospital / Dorchester County Hospital",
       "nearest_town": "Blandford Forum (5 mi)"
-    }
+    },
+    "postcode": "DT11 0NQ"
   },
   {
     "ref": "172773251",
@@ -458,7 +464,8 @@
       "hospital_car_mins": 5,
       "hospital_name": "Blandford Community Hospital",
       "nearest_town": "Blandford Forum (town centre)"
-    }
+    },
+    "postcode": "DT11 7BU"
   },
   {
     "ref": "89951784",
@@ -520,7 +527,8 @@
       "hospital_car_mins": 15,
       "hospital_name": "Royal Gwent Hospital, Newport",
       "nearest_town": "Pontypool (1 mi)"
-    }
+    },
+    "postcode": "NP4 8PH"
   },
   {
     "ref": "168359045",
@@ -582,7 +590,8 @@
       "hospital_car_mins": 15,
       "hospital_name": "Morriston Hospital, Swansea",
       "nearest_town": "Swansea / Mumbles (2 mi)"
-    }
+    },
+    "postcode": "SA3 4TY"
   },
   {
     "ref": "88996269",
@@ -644,7 +653,8 @@
       "hospital_car_mins": 15,
       "hospital_name": "Royal Gwent Hospital, Newport / Nevill Hall, Abergavenny",
       "nearest_town": "Usk (3 mi) / Abergavenny (7 mi)"
-    }
+    },
+    "postcode": "NP4 0BG"
   },
   {
     "ref": "87130665",
@@ -716,7 +726,8 @@
       "hospital_car_mins": 10,
       "hospital_name": "Yeovil District Hospital",
       "nearest_town": "Yeovil (town)"
-    }
+    },
+    "postcode": "BA22 8RR"
   },
   {
     "ref": "172902734",
@@ -778,7 +789,8 @@
       "hospital_car_mins": 15,
       "hospital_name": "RUH Bath / Great Western Hospital Swindon",
       "nearest_town": "Trowbridge (town)"
-    }
+    },
+    "postcode": "BA14 0XZ"
   },
   {
     "ref": "173219645",
@@ -830,7 +842,8 @@
       "hospital_car_mins": 8,
       "hospital_name": "Poole Hospital",
       "nearest_town": "Upton / Poole (2 mi)"
-    }
+    },
+    "postcode": "BH16 5PU"
   },
   {
     "ref": "88185459",
@@ -892,7 +905,8 @@
       "hospital_car_mins": 10,
       "hospital_name": "Morriston Hospital, Swansea",
       "nearest_town": "Swansea (2 mi)"
-    }
+    },
+    "postcode": "SA6 5QL"
   },
   {
     "ref": "89701968",
@@ -959,7 +973,8 @@
       "hospital_car_mins": 12,
       "hospital_name": "Bridport Community Hospital / Dorchester County Hospital",
       "nearest_town": "Bridport (3 mi)"
-    }
+    },
+    "postcode": "DT6 3SA"
   },
   {
     "ref": "174415073",
@@ -1026,7 +1041,8 @@
       "hospital_car_mins": 20,
       "hospital_name": "Dorchester County Hospital",
       "nearest_town": "Dorchester (8 mi)"
-    }
+    },
+    "postcode": "DT2 7QL"
   },
   {
     "ref": "174472451",
@@ -1093,7 +1109,8 @@
       "hospital_car_mins": 15,
       "hospital_name": "Chard Community Hospital / Yeovil District Hospital",
       "nearest_town": "Chard (2 mi)"
-    }
+    },
+    "postcode": "TA20 2NF"
   },
   {
     "ref": "88791255",
@@ -1160,7 +1177,8 @@
       "hospital_car_mins": 10,
       "hospital_name": "Conquest Hospital, Hastings",
       "nearest_town": "Battle (3 mi) / Bexhill (5 mi)"
-    }
+    },
+    "postcode": "TN33 0QA"
   },
   {
     "ref": "168243473",
@@ -1212,7 +1230,8 @@
       "hospital_car_mins": 10,
       "hospital_name": "Christchurch Hospital / Royal Bournemouth Hospital",
       "nearest_town": "Christchurch (2 mi)"
-    }
+    },
+    "postcode": "BH23 2NA"
   },
   {
     "ref": "89767338",
@@ -1264,7 +1283,8 @@
       "hospital_car_mins": 10,
       "hospital_name": "Great Western Hospital, Swindon",
       "nearest_town": "Swindon (town)"
-    }
+    },
+    "postcode": "SN3 3TY"
   },
   {
     "ref": "88156767",
@@ -1321,7 +1341,8 @@
       "hospital_car_mins": 15,
       "hospital_name": "Great Western Hospital Swindon / RUH Bath",
       "nearest_town": "Chippenham (town)"
-    }
+    },
+    "postcode": "SN15 1AS"
   },
   {
     "ref": "87791562",
@@ -1378,7 +1399,8 @@
       "hospital_car_mins": 15,
       "hospital_name": "RUH Bath",
       "nearest_town": "Melksham (town)"
-    }
+    },
+    "postcode": "SN12 6JR"
   },
   {
     "ref": "89236248",
@@ -1440,7 +1462,8 @@
       "hospital_car_mins": 15,
       "hospital_name": "RUH Bath / Great Western Hospital Swindon",
       "nearest_town": "Trowbridge (town)"
-    }
+    },
+    "postcode": "BA14 8SP"
   },
   {
     "ref": "89784342",
@@ -1502,7 +1525,8 @@
       "hospital_car_mins": 12,
       "hospital_name": "Morriston Hospital, Swansea",
       "nearest_town": "Pontardawe (town)"
-    }
+    },
+    "postcode": "SA8 3AN"
   },
   {
     "ref": "89415939",
@@ -1564,7 +1588,8 @@
       "hospital_car_mins": 5,
       "hospital_name": "Royal Gwent Hospital, Newport",
       "nearest_town": "Newport (town)"
-    }
+    },
+    "postcode": "NP20 3QH"
   },
   {
     "ref": "170968559",
@@ -1616,7 +1641,8 @@
       "hospital_car_mins": 10,
       "hospital_name": "Salisbury District Hospital",
       "nearest_town": "Wilton (2 mi) / Salisbury (5 mi)"
-    }
+    },
+    "postcode": "SP2 0QN"
   },
   {
     "ref": "88318344",
@@ -1663,7 +1689,8 @@
       "hospital_car_mins": 15,
       "hospital_name": "Great Western Hospital, Swindon",
       "nearest_town": "Cricklade (town) / Swindon (8 mi)"
-    }
+    },
+    "postcode": "SN6 6AU"
   },
   {
     "ref": "170605958",
@@ -1720,7 +1747,8 @@
       "hospital_car_mins": 15,
       "hospital_name": "Tiverton and District Hospital / RD&E Exeter",
       "nearest_town": "Bampton (town) / Tiverton (9 mi)"
-    }
+    },
+    "postcode": "EX16 9LJ"
   },
   {
     "ref": "166496951",
@@ -1772,7 +1800,8 @@
       "hospital_car_mins": 10,
       "hospital_name": "Royal Bournemouth Hospital",
       "nearest_town": "Bournemouth (town)"
-    }
+    },
+    "postcode": "BH9 3NQ"
   },
   {
     "ref": "90125946",
@@ -1824,7 +1853,8 @@
       "hospital_car_mins": 5,
       "hospital_name": "Royal Bournemouth Hospital",
       "nearest_town": "Bournemouth (3 mi)"
-    }
+    },
+    "postcode": "BH8 9PQ"
   },
   {
     "ref": "169598735",
@@ -1886,7 +1916,8 @@
       "hospital_car_mins": 8,
       "hospital_name": "Neath Port Talbot Hospital",
       "nearest_town": "Neath (2 mi)"
-    }
+    },
+    "postcode": "SA10 7DT"
   },
   {
     "ref": "174938813",
@@ -1928,7 +1959,8 @@
       "hospital_car_mins": 20,
       "hospital_name": "Derriford Hospital, Plymouth",
       "nearest_town": "Liskeard (town)"
-    }
+    },
+    "postcode": "PL14 4LJ"
   },
   {
     "ref": "168382466",
@@ -1980,7 +2012,8 @@
       "hospital_car_mins": 20,
       "hospital_name": "Bridgwater Community Hospital / Musgrove Park Taunton",
       "nearest_town": "Street (4 mi) / Glastonbury (6 mi)"
-    }
+    },
+    "postcode": "TA7 9AD"
   },
   {
     "ref": "88310844",
@@ -2032,7 +2065,8 @@
       "hospital_car_mins": 10,
       "hospital_name": "Bridgwater Community Hospital",
       "nearest_town": "Bridgwater (4 mi)"
-    }
+    },
+    "postcode": "TA7 0EB"
   },
   {
     "ref": "87545469",
@@ -2101,7 +2135,8 @@
       "hospital_car_mins": 25,
       "hospital_name": "Bridport Community Hospital",
       "nearest_town": "Bridport (4 mi)"
-    }
+    },
+    "postcode": "SA8 3AN"
   },
   {
     "ref": "88055244",
@@ -2148,7 +2183,8 @@
       "hospital_car_mins": 15,
       "hospital_name": "St Mary's Hospital, Newport IoW",
       "nearest_town": "Ryde (town)"
-    }
+    },
+    "postcode": "PO33 1JF"
   },
   {
     "ref": "171958844",
@@ -2195,7 +2231,8 @@
       "hospital_car_mins": 10,
       "hospital_name": "St Mary's Hospital, Newport IoW",
       "nearest_town": "Shanklin (3 mi)"
-    }
+    },
+    "postcode": "PO36 9PH"
   },
   {
     "ref": "167437883",
@@ -2242,7 +2279,8 @@
       "asd_support": "Welsh Integrated Autism Services (IAS) — legal right to assessment. Withybush Hospital Haverfordwest has paediatric services.",
       "notes": "Wales has stronger legal ASD framework than England. Rural isolation of Narberth area means community travel needed."
     },
-    "rank": 21
+    "rank": 21,
+    "postcode": "SA67 8PD"
   },
   {
     "ref": "89491017",
@@ -2289,7 +2327,8 @@
       "asd_support": "Welsh IAS model. Glangwili Hospital Carmarthen has paediatric teams. Strong legal framework for ASD support in Wales.",
       "notes": "Remote rural location — community access requires transport. Japanese Knotweed caveat takes priority in assessment."
     },
-    "rank": 27
+    "rank": 27,
+    "postcode": "SA34 0DS"
   },
   {
     "ref": "160507001",
@@ -2336,7 +2375,8 @@
       "asd_support": "Welsh IAS legal framework. Glangwili Hospital Carmarthen 8 miles.",
       "notes": "Project caveat is the primary concern here — home-ed community is secondary until viability is confirmed."
     },
-    "rank": 44
+    "rank": 44,
+    "postcode": "SA33 6JP"
   },
   {
     "ref": "90443352",
@@ -2388,7 +2428,8 @@
       "asd_support": "Somerset Progressive School (West Hatch). North Hill House (Frome). Strong neurodiversity awareness in Taunton community. Musgrove Park Hospital CAMHS on doorstep.",
       "notes": "Excellent Somerset West cluster rating. Musgrove Park Hospital 5 minutes is an exceptional plus for mobility and CAMHS access."
     },
-    "rank": 6
+    "rank": 6,
+    "postcode": "TA1 4AJ"
   },
   {
     "ref": "apex27_885144",
@@ -2440,7 +2481,8 @@
       "asd_support": "Welsh IAS legal framework — stronger than English equivalent. Morriston Hospital 15 min. Swansea NAS branch with community activities.",
       "notes": "Already have 88 Gwyn St Alltwen in tracker — this is number 60, a larger property. Different listing."
     },
-    "rank": 9
+    "rank": 9,
+    "postcode": "SA8 3AN"
   },
   {
     "ref": "90542934",
@@ -2492,7 +2534,8 @@
       "asd_support": "Wiltshire Autism Hub. BSW Neurodevelopmental Pathway covers Trowbridge. RUH Bath 12 miles with CAMHS.",
       "notes": "Trowbridge itself is functional; Bath proximity lifts the accessible provision considerably. Integrated Care Centre walking distance is a significant plus."
     },
-    "rank": 12
+    "rank": 12,
+    "postcode": "BA14 8EP"
   },
   {
     "ref": "173546681",
@@ -2544,7 +2587,8 @@
       "asd_support": "Somerset Progressive School (West Hatch, Taunton). Strong neurodiversity awareness in Somerset community. Musgrove Park Hospital CAMHS (Taunton, 14 miles).",
       "notes": "Chard is in the Somerset West home-ed cluster. Yeovil and Taunton groups accessible."
     },
-    "rank": 13
+    "rank": 13,
+    "postcode": "TA20 1NN"
   },
   {
     "ref": "174286715",
@@ -2591,7 +2635,8 @@
       "asd_support": "Musgrove Park CAMHS (Taunton, ~18 miles). Somerset Progressive School (West Hatch).",
       "notes": "Same cluster as Westonzoyland. Glastonbury accessible (~15 min drive)."
     },
-    "rank": 10
+    "rank": 10,
+    "postcode": "TA7 0AG"
   },
   {
     "ref": "170954642",
@@ -2643,6 +2688,7 @@
       "asd_support": "Musgrove Park CAMHS, Taunton (~16 miles). Somerset Autism Hub. Millfield has specialist SEN support (Street, 8 miles).",
       "notes": "Excellent location for HE — Glastonbury community, Street/Wells/Shepton Mallet all accessible. Very supportive Somerset council for EHE."
     },
-    "rank": 1
+    "rank": 1,
+    "postcode": "TA7 9AD"
   }
 ]

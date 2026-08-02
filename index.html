@@ -592,6 +592,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 .collapse-toggle:hover{color:var(--color-primary);background:#f0f4f8}
 .collapse-toggle.collapsed{transform:rotate(180deg)}
 #sort-section,#filter-section{transition:all .2s ease;overflow:hidden}
+.prop-card-postcode{font-size:9.5px;color:var(--color-muted);
+  font-family:monospace;letter-spacing:.03em;margin-top:1px}
+.detail-postcode{font-size:12px;color:var(--color-muted);font-family:monospace;
+  letter-spacing:.04em;margin-left:6px;background:#f0f4f8;
+  padding:1px 5px;border-radius:3px;cursor:pointer;user-select:all}
+.detail-postcode:hover{background:#e0e8f0}
+.detail-postcode[title]:hover::after{content:' ✓';color:var(--color-success)}
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-thumb{background:#ccc;border-radius:3px}
@@ -1320,7 +1327,7 @@ function addMarker(p) {
     iconSize:[26,26],iconAnchor:[13,13],className:''
   });
   const m = L.marker([p.lat,p.lng],{icon});
-  m.bindPopup(`<strong>${p.name}</strong><br>${p.price_display}<br>
+  m.bindPopup(`<strong>${p.name}</strong><br>${p.price_display}<br>${p.postcode?p.postcode+'<br>':''}
     <a href="#" style="font-size:11px;color:var(--color-primary)"
       onclick="event.preventDefault();selectProp('${p.ref}')">View details →</a>`);
   m.on('click',()=>selectProp(p.ref));
@@ -1447,7 +1454,7 @@ function applyFilters() {
       if (activeF.solar==='viable' && score !== 1) return false;
       if (activeF.solar==='no'     && score >= 1) return false;
     }
-    if(q&&!`${p.name} ${p.location} ${p.agent} ${p.cluster}`.toLowerCase().includes(q)) return false;
+    if(q&&!`${p.name} ${p.location} ${p.agent} ${p.cluster} ${p.postcode||''}`.toLowerCase().includes(q)) return false;
     return true;
   });
   filtered=sortProps(res);
@@ -1532,6 +1539,7 @@ function renderList() {
       </div>
       <div class="prop-card-body">
         <div class="prop-card-name">${p.name}</div>
+        ${p.postcode?`<div class="prop-card-postcode">${p.postcode}</div>`:''}
         <div class="prop-card-meta">
           <span class="prop-card-price">${p.price_display}</span>
           ${(()=>{const pv=votes[p.ref]||[];const net=pv.reduce((s,v)=>s+(v.type==='like'?1:-1),0);
@@ -1692,7 +1700,13 @@ function renderDetail(p) {
         ${(()=>{const fl=(notes.flags||{})[p.ref];const tip=fl?fl.replace(/"/g,'&quot;'):'Flag for attention';return '<button class="dv-flag-btn '+(fl?'flagged':'')+'" data-ref="${p.ref}" onclick="showFlagModal(\'${p.ref}\')" title="'+tip+'" aria-label="Flag for attention">🚩</button>';})()}
       </div>
       <div class="detail-name">${p.name}</div>
-      <div class="detail-location">📍 ${p.location}</div>
+      <div class="detail-location">📍 ${p.location}${p.postcode?
+        `<span class="detail-postcode" title="Click to copy"
+          onclick="navigator.clipboard.writeText('${p.postcode}').then(()=>{
+            const el=event.target;el.textContent='✓ Copied!';
+            setTimeout(()=>el.textContent='${p.postcode}',1500);})"
+        >${p.postcode}</span>`:''}
+      </div>
       <div class="detail-price">${p.price_display}</div>
       <div class="detail-pills">
         <span class="dpill cluster">${p.cluster}</span>
@@ -2385,7 +2399,7 @@ function showAddModal() {
   document.getElementById('add-ref').closest('.modal-field.full').style.display = '';
   document.getElementById('add-geo-hint').style.display = 'none';
   // Clear all fields
-  ['add-ref','add-name','add-price','add-location','add-cluster',
+  ['add-ref','add-name','add-price','add-location','add-postcode','add-cluster',
    'add-agent','add-caveat','add-lat','add-lng','add-desc','add-dup']
     .forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
   document.getElementById('add-annexe').value = 'potential';
@@ -2409,6 +2423,8 @@ function showEditModal(ref) {
   document.getElementById('add-name').value    = p.name || '';
   document.getElementById('add-price').value   = p.price || '';
   document.getElementById('add-location').value= p.location || '';
+  const pcInput = document.getElementById('add-postcode');
+  if (pcInput) pcInput.value = p.postcode || '';
   document.getElementById('add-cluster').value = p.cluster || '';
   document.getElementById('add-agent').value   = p.agent || '';
   document.getElementById('add-annexe').value  = p.annexe || 'potential';
@@ -2429,6 +2445,7 @@ async function saveEditedProperty(ref) {
   const name     = document.getElementById('add-name').value.trim();
   const price    = parseInt(document.getElementById('add-price').value) || p.price;
   const location = document.getElementById('add-location').value.trim();
+  const postcode = (document.getElementById('add-postcode')?.value||'').trim().toUpperCase() || p.postcode;
   const cluster  = document.getElementById('add-cluster').value.trim();
   const agent    = document.getElementById('add-agent').value.trim();
   const annexe   = document.getElementById('add-annexe').value;
@@ -2443,6 +2460,7 @@ async function saveEditedProperty(ref) {
   if (name)     p.name           = name;
   if (price)    { p.price = price; p.price_display = '£' + price.toLocaleString(); }
   if (location) p.location       = location;
+  if (postcode) p.postcode        = postcode;
   if (cluster)  p.cluster        = cluster;
   if (agent)    p.agent          = agent;
   p.annexe                        = annexe;
