@@ -592,13 +592,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 .collapse-toggle:hover{color:var(--color-primary);background:#f0f4f8}
 .collapse-toggle.collapsed{transform:rotate(180deg)}
 #sort-section,#filter-section{transition:all .2s ease;overflow:hidden}
-.prop-card-postcode{font-size:9.5px;color:var(--color-muted);
-  font-family:monospace;letter-spacing:.03em;margin-top:1px}
-.detail-postcode{font-size:12px;color:var(--color-muted);font-family:monospace;
-  letter-spacing:.04em;margin-left:6px;background:#f0f4f8;
-  padding:1px 5px;border-radius:3px;cursor:pointer;user-select:all}
-.detail-postcode:hover{background:#e0e8f0}
-.detail-postcode[title]:hover::after{content:' ✓';color:var(--color-success)}
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-thumb{background:#ccc;border-radius:3px}
@@ -1327,7 +1320,7 @@ function addMarker(p) {
     iconSize:[26,26],iconAnchor:[13,13],className:''
   });
   const m = L.marker([p.lat,p.lng],{icon});
-  m.bindPopup(`<strong>${p.name}</strong><br>${p.price_display}<br>${p.postcode?p.postcode+'<br>':''}
+  m.bindPopup(`<strong>${p.name}</strong><br>${p.price_display}<br>
     <a href="#" style="font-size:11px;color:var(--color-primary)"
       onclick="event.preventDefault();selectProp('${p.ref}')">View details →</a>`);
   m.on('click',()=>selectProp(p.ref));
@@ -1454,7 +1447,7 @@ function applyFilters() {
       if (activeF.solar==='viable' && score !== 1) return false;
       if (activeF.solar==='no'     && score >= 1) return false;
     }
-    if(q&&!`${p.name} ${p.location} ${p.agent} ${p.cluster} ${p.postcode||''}`.toLowerCase().includes(q)) return false;
+    if(q&&!`${p.name} ${p.location} ${p.agent} ${p.cluster}`.toLowerCase().includes(q)) return false;
     return true;
   });
   filtered=sortProps(res);
@@ -1539,7 +1532,6 @@ function renderList() {
       </div>
       <div class="prop-card-body">
         <div class="prop-card-name">${p.name}</div>
-        ${p.postcode?`<div class="prop-card-postcode">${p.postcode}</div>`:''}
         <div class="prop-card-meta">
           <span class="prop-card-price">${p.price_display}</span>
           ${(()=>{const pv=votes[p.ref]||[];const net=pv.reduce((s,v)=>s+(v.type==='like'?1:-1),0);
@@ -1700,13 +1692,7 @@ function renderDetail(p) {
         ${(()=>{const fl=(notes.flags||{})[p.ref];const tip=fl?fl.replace(/"/g,'&quot;'):'Flag for attention';return '<button class="dv-flag-btn '+(fl?'flagged':'')+'" data-ref="${p.ref}" onclick="showFlagModal(\'${p.ref}\')" title="'+tip+'" aria-label="Flag for attention">🚩</button>';})()}
       </div>
       <div class="detail-name">${p.name}</div>
-      <div class="detail-location">📍 ${p.location}${p.postcode?
-        `<span class="detail-postcode" title="Click to copy"
-          onclick="navigator.clipboard.writeText('${p.postcode}').then(()=>{
-            const el=event.target;el.textContent='✓ Copied!';
-            setTimeout(()=>el.textContent='${p.postcode}',1500);})"
-        >${p.postcode}</span>`:''}
-      </div>
+      <div class="detail-location">📍 ${p.location}</div>
       <div class="detail-price">${p.price_display}</div>
       <div class="detail-pills">
         <span class="dpill cluster">${p.cluster}</span>
@@ -1749,15 +1735,17 @@ function renderDetail(p) {
       <div class="ds"><h3>About</h3></div>
       ${(()=>{
         const full = (p.full_desc||p.short_desc||'').replace(/\n/g,'<br>');
-        const short = (p.short_desc||'');
-        const needsExpand = (p.full_desc||'').length > (short.length + 20);
+        const short = cleanText(p.short_desc||'');
+        const fullDesc = cleanText(p.full_desc||'');
+        const needsExpand = fullDesc.length > (short.length + 20);
         if (!needsExpand) return `<div class="detail-desc">${full||'—'}</div>`;
+        const gated = !getToken();
         return `<div class="detail-desc" id="desc-short-${p.ref}">${esc(short)}</div>
-          <div class="detail-desc" id="desc-full-${p.ref}" style="display:none">${(p.full_desc||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>')}</div>
-          <button onclick="toggleDesc('${p.ref}')" id="desc-toggle-${p.ref}"
+          <div class="detail-desc" id="desc-full-${p.ref}" style="display:none">${gated ? '' : fullDesc.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>')}</div>
+          <button onclick="${gated ? \"showToast('Add a GitHub token to view full descriptions','warning')\" : \"toggleDesc('"+p.ref+"')\"}" id="desc-toggle-${p.ref}"
             style="margin-top:6px;background:none;border:none;color:var(--color-primary);
             font-size:12px;cursor:pointer;padding:0;font-weight:600">
-            ▼ Show full description
+            ${gated ? '🔒 Sign in to view full description' : '▼ Show full description'}
           </button>`;
       })()}
       <div class="detail-agent" style="margin-top:8px">Agent: ${p.agent}</div>
@@ -1902,20 +1890,27 @@ function openImgNewTab(imgId) {
   if (img && img.src) window.open(img.src, '_blank');
 }
 function openFloorWindow() {
+  // Open current floorplan in the lightbox with full panzoom support
   const img = document.getElementById('gallery-floor-main');
   if (!img || !img.src) return;
-  const src = img.src;
-  const w = window.open('', '_blank',
-    'width=1000,height=800,menubar=no,toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes');
-  if (!w) return;
-  w.document.write('<html><head><title>Floorplan</title>'
-    +'<style>body{margin:0;background:#222;display:flex;align-items:center;justify-content:center;min-height:100vh}'
-    +'img{max-width:98vw;max-height:98vh;object-fit:contain;cursor:zoom-in}'
-    +'img.zoomed{max-width:none;max-height:none;cursor:zoom-out}'
-    +'</style></head><body>'
-    +'<img src="'+src+'" onclick="this.classList.toggle(\'zoomed\')" alt="Floorplan">'
-    +'</body></html>');
-  w.document.close();
+  const imgs = (window._fImgs||[]).filter(Boolean);
+  const idx  = imgs.indexOf(img.src);
+  lbImages = imgs.length ? imgs : [img.src];
+  lbIndex  = idx >= 0 ? idx : 0;
+  lbSetImage(lbIndex);
+  document.getElementById('lightbox').classList.add('show');
+  document.getElementById('lightbox-nav').style.display = lbImages.length > 1 ? 'flex' : 'none';
+  const wrap = document.getElementById('lightbox-img-wrap');
+  const lbImg = document.getElementById('lightbox-img');
+  if (typeof Panzoom !== 'undefined') {
+    if (lbPz) { try { lbPz.destroy(); } catch(e){} lbPz = null; }
+    const initPz = () => {
+      lbPz = Panzoom(lbImg, {maxScale:8, minScale:0.5, contain:'outside', cursor:'grab'});
+      wrap.addEventListener('wheel', lbWheelHandler, {passive:false});
+    };
+    if (lbImg.complete && lbImg.naturalWidth) initPz();
+    else lbImg.onload = initPz;
+  }
 }
 
 // ── AGENT STATUS ──────────────────────────────────────────────────────────────
@@ -2399,7 +2394,7 @@ function showAddModal() {
   document.getElementById('add-ref').closest('.modal-field.full').style.display = '';
   document.getElementById('add-geo-hint').style.display = 'none';
   // Clear all fields
-  ['add-ref','add-name','add-price','add-location','add-postcode','add-cluster',
+  ['add-ref','add-name','add-price','add-location','add-cluster',
    'add-agent','add-caveat','add-lat','add-lng','add-desc','add-dup']
     .forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
   document.getElementById('add-annexe').value = 'potential';
@@ -2423,8 +2418,6 @@ function showEditModal(ref) {
   document.getElementById('add-name').value    = p.name || '';
   document.getElementById('add-price').value   = p.price || '';
   document.getElementById('add-location').value= p.location || '';
-  const pcInput = document.getElementById('add-postcode');
-  if (pcInput) pcInput.value = p.postcode || '';
   document.getElementById('add-cluster').value = p.cluster || '';
   document.getElementById('add-agent').value   = p.agent || '';
   document.getElementById('add-annexe').value  = p.annexe || 'potential';
@@ -2445,7 +2438,6 @@ async function saveEditedProperty(ref) {
   const name     = document.getElementById('add-name').value.trim();
   const price    = parseInt(document.getElementById('add-price').value) || p.price;
   const location = document.getElementById('add-location').value.trim();
-  const postcode = (document.getElementById('add-postcode')?.value||'').trim().toUpperCase() || p.postcode;
   const cluster  = document.getElementById('add-cluster').value.trim();
   const agent    = document.getElementById('add-agent').value.trim();
   const annexe   = document.getElementById('add-annexe').value;
@@ -2460,7 +2452,6 @@ async function saveEditedProperty(ref) {
   if (name)     p.name           = name;
   if (price)    { p.price = price; p.price_display = '£' + price.toLocaleString(); }
   if (location) p.location       = location;
-  if (postcode) p.postcode        = postcode;
   if (cluster)  p.cluster        = cluster;
   if (agent)    p.agent          = agent;
   p.annexe                        = annexe;
@@ -3880,6 +3871,87 @@ function restoreSections() {
       if (btn) { btn.classList.add('collapsed'); btn.title = 'Expand'; }
     }
   });
+}
+
+// ── TEXT ENCODING FIX ────────────────────────────────────────────────────────
+function cleanText(str) {
+  if (!str) return str;
+  // Fix double-encoded UTF-8 mojibake (Ã¢ÃÂ patterns)
+  try {
+    // Pattern: UTF-8 bytes interpreted as Latin-1 then re-encoded
+    return str
+      .replace(/Ã¢ÃÂÃ?/g, '—')   // em dash
+      .replace(/ÃÂ¢ÃÂÃÂ/g, '—')  // em dash variant
+      .replace(/Ã¢ÃÂÃÂ¦/g, '…')  // ellipsis
+      .replace(/ÃÂ¢ÃÂÃÂ¦/g, '…')
+      .replace(/ÃÂ°ÃÂÃÂ¤ÃÂ©/g, '🤩') // emoji
+      .replace(/(?:Ã[^\s"<>\]{0,4}){2,}/g, '—'); // catch-all
+  } catch(e) { return str; }
+}
+
+// ── LOCAL AMENITIES ───────────────────────────────────────────────────────────
+// Estimated drive times to key amenities based on postcode area
+// (derived from driving time estimates; update with agent confirmation)
+const AMENITY_DATA = {
+  // Somerset
+  "TA7":  {gp:8,  dentist:10, library:12, pool:18, gpName:"Bridgwater Medical Centre",     poolName:"Bridgwater Sports Centre"},
+  "TA20": {gp:5,  dentist:6,  library:4,  pool:15, gpName:"Chard Medical Centre",          poolName:"Chard Pool"},
+  "TA4":  {gp:12, dentist:15, library:8,  pool:15, gpName:"Bishops Lydeard Surgery",       poolName:"Taunton Pool"},
+  "TA1":  {gp:5,  dentist:5,  library:3,  pool:5,  gpName:"Taunton GP surgeries",          poolName:"Vivary Park Pool, Taunton"},
+  "TA2":  {gp:6,  dentist:6,  library:4,  pool:6,  gpName:"Taunton GP surgeries",          poolName:"Vivary Park Pool, Taunton"},
+  "TA3":  {gp:10, dentist:12, library:8,  pool:12, gpName:"Local surgery",                 poolName:"Taunton Pool"},
+  // Dorset
+  "DT11": {gp:8,  dentist:10, library:8,  pool:20, gpName:"Blandford Forum Health Centre", poolName:"Blandford Leisure Centre"},
+  "DT6":  {gp:5,  dentist:6,  library:4,  pool:12, gpName:"Bridport Medical Centre",       poolName:"Bridport Leisure Centre"},
+  "DT2":  {gp:12, dentist:15, library:15, pool:20, gpName:"Local surgery",                 poolName:"Weymouth Leisure Centre"},
+  // Wiltshire
+  "SN12": {gp:4,  dentist:5,  library:3,  pool:4,  gpName:"Melksham Oak Health Centre",    poolName:"Melksham Leisure Centre"},
+  "BA14": {gp:4,  dentist:4,  library:3,  pool:6,  gpName:"Trowbridge Medical Centre",     poolName:"Trowbridge Leisure Centre"},
+  "SN15": {gp:4,  dentist:5,  library:3,  pool:5,  gpName:"Chippenham GP surgeries",       poolName:"Monkton Park Pool"},
+  // Bournemouth/Poole
+  "BH9":  {gp:5,  dentist:5,  library:4,  pool:8,  gpName:"Talbot Village Surgery",        poolName:"Littledown Leisure Centre"},
+  "BH11": {gp:4,  dentist:5,  library:5,  pool:8,  gpName:"Kinson Medical Centre",        poolName:"Littledown Leisure Centre"},
+  "BH14": {gp:4,  dentist:4,  library:4,  pool:6,  gpName:"Ashley Cross Surgery",         poolName:"Poole Leisure Centre"},
+  "BH23": {gp:5,  dentist:5,  library:4,  pool:10, gpName:"Christchurch Medical Centre",  poolName:"Christchurch Leisure Centre"},
+  "BH8":  {gp:4,  dentist:4,  library:3,  pool:6,  gpName:"Bournemouth GP surgeries",     poolName:"Littledown Leisure Centre"},
+  // South Wales
+  "NP4":  {gp:5,  dentist:6,  library:5,  pool:8,  gpName:"Pontypool Medical Centre",     poolName:"Pontypool Active Living Centre"},
+  "NP20": {gp:5,  dentist:5,  library:5,  pool:8,  gpName:"Newport GP surgeries",         poolName:"Newport International Sports Village"},
+  "SA6":  {gp:8,  dentist:10, library:10, pool:12, gpName:"Morriston/Swansea surgery",    poolName:"Swansea Leisure Centre"},
+  "SA8":  {gp:6,  dentist:8,  library:10, pool:15, gpName:"Pontardawe Health Centre",     poolName:"Pontardawe Leisure Centre"},
+  "SA10": {gp:8,  dentist:8,  library:8,  pool:12, gpName:"Neath Port Talbot surgery",    poolName:"Neath Leisure Centre"},
+  "SA17": {gp:20, dentist:22, library:20, pool:25, gpName:"Carmarthen area surgery",      poolName:"Carmarthen Leisure Centre"},
+  "SA33": {gp:12, dentist:15, library:12, pool:20, gpName:"Local surgery",                poolName:"Carmarthen Leisure Centre"},
+  "SA34": {gp:15, dentist:18, library:15, pool:25, gpName:"Local surgery",                poolName:"Carmarthen Leisure Centre"},
+  // Other
+  "TA6":  {gp:5,  dentist:5,  library:4,  pool:6,  gpName:"Bridgwater Medical Centre",    poolName:"Bridgwater Sports Centre"},
+  "EX16": {gp:5,  dentist:5,  library:4,  pool:8,  gpName:"Tiverton Medical Centre",      poolName:"Tiverton Leisure Centre"},
+  "CF37": {gp:5,  dentist:5,  library:4,  pool:8,  gpName:"Pontypridd surgery",           poolName:"Pontypridd Lido"},
+  "BA22": {gp:5,  dentist:5,  library:4,  pool:8,  gpName:"Yeovil Medical Centre",        poolName:"Yeovil Leisure Centre"},
+};
+
+function renderAmenities(p) {
+  if (!p.postcode) return '<span style="color:var(--color-muted)">Add postcode to see amenity times</span>';
+  const district = p.postcode.replace(/\s+\d[A-Z]{2}$/, '').trim();
+  const data = AMENITY_DATA[district];
+  if (!data) return `<span style="color:var(--color-muted)">Amenity data not yet available for ${district}</span>`;
+  const row = (icon, label, mins, name) =>
+    `<div style="display:flex;align-items:center;gap:8px;padding:3px 0;border-bottom:1px solid var(--color-border)">
+      <span style="font-size:14px;width:20px">${icon}</span>
+      <div style="flex:1">
+        <span style="font-weight:600">${label}</span>
+        <span style="color:var(--color-muted);font-size:11px"> — ${name}</span>
+      </div>
+      <span style="font-weight:700;color:var(--color-primary);white-space:nowrap">~${mins} min</span>
+    </div>`;
+  return `
+    <div style="font-size:12px">
+      ${row('🏥','GP surgery', data.gp, data.gpName)}
+      ${row('🦷','Dentist', data.dentist, 'Local dentist')}
+      ${row('📚','Public library', data.library, 'Local library')}
+      ${row('🏊','Swimming pool', data.pool, data.poolName)}
+      <div style="font-size:10px;color:var(--color-muted);margin-top:4px">Estimated drive times — verify locally</div>
+    </div>`;
 }
 
 init();

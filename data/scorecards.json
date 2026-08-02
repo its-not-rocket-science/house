@@ -779,7 +779,7 @@
   },
   "172773251": {
     "ref": "172773251",
-    "overall_pct": 46,
+    "overall_pct": 56,
     "scores": [
       {
         "cat": "Annexe",
@@ -847,16 +847,16 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 0,
-        "note": "Broadband speed not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Ultrafast/FTTP 1800Mb↓ 1000Mb↑ ✓",
+        "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
-        "score": 1,
-        "note": "Water/river nearby — confirm flood risk",
-        "resolved": false
+        "score": 3,
+        "note": "Flood risk very low (now and future) ✓",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -907,7 +907,7 @@
   },
   "89951784": {
     "ref": "89951784",
-    "overall_pct": 76,
+    "overall_pct": 78,
     "scores": [
       {
         "cat": "Annexe",
@@ -975,8 +975,8 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 2,
-        "note": "Fibre fitted and in use — speeds not specified; confirm FTTP vs FTTC",
+        "score": 3,
+        "note": "Ultrafast/FTTP 1130Mb↓ 104Mb↑ ✓",
         "resolved": true
       },
       {
@@ -1248,7 +1248,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed",
+        "note": "NP4 0BG — broadband lookup shows Highfield, not Newtown Road. Verify correct postcode — may be adjacent postcode.",
         "resolved": false
       },
       {
@@ -1309,7 +1309,7 @@
   },
   "87130665": {
     "ref": "87130665",
-    "overall_pct": 50,
+    "overall_pct": 56,
     "scores": [
       {
         "cat": "Annexe",
@@ -1377,9 +1377,9 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 0,
-        "note": "Broadband speed not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Ultrafast/FTTP 1800Mb↓ 1000Mb↑ ✓",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -1813,7 +1813,7 @@
   },
   "89701968": {
     "ref": "89701968",
-    "overall_pct": 42,
+    "overall_pct": 48,
     "scores": [
       {
         "cat": "Annexe",
@@ -1881,9 +1881,9 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 0,
-        "note": "Broadband speed not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Ultrafast/FTTP 1000Mb↓ 1000Mb↑ ✓",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -2307,7 +2307,7 @@
   },
   "168243473": {
     "ref": "168243473",
-    "overall_pct": 54,
+    "overall_pct": 60,
     "scores": [
       {
         "cat": "Annexe",
@@ -2375,9 +2375,9 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 0,
-        "note": "Broadband speed not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Ultrafast/FTTP 5500Mb↓ 5500Mb↑ ✓",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -2688,7 +2688,7 @@
   },
   "87791562": {
     "ref": "87791562",
-    "overall_pct": 65,
+    "overall_pct": 71,
     "scores": [
       {
         "cat": "Annexe",
@@ -2756,9 +2756,9 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 0,
-        "note": "Broadband speed not confirmed in listing",
-        "resolved": false
+        "score": 3,
+        "note": "Ultrafast/FTTP 5500Mb↓ 5500Mb↑ ✓",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -2819,7 +2819,7 @@
   },
   "89236248": {
     "ref": "89236248",
-    "overall_pct": 38,
+    "overall_pct": 45,
     "scores": [
       {
         "cat": "Annexe",
@@ -2873,9 +2873,9 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 0,
-        "note": "Broadband speed not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Ultrafast/FTTP 1800Mb↓ 220Mb↑ ✓",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -3458,7 +3458,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed",
+        "note": "EX16 9LJ — broadband lookup returns Tiverton Road, not Brook Street. Postcode may be approximate — verify with agent.",
         "resolved": false
       },
       {
@@ -3642,7 +3642,7 @@
   },
   "90125946": {
     "ref": "90125946",
-    "overall_pct": 33,
+    "overall_pct": 48,
     "scores": [
       {
         "cat": "Annexe",
@@ -3696,16 +3696,16 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 0,
-        "note": "Broadband speed not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Ultrafast/FTTP 5500Mb↓ 5500Mb↑ ✓",
+        "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
-        "score": 0,
-        "note": "Somerset Levels — check EA flood risk maps before viewing",
-        "resolved": false
+        "score": 3,
+        "note": "Very low flood risk ✓",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -3758,7 +3758,7 @@
   },
   "169598735": {
     "ref": "169598735",
-    "overall_pct": 44,
+    "overall_pct": 50,
     "scores": [
       {
         "cat": "Annexe",
@@ -3826,9 +3826,9 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 0,
-        "note": "Broadband speed not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Ultrafast/FTTP 1800Mb↓ 220Mb↑ ✓",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -3999,7 +3999,7 @@
   },
   "168382466": {
     "ref": "168382466",
-    "overall_pct": 54,
+    "overall_pct": 56,
     "scores": [
       {
         "cat": "Annexe",
@@ -4067,8 +4067,8 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 2,
-        "note": "Superfast broadband available",
+        "score": 3,
+        "note": "Ultrafast/FTTP 1000Mb↓ 1000Mb↑ ✓",
         "resolved": true
       },
       {
@@ -4130,7 +4130,7 @@
   },
   "88310844": {
     "ref": "88310844",
-    "overall_pct": 56,
+    "overall_pct": 67,
     "scores": [
       {
         "cat": "Annexe",
@@ -4198,16 +4198,16 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 0,
-        "note": "Broadband speed not confirmed",
-        "resolved": false
+        "score": 2,
+        "note": "Superfast 80Mb↓ 20Mb↑",
+        "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
-        "score": 0,
-        "note": "Somerset Levels — check EA flood risk maps before viewing",
-        "resolved": false
+        "score": 3,
+        "note": "Flood risk very low (now and future) ✓",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -4732,7 +4732,7 @@
   },
   "89491017": {
     "ref": "89491017",
-    "overall_pct": 55,
+    "overall_pct": 57,
     "scores": [
       {
         "cat": "Annexe",
@@ -4800,9 +4800,9 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 0,
-        "note": "Broadband speed not confirmed",
-        "resolved": false
+        "score": 1,
+        "note": "Basic 7Mb↓ 0.8Mb↑",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -4871,7 +4871,7 @@
   },
   "160507001": {
     "ref": "160507001",
-    "overall_pct": 26,
+    "overall_pct": 33,
     "scores": [
       {
         "cat": "Annexe",
@@ -4918,9 +4918,9 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 0,
-        "note": "Broadband speed not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Ultrafast/FTTP 1800Mb↓ 220Mb↑ ✓",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -5304,7 +5304,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband not mentioned — check Ofcom for BA14",
+        "note": "BA14 8EP — postcode not found on Ofcom or uswitch. Verify correct postcode with agent.",
         "resolved": false
       },
       {
@@ -5584,9 +5584,9 @@
       {
         "cat": "Risk",
         "label": "Flood risk",
-        "score": 0,
-        "note": "Somerset Levels — TA7 area has known flood risk. Check EA flood map before proceeding.",
-        "resolved": false
+        "score": 1,
+        "note": "Flood risk LOW (low now, medium 2036-2069) ⚠ — apply flood-check caveat",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -5614,6 +5614,13 @@
         "label": "Play room",
         "score": 3,
         "note": "6 beds total — multiple spare rooms available ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Connectivity",
+        "label": "Broadband",
+        "score": 1,
+        "note": "Basic 6Mb↓ 1Mb↑",
         "resolved": true
       }
     ],
@@ -5719,7 +5726,7 @@
         "cat": "Risk",
         "label": "Flood risk",
         "score": 3,
-        "note": "Very low flood risk confirmed — surface water, rivers/sea and groundwater all 'very low' ✓",
+        "note": "Flood risk very low (now and future) ✓",
         "resolved": true
       },
       {
@@ -5754,7 +5761,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast 1000Mb↓ / 1000Mb↑ confirmed ✓",
+        "note": "Ultrafast/FTTP 1000Mb↓ 1000Mb↑ ✓",
         "resolved": true
       }
     ],
@@ -5773,6 +5780,372 @@
       "Smoke separation depends on internal door arrangement — confirm at viewing",
       "Flood risk: TA7 postcode area but on Polden Hills slopes — check EA flood map for TA7 9AD specifically",
       "Guide price up to £450k leaves only £30k headroom — negotiate on price"
+    ]
+  },
+  "91019079": {
+    "ref": "91019079",
+    "overall_pct": 0,
+    "scores": [],
+    "questions": [],
+    "red_flags": [
+      "Rejected — 3-storey townhouse, no parking, city centre"
+    ]
+  },
+  "91082217": {
+    "ref": "91082217",
+    "overall_pct": 49,
+    "scores": [
+      {
+        "cat": "Annexe",
+        "label": "Annexe status",
+        "score": 1,
+        "note": "Detached garage STPP — potential annexe conversion only, not confirmed",
+        "resolved": false
+      },
+      {
+        "cat": "Annexe",
+        "label": "Independent entrance",
+        "score": 0,
+        "note": "Not applicable — no annexe yet",
+        "resolved": false
+      },
+      {
+        "cat": "Smoke",
+        "label": "Physical separation",
+        "score": 2,
+        "note": "Detached garage = full separation if converted",
+        "resolved": false
+      },
+      {
+        "cat": "Mobility",
+        "label": "Ground floor bedroom",
+        "score": 1,
+        "note": "3-bed semi — no confirmed ground floor bedroom",
+        "resolved": false
+      },
+      {
+        "cat": "Mobility",
+        "label": "Walk-in shower",
+        "score": 1,
+        "note": "Bathroom with bath/shower — not level access",
+        "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Fuel type",
+        "score": 1,
+        "note": "Heating system replaced since 2015 — type unknown",
+        "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 1,
+        "note": "No solar/HP mentioned",
+        "resolved": false
+      },
+      {
+        "cat": "Drainage",
+        "label": "Drainage type",
+        "score": 3,
+        "note": "Mains assumed (urban Bournemouth) ✓",
+        "resolved": false
+      },
+      {
+        "cat": "Risk",
+        "label": "Flood risk",
+        "score": 3,
+        "note": "BH11 — no flood risk indicators",
+        "resolved": false
+      },
+      {
+        "cat": "Risk",
+        "label": "Listed building",
+        "score": 3,
+        "note": "Not listed ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Transaction",
+        "label": "Chain",
+        "score": 0,
+        "note": "Chain status unknown",
+        "resolved": false
+      },
+      {
+        "cat": "Transaction",
+        "label": "Budget headroom",
+        "score": 2,
+        "note": "£425k — £55k under budget ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 1,
+        "note": "3-bed — possible spare room",
+        "resolved": false
+      }
+    ],
+    "questions": [
+      "Does the detached garage have planning permission for conversion to a self-contained annexe, or would permitted development / full planning permission be needed?",
+      "What is the heating system — gas central heating?",
+      "Is there an onward chain?",
+      "We would like to arrange a viewing."
+    ],
+    "red_flags": [
+      "No confirmed annexe — garage conversion STPP",
+      "3-bed semi — ground floor bedroom availability unclear"
+    ]
+  },
+  "90246999": {
+    "ref": "90246999",
+    "overall_pct": 67,
+    "scores": [
+      {
+        "cat": "Annexe",
+        "label": "Annexe status",
+        "score": 3,
+        "note": "Confirmed separate annexe to rear (7m×3m = 21m²) with own entrance ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Annexe",
+        "label": "Independent entrance",
+        "score": 3,
+        "note": "Separate annexe to rear — own entrance ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Annexe",
+        "label": "Shower / wetroom",
+        "score": 0,
+        "note": "Annexe shower/bathroom type unknown — confirm with agent",
+        "resolved": false
+      },
+      {
+        "cat": "Annexe",
+        "label": "Kitchen",
+        "score": 0,
+        "note": "Annexe kitchen unknown — confirm with agent",
+        "resolved": false
+      },
+      {
+        "cat": "Smoke",
+        "label": "Physical separation",
+        "score": 3,
+        "note": "Separate detached structure — full smoke separation ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Mobility",
+        "label": "Ground floor bedroom",
+        "score": 3,
+        "note": "Two ground floor bedrooms confirmed in main house ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Mobility",
+        "label": "Walk-in shower",
+        "score": 1,
+        "note": "Ground floor shower/toilet in main house — type unknown",
+        "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Fuel type",
+        "score": 1,
+        "note": "Heating type unknown — ask agent",
+        "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 0,
+        "note": "Not mentioned",
+        "resolved": false
+      },
+      {
+        "cat": "Drainage",
+        "label": "Drainage type",
+        "score": 3,
+        "note": "Mains assumed (urban Poole BH14) ✓",
+        "resolved": false
+      },
+      {
+        "cat": "Risk",
+        "label": "Flood risk",
+        "score": 3,
+        "note": "BH14 urban Poole — no flood risk indicators",
+        "resolved": false
+      },
+      {
+        "cat": "Risk",
+        "label": "Listed building",
+        "score": 3,
+        "note": "Not listed ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Transaction",
+        "label": "Chain",
+        "score": 3,
+        "note": "NO FORWARD CHAIN confirmed in listing ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Transaction",
+        "label": "Budget headroom",
+        "score": 2,
+        "note": "£450k — £30k under budget",
+        "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 2,
+        "note": "4 beds + open-plan first floor + loft room — multiple options ✓",
+        "resolved": true
+      }
+    ],
+    "questions": [
+      "Does the annexe have its own kitchen or kitchenette?",
+      "Is the annexe shower a level-access wet room or step-in?",
+      "What is the heating fuel — gas, oil, heat pump?",
+      "Is there any planning permission or building control approval for the annexe?",
+      "We would like to arrange a viewing."
+    ],
+    "red_flags": [
+      "Annexe is only 21m² — compact but workable for 1 person",
+      "Kitchen and shower type in annexe unknown"
+    ]
+  },
+  "168485171": {
+    "ref": "168485171",
+    "overall_pct": 58,
+    "scores": [
+      {
+        "cat": "Annexe",
+        "label": "Annexe status",
+        "score": 2,
+        "note": "Outbuilding with living area (7.3×4.7m=34m²) + shower room. Described as versatile — annexe use subject to planning",
+        "resolved": false
+      },
+      {
+        "cat": "Annexe",
+        "label": "Independent entrance",
+        "score": 3,
+        "note": "Separate outbuilding — own entrance ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Annexe",
+        "label": "Shower / wetroom",
+        "score": 2,
+        "note": "Shower room confirmed in outbuilding (4.7×2.0m) — level access unknown",
+        "resolved": false
+      },
+      {
+        "cat": "Annexe",
+        "label": "Kitchen",
+        "score": 0,
+        "note": "No kitchen in outbuilding mentioned — confirm with agent",
+        "resolved": false
+      },
+      {
+        "cat": "Smoke",
+        "label": "Physical separation",
+        "score": 3,
+        "note": "Separate outbuilding — full smoke/air separation ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Mobility",
+        "label": "Ground floor bedroom",
+        "score": 3,
+        "note": "Main bedroom on ground floor (6.6×4.9m) + another ground floor room ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Mobility",
+        "label": "Walk-in shower",
+        "score": 1,
+        "note": "En-suite bathroom on ground floor — shower type unknown",
+        "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Fuel type",
+        "score": 2,
+        "note": "Underfloor heating throughout — source (ASHP/gas/oil) not specified",
+        "resolved": false
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 1,
+        "note": "UFH present, source unknown — ask agent",
+        "resolved": false
+      },
+      {
+        "cat": "Drainage",
+        "label": "Drainage type",
+        "score": 0,
+        "note": "Drainage type unknown — rural SA17, likely private",
+        "resolved": false
+      },
+      {
+        "cat": "Risk",
+        "label": "Flood risk",
+        "score": 1,
+        "note": "SA17 Ferryside — estuarial location, check flood risk (caveat applies)",
+        "resolved": false
+      },
+      {
+        "cat": "Risk",
+        "label": "Listed building",
+        "score": 3,
+        "note": "Not listed (converted mill but not formal listed status mentioned) ✓",
+        "resolved": false
+      },
+      {
+        "cat": "Transaction",
+        "label": "Chain",
+        "score": 0,
+        "note": "Chain status unknown",
+        "resolved": false
+      },
+      {
+        "cat": "Transaction",
+        "label": "Budget headroom",
+        "score": 2,
+        "note": "Offers in region of £450k — £30k under budget",
+        "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 3,
+        "note": "4 beds + mezzanine/balcony + garage/workshop ✓",
+        "resolved": true
+      }
+    ],
+    "questions": [
+      "Does the outbuilding/annexe have its own kitchen or kitchenette?",
+      "Is the outbuilding annexe shower room a level-access wet room?",
+      "Is there planning permission for the outbuilding to be used as a self-contained annexe?",
+      "What is the heating source for the underfloor heating — ASHP, gas, oil?",
+      "What is the drainage — mains or private?",
+      "What broadband speeds are available at SA17?",
+      "Is there an onward chain?",
+      "What is the flood risk for the specific plot — the estuary location raises questions?",
+      "We would like to arrange a viewing — is a Zoom/video call possible first?"
+    ],
+    "red_flags": [
+      "Outbuilding annexe needs kitchen adding",
+      "Flood-check: estuarial location SA17 — check EA flood map",
+      "Drainage likely private — rural SA17",
+      "225 min from UB7 — longest journey of all candidates"
     ]
   }
 }

@@ -2,7 +2,7 @@
   {
     "ref": "173985596",
     "name": "5-Bed Semi with 1-Bed Annexe",
-    "rank": 18,
+    "rank": 21,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Bridgwater, Somerset",
@@ -15,7 +15,7 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F173985596&propertyId=173985596",
     "lat": 51.1279,
     "lng": -3.0011,
-    "status": "active",
+    "status": "rejected",
     "duplicate_refs": [],
     "full_desc": "Five bedroom house with one bedroom annex | Multi-generational living | Extensive accommodation | Ample parking | No onward chain\nA substantial five bedroom semi-detached home with a self-contained one bedroom annex, ideal for multi-generational living or additional income, offered with no onward chain.Flexible accommodation with multiple reception spaces, ground floor bedroom & shower room, plus office, utility, workshop and garage. Upstairs offers four further bedrooms and two shower rooms. The annex includes kitchen, lounge, bedroom with dressing area and ensuite. Externally benefiting from ample off road parking and multiple garden areas.Energy Rating: DCouncil Tax Band - House - DCouncil Tax Band - Annexe - A\nRear aspect obscure window. Dual vanity wash hand basins. Walk-in shower, low level WC.\nThe rear garden is laid to patio, decking and lawn with multiple seating areas. Access to the summer room.\nFrench doors to garden. Matching floor and wall cupboard units, integrated electric oven and hob, dishwasher.\nCOUNCIL TAXA payment made to your local authority in order to pay for local services like schools, libraries, and refuse collection. The amount you pay depends on the value of the property.Read more about council Tax in our glossary page.\nPARKINGDetails of how and where vehicles can be parked, and any associated costs.Read more about parking in our glossary page.\nGARDENA property has access to an outdoor space, which could be private or shared.\nACCESSIBILITYHow a property has been adapted to meet the needs of vulnerable or disabled individuals.Read more about accessibility in our glossary page.\nAdd an important place to see how long it'd take to get there from our property listings.\nThese results are estimates and are only intended as a guide. Make sure you obtain accurate figures from your lender before committing to any mortgage. Your home may be repossessed if you do not keep up repayments on a mortgage.\nGibbins Richards was formed in 1991 by two young and adventurous local estate agents. As well as a flagship office in Taunton, other branches were soon opened in Bridgwater and Wellington.\nSince 2019 the sales division has been fronted by Directors Benjamin Grant and Nick Girone-Maddocks, both of whom have worked for the company for many years. Between them they head up a comprehensive team of over 24 employees across 5 towns. They are all highly professional experts in their respective fields who each bring something unique to our business.\nEnsure you're up to date with our latest advice on how to avoid fraud or scams when looking for property online.\nDisclaimer - Property reference 12406396. The information displayed about this property comprises a property advertisement. Rightmove.co.uk makes no warranty as to the accuracy or completeness of the advertisement or any linked or associated information, and Rightmove has no control over the content. This property advertisement does not constitute property particulars. The information is provided and maintained by Gibbins Richards, Bridgwater. Please contact the selling agent or developer directly to obtain any information which may be available under the terms of The Energy Performance of Buildings (Certificates and Inspections) (England and Wales) Regulations 2007 or the Home Report if in relation to a residential property in Scotland.\n*This is the average speed from the provider with the fastest broadband package available at this postcode. The average speed displayed is based on the download speeds of at least 50% of customers at peak time (8pm to 10pm). Fibre/cable services at the postcode are subject to availability and may differ between properties within a postcode. Speeds can be affected by a range of technical and environmental factors. The speed at the property may be lower than that listed above. You can check the estimated speed and confirm availability to a property prior to purchasing on the broadband provider's website. Providers may increase charges. The information is provided and maintained by Decision Technologies Limited.\n**This is indicative only and based on a 2-person household with multiple devices and simultaneous usage. Broadband performance is affected by multiple factors including number of occupants and devices, simultaneous usage, router range etc. For more information speak to your broadband provider.\nSite map Help Cookies Safety and Security Terms of Use Privacy Policy New updates\nCopyright © 2000-2026 Rightmove Group Limited. All rights reserved. Rightmove prohibits the scraping of its content. You can find further details here.",
     "home_ed": {
@@ -75,7 +75,7 @@
   {
     "ref": "89061840",
     "name": "Oakfields, Ham — Stone Cottage 0.6ac",
-    "rank": 8,
+    "rank": 9,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Ham, Combe St Nicholas",
@@ -148,7 +148,7 @@
   {
     "ref": "89444523",
     "name": "Linnet Cottage, Chideock — Grade II Thatched",
-    "rank": 32,
+    "rank": 38,
     "price": 425000,
     "price_display": "£425,000",
     "location": "Chideock, Dorset",
@@ -161,7 +161,7 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F89444523&propertyId=89444523",
     "lat": 50.7389,
     "lng": -2.8456,
-    "status": "active",
+    "status": "not-proceeding",
     "duplicate_refs": [
       "87545469"
     ],
@@ -291,7 +291,7 @@
   {
     "ref": "87890067",
     "name": "Maesycoed, Pontypridd — Detached with Annexe",
-    "rank": 15,
+    "rank": 18,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Pontypridd, South Wales",
@@ -412,7 +412,7 @@
   {
     "ref": "172773251",
     "name": "White Cliff Gardens, Blandford Forum",
-    "rank": 26,
+    "rank": 16,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Blandford Forum, Dorset",
@@ -533,7 +533,7 @@
   {
     "ref": "168359045",
     "name": "Highmead Ave, Newton, Swansea",
-    "rank": 14,
+    "rank": 17,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Newton, Swansea",
@@ -596,9 +596,9 @@
   {
     "ref": "88996269",
     "name": "Newtown Rd, Penperlleni, Monmouthshire",
-    "rank": 24,
-    "price": 430000,
-    "price_display": "£430,000",
+    "rank": 33,
+    "price": 415000,
+    "price_display": "£415,000",
     "location": "Penperlleni, Monmouthshire",
     "cluster": "South Wales",
     "agent": "Peter Alan, Cwmbran",
@@ -659,9 +659,9 @@
   {
     "ref": "87130665",
     "name": "Wraxhill Rd, Yeovil — Det with Annexe",
-    "rank": 28,
-    "price": 450000,
-    "price_display": "£450,000",
+    "rank": 24,
+    "price": 440000,
+    "price_display": "£440,000",
     "location": "Yeovil, Somerset",
     "cluster": "Somerset West",
     "agent": "Nest Associates Ltd",
@@ -732,7 +732,7 @@
   {
     "ref": "172902734",
     "name": "Halfway Close, Trowbridge",
-    "rank": 19,
+    "rank": 22,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Trowbridge, Wiltshire",
@@ -795,7 +795,7 @@
   {
     "ref": "173219645",
     "name": "Allens Rd, Upton, Poole",
-    "rank": 35,
+    "rank": 41,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Upton, Poole",
@@ -979,7 +979,7 @@
   {
     "ref": "174415073",
     "name": "Killara, Piddletrenthide",
-    "rank": 39,
+    "rank": 43,
     "price": 400000,
     "price_display": "£400,000",
     "location": "Piddletrenthide, Dorset",
@@ -1047,7 +1047,7 @@
   {
     "ref": "174472451",
     "name": "Arch View, Tatworth / South Chard",
-    "rank": 17,
+    "rank": 20,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Tatworth, Somerset",
@@ -1115,7 +1115,7 @@
   {
     "ref": "88791255",
     "name": "Park Shaw, Sedlescombe",
-    "rank": 23,
+    "rank": 31,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Sedlescombe, East Sussex",
@@ -1183,9 +1183,9 @@
   {
     "ref": "168243473",
     "name": "Stroud Park Ave, Christchurch — Bungalow",
-    "rank": 20,
-    "price": 450000,
-    "price_display": "£450,000",
+    "rank": 13,
+    "price": 425000,
+    "price_display": "£425,000",
     "location": "Christchurch, Dorset",
     "cluster": "Bournemouth & Christchurch",
     "agent": "Fox & Sons, Bournemouth",
@@ -1236,7 +1236,7 @@
   {
     "ref": "89767338",
     "name": "Bibury Rd, Old Walcot, Swindon",
-    "rank": 22,
+    "rank": 29,
     "price": 440000,
     "price_display": "£440,000",
     "location": "Swindon, Wiltshire",
@@ -1289,7 +1289,7 @@
   {
     "ref": "88156767",
     "name": "Bramble Drive, Chippenham",
-    "rank": 34,
+    "rank": 40,
     "price": 470000,
     "price_display": "£470,000",
     "location": "Chippenham, Wiltshire",
@@ -1302,7 +1302,7 @@
     "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F88156767&propertyId=88156767",
     "lat": 51.4523,
     "lng": -2.1123,
-    "status": "active",
+    "status": "not-proceeding",
     "duplicate_refs": [],
     "full_desc": "Walking Distance to Local Amenities including Tesco, Primary School, and Healthcare Facilities\nPositioned within the sought-after Pewsham residential development, this impressive five-bedroom detached home presents a rare opportunity, featuring a self-contained ground floor annexe alongside a garage and off-road parking.\nThe house offers a welcoming entrance hall, a comfortable living room with a feature fireplace, a downstairs cloakroom, and a well-proportioned kitchen/dining room. The kitchen includes a utility/kitchen area, which also serves the annexe and benefits from its own external access.\nThe annexe itself comprises a living room with direct access to the rear garden, a bedroom, and an en-suite shower room.\nUpstairs, the property features four bedrooms and a family bathroom fitted with a shower over the bath.\nExternally, the front of the property provides driveway parking for two vehicles leading to a single garage. To the rear, there is a private, enclosed garden.\nIdeal for family living, the property is conveniently situated within walking distance of local amenities, including Tesco, a primary school, public house, doctor’s surgery and pharmacy. The town centre and mainline train station are also just a short drive away, making it perfectly suited to modern family life.\nSituation - The property is located within Pewsham residential development which has a local primary school, a mini supermarket, public house, chemist, doctors surgery and Chinese takeaway. Pewsham is only a short distance from the town and all amenities which include a public library and the pleasant Monkton Park with a nine hole golf course and riverside walks and cycleways. There is convenient pedestrian access to the mainline railway station (London Paddington - approx. 75 minutes). The M4 motorway, the A4 and the A420 offer excellent motor commuting to the major centres of Bath, Bristol, Swindon & London. There is a good choice of private schooling and Chippenham also offers excellent secondary schools and primary schools, together with further education at Wiltshire College.\nCOUNCIL TAXA payment made to your local authority in order to pay for local services like schools, libraries, and refuse collection. The amount you pay depends on the value of the property.Read more about council Tax in our glossary page.\nPARKINGDetails of how and where vehicles can be parked, and any associated costs.Read more about parking in our glossary page.\nGARDENA property has access to an outdoor space, which could be private or shared.\nACCESSIBILITYHow a property has been adapted to meet the needs of vulnerable or disabled individuals.Read more about accessibility in our glossary page.\nAdd an important place to see how long it'd take to get there from our property listings.\nThese results are estimates and are only intended as a guide. Make sure you obtain accurate figures from your lender before committing to any mortgage. Your home may be repossessed if you do not keep up repayments on a mortgage.\nOur office in Chippenham is in the heart of the Market Place with windows wrapping around the prominent corner setting and is undoubtedly the most visible agent within the town. This striking setting has contributed to the success enjoyed by Strakers for many years and attracts many buyers through our doors to be welcomed by our experienced and enthusiastic sales team.\nEnsure you're up to date with our latest advice on how to avoid fraud or scams when looking for property online.\nDisclaimer - Property reference 34654579. The information displayed about this property comprises a property advertisement. Rightmove.co.uk makes no warranty as to the accuracy or completeness of the advertisement or any linked or associated information, and Rightmove has no control over the content. This property advertisement does not constitute property particulars. The information is provided and maintained by Strakers, Chippenham. Please contact the selling agent or developer directly to obtain any information which may be available under the terms of The Energy Performance of Buildings (Certificates and Inspections) (England and Wales) Regulations 2007 or the Home Report if in relation to a residential property in Scotland.\n*This is the average speed from the provider with the fastest broadband package available at this postcode. The average speed displayed is based on the download speeds of at least 50% of customers at peak time (8pm to 10pm). Fibre/cable services at the postcode are subject to availability and may differ between properties within a postcode. Speeds can be affected by a range of technical and environmental factors. The speed at the property may be lower than that listed above. You can check the estimated speed and confirm availability to a property prior to purchasing on the broadband provider's website. Providers may increase charges. The information is provided and maintained by Decision Technologies Limited.\n**This is indicative only and based on a 2-person household with multiple devices and simultaneous usage. Broadband performance is affected by multiple factors including number of occupants and devices, simultaneous usage, router range etc. For more information speak to your broadband provider.\nSite map Help Cookies Safety and Security Terms of Use Privacy Policy New updates\nCopyright © 2000-2026 Rightmove Group Limited. All rights reserved. Rightmove prohibits the scraping of its content. You can find further details here.",
     "home_ed": {
@@ -1405,7 +1405,7 @@
   {
     "ref": "89236248",
     "name": "St Thomas Rd, Trowbridge",
-    "rank": 37,
+    "rank": 35,
     "price": 470000,
     "price_display": "£470,000",
     "location": "Trowbridge, Wiltshire",
@@ -1468,7 +1468,7 @@
   {
     "ref": "89784342",
     "name": "Gwyn St, Alltwen, Pontardawe",
-    "rank": 46,
+    "rank": 50,
     "price": 412500,
     "price_display": "£412,500",
     "location": "Pontardawe, South Wales",
@@ -1531,7 +1531,7 @@
   {
     "ref": "89415939",
     "name": "Queens Hill Cres, Newport",
-    "rank": 33,
+    "rank": 39,
     "price": 395000,
     "price_display": "£395,000",
     "location": "Newport, South Wales",
@@ -1594,7 +1594,7 @@
   {
     "ref": "170968559",
     "name": "South Newton, Salisbury — New Chalet",
-    "rank": 16,
+    "rank": 19,
     "price": 425000,
     "price_display": "£425,000",
     "location": "South Newton, Wiltshire",
@@ -1647,7 +1647,7 @@
   {
     "ref": "88318344",
     "name": "Thames Close, Cricklade ⚠ PRC",
-    "rank": 42,
+    "rank": 46,
     "price": 425000,
     "price_display": "£425,000",
     "location": "Cricklade, Wiltshire",
@@ -1695,7 +1695,7 @@
   {
     "ref": "170605958",
     "name": "Brook St, Bampton, Devon",
-    "rank": 38,
+    "rank": 42,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Bampton, Devon",
@@ -1806,7 +1806,7 @@
   {
     "ref": "90125946",
     "name": "Damerham Rd, Throop, Bournemouth",
-    "rank": 43,
+    "rank": 37,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Throop, Bournemouth",
@@ -1859,7 +1859,7 @@
   {
     "ref": "169598735",
     "name": "Hill Rd, Neath Abbey",
-    "rank": 29,
+    "rank": 26,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Neath Abbey, South Wales",
@@ -1922,7 +1922,7 @@
   {
     "ref": "174938813",
     "name": "Willow Way, Liskeard, Cornwall",
-    "rank": 25,
+    "rank": 34,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Liskeard, Cornwall",
@@ -2018,7 +2018,7 @@
   {
     "ref": "88310844",
     "name": "Main Rd, Westonzoyland ⚠ Flood",
-    "rank": 31,
+    "rank": 23,
     "price": 445000,
     "price_display": "£445,000",
     "location": "Westonzoyland, Somerset",
@@ -2071,7 +2071,7 @@
   {
     "ref": "87545469",
     "name": "Chideock DT6 (Duplicate listing)",
-    "rank": 45,
+    "rank": 49,
     "price": 425000,
     "price_display": "£425,000",
     "location": "Chideock, Dorset",
@@ -2141,7 +2141,7 @@
   {
     "ref": "88055244",
     "name": "Victoria Place, Ryde IoW ⚠ Ferry",
-    "rank": 41,
+    "rank": 45,
     "price": 375000,
     "price_display": "£375,000",
     "location": "Ryde, Isle of Wight",
@@ -2189,7 +2189,7 @@
   {
     "ref": "171958844",
     "name": "Queen Bower, Sandown IoW ⚠ Ferry",
-    "rank": 40,
+    "rank": 44,
     "price": 465000,
     "price_display": "£465,000",
     "location": "Queen Bower, Isle of Wight",
@@ -2279,7 +2279,7 @@
       "asd_support": "Welsh Integrated Autism Services (IAS) — legal right to assessment. Withybush Hospital Haverfordwest has paediatric services.",
       "notes": "Wales has stronger legal ASD framework than England. Rural isolation of Narberth area means community travel needed."
     },
-    "rank": 21,
+    "rank": 25,
     "postcode": "SA67 8PD"
   },
   {
@@ -2327,14 +2327,14 @@
       "asd_support": "Welsh IAS model. Glangwili Hospital Carmarthen has paediatric teams. Strong legal framework for ASD support in Wales.",
       "notes": "Remote rural location — community access requires transport. Japanese Knotweed caveat takes priority in assessment."
     },
-    "rank": 27,
+    "rank": 32,
     "postcode": "SA34 0DS"
   },
   {
     "ref": "160507001",
     "name": "Llanpumsaint Farmstead, Carmarthen",
-    "price": 465000,
-    "price_display": "£465,000",
+    "price": 360000,
+    "price_display": "£360,000",
     "location": "Llanpumsaint, Carmarthen, Carmarthenshire",
     "cluster": "West Wales",
     "agent": "Blackbear Estate Agents",
@@ -2375,7 +2375,7 @@
       "asd_support": "Welsh IAS legal framework. Glangwili Hospital Carmarthen 8 miles.",
       "notes": "Project caveat is the primary concern here — home-ed community is secondary until viability is confirmed."
     },
-    "rank": 44,
+    "rank": 47,
     "postcode": "SA33 6JP"
   },
   {
@@ -2481,7 +2481,7 @@
       "asd_support": "Welsh IAS legal framework — stronger than English equivalent. Morriston Hospital 15 min. Swansea NAS branch with community activities.",
       "notes": "Already have 88 Gwyn St Alltwen in tracker — this is number 60, a larger property. Different listing."
     },
-    "rank": 9,
+    "rank": 10,
     "postcode": "SA8 3AN"
   },
   {
@@ -2534,7 +2534,7 @@
       "asd_support": "Wiltshire Autism Hub. BSW Neurodevelopmental Pathway covers Trowbridge. RUH Bath 12 miles with CAMHS.",
       "notes": "Trowbridge itself is functional; Bath proximity lifts the accessible provision considerably. Integrated Care Centre walking distance is a significant plus."
     },
-    "rank": 12,
+    "rank": 14,
     "postcode": "BA14 8EP"
   },
   {
@@ -2587,7 +2587,7 @@
       "asd_support": "Somerset Progressive School (West Hatch, Taunton). Strong neurodiversity awareness in Somerset community. Musgrove Park Hospital CAMHS (Taunton, 14 miles).",
       "notes": "Chard is in the Somerset West home-ed cluster. Yeovil and Taunton groups accessible."
     },
-    "rank": 13,
+    "rank": 15,
     "postcode": "TA20 1NN"
   },
   {
@@ -2635,7 +2635,7 @@
       "asd_support": "Musgrove Park CAMHS (Taunton, ~18 miles). Somerset Progressive School (West Hatch).",
       "notes": "Same cluster as Westonzoyland. Glastonbury accessible (~15 min drive)."
     },
-    "rank": 10,
+    "rank": 12,
     "postcode": "TA7 0AG"
   },
   {
@@ -2690,5 +2690,116 @@
     },
     "rank": 1,
     "postcode": "TA7 9AD"
+  },
+  {
+    "ref": "91019079",
+    "name": "Tollgate Road, Salisbury",
+    "price": 425000,
+    "price_display": "£425,000",
+    "location": "Salisbury, Wiltshire",
+    "postcode": "SP1 1NL",
+    "cluster": "",
+    "agent": "Hamptons, Salisbury",
+    "annexe": "confirmed",
+    "caveat": null,
+    "short_desc": "3-bed 3-storey townhouse with detached 1-bed annexe. REJECTED — 3-storey doesn't suit mobility needs, no parking (permit only), city centre location doesn't fit lifestyle brief.",
+    "full_desc": "",
+    "status": "rejected",
+    "lat": 51.0682,
+    "lng": -1.7958,
+    "rightmove_url": "https://www.rightmove.co.uk/properties/91019079",
+    "contact_url": "",
+    "duplicate_refs": [],
+    "rank": 48
+  },
+  {
+    "ref": "91082217",
+    "name": "Wimborne Road, Bournemouth",
+    "price": 425000,
+    "price_display": "£425,000",
+    "location": "Bournemouth, Dorset",
+    "postcode": "BH11 9AU",
+    "cluster": "Bournemouth & Christchurch",
+    "agent": "Corbin & Co, Bournemouth",
+    "annexe": "potential",
+    "caveat": null,
+    "short_desc": "1800s character semi-detached, 3 bed, large corner plot. Detached brick garage with power/lighting — excellent annexe conversion potential STPP. Two wood-burning stoves, modernised kitchen and bathroom. Corbin & Co 01202 786700.",
+    "full_desc": "",
+    "status": "active",
+    "lat": 50.7591,
+    "lng": -1.8892,
+    "rightmove_url": "https://www.rightmove.co.uk/properties/91082217",
+    "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F91082217&propertyId=91082217",
+    "duplicate_refs": [],
+    "rank": 28,
+    "journeys": {
+      "london_car_mins": 115,
+      "london_rail_mins": 105,
+      "coast_car_mins": 5,
+      "coast_name": "Bournemouth Beach",
+      "hospital_car_mins": 8,
+      "hospital_name": "Royal Bournemouth Hospital",
+      "nearest_town": "Bournemouth (2mi)"
+    }
+  },
+  {
+    "ref": "90246999",
+    "name": "Ashley Road, Poole",
+    "price": 450000,
+    "price_display": "£450,000",
+    "location": "Poole, Dorset",
+    "postcode": "BH14 0AA",
+    "cluster": "Bournemouth & Christchurch",
+    "agent": "Greys Estate and Letting Agents, Poole",
+    "annexe": "confirmed",
+    "caveat": null,
+    "short_desc": "4-bed detached, £450k, no forward chain. Confirmed separate annexe/former office to rear (7m×3m). Two ground floor bedrooms in main house. Open-plan first floor lounge/kitchen. Loft room. Conservatory. South-facing garden. Greys Estate Agents 01202 710001.",
+    "full_desc": "4 bedroom detached house with confirmed separate annexe to rear (7m approx × 3m approx = 21m²). NO FORWARD CHAIN. Ground floor: hall, lounge 4.5×3.7m, kitchen 4.1×3.8m, shower/toilet, 2 ground floor bedrooms (2.8×2.4m and 4.7×3.5m), en-suite, conservatory. First floor: open plan lounge/kitchen 8.8×5m, bedroom 4.7×3.5m, balcony, bathroom, loft room 4.4×2.7m. Annexe/former office 7m×3m, side covered storage 5.8×2.1m. Ample parking.",
+    "status": "active",
+    "lat": 50.7268,
+    "lng": -1.9238,
+    "rightmove_url": "https://www.rightmove.co.uk/properties/90246999",
+    "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F90246999&propertyId=90246999",
+    "duplicate_refs": [],
+    "rank": 8,
+    "journeys": {
+      "london_car_mins": 115,
+      "london_rail_mins": 105,
+      "coast_car_mins": 4,
+      "coast_name": "Sandbanks / Poole Beach",
+      "hospital_car_mins": 10,
+      "hospital_name": "Poole Hospital",
+      "nearest_town": "Poole town centre (1.5mi)"
+    }
+  },
+  {
+    "ref": "168485171",
+    "name": "Broadlay, Ferryside",
+    "price": 450000,
+    "price_display": "£450,000 (offers in region of)",
+    "location": "Ferryside, Carmarthenshire",
+    "postcode": "SA17 5TQ",
+    "cluster": "South Wales",
+    "agent": "Yopa",
+    "annexe": "potential",
+    "caveat": "flood-check",
+    "short_desc": "Beautifully converted 4-bed former mill with outbuilding annexe (34m² living area + shower room). Underfloor heating. ½ mile from beach and train station. Carmarthen 10mi. Offers in region of £450k. Yopa.",
+    "full_desc": "Broadlay, Ferryside SA17. Converted former mill. Ground floor: lounge 7.2×4.2m, kitchen/dining 9.45×4.46m, utility, main bedroom 6.6×4.9m + en-suite, 4th bedroom/living room 4.8×3.4m. First floor: mezzanine/balcony 9.45×2.26m, bedroom 2 5.1×4.3m, bedroom 3 4.4×3.6m, Jack & Jill bathroom. Outbuilding: garage/workshop 9.57×6.31m (UFH, ripe for conversion), living area 7.33×4.7m, shower room 4.7×2.0m. UFH throughout. Ample parking. ½ mile from Ferryside beach and train station. Carmarthen ~10mi, Llanelli ~15mi.",
+    "status": "active",
+    "lat": 51.7423,
+    "lng": -4.3512,
+    "rightmove_url": "https://www.rightmove.co.uk/properties/168485171",
+    "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F168485171&propertyId=168485171",
+    "duplicate_refs": [],
+    "rank": 27,
+    "journeys": {
+      "london_car_mins": 225,
+      "london_rail_mins": 180,
+      "coast_car_mins": 1,
+      "coast_name": "Ferryside Beach (0.5mi)",
+      "hospital_car_mins": 25,
+      "hospital_name": "Glangwili Hospital, Carmarthen",
+      "nearest_town": "Carmarthen 10mi, Llanelli 15mi"
+    }
   }
 ]
