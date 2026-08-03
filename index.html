@@ -1740,9 +1740,12 @@ function renderDetail(p) {
         const needsExpand = fullDesc.length > (short.length + 20);
         if (!needsExpand) return `<div class="detail-desc">${full||'—'}</div>`;
         const gated = !getToken();
+        const descOnclick = gated
+          ? "showToast('Add a GitHub token to view full descriptions','warning')"
+          : ("toggleDesc('" + p.ref + "')"  );
         return `<div class="detail-desc" id="desc-short-${p.ref}">${esc(short)}</div>
           <div class="detail-desc" id="desc-full-${p.ref}" style="display:none">${gated ? '' : fullDesc.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>')}</div>
-          <button onclick="${gated ? \"showToast('Add a GitHub token to view full descriptions','warning')\" : \"toggleDesc('"+p.ref+"')\"}" id="desc-toggle-${p.ref}"
+          <button onclick="${descOnclick}" id="desc-toggle-${p.ref}"
             style="margin-top:6px;background:none;border:none;color:var(--color-primary);
             font-size:12px;cursor:pointer;padding:0;font-weight:600">
             ${gated ? '🔒 Sign in to view full description' : '▼ Show full description'}
