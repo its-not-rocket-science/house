@@ -1088,12 +1088,12 @@ async function init() {
   renderSkeletonList();
   await loadManifest();
   loadClusters();
-  try { const sc = await fetch('data/scorecards.json'); scorecards = await sc.json(); } catch(e) {}
-  try { const vr = await fetch('data/votes.json'); votes = await vr.json(); } catch(e) { votes = {}; }
+  try { const sc = await fetch('data/scorecards.json'); const scb = await sc.arrayBuffer(); scorecards = JSON.parse(new TextDecoder('utf-8').decode(scb)); } catch(e) {}
+  try { const vr = await fetch('data/votes.json'); const vrb = await vr.arrayBuffer(); votes = JSON.parse(new TextDecoder('utf-8').decode(vrb)); } catch(e) { votes = {}; }
   try {
     const r = await fetch('data/properties.json');
     if (!r.ok) throw new Error('HTTP '+r.status);
-    properties = await r.json();
+    const rb = await r.arrayBuffer(); properties = JSON.parse(new TextDecoder('utf-8').decode(rb));
   } catch (e) {
     document.getElementById('load-error')?.classList.add('show');
     return;
@@ -2668,12 +2668,12 @@ async function deleteProperty(ref) {
 // ── NOTES ─────────────────────────────────────────────────────────────────────
 async function loadNotes() {
   let staticOk = false, githubOk = false, localOk = false;
-  try { const sr = await fetch('data/notes.json'); if (sr.ok) { staticNotesSnapshot = await sr.json(); staticOk = true; } } catch(e) {}
+  try { const sr = await fetch('data/notes.json'); if (sr.ok) { const srb = await sr.arrayBuffer(); staticNotesSnapshot = JSON.parse(new TextDecoder('utf-8').decode(srb)); staticOk = true; } } catch(e) {}
   const token=getToken();
   if(token) {
     try {
       const r=await ghGet(NOTES_PATH);
-      if(r.ok){const d=await r.json();notes=JSON.parse(atob(d.content));githubOk=true;checkUnsavedChanges();return;}
+      if(r.ok){const d=await r.json();notes=JSON.parse(new TextDecoder('utf-8').decode(Uint8Array.from(atob(d.content),c=>c.charCodeAt(0))));githubOk=true;checkUnsavedChanges();return;}
     } catch(e){}
   }
   const local=localStorage.getItem('house_notes');
@@ -2791,7 +2791,7 @@ async function pushNotesFile(message) {
       const cur = await ghGet(NOTES_PATH);
       if (cur.ok) {
         const curData = await cur.json();
-        const remote = JSON.parse(atob(curData.content));
+        const remote = JSON.parse(new TextDecoder('utf-8').decode(Uint8Array.from(atob(curData.content),c=>c.charCodeAt(0))));
         // Merge: for each section, remote is base, our in-memory changes override
         Object.keys(remote).forEach(section => {
           if (remote[section] && typeof remote[section]==='object' && !Array.isArray(remote[section])) {
