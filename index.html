@@ -3888,7 +3888,7 @@ function cleanText(str) {
       .replace(/Ã¢ÃÂÃÂ¦/g, '…')  // ellipsis
       .replace(/ÃÂ¢ÃÂÃÂ¦/g, '…')
       .replace(/ÃÂ°ÃÂÃÂ¤ÃÂ©/g, '🤩') // emoji
-      .replace(/(?:Ã[^\s"<>\]{0,4}){2,}/g, '—'); // catch-all
+      ; // (catch-all removed — specific patterns above handle known mojibake)
   } catch(e) { return str; }
 }
 
