@@ -129,7 +129,7 @@
   },
   "89061840": {
     "ref": "89061840",
-    "overall_pct": 76,
+    "overall_pct": 75,
     "scores": [
       {
         "cat": "Annexe",
@@ -198,14 +198,14 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast 1800Mb↓/220Mb↑ confirmed (Openreach) ✓",
+        "note": "Ultrafast 1800Mb down / 220Mb up (TA20 3HG) ✓",
         "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
-        "score": 3,
-        "note": "No flood risk indicators",
+        "score": 2,
+        "note": "Flood risk not yet checked for TA20 3HG - check EA map",
         "resolved": true
       },
       {
@@ -531,7 +531,7 @@
   },
   "87890067": {
     "ref": "87890067",
-    "overall_pct": 55,
+    "overall_pct": 62,
     "scores": [
       {
         "cat": "Annexe",
@@ -599,9 +599,9 @@
       {
         "cat": "Connectivity",
         "label": "Broadband",
-        "score": 0,
-        "note": "Broadband speed not confirmed",
-        "resolved": false
+        "score": 3,
+        "note": "Ultrafast available (CF37 Pontypridd) ✓",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -714,14 +714,14 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast 1000Mb↓/1000Mb↑ confirmed ✓",
+        "note": "Ultrafast 1000Mb down/up (DT11 0NQ) ✓",
         "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
         "score": 3,
-        "note": "No flood risk indicators",
+        "note": "Very low - DT11 0NQ ✓",
         "resolved": true
       },
       {
@@ -849,14 +849,14 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast 1800Mb↓/1000Mb↑ confirmed ✓",
+        "note": "Ultrafast 1800Mb down / 1000Mb up (DT11 7BU) ✓",
         "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
         "score": 3,
-        "note": "Flood risk very low (now and future) ✓",
+        "note": "Very low - DT11 7BU ✓",
         "resolved": true
       },
       {
@@ -979,14 +979,14 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast 1130Mb↓/104Mb↑ confirmed ✓",
+        "note": "Ultrafast 1130Mb down / 104Mb up (NP4 8PH) ✓",
         "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
         "score": 3,
-        "note": "No flood risk indicators",
+        "note": "Very low - urban Pontypool NP4 ✓",
         "resolved": true
       },
       {
@@ -1116,7 +1116,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Full fibre (FTTP) via Sky confirmed ✓",
+        "note": "Full fibre via Sky confirmed (SA3 4TY) ✓",
         "resolved": true
       },
       {
@@ -1246,7 +1246,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "NP4 0BG — broadband lookup shows Highfield, not Newtown Road. Verify correct postcode — may be adjacent postcode.",
+        "note": "Postcode NP4 0BG may be wrong - shows Highfield not Newtown Rd; verify",
         "resolved": false
       },
       {
@@ -1377,14 +1377,14 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast 1800Mb↓/1000Mb↑ confirmed ✓",
+        "note": "Ultrafast 1800Mb down / 1000Mb up (BA22 8RR) ✓",
         "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
         "score": 3,
-        "note": "No flood risk indicators",
+        "note": "Very low - BA22 8RR Yeovil ✓",
         "resolved": true
       },
       {
@@ -1508,14 +1508,14 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast/full fibre confirmed",
+        "note": "Ultrafast full fibre confirmed (BA14 0XZ) ✓",
         "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
         "score": 3,
-        "note": "No flood risk indicators",
+        "note": "Very low - BA14 0XZ Trowbridge ✓",
         "resolved": true
       },
       {
@@ -1556,7 +1556,6 @@
     ],
     "questions": [
       "Has the annexe got planning permission and building control approval?",
-      "What broadband speeds are available at BA14 0XZ?",
       "Does the annexe have its own completely separate external entrance?",
       "Is the annexe shower a level-access wet room?",
       "Is there full smoke/air separation between the annexe and the main house?",
@@ -1693,7 +1692,7 @@
   },
   "88185459": {
     "ref": "88185459",
-    "overall_pct": 93,
+    "overall_pct": 90,
     "scores": [
       {
         "cat": "Annexe",
@@ -1748,14 +1747,14 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast 1800Mb↓/220Mb↑ confirmed (Openreach) ✓",
+        "note": "Ultrafast 1800Mb down / 220Mb up (SA6 5QL) ✓",
         "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
-        "score": 3,
-        "note": "No flood risk indicators",
+        "score": 2,
+        "note": "Flood risk not checked for SA6 5QL",
         "resolved": true
       },
       {
@@ -1810,7 +1809,7 @@
   },
   "89701968": {
     "ref": "89701968",
-    "overall_pct": 48,
+    "overall_pct": 46,
     "scores": [
       {
         "cat": "Annexe",
@@ -1879,14 +1878,14 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast 1000Mb↓/1000Mb↑ confirmed ✓",
+        "note": "Ultrafast 1000Mb down/up (DT6 3SA) ✓",
         "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
-        "score": 3,
-        "note": "No flood risk indicators",
+        "score": 2,
+        "note": "Flood risk not yet checked for DT6 3SA Loders/Bridport",
         "resolved": true
       },
       {
@@ -2128,7 +2127,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast 1000Mb down / 220Mb up (Openreach confirmed) ✓",
+        "note": "Ultrafast 1000Mb down / 220Mb up (TA20 2NF) ✓",
         "resolved": true
       },
       {
@@ -2176,7 +2175,6 @@
     ],
     "questions": [
       "What is the flood risk?",
-      "What broadband speeds are available at TA20 2NF?",
       "Does the annexe have its own completely separate external entrance?",
       "Is the annexe shower a level-access wet room?",
       "Is there full smoke/air separation between the annexe and the main house?",
@@ -2376,14 +2374,14 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast 5500Mb confirmed ✓",
+        "note": "Ultrafast 5500Mb down/up (BH23 2NA) ✓",
         "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
         "score": 3,
-        "note": "No flood risk indicators",
+        "note": "Very low - BH23 2NA Christchurch ✓",
         "resolved": true
       },
       {
@@ -2757,14 +2755,14 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast 5500Mb confirmed ✓",
+        "note": "Ultrafast 5500Mb down/up (SN12 6JR) ✓",
         "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
         "score": 3,
-        "note": "Suburban estate — no flood risk indicators",
+        "note": "Very low - urban Melksham SN12 ✓",
         "resolved": true
       },
       {
@@ -2872,7 +2870,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast 1800Mb↓/220Mb↑ confirmed ✓",
+        "note": "Ultrafast 1800Mb down / 220Mb up (BA14 8SP) ✓",
         "resolved": true
       },
       {
@@ -3089,7 +3087,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed",
+        "note": "No Ofcom data available for NP20 3QH",
         "resolved": false
       },
       {
@@ -3341,7 +3339,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "Broadband speed not confirmed",
+        "note": "Not yet checked - SN6 6AU",
         "resolved": false
       },
       {
@@ -3466,7 +3464,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "EX16 9LJ — broadband lookup returns Tiverton Road, not Brook Street. Postcode may be approximate — verify with agent.",
+        "note": "Postcode EX16 9LJ may be wrong - verify with agent",
         "resolved": false
       },
       {
@@ -3591,14 +3589,14 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast 5000Mb confirmed ✓",
+        "note": "Ultrafast 5000Mb down/up (BH9 3NQ) ✓",
         "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
         "score": 3,
-        "note": "No flood risk indicators",
+        "note": "Very low - urban Bournemouth BH9 ✓",
         "resolved": true
       },
       {
@@ -3715,14 +3713,14 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast 5500Mb confirmed ✓",
+        "note": "Ultrafast 5500Mb down/up (BH8 9PQ) ✓",
         "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
         "score": 3,
-        "note": "Flood risk very low ✓",
+        "note": "Very low - BH8 9PQ ✓",
         "resolved": true
       },
       {
@@ -3841,14 +3839,14 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast 1800Mb↓/220Mb↑ confirmed ✓",
+        "note": "Ultrafast 1800Mb down / 220Mb up (SA10 7DT) ✓",
         "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
         "score": 3,
-        "note": "No flood risk indicators",
+        "note": "Very low - SA10 7DT Neath Abbey ✓",
         "resolved": true
       },
       {
@@ -4081,14 +4079,14 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast 1000Mb↓/1000Mb↑ confirmed ✓",
+        "note": "Ultrafast 1000Mb down/up (TA7 9AD) ✓",
         "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
         "score": 0,
-        "note": "Somerset Levels — check EA flood risk maps before viewing",
+        "note": "NOT CHECKED - TA7 9AD Catcott, Somerset Levels - check EA map urgently",
         "resolved": false
       },
       {
@@ -4222,14 +4220,14 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast 330Mb↓/50Mb↑ confirmed ✓",
+        "note": "Ultrafast 330Mb down / 50Mb up (TA7 0EB) ✓",
         "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
         "score": 3,
-        "note": "Flood risk very low (now and future) at TA7 0EB ✓",
+        "note": "Very low - TA7 0EB Westonzoyland ✓",
         "resolved": true
       },
       {
@@ -4743,8 +4741,7 @@
       "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?",
       "The annexe is listed as Bedroom 5 with its own entrance — does it have a kitchen or kitchenette, or just a bedroom and en-suite?",
       "Is the annexe on a single ground floor level with no internal stairs?",
-      "What is the heating for the annexe — same oil system as the main house, or its own independent heating?",
-      "What broadband speeds are available at SA67 — is full fibre available?"
+      "What is the heating for the annexe — same oil system as the main house, or its own independent heating?"
     ],
     "red_flags": [
       "Oil heating — budget £10k–18k net for ASHP after £7,500 BUS grant"
@@ -4821,7 +4818,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 1,
-        "note": "Basic 7Mb↓ 0.8Mb↑",
+        "note": "Basic only 7Mb down / 0.8Mb up (SA34 0DS)",
         "resolved": true
       },
       {
@@ -4935,7 +4932,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast 1800Mb↓/220Mb↑ confirmed ✓",
+        "note": "Ultrafast 1800Mb down / 220Mb up (SA33 6JP) ✓",
         "resolved": true
       },
       {
@@ -5069,14 +5066,14 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast confirmed (Ofcom) — 1800 Mbps download / 1000 Mbps upload ✓ Exceptional",
+        "note": "Ultrafast 1800Mb down / 1000Mb up (TA1 4AJ) ✓",
         "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
         "score": 3,
-        "note": "No flood risk indicators",
+        "note": "Very low - urban Taunton TA1 ✓",
         "resolved": true
       },
       {
@@ -5184,14 +5181,14 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Full fibre FTTP 910Mb confirmed (Vodafone/EE/BT/Plusnet available) ✓",
+        "note": "Full fibre FTTP 910Mb (SA8 3AN) ✓",
         "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
         "score": 3,
-        "note": "No flood risk indicators",
+        "note": "Very low - SA8 3AN hillside ✓",
         "resolved": true
       },
       {
@@ -5316,7 +5313,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 0,
-        "note": "BA14 8EP — postcode not found on Ofcom or uswitch. Verify correct postcode with agent.",
+        "note": "Postcode BA14 8EP not found on Ofcom - verify with agent",
         "resolved": false
       },
       {
@@ -5448,14 +5445,14 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast 1000Mb↓/220Mb↑ confirmed (Openreach) ✓",
+        "note": "Ultrafast 1000Mb down / 220Mb up (TA20 1NN) ✓",
         "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
         "score": 3,
-        "note": "Never flooded, <0.1% risk confirmed ✓",
+        "note": "Very low - TA20 1NN Chard ✓",
         "resolved": true
       },
       {
@@ -5594,8 +5591,8 @@
         "cat": "Risk",
         "label": "Flood risk",
         "score": 1,
-        "note": "Flood risk LOW now but MEDIUM 2036–2069 at TA7 0AG",
-        "resolved": false
+        "note": "Low now / MEDIUM 2036-2069 (TA7 0AG)",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -5629,7 +5626,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 1,
-        "note": "Basic only — 6Mb↓/1Mb↑. No superfast or ultrafast available at TA7 0AG.",
+        "note": "Basic only 6Mb down / 1Mb up (TA7 0AG) - no superfast available",
         "resolved": true
       }
     ],
@@ -5734,7 +5731,7 @@
         "cat": "Risk",
         "label": "Flood risk",
         "score": 3,
-        "note": "Very low flood risk confirmed — surface water, rivers/sea, groundwater all very low ✓",
+        "note": "Very low flood risk (TA7 9AD - Polden Hills) ✓",
         "resolved": true
       },
       {
@@ -5769,7 +5766,7 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast 1000Mb↓/1000Mb↑ confirmed ✓",
+        "note": "Ultrafast 1000Mb down/up (TA7 9AD) ✓",
         "resolved": true
       }
     ],
@@ -5980,7 +5977,7 @@
         "cat": "Risk",
         "label": "Flood risk",
         "score": 3,
-        "note": "No flood risk (urban BH14) ✓",
+        "note": "Very low - urban Poole BH14 ✓",
         "resolved": true
       },
       {
@@ -6103,8 +6100,8 @@
         "cat": "Risk",
         "label": "Flood risk",
         "score": 1,
-        "note": "SA17 Ferryside — estuarial location, check flood risk (caveat applies)",
-        "resolved": false
+        "note": "Uncertain - SA17 5TQ estuarial Ferryside - check EA map",
+        "resolved": true
       },
       {
         "cat": "Risk",

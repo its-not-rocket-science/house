@@ -291,7 +291,7 @@
   {
     "ref": "87890067",
     "name": "Maesycoed, Pontypridd — Detached with Annexe",
-    "rank": 19,
+    "rank": 14,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Pontypridd, South Wales",
@@ -412,7 +412,7 @@
   {
     "ref": "172773251",
     "name": "White Cliff Gardens, Blandford Forum",
-    "rank": 17,
+    "rank": 18,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Blandford Forum, Dorset",
@@ -533,7 +533,7 @@
   {
     "ref": "168359045",
     "name": "Highmead Ave, Newton, Swansea",
-    "rank": 18,
+    "rank": 19,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Newton, Swansea",
@@ -848,7 +848,7 @@
   {
     "ref": "88185459",
     "name": "Pantygyfelia Farm, Bonymaen, Swansea",
-    "rank": 2,
+    "rank": 3,
     "price": 450000,
     "price_display": "£450,000",
     "location": "Bonymaen, Swansea",
@@ -911,7 +911,7 @@
   {
     "ref": "89701968",
     "name": "Loders, Bridport — Det Character",
-    "rank": 31,
+    "rank": 33,
     "price": 470000,
     "price_display": "£470,000",
     "location": "Loders, Dorset",
@@ -1115,7 +1115,7 @@
   {
     "ref": "88791255",
     "name": "Park Shaw, Sedlescombe",
-    "rank": 32,
+    "rank": 31,
     "price": 475000,
     "price_display": "£475,000",
     "location": "Sedlescombe, East Sussex",
@@ -1183,7 +1183,7 @@
   {
     "ref": "168243473",
     "name": "Stroud Park Ave, Christchurch — Bungalow",
-    "rank": 14,
+    "rank": 15,
     "price": 425000,
     "price_display": "£425,000",
     "location": "Christchurch, Dorset",
@@ -1753,7 +1753,7 @@
   {
     "ref": "166496951",
     "name": "Plassey Cres, Bournemouth — Chalet Bungalow",
-    "rank": 3,
+    "rank": 2,
     "price": 390000,
     "price_display": "£390,000",
     "location": "Bournemouth",
@@ -2327,7 +2327,7 @@
       "asd_support": "Welsh IAS model. Glangwili Hospital Carmarthen has paediatric teams. Strong legal framework for ASD support in Wales.",
       "notes": "Remote rural location — community access requires transport. Japanese Knotweed caveat takes priority in assessment."
     },
-    "rank": 33,
+    "rank": 32,
     "postcode": "SA34 0DS"
   },
   {
@@ -2534,7 +2534,7 @@
       "asd_support": "Wiltshire Autism Hub. BSW Neurodevelopmental Pathway covers Trowbridge. RUH Bath 12 miles with CAMHS.",
       "notes": "Trowbridge itself is functional; Bath proximity lifts the accessible provision considerably. Integrated Care Centre walking distance is a significant plus."
     },
-    "rank": 15,
+    "rank": 16,
     "postcode": "BA14 8EP"
   },
   {
@@ -2587,7 +2587,7 @@
       "asd_support": "Somerset Progressive School (West Hatch, Taunton). Strong neurodiversity awareness in Somerset community. Musgrove Park Hospital CAMHS (Taunton, 14 miles).",
       "notes": "Chard is in the Somerset West home-ed cluster. Yeovil and Taunton groups accessible."
     },
-    "rank": 16,
+    "rank": 17,
     "postcode": "TA20 1NN"
   },
   {

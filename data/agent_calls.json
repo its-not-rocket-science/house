@@ -270,7 +270,6 @@
     "callStatus": "",
     "questions": [
       "What is the flood risk?",
-      "What broadband speeds are available at TA20 2NF?",
       "Does the annexe have its own completely separate external entrance?",
       "Is the annexe shower a level-access wet room?",
       "Is there full smoke/air separation between the annexe and the main house?",
@@ -322,7 +321,6 @@
     "callStatus": "need-to-call",
     "questions": [
       "Has the annexe got planning permission and building control approval?",
-      "What broadband speeds are available at BA14 0XZ?",
       "Does the annexe have its own completely separate external entrance?",
       "Is the annexe shower a level-access wet room?",
       "Is there full smoke/air separation between the annexe and the main house?",
@@ -405,8 +403,7 @@
       "Is there an onward chain on the vendor's side? If yes, have they found a property to buy — and if so, could they be flexible on timing (e.g. move into rented temporarily to speed up the sale)?",
       "The annexe is listed as Bedroom 5 with its own entrance — does it have a kitchen or kitchenette, or just a bedroom and en-suite?",
       "Is the annexe on a single ground floor level with no internal stairs?",
-      "What is the heating for the annexe — same oil system as the main house, or its own independent heating?",
-      "What broadband speeds are available at SA67 — is full fibre available?"
+      "What is the heating for the annexe — same oil system as the main house, or its own independent heating?"
     ],
     "flags": "",
     "annexe": "potential",
