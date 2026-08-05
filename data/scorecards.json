@@ -129,21 +129,21 @@
   },
   "89061840": {
     "ref": "89061840",
-    "overall_pct": 75,
+    "overall_pct": 69,
     "scores": [
       {
         "cat": "Annexe",
         "label": "Independent entrance",
         "score": 3,
-        "note": "Confirmed independent entrance ✓",
+        "note": "Own main front door confirmed. Annexe 50 yards from main house. ✓",
         "resolved": true
       },
       {
         "cat": "Annexe",
         "label": "Shower / wetroom",
-        "score": 3,
-        "note": "Confirmed: walk-in mains shower in annexe (from original listing description)",
-        "resolved": true
+        "score": 2,
+        "note": "Large shower cubicle confirmed — no bath. No step mentioned. Confirm level access at viewing.",
+        "resolved": false
       },
       {
         "cat": "Annexe",
@@ -163,14 +163,14 @@
         "cat": "Smoke separation",
         "label": "Physical separation",
         "score": 3,
-        "note": "Detached annexe — excellent smoke separation",
+        "note": "Annexe is a good 50 yards from main house — full smoke/air separation ✓",
         "resolved": true
       },
       {
         "cat": "Mobility",
         "label": "Ground floor bedroom",
-        "score": 1,
-        "note": "Not confirmed — check annexe layout",
+        "score": 2,
+        "note": "Annexe is 50 yards from main house — single storey assumed. Confirm all rooms ground floor at viewing.",
         "resolved": false
       },
       {
@@ -183,15 +183,15 @@
       {
         "cat": "Heating",
         "label": "Fuel type",
-        "score": 3,
-        "note": "Confirmed: oil boiler (Worcester) to main house only; annexe has independent LPG CH — ideal separation",
+        "score": 2,
+        "note": "Annexe: independent LPG central heating (Worcester boiler) ✓. Main house: oil-fired heating + two multi-fuel burners. Separate systems confirmed.",
         "resolved": true
       },
       {
         "cat": "Drainage",
         "label": "Drainage type",
-        "score": 3,
-        "note": "Confirmed: traditional septic tank to soakaway (not watercourse) — 2020 GBR do not apply; emptied 2 weeks ago; compliant",
+        "score": 1,
+        "note": "Septic tank — emptied 2 weeks ago. Vendor says compliant as not near any watercourse. Traditional septic tank (not sewage treatment plant). Check GBR compliance formally pre-exchange.",
         "resolved": true
       },
       {
@@ -253,15 +253,20 @@
     ],
     "questions": [
       "Can we arrange a Zoom/video viewing before travelling from London?",
-      "What are the approximate annual LPG heating costs for the annexe?",
-      "Is the annexe shower a level-access wet room?",
-      "Are all annexe rooms on a single ground floor level?",
-      "The building control indemnity — can this be a pre-exchange condition?",
-      "Is there an onward chain?"
+      "The annexe shower cubicle — is there a step or lip to enter, or is it fully level access (flush with the floor)?",
+      "Are all rooms in the annexe on a single ground floor level — no internal stairs to any habitable room?",
+      "Could you provide approximate annual costs for the LPG and oil heating separately?",
+      "The building control indemnity — we would need this to be confirmed as a condition before exchange of contracts, not something arranged after survey at the vendor's discretion. Is that acceptable to the sellers?",
+      "Has the septic tank been formally assessed as compliant with the 2020 Environment Agency General Binding Rules? Do you have any documentation?",
+      "Is there an onward chain on the vendor's side?"
     ],
     "red_flags": [
-      "LPG annexe heating — confirm annual cost; budget for ASHP upgrade",
-      "BC indemnity must be confirmed as pre-exchange condition"
+      "Septic tank — traditional type. Vendor says compliant (not near watercourse), but formal GBR compliance assessment needed pre-exchange. If non-compliant, upgrade cost ~£5,000-15,000.",
+      "Building control indemnity: vendor's solicitor will obtain 'after survey if needed' — must be made a pre-exchange condition, not post-survey discretion.",
+      "Shower cubicle — confirm no step/lip at viewing. Large cubicle but level access not explicitly confirmed.",
+      "No vehicular access to paddock — access on foot only.",
+      "LPG and oil heating — annual costs not provided. Ask for bills.",
+      "A303 proximity — road noise not noticeable inside with 22-inch walls, but garden noise with windows open. Worth assessing in person."
     ]
   },
   "89444523": {
@@ -1794,17 +1799,28 @@
       }
     ],
     "questions": [
-      "Can we arrange a Zoom/video viewing before travelling from London?",
-      "Is there a written legal agreement (easement/deed) for the neighbour water/sewage connection that transfers with the sale?",
-      "Is the seller open to rerouting the water/sewage direct (£3k) before exchange, or reducing the price?",
-      "Is there a separate consumer unit in the gym, and what is the supply capacity?",
-      "Is there level/ramped access from the main house to the gym — no steps?",
-      "What are the gym internal dimensions?"
+      "Can you start by walking us around the property on video — starting with the main farmhouse, then the gym/annexe building?",
+      "The gym — does it currently have any water supply or waste pipe running to it, or is it completely dry? This is the most important factor in conversion cost and complexity.",
+      "Could you show us the gym interior on camera — we want to see the construction (brick/block or timber frame), insulation, the floor surface, ceiling height, and any existing electrical infrastructure?",
+      "Is there a sub-board or fuse board inside the gym, and what is the rated supply capacity — enough to run an electric shower and kitchen appliances simultaneously?",
+      "The water and sewage connection currently runs via the neighbour's property — is there a written legal agreement (easement or deed) that formalises this arrangement and will transfer with the sale? If not, is the seller open to rerouting the supply direct (£3,000 quoted) before exchange, or reducing the price by that amount?",
+      "Is there level or ramped access from the main farmhouse to the gym with no steps — suitable for a person using a walking frame?",
+      "Can you show us the access route from the front door to the gym on camera?",
+      "Is there any internal connecting door between the gym and the main house, or is it a completely separate structure with no internal connection?",
+      "The listing mentions solar panels and a heat pump — can you confirm both are installed and working? Does the heat pump circuit extend to the gym, or only to the main house?",
+      "What is the approximate annual energy cost for the main house under the current system?",
+      "Has any planning advice been sought from Swansea Council regarding converting the gym to a self-contained granny annexe? The agent mentioned no planning permission is required — can you confirm the basis for that, and whether a Certificate of Lawful Use has been or could be obtained?",
+      "Can you walk us through the ground floor of the main house — we need to understand which rooms are on the ground floor and whether any could serve as a ground floor bedroom for an elderly relative?",
+      "Are there any ground floor bathrooms or shower rooms in the main house?",
+      "We are very interested and would like to arrange an in-person viewing as a next step. What dates work for the vendor?",
+      "What is the vendor's position on price — is there flexibility below the £450,000 asking price, particularly given the conversion costs we would need to factor in?"
     ],
     "red_flags": [
-      "Water/sewage via neighbour's property — must have written legal easement transferring with sale before exchange",
-      "No shower or kitchen in gym yet — plumbing available, fit-out cost estimated £22–42k",
-      "Planning confirmation recommended — agent says not required but solicitor should verify"
+      "Water/sewage via neighbour's property — must have written legal easement transferring with sale. If not in place, budget £3,000 to reroute direct.",
+      "No shower or kitchen in gym yet — plumbing feasibility depends on whether water supply runs inside the building. Conversion cost estimate £22,000-42,000.",
+      "Gym heating unknown — if heat pump does not extend to gym, budget for air-to-air unit (£2,000-4,000 installed).",
+      "Planning confirmation recommended — agent says not required, but solicitor should verify via Swansea planning portal before exchange.",
+      "Broadband: 1800Mb down / 220Mb up confirmed (Openreach, SA6 5QL) ✓"
     ]
   },
   "89701968": {
