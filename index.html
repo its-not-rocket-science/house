@@ -1071,15 +1071,15 @@ async function loadManifest() {
 
 function localPhotos(ref) {
   const entry = imageManifest[ref];
-  if (entry && entry.photos && entry.photos.length)
-    return entry.photos.map(p => p.startsWith('http') ? p : p);
+  if (!entry || entry._needs_scraping) return [];
+  if (entry.photos && entry.photos.length) return entry.photos;
   return [];
 }
 
 function localFloorplans(ref) {
   const entry = imageManifest[ref];
-  if (entry && entry.floorplans && entry.floorplans.length)
-    return entry.floorplans.map(p => p.startsWith('http') ? p : p);
+  if (!entry || entry._needs_scraping) return [];
+  if (entry.floorplans && entry.floorplans.length) return entry.floorplans;
   return [];
 }
 
@@ -1573,14 +1573,26 @@ function selectProp(ref) {
   if(!p) return;
   document.querySelectorAll('.prop-card').forEach(c=>
     c.classList.toggle('selected',c.dataset.ref===ref));
-  if(markers[ref]) {
-    map.panTo([p.lat,p.lng]);
-    if (clusterGroup.hasLayer(markers[ref])) clusterGroup.zoomToShowLayer(markers[ref], () => markers[ref].openPopup());
-    else markers[ref].openPopup();
-  }
+  // Render detail and open panel FIRST — before any map animation
   renderDetail(p);
   document.getElementById('detail-panel').classList.add('open');
   history.pushState({panel: ref}, '', '#' + ref);
+  // Map pan/zoom after — in setTimeout so cluster animation cannot close the panel
+  if(markers[ref]) {
+    setTimeout(() => {
+      if (selected !== ref) return;
+      try {
+        if (clusterGroup.hasLayer(markers[ref])) {
+          clusterGroup.zoomToShowLayer(markers[ref], () => {
+            if (selected === ref) markers[ref].openPopup();
+          });
+        } else {
+          map.panTo([p.lat,p.lng]);
+          markers[ref].openPopup();
+        }
+      } catch(e) {}
+    }, 50);
+  }
 }
 
 function closeDetail(fromPopState) {
