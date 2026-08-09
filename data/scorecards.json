@@ -1697,7 +1697,7 @@
   },
   "88185459": {
     "ref": "88185459",
-    "overall_pct": 73,
+    "overall_pct": 76,
     "scores": [
       {
         "cat": "Annexe",
@@ -1752,15 +1752,15 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast 1800Mb down / 220Mb up (SA6 5QL) ✓",
+        "note": "Ultrafast/gigabit broadband available (SA1 7BH, Tydraw Road, Bonymaen) ✓",
         "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
-        "score": 1,
-        "note": "Stream running through woodland on property — flood risk not yet checked. Govt checker doesn't cover Wales. Check NRW flood map (see notes).",
-        "resolved": false
+        "score": 3,
+        "note": "Very low flood risk confirmed (NRW, SA1 7BH) — rivers, sea and surface water/small watercourses all <0.1% per year ✓. Stream on property not a flood risk.",
+        "resolved": true
       },
       {
         "cat": "Risk",
@@ -1834,7 +1834,6 @@
       "No ground floor bedroom or shower in main house — either convert gym as annexe (ground floor ✓) or assess upstairs smoke-seal option at in-person viewing.",
       "Gravel path to gym — will need paving for walking frame mobility access (~£500-1,500).",
       "Water easement is currently informal — must be formalised as legal easement before exchange.",
-      "Stream on property — flood risk not yet checked for Wales. Use NRW flood map: https://naturalresources.wales/floodriskmap",
       "Heat pump cooling capability unknown — ask owner for model number.",
       "Battery storage insufficient (~£3k to add full capacity)."
     ]
