@@ -3879,7 +3879,8 @@ function toggleSection(sectionId, toggleId) {
 function restoreSections() {
   ['sort-section','filter-section'].forEach(id => {
     const state = localStorage.getItem('section_' + id);
-    if (state === 'closed') {
+    // Default is COLLAPSED — only open if explicitly saved as 'open'
+    if (state !== 'open') {
       const sec = document.getElementById(id);
       const btn = document.getElementById(id.replace('-section','-toggle'));
       if (sec) sec.style.display = 'none';

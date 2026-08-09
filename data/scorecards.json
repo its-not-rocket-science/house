@@ -1697,14 +1697,14 @@
   },
   "88185459": {
     "ref": "88185459",
-    "overall_pct": 90,
+    "overall_pct": 73,
     "scores": [
       {
         "cat": "Annexe",
         "label": "Annexe status",
-        "score": 3,
-        "note": "Gym foundations BUILT for annexe. 10.8m × 4.4m = 47.5m². Comfortably fits: double bedroom (4×3.5m), shower room (2×2m), open-plan kitchen/living (4×4.4m) with space to spare. No planning required. Solar + mains electric. ✓",
-        "resolved": true
+        "score": 2,
+        "note": "Gym confirmed as annexe candidate. No water/waste yet — £3k mains reroute needed. Timber frame, well insulated, sub-board present. Alternative: smoke-seal room in main house (assess at viewing).",
+        "resolved": false
       },
       {
         "cat": "Annexe",
@@ -1717,15 +1717,15 @@
         "cat": "Smoke separation",
         "label": "Physical separation",
         "score": 3,
-        "note": "Separate outbuilding — full smoke/air separation ✓",
+        "note": "Completely separate structure — no internal connection confirmed ✓",
         "resolved": true
       },
       {
         "cat": "Mobility",
         "label": "Ground floor bedroom",
-        "score": 3,
-        "note": "Outbuilding — single storey, all ground floor. 47.5m² total. ✓",
-        "resolved": true
+        "score": 1,
+        "note": "No ground floor shower in main house. Ground floor open plan — bedroom unlikely. Upstairs room smoke-seal option to assess at viewing. Gym annexe is ground floor.",
+        "resolved": false
       },
       {
         "cat": "Mobility",
@@ -1738,7 +1738,7 @@
         "cat": "Heating",
         "label": "Fuel type",
         "score": 3,
-        "note": "Solar primary + mains electric backup. Heat pump for main house. Gym on main house electric circuit. ✓",
+        "note": "ASHP + solar confirmed working ✓. Gym: electric radiators — ample per owner. Battery storage ~£3k to add full capacity.",
         "resolved": true
       },
       {
@@ -1758,9 +1758,9 @@
       {
         "cat": "Risk",
         "label": "Flood risk",
-        "score": 2,
-        "note": "Flood risk not checked for SA6 5QL",
-        "resolved": true
+        "score": 1,
+        "note": "Stream running through woodland on property — flood risk not yet checked. Govt checker doesn't cover Wales. Check NRW flood map (see notes).",
+        "resolved": false
       },
       {
         "cat": "Risk",
@@ -1794,33 +1794,49 @@
         "cat": "Heating",
         "label": "Solar / Heat pump",
         "score": 3,
-        "note": "Solar panels primary power source + mains backup. Heat pump confirmed. Gym powered from main house circuit. ✓",
+        "note": "ASHP + solar panels both working ✓. More panels than listing shows. Battery storage insufficient currently (~£3k to upgrade). Annual energy essentially covered by solar.",
+        "resolved": true
+      },
+      {
+        "cat": "?",
+        "label": "Walk-in shower",
+        "score": 0,
+        "note": "No shower in gym currently (no plumbing). To be installed. No ground floor shower in main house either.",
+        "resolved": false
+      },
+      {
+        "cat": "?",
+        "label": "Kitchen",
+        "score": 0,
+        "note": "No kitchen in gym. To be fitted. Water connection needed first.",
+        "resolved": false
+      },
+      {
+        "cat": "?",
+        "label": "Planning / BC",
+        "score": 3,
+        "note": "No planning permission needed for conversion confirmed ✓",
         "resolved": true
       }
     ],
     "questions": [
-      "Can you start by walking us around the property on video — starting with the main farmhouse, then the gym/annexe building?",
-      "The gym — does it currently have any water supply or waste pipe running to it, or is it completely dry? This is the most important factor in conversion cost and complexity.",
-      "Could you show us the gym interior on camera — we want to see the construction (brick/block or timber frame), insulation, the floor surface, ceiling height, and any existing electrical infrastructure?",
-      "Is there a sub-board or fuse board inside the gym, and what is the rated supply capacity — enough to run an electric shower and kitchen appliances simultaneously?",
-      "The water and sewage connection currently runs via the neighbour's property — is there a written legal agreement (easement or deed) that formalises this arrangement and will transfer with the sale? If not, is the seller open to rerouting the supply direct (£3,000 quoted) before exchange, or reducing the price by that amount?",
-      "Is there level or ramped access from the main farmhouse to the gym with no steps — suitable for a person using a walking frame?",
-      "Can you show us the access route from the front door to the gym on camera?",
-      "Is there any internal connecting door between the gym and the main house, or is it a completely separate structure with no internal connection?",
-      "The listing mentions solar panels and a heat pump — can you confirm both are installed and working? Does the heat pump circuit extend to the gym, or only to the main house?",
-      "What is the approximate annual energy cost for the main house under the current system?",
-      "Has any planning advice been sought from Swansea Council regarding converting the gym to a self-contained granny annexe? The agent mentioned no planning permission is required — can you confirm the basis for that, and whether a Certificate of Lawful Use has been or could be obtained?",
-      "Can you walk us through the ground floor of the main house — we need to understand which rooms are on the ground floor and whether any could serve as a ground floor bedroom for an elderly relative?",
-      "Are there any ground floor bathrooms or shower rooms in the main house?",
-      "We are very interested and would like to arrange an in-person viewing as a next step. What dates work for the vendor?",
-      "What is the vendor's position on price — is there flexibility below the £450,000 asking price, particularly given the conversion costs we would need to factor in?"
+      "Given the water mains reroute cost (£3,000 quoted) and battery storage (est. £3,000), would the vendor consider reducing the asking price by £6,000 to reflect these known costs — bringing us to £444,000?",
+      "Can the vendor's solicitor formalise the neighbour water/sewage arrangement as a legal easement before exchange? We cannot proceed without this in place.",
+      "Is there any history of flooding on the property, particularly around the stream/woodland area? Has the owner ever experienced water levels rising near the buildings?",
+      "What is the make and model of the heat pump? We want to check whether it has a cooling mode for summer use.",
+      "On the upstairs room next to a bedroom — could we get dimensions and photos before our visit? We want to assess whether smoke-sealing it as annexe accommodation for an elderly relative is feasible.",
+      "Is there any possibility of creating a ground floor wet room / shower in the main house, or is the layout too open-plan for that?",
+      "We are arranging car hire and hope to visit very soon — can you provisionally hold some dates? We would want at least 2 hours on site.",
+      "Has the vendor already instructed a solicitor? We are keen to move quickly once we've completed our visit."
     ],
     "red_flags": [
-      "Water/sewage via neighbour's property — must have written legal easement transferring with sale. If not in place, budget £3,000 to reroute direct.",
-      "No shower or kitchen in gym yet — plumbing feasibility depends on whether water supply runs inside the building. Conversion cost estimate £22,000-42,000.",
-      "Gym heating unknown — if heat pump does not extend to gym, budget for air-to-air unit (£2,000-4,000 installed).",
-      "Planning confirmation recommended — agent says not required, but solicitor should verify via Swansea planning portal before exchange.",
-      "Broadband: 1800Mb down / 220Mb up confirmed (Openreach, SA6 5QL) ✓"
+      "Gym has no water/waste connection — £3k mains reroute + plumbing fit-out needed. Owner says gym equipment sale will cover conversion costs.",
+      "No ground floor bedroom or shower in main house — either convert gym as annexe (ground floor ✓) or assess upstairs smoke-seal option at in-person viewing.",
+      "Gravel path to gym — will need paving for walking frame mobility access (~£500-1,500).",
+      "Water easement is currently informal — must be formalised as legal easement before exchange.",
+      "Stream on property — flood risk not yet checked for Wales. Use NRW flood map: https://naturalresources.wales/floodriskmap",
+      "Heat pump cooling capability unknown — ask owner for model number.",
+      "Battery storage insufficient (~£3k to add full capacity)."
     ]
   },
   "89701968": {
