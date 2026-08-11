@@ -1697,7 +1697,7 @@
   },
   "88185459": {
     "ref": "88185459",
-    "overall_pct": 76,
+    "overall_pct": 73,
     "scores": [
       {
         "cat": "Annexe",
@@ -1752,14 +1752,14 @@
         "cat": "Connectivity",
         "label": "Broadband",
         "score": 3,
-        "note": "Ultrafast/gigabit broadband available (SA1 7BH, Tydraw Road, Bonymaen) ✓",
+        "note": "Ultrafast 1800Mb↓/220Mb↑ confirmed (SA1 7BG) ✓. No superfast intermediate — straight to ultrafast.",
         "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Flood risk",
-        "score": 3,
-        "note": "Very low flood risk confirmed (NRW, SA1 7BH) — rivers, sea and surface water/small watercourses all <0.1% per year ✓. Stream on property not a flood risk.",
+        "score": 1,
+        "note": "MEDIUM flood risk from surface water and small watercourses (1-3.3%/yr) at SA1 7BG. Rivers and sea: very low (<0.1%/yr). No flood defences. Stream on property likely the cause. Check insurance costs and historic flood events.",
         "resolved": true
       },
       {
@@ -1822,7 +1822,7 @@
     "questions": [
       "Given the water mains reroute cost (£3,000 quoted) and battery storage (est. £3,000), would the vendor consider reducing the asking price by £6,000 to reflect these known costs — bringing us to £444,000?",
       "Can the vendor's solicitor formalise the neighbour water/sewage arrangement as a legal easement before exchange? We cannot proceed without this in place.",
-      "Is there any history of flooding on the property, particularly around the stream/woodland area? Has the owner ever experienced water levels rising near the buildings?",
+      "NRW shows medium surface water / small watercourse flood risk (1-3.3% per year) at this postcode — the stream is likely the cause. Has the property ever flooded or experienced surface water ingress, particularly around the gym or ground floor? Have you been able to get buildings insurance without a flood excess or exclusion?",
       "What is the make and model of the heat pump? We want to check whether it has a cooling mode for summer use.",
       "On the upstairs room next to a bedroom — could we get dimensions and photos before our visit? We want to assess whether smoke-sealing it as annexe accommodation for an elderly relative is feasible.",
       "Is there any possibility of creating a ground floor wet room / shower in the main house, or is the layout too open-plan for that?",
@@ -1830,6 +1830,7 @@
       "Has the vendor already instructed a solicitor? We are keen to move quickly once we've completed our visit."
     ],
     "red_flags": [
+      "FLOOD RISK: Medium surface water/small watercourse risk (1-3.3%/yr) at SA1 7BG — stream on property likely cause. Check insurance availability and cost before proceeding. Rivers/sea: very low. No flood defences.",
       "Gym has no water/waste connection — £3k mains reroute + plumbing fit-out needed. Owner says gym equipment sale will cover conversion costs.",
       "No ground floor bedroom or shower in main house — either convert gym as annexe (ground floor ✓) or assess upstairs smoke-seal option at in-person viewing.",
       "Gravel path to gym — will need paving for walking frame mobility access (~£500-1,500).",

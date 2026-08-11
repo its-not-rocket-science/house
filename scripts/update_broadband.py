@@ -41,7 +41,7 @@ OFCOM_ZIP_URL = (
 
 POSTCODES = {
     "166496951":     "BH9 3NQ",   # Plassey Cres, Bournemouth
-    "88185459":      "SA6 5QL",   # Pantygyfelia Farm, Bonymaen
+    "88185459":      "SA1 7BG",   # Pantygyfelia Farm, Tydraw Road, Bonymaen
     "169862942":     "TA4 3BJ",   # Tithill, Bishops Lydeard
     "90443352":      "TA1 4AJ",   # Manor Road, Taunton
     "173348153":     "DT11 0NQ",  # Winterborne Stickland
