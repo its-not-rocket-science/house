@@ -1688,7 +1688,7 @@ function renderDetail(p) {
     <div class="detail-body">
       <div class="detail-rank-row">
         <div class="detail-rank" style="background:${col}">Rank #${p.rank}</div>
-        ${renderVotes(p.ref)}
+        ${renderVotes(p.ref, "left")}
         <div class="detail-vote-inline" id="dvote-${p.ref}">
           ${(()=>{
             const pv=votes[p.ref]||[];
@@ -1821,7 +1821,7 @@ function renderDetail(p) {
       </div>
 
       <!-- VOTES -->
-      ${renderVotes(p.ref)}
+      ${renderVotes(p.ref, "full")}
 
       <!-- JOURNEY TIMES -->
       ${renderJourneys(p)}
@@ -2012,7 +2012,7 @@ document.getElementById('qs-popup')?.addEventListener('click', e => {
 
 
 // ── VOTES ──────────────────────────────────────────────────────────────────────
-function renderVotes(ref) {
+function renderVotes(ref, subref) {
   const pv = votes[ref] || [];
   const likes    = pv.filter(v=>v.type==='like').length;
   const dislikes = pv.filter(v=>v.type==='dislike').length;
@@ -2032,10 +2032,10 @@ function renderVotes(ref) {
   return `
     <div data-vote-ref="${ref}">
     <div class="ds"><h3>Votes</h3></div>
-    <div class="vote-reason-wrap" id="vote-reason-${ref}" style="display:none">
-      <input class="vote-reason-input" id="vote-reason-input-${ref}"
+    <div class="vote-reason-wrap" id="vote-reason-${ref}-${subref}" style="display:none">
+      <input class="vote-reason-input" id="vote-reason-input-${ref}-${subref}"
         placeholder="Explain your vote (required for multiple votes)…">
-      <button class="vote-submit-btn" onclick="submitVoteReason('${ref}')">Submit vote with reason</button>
+      <button class="vote-submit-btn" onclick="submitVoteReason('${ref},${subref}')">Submit vote with reason</button>
     </div>
     ${withReason.length?`
       <div style="font-size:11px;font-weight:700;color:var(--color-muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">
@@ -2086,38 +2086,38 @@ function quickVote(event, ref, type) {
   }
 }
 
-function castVote(ref, type) {
-  const myVote = localStorage.getItem('vote_'+ref);
-  if (myVote && myVote === type) return; // already voted same way
+// function castVote(ref, type) {
+//   const myVote = localStorage.getItem('vote_'+ref);
+//   if (myVote && myVote === type) return; // already voted same way
 
-  if (myVote) {
-    // Changing vote — need reason
-    document.getElementById('vote-reason-'+ref).style.display = 'block';
-    document.getElementById('vote-reason-'+ref).dataset.type = type;
-    document.getElementById('vote-reason-input-'+ref).placeholder =
-      'Explain why you changed your vote (required)…';
-    return;
-  }
+//   if (myVote) {
+//     // Changing vote — need reason
+//     document.getElementById('vote-reason-'+ref).style.display = 'block';
+//     document.getElementById('vote-reason-'+ref).dataset.type = type;
+//     document.getElementById('vote-reason-input-'+ref).placeholder =
+//       'Explain why you changed your vote (required)…';
+//     return;
+//   }
 
-  // First vote — allow without reason, but show reason box
-  if (!votes[ref]) votes[ref] = [];
-  const voterName = localStorage.getItem('voter_name') || promptVoterName();
-  votes[ref].push({type, reason:'', voter:voterName, date:new Date().toLocaleDateString('en-GB')});
-  localStorage.setItem('vote_'+ref, type);
-  pushVotesFile('Vote on '+ref);
-  refreshVotes(ref);
-  renderList();
+//   // First vote — allow without reason, but show reason box
+//   if (!votes[ref]) votes[ref] = [];
+//   const voterName = localStorage.getItem('voter_name') || promptVoterName();
+//   votes[ref].push({type, reason:'', voter:voterName, date:new Date().toLocaleDateString('en-GB')});
+//   localStorage.setItem('vote_'+ref, type);
+//   pushVotesFile('Vote on '+ref);
+//   refreshVotes(ref);
+//   renderList();
 
-  // Show reason box in case they want to add one
-  document.getElementById('vote-reason-'+ref).style.display = 'block';
-  document.getElementById('vote-reason-'+ref).dataset.type = type;
-  document.getElementById('vote-reason-input-'+ref).placeholder =
-    'Optional: add a reason for your vote…';
-}
+//   // Show reason box in case they want to add one
+//   document.getElementById('vote-reason-'+ref).style.display = 'block';
+//   document.getElementById('vote-reason-'+ref).dataset.type = type;
+//   document.getElementById('vote-reason-input-'+ref).placeholder =
+//     'Optional: add a reason for your vote…';
+// }
 
-function submitVoteReason(ref) {
-  const wrap = document.getElementById('vote-reason-'+ref);
-  const input = document.getElementById('vote-reason-input-'+ref);
+function submitVoteReason(ref, subref) {
+  const wrap = document.getElementById(`vote-reason-${ref}-${subref}`);
+  const input = document.getElementById(`vote-reason-input-${ref}-${subref}`);
   const reason = input.value.trim();
   const type = wrap.dataset.type;
   if (!reason) { input.style.borderColor='var(--color-danger)'; return; }
@@ -2141,13 +2141,13 @@ function submitVoteReason(ref) {
   renderList();
 }
 
-function refreshVotes(ref) {
+function refreshVotes(ref, subref) {
   const p = properties.find(x=>x.ref===ref);
   if (!p) return;
   const voteSection = document.querySelector('.detail-body');
   if (voteSection) {
     const voteDiv = voteSection.querySelector('[data-vote-ref="'+ref+'"]');
-    if (voteDiv) voteDiv.outerHTML = renderVotes(ref);
+    if (voteDiv) voteDiv.outerHTML = renderVotes(ref, subref);
   }
   // Just re-render detail
   if (selected === ref) renderDetail(p);
