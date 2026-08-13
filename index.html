@@ -1787,7 +1787,7 @@ function renderDetail(p) {
       </div>
 
       <!-- SCORECARD -->
-      ${renderScorecard(p.ref)}
+      ${(()=>{try{return renderScorecard(p.ref);}catch(e){console.error('renderScorecard error for '+p.ref,e);return '<div style="color:red;font-size:12px">Scorecard error: '+e.message+'</div>';}})()}
 
       <!-- NOTES -->
       <div class="ds"><h3>Notes</h3></div>
@@ -3009,14 +3009,14 @@ function renderScorecard(ref) {
   const effectivePct = Math.round(effectiveScores.reduce((a,b)=>a+b,0) / (sc.scores.length*3) * 100);
   const hasOverrides = Object.keys(overrides).length > 0;
 
-  const flagsHtml = sc.red_flags.length ? `
+  const flagsHtml = (sc.red_flags||[]).length ? `
     <div class="ds"><h3>⚠ Red flags</h3></div>
     <div class="sc-flags">
       ${sc.red_flags.map(f => `
         <div class="sc-flag"><span class="sc-flag-icon">⚠</span><span>${f}</span></div>`).join('')}
     </div>` : '';
 
-  const qsHtml = sc.questions.length ? `
+  const qsHtml = (sc.questions||[]).length ? `
     <div class="ds"><h3>Questions to ask the agent</h3></div>
     <button class="copy-qs-btn" onclick="copyQuestions('${ref}')">📋 Copy all questions</button>
     <div class="sc-qs">
