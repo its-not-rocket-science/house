@@ -23,12 +23,5 @@
       "date": "02/07/2026"
     }
   ],
-  "${p.ref}": [
-    {
-      "type": "like",
-      "reason": "",
-      "voter": "Anonymous",
-      "date": "13/08/2026"
-    }
-  ]
+  "${p.ref}": []
 }
