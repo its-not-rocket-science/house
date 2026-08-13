@@ -1697,7 +1697,7 @@
   },
   "88185459": {
     "ref": "88185459",
-    "overall_pct": 73,
+    "overall_pct": 75,
     "scores": [
       {
         "cat": "Annexe",
@@ -1758,8 +1758,8 @@
       {
         "cat": "Risk",
         "label": "Flood risk",
-        "score": 1,
-        "note": "MEDIUM flood risk from surface water and small watercourses (1-3.3%/yr) at SA1 7BG. Rivers and sea: very low (<0.1%/yr). No flood defences. Stream on property likely the cause. Check insurance costs and historic flood events.",
+        "score": 2,
+        "note": "Medium surface water risk (1-3.3%/yr, SA1 7BG) — stream on property. LV= quote confirmed insurable: £1,413/yr, £500 flood excess. Not a blocker — priced as modest uplift only. ✓",
         "resolved": true
       },
       {
@@ -1830,13 +1830,13 @@
       "Has the vendor already instructed a solicitor? We are keen to move quickly once we've completed our visit."
     ],
     "red_flags": [
-      "FLOOD RISK: Medium surface water/small watercourse risk (1-3.3%/yr) at SA1 7BG — stream on property likely cause. Check insurance availability and cost before proceeding. Rivers/sea: very low. No flood defences.",
       "Gym has no water/waste connection — £3k mains reroute + plumbing fit-out needed. Owner says gym equipment sale will cover conversion costs.",
       "No ground floor bedroom or shower in main house — either convert gym as annexe (ground floor ✓) or assess upstairs smoke-seal option at in-person viewing.",
       "Gravel path to gym — will need paving for walking frame mobility access (~£500-1,500).",
       "Water easement is currently informal — must be formalised as legal easement before exchange.",
       "Heat pump cooling capability unknown — ask owner for model number.",
-      "Battery storage insufficient (~£3k to add full capacity)."
+      "Battery storage insufficient (~£3k to add full capacity).",
+      "Surface water flood risk (medium, 1-3.3%/yr) — insured at £500 excess via LV= (£1,413/yr). Not a blocker but factor ~£500/yr premium uplift into running costs."
     ]
   },
   "89701968": {
