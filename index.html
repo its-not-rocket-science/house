@@ -764,9 +764,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
     <div id="filters">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
         <h2 style="margin:0">Sort</h2>
-        <button class="collapse-toggle" id="sort-toggle" onclick="toggleSection('sort-section','sort-toggle')" title="Collapse sort">▲</button>
+        <button class="collapse-toggle collapsed" id="sort-toggle" onclick="toggleSection('sort-section','sort-toggle')" title="Expand">▲</button>
       </div>
-      <div id="sort-section">
+      <div id="sort-section" style="display:none">
       <button id="mobile-filters-toggle" class="filter-btn" onclick="toggleMobileFilters()" style="margin-bottom:6px">Filters ▼</button>
       <div class="filter-row sort-row mobile-collapsible-filter" id="sort-btns">
         <button class="sort-btn active info-tip" data-sort="fit" onclick="setSort(this)">% Fit ⓘ
@@ -789,9 +789,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
       </div><!-- /sort-section -->
       <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px;margin-bottom:4px">
         <h2 style="margin:0">Filter</h2>
-        <button class="collapse-toggle" id="filter-toggle" onclick="toggleSection('filter-section','filter-toggle')" title="Collapse filters">▲</button>
+        <button class="collapse-toggle collapsed" id="filter-toggle" onclick="toggleSection('filter-section','filter-toggle')" title="Expand">▲</button>
       </div>
-      <div id="filter-section">
+      <div id="filter-section" style="display:none">
       <input id="search-box" type="text" placeholder="Search name, location, agent…" oninput="applyFilters()">
       <div class="filter-row mobile-collapsible-filter" id="cluster-filters"></div>
       <div class="filter-row">
@@ -1688,7 +1688,7 @@ function renderDetail(p) {
     <div class="detail-body">
       <div class="detail-rank-row">
         <div class="detail-rank" style="background:${col}">Rank #${p.rank}</div>
-        ${renderVotes(p.ref, "left")}
+        ${renderVotes(p.ref)}
         <div class="detail-vote-inline" id="dvote-${p.ref}">
           ${(()=>{
             const pv=votes[p.ref]||[];
@@ -1821,7 +1821,7 @@ function renderDetail(p) {
       </div>
 
       <!-- VOTES -->
-      ${renderVotes(p.ref, "full")}
+      ${renderVotes(p.ref)}
 
       <!-- JOURNEY TIMES -->
       ${renderJourneys(p)}
@@ -2012,7 +2012,7 @@ document.getElementById('qs-popup')?.addEventListener('click', e => {
 
 
 // ── VOTES ──────────────────────────────────────────────────────────────────────
-function renderVotes(ref, subref) {
+function renderVotes(ref) {
   const pv = votes[ref] || [];
   const likes    = pv.filter(v=>v.type==='like').length;
   const dislikes = pv.filter(v=>v.type==='dislike').length;
@@ -2032,10 +2032,10 @@ function renderVotes(ref, subref) {
   return `
     <div data-vote-ref="${ref}">
     <div class="ds"><h3>Votes</h3></div>
-    <div class="vote-reason-wrap" id="vote-reason-${ref}-${subref}" style="display:none">
-      <input class="vote-reason-input" id="vote-reason-input-${ref}-${subref}"
+    <div class="vote-reason-wrap" id="vote-reason-${ref}" style="display:none">
+      <input class="vote-reason-input" id="vote-reason-input-${ref}"
         placeholder="Explain your vote (required for multiple votes)…">
-      <button class="vote-submit-btn" onclick="submitVoteReason('${ref},${subref}')">Submit vote with reason</button>
+      <button class="vote-submit-btn" onclick="submitVoteReason('${ref}')">Submit vote with reason</button>
     </div>
     ${withReason.length?`
       <div style="font-size:11px;font-weight:700;color:var(--color-muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">
@@ -2086,38 +2086,38 @@ function quickVote(event, ref, type) {
   }
 }
 
-// function castVote(ref, type) {
-//   const myVote = localStorage.getItem('vote_'+ref);
-//   if (myVote && myVote === type) return; // already voted same way
+function castVote(ref, type) {
+  const myVote = localStorage.getItem('vote_'+ref);
+  if (myVote && myVote === type) return; // already voted same way
 
-//   if (myVote) {
-//     // Changing vote — need reason
-//     document.getElementById('vote-reason-'+ref).style.display = 'block';
-//     document.getElementById('vote-reason-'+ref).dataset.type = type;
-//     document.getElementById('vote-reason-input-'+ref).placeholder =
-//       'Explain why you changed your vote (required)…';
-//     return;
-//   }
+  if (myVote) {
+    // Changing vote — need reason
+    document.getElementById('vote-reason-'+ref).style.display = 'block';
+    document.getElementById('vote-reason-'+ref).dataset.type = type;
+    document.getElementById('vote-reason-input-'+ref).placeholder =
+      'Explain why you changed your vote (required)…';
+    return;
+  }
 
-//   // First vote — allow without reason, but show reason box
-//   if (!votes[ref]) votes[ref] = [];
-//   const voterName = localStorage.getItem('voter_name') || promptVoterName();
-//   votes[ref].push({type, reason:'', voter:voterName, date:new Date().toLocaleDateString('en-GB')});
-//   localStorage.setItem('vote_'+ref, type);
-//   pushVotesFile('Vote on '+ref);
-//   refreshVotes(ref);
-//   renderList();
+  // First vote — allow without reason, but show reason box
+  if (!votes[ref]) votes[ref] = [];
+  const voterName = localStorage.getItem('voter_name') || promptVoterName();
+  votes[ref].push({type, reason:'', voter:voterName, date:new Date().toLocaleDateString('en-GB')});
+  localStorage.setItem('vote_'+ref, type);
+  pushVotesFile('Vote on '+ref);
+  refreshVotes(ref);
+  renderList();
 
-//   // Show reason box in case they want to add one
-//   document.getElementById('vote-reason-'+ref).style.display = 'block';
-//   document.getElementById('vote-reason-'+ref).dataset.type = type;
-//   document.getElementById('vote-reason-input-'+ref).placeholder =
-//     'Optional: add a reason for your vote…';
-// }
+  // Show reason box in case they want to add one
+  document.getElementById('vote-reason-'+ref).style.display = 'block';
+  document.getElementById('vote-reason-'+ref).dataset.type = type;
+  document.getElementById('vote-reason-input-'+ref).placeholder =
+    'Optional: add a reason for your vote…';
+}
 
-function submitVoteReason(ref, subref) {
-  const wrap = document.getElementById(`vote-reason-${ref}-${subref}`);
-  const input = document.getElementById(`vote-reason-input-${ref}-${subref}`);
+function submitVoteReason(ref) {
+  const wrap = document.getElementById('vote-reason-'+ref);
+  const input = document.getElementById('vote-reason-input-'+ref);
   const reason = input.value.trim();
   const type = wrap.dataset.type;
   if (!reason) { input.style.borderColor='var(--color-danger)'; return; }
@@ -2141,13 +2141,13 @@ function submitVoteReason(ref, subref) {
   renderList();
 }
 
-function refreshVotes(ref, subref) {
+function refreshVotes(ref) {
   const p = properties.find(x=>x.ref===ref);
   if (!p) return;
   const voteSection = document.querySelector('.detail-body');
   if (voteSection) {
     const voteDiv = voteSection.querySelector('[data-vote-ref="'+ref+'"]');
-    if (voteDiv) voteDiv.outerHTML = renderVotes(ref, subref);
+    if (voteDiv) voteDiv.outerHTML = renderVotes(ref);
   }
   // Just re-render detail
   if (selected === ref) renderDetail(p);
@@ -2949,7 +2949,7 @@ document.addEventListener('keydown', e => {
   }
 });
 
-const esc=t=> t && t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
   .replace(/"/g,'&quot;').replace(/'/g,'&#039;');
 
 
@@ -3879,13 +3879,14 @@ function toggleSection(sectionId, toggleId) {
 function restoreSections() {
   ['sort-section','filter-section'].forEach(id => {
     const state = localStorage.getItem('section_' + id);
-    // Default is COLLAPSED — only open if explicitly saved as 'open'
-    if (state !== 'open') {
-      const sec = document.getElementById(id);
-      const btn = document.getElementById(id.replace('-section','-toggle'));
-      if (sec) sec.style.display = 'none';
-      if (btn) { btn.classList.add('collapsed'); btn.title = 'Expand'; }
+    const sec = document.getElementById(id);
+    const btn = document.getElementById(id.replace('-section','-toggle'));
+    if (state === 'open') {
+      // User explicitly opened it — restore open state
+      if (sec) sec.style.display = '';
+      if (btn) { btn.classList.remove('collapsed'); btn.title = 'Collapse'; }
     }
+    // Otherwise leave as-is (collapsed by default via inline style)
   });
 }
 

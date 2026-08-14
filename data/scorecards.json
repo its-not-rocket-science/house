@@ -1697,14 +1697,14 @@
   },
   "88185459": {
     "ref": "88185459",
-    "overall_pct": 75,
+    "overall_pct": 76,
     "scores": [
       {
         "cat": "Annexe",
         "label": "Annexe status",
         "score": 2,
-        "note": "Gym confirmed as annexe candidate. No water/waste yet — £3k mains reroute needed. Timber frame, well insulated, sub-board present. Alternative: smoke-seal room in main house (assess at viewing).",
-        "resolved": false
+        "note": "No plumbing in gym yet. Main house: large open-plan ground floor per reviews ('large open-plan reception and kitchen area'). Property managed by UrbanPadz as Airbnb for 10 guests.",
+        "resolved": true
       },
       {
         "cat": "Annexe",
@@ -1724,7 +1724,7 @@
         "cat": "Mobility",
         "label": "Ground floor bedroom",
         "score": 1,
-        "note": "No ground floor shower in main house. Ground floor open plan — bedroom unlikely. Upstairs room smoke-seal option to assess at viewing. Gym annexe is ground floor.",
+        "note": "No toilet downstairs confirmed by guest. Ground floor: large open-plan reception/kitchen per reviews. Bedrooms appear to be upstairs — confirm at viewing.",
         "resolved": false
       },
       {
@@ -1738,7 +1738,7 @@
         "cat": "Heating",
         "label": "Fuel type",
         "score": 3,
-        "note": "ASHP + solar confirmed working ✓. Gym: electric radiators — ample per owner. Battery storage ~£3k to add full capacity.",
+        "note": "ASHP + solar confirmed working. Owner not living there — managed by UrbanPadz. Annual energy costs essentially covered by solar per video call.",
         "resolved": true
       },
       {
@@ -1800,8 +1800,8 @@
       {
         "cat": "?",
         "label": "Walk-in shower",
-        "score": 0,
-        "note": "No shower in gym currently (no plumbing). To be installed. No ground floor shower in main house either.",
+        "score": 1,
+        "note": "Shower issues documented in multiple Airbnb reviews — 'stuck on boiling hot' (March 2026), 'boiling hot/unusable' (June 2026), 'dripping through ceiling' (August 2026). Serious maintenance issues to resolve. Shower type/level access still unknown.",
         "resolved": false
       },
       {
@@ -1820,23 +1820,43 @@
       }
     ],
     "questions": [
-      "Given the water mains reroute cost (£3,000 quoted) and battery storage (est. £3,000), would the vendor consider reducing the asking price by £6,000 to reflect these known costs — bringing us to £444,000?",
-      "Can the vendor's solicitor formalise the neighbour water/sewage arrangement as a legal easement before exchange? We cannot proceed without this in place.",
-      "NRW shows medium surface water / small watercourse flood risk (1-3.3% per year) at this postcode — the stream is likely the cause. Has the property ever flooded or experienced surface water ingress, particularly around the gym or ground floor? Have you been able to get buildings insurance without a flood excess or exclusion?",
-      "What is the make and model of the heat pump? We want to check whether it has a cooling mode for summer use.",
-      "On the upstairs room next to a bedroom — could we get dimensions and photos before our visit? We want to assess whether smoke-sealing it as annexe accommodation for an elderly relative is feasible.",
-      "Is there any possibility of creating a ground floor wet room / shower in the main house, or is the layout too open-plan for that?",
-      "We are arranging car hire and hope to visit very soon — can you provisionally hold some dates? We would want at least 2 hours on site.",
-      "Has the vendor already instructed a solicitor? We are keen to move quickly once we've completed our visit."
+      "We have seen from Airbnb reviews that there are documented shower problems — described as 'stuck on boiling hot', 'unusable', and most recently a shower leaking through the ceiling. Can you confirm the current state of the main bathroom shower, and whether the vendor will repair this before exchange or reduce the price accordingly?",
+      "The property is managed by UrbanPadz as an Airbnb. When will it be vacated and available for viewing without guests present? We would want at least 2 hours on site.",
+      "How long has the property been on the market and have there been any previous offers?",
+      "Has the vendor already instructed a solicitor, and are they keen to move quickly?",
+      "Is there any planned development in the surrounding area we should be aware of?",
+      "What is the vendor's minimum acceptable price? Given the documented maintenance issues and the conversion costs we will need to bear (water mains reroute £3k, battery storage £3k, gym conversion), we are likely to offer below the asking price of £450,000.",
+      "The water and sewage connection runs via the neighbour's property. Is there a written legal agreement — an easement or deed — that formalises this arrangement and will transfer with the sale? If not, would you be willing to have this formalised by your solicitor before exchange, or to reroute the supply direct (£3k quoted) before completion?",
+      "What is the make and model of the heat pump? We want to confirm whether it has a cooling/air conditioning mode for summer use as well.",
+      "Since you are leaving the gym equipment, are you also planning to leave any appliances or furniture in the main house — white goods, range cooker, etc?",
+      "The Airbnb reviews mention the shower has been stuck on boiling hot for several months and has recently been leaking through the ceiling. Are you aware of this and what is the current situation?",
+      "Can you show us the upstairs room adjacent to the bedrooms and give us its dimensions? We want to assess whether smoke-sealing it as self-contained annexe accommodation for an elderly relative with mobility issues is feasible.",
+      "Is there any possibility of creating a ground floor wet room or shower room within the main house — perhaps from part of the utility room or by partitioning the open-plan ground floor?",
+      "Can you show us the gym building in detail — specifically the floor, ceiling height, wall construction, and whether there are any existing water pipes or waste runs nearby? We need to understand the conversion scope precisely.",
+      "Is the gym sub-board capable of running an electric shower, kitchen appliances and electric radiators simultaneously, or would it need upgrading?",
+      "What is the exact access route from the front door to the gym, and would it be feasible to pave it for walking frame access?",
+      "How old is the roof, and when were the windows last replaced? Are there any guarantees or warranties?",
+      "Have there been any extensions, conversions or significant alterations to the property, and if so is there planning permission and building regulations sign-off?",
+      "Have there been any recent electrical works, and are there certificates? When was the ASHP installation certified?",
+      "Are there any known issues with damp, subsidence, or drainage? Some of the Airbnb reviews mention the property feels tired — what maintenance is outstanding?",
+      "Can we check water pressure in all the taps and flush all the toilets? And can we see the main bathroom shower working?",
+      "What is the boiler/heating system age and service history? (We understand it is ASHP but want the installation date and last service.)",
+      "Are there any shared arrangements, rights of way, or access agreements with neighbours beyond the water easement — for example regarding the woodland or stables area?",
+      "Can you confirm exactly what land and outbuildings are included in the freehold title — the woodland, the stream, the stables, the gym building?",
+      "Have there been any disputes or problems with neighbours? We noticed there is a semi-detached element — how much noise transfer is there between the properties?",
+      "Is there any significant development planned nearby?",
+      "Which way do the main living rooms and bedrooms face? (We want to understand sun exposure.)",
+      "What are the vendor's best and worst points about the property — the things they will miss, and the things that have been a nuisance?"
     ],
     "red_flags": [
+      "Shower seriously faulty — multiple Airbnb guests report 'stuck on boiling hot', 'unusable', 'leaking through ceiling'. Must be resolved before occupation. Negotiate repair/price reduction.",
+      "No ground floor toilet or bathroom — guests confirm none. Significant issue for Mum's mobility.",
       "Gym has no water/waste connection — £3k mains reroute + plumbing fit-out needed. Owner says gym equipment sale will cover conversion costs.",
-      "No ground floor bedroom or shower in main house — either convert gym as annexe (ground floor ✓) or assess upstairs smoke-seal option at in-person viewing.",
-      "Gravel path to gym — will need paving for walking frame mobility access (~£500-1,500).",
-      "Water easement is currently informal — must be formalised as legal easement before exchange.",
-      "Heat pump cooling capability unknown — ask owner for model number.",
+      "Gravel path to gym — paving needed for walking frame access (~£500-1,500).",
+      "Water easement currently informal — must be formalised as legal easement before exchange.",
+      "Property managed by UrbanPadz (Airbnb) — owner not living there. Multiple guests note 'tired', 'grubby', needs investment. Priced for quick sale.",
       "Battery storage insufficient (~£3k to add full capacity).",
-      "Surface water flood risk (medium, 1-3.3%/yr) — insured at £500 excess via LV= (£1,413/yr). Not a blocker but factor ~£500/yr premium uplift into running costs."
+      "Surface water flood risk medium (1-3.3%/yr) — insured at £500 excess via LV= (£1,413/yr). Not a blocker but factor into running costs."
     ]
   },
   "89701968": {
