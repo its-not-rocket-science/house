@@ -1697,13 +1697,13 @@
   },
   "88185459": {
     "ref": "88185459",
-    "overall_pct": 76,
+    "overall_pct": 85,
     "scores": [
       {
         "cat": "Annexe",
         "label": "Annexe status",
-        "score": 2,
-        "note": "No plumbing in gym yet. Main house: large open-plan ground floor per reviews ('large open-plan reception and kitchen area'). Property managed by UrbanPadz as Airbnb for 10 guests.",
+        "score": 3,
+        "note": "REVISED PLAN: Mum to live inside main house. Large downstairs lounge with separating door viable as smoking room. Utility room (adjacent to lounge) was previously a wet room — easy conversion back. Second option: bedroom with en-suite + opposite bedroom as smoking room. Both options confirmed viable at viewing.",
         "resolved": true
       },
       {
@@ -1716,15 +1716,15 @@
       {
         "cat": "Smoke separation",
         "label": "Physical separation",
-        "score": 3,
-        "note": "Completely separate structure — no internal connection confirmed ✓",
-        "resolved": true
+        "score": 2,
+        "note": "Internal lounge/smoking room plan — separation via existing door. Not as absolute as a separate building but viable and confirmed at viewing. Assess door quality/seal at survey.",
+        "resolved": false
       },
       {
         "cat": "Mobility",
         "label": "Ground floor bedroom",
-        "score": 1,
-        "note": "No toilet downstairs confirmed by guest. Ground floor: large open-plan reception/kitchen per reviews. Bedrooms appear to be upstairs — confirm at viewing.",
+        "score": 2,
+        "note": "No dedicated ground floor bedroom currently — lounge being converted for Mum means she'd be ground floor but in a lounge-converted space. Upstairs bedrooms available. Assess practicality at survey.",
         "resolved": false
       },
       {
@@ -1738,15 +1738,15 @@
         "cat": "Heating",
         "label": "Fuel type",
         "score": 3,
-        "note": "ASHP + solar confirmed working. Owner not living there — managed by UrbanPadz. Annual energy costs essentially covered by solar per video call.",
+        "note": "ASHP Ideal Logic Air 10kW (Code 750667, installed 04/2023 per label — NOT 10 years old, only 3 years old ✓). Solar panels 10-11 years old but performing well. Energy bill minimal. EV charging from solar.",
         "resolved": true
       },
       {
         "cat": "Drainage",
         "label": "Drainage type",
         "score": 2,
-        "note": "Mains drainage confirmed — BUT currently routed via neighbour's property. Seller pays £50/month. Quote of £3k to reroute direct. Needs clarification before exchange.",
-        "resolved": true
+        "note": "Owner agrees direct water/sewage connection is sensible. £3k estimate to be verified with Welsh Water/Dwr Cymru. Currently informal via neighbour.",
+        "resolved": false
       },
       {
         "cat": "Connectivity",
@@ -1759,14 +1759,14 @@
         "cat": "Risk",
         "label": "Flood risk",
         "score": 2,
-        "note": "Medium surface water risk (1-3.3%/yr, SA1 7BG) — stream on property. LV= quote confirmed insurable: £1,413/yr, £500 flood excess. Not a blocker — priced as modest uplift only. ✓",
+        "note": "Medium surface water risk (1-3.3%/yr) — NRW confirmed. Stream on property. LV= insured at £500 flood excess, £1,413/yr total. No sign of actual flooding at visit.",
         "resolved": true
       },
       {
         "cat": "Risk",
         "label": "Listed building",
         "score": 3,
-        "note": "Not listed",
+        "note": "Not listed, not in conservation area — confirmed at visit ✓",
         "resolved": true
       },
       {
@@ -1794,69 +1794,57 @@
         "cat": "Heating",
         "label": "Solar / Heat pump",
         "score": 3,
-        "note": "ASHP + solar panels both working ✓. More panels than listing shows. Battery storage insufficient currently (~£3k to upgrade). Annual energy essentially covered by solar.",
+        "note": "ASHP installed April 2023 (label confirmed) — only 3 years old ✓. Solar ~12-24 panels, 10-11 years old, more than sufficient per owner. Feed-in tariff income possible with batteries. Flat gym roof could take additional panels.",
         "resolved": true
       },
       {
         "cat": "?",
         "label": "Walk-in shower",
-        "score": 1,
-        "note": "Shower issues documented in multiple Airbnb reviews — 'stuck on boiling hot' (March 2026), 'boiling hot/unusable' (June 2026), 'dripping through ceiling' (August 2026). Serious maintenance issues to resolve. Shower type/level access still unknown.",
-        "resolved": false
+        "score": 3,
+        "note": "Utility room CONFIRMED as former wet room — straightforward conversion back. ✓ En-suite shower rooms also in main house (all upstairs).",
+        "resolved": true
       },
       {
         "cat": "?",
         "label": "Kitchen",
-        "score": 0,
-        "note": "No kitchen in gym. To be fitted. Water connection needed first.",
+        "score": 2,
+        "note": "No kitchen in gym (no longer the plan). Main house kitchen serves all. If Mum in lounge, kitchenette addition to utility room would be ideal — former wet room makes plumbing straightforward.",
         "resolved": false
       },
       {
         "cat": "?",
         "label": "Planning / BC",
+        "score": 2,
+        "note": "Owner is a builder who did most renovation himself — no building regs certificates. Solar via local govt scheme — council should hold documentation. Freehold title to be resolved in conveyancing (owner bought leasehold segments, needs formal freehold completion). Solicitor essential.",
+        "resolved": false
+      },
+      {
+        "cat": "?",
+        "label": "Shower / wetroom",
         "score": 3,
-        "note": "No planning permission needed for conversion confirmed ✓",
+        "note": "Utility room was previously wet room — conversion back confirmed straightforward ✓",
         "resolved": true
       }
     ],
     "questions": [
-      "We have seen from Airbnb reviews that there are documented shower problems — described as 'stuck on boiling hot', 'unusable', and most recently a shower leaking through the ceiling. Can you confirm the current state of the main bathroom shower, and whether the vendor will repair this before exchange or reduce the price accordingly?",
-      "The property is managed by UrbanPadz as an Airbnb. When will it be vacated and available for viewing without guests present? We would want at least 2 hours on site.",
-      "How long has the property been on the market and have there been any previous offers?",
-      "Has the vendor already instructed a solicitor, and are they keen to move quickly?",
-      "Is there any planned development in the surrounding area we should be aware of?",
-      "What is the vendor's minimum acceptable price? Given the documented maintenance issues and the conversion costs we will need to bear (water mains reroute £3k, battery storage £3k, gym conversion), we are likely to offer below the asking price of £450,000.",
-      "The water and sewage connection runs via the neighbour's property. Is there a written legal agreement — an easement or deed — that formalises this arrangement and will transfer with the sale? If not, would you be willing to have this formalised by your solicitor before exchange, or to reroute the supply direct (£3k quoted) before completion?",
-      "What is the make and model of the heat pump? We want to confirm whether it has a cooling/air conditioning mode for summer use as well.",
-      "Since you are leaving the gym equipment, are you also planning to leave any appliances or furniture in the main house — white goods, range cooker, etc?",
-      "The Airbnb reviews mention the shower has been stuck on boiling hot for several months and has recently been leaking through the ceiling. Are you aware of this and what is the current situation?",
-      "Can you show us the upstairs room adjacent to the bedrooms and give us its dimensions? We want to assess whether smoke-sealing it as self-contained annexe accommodation for an elderly relative with mobility issues is feasible.",
-      "Is there any possibility of creating a ground floor wet room or shower room within the main house — perhaps from part of the utility room or by partitioning the open-plan ground floor?",
-      "Can you show us the gym building in detail — specifically the floor, ceiling height, wall construction, and whether there are any existing water pipes or waste runs nearby? We need to understand the conversion scope precisely.",
-      "Is the gym sub-board capable of running an electric shower, kitchen appliances and electric radiators simultaneously, or would it need upgrading?",
-      "What is the exact access route from the front door to the gym, and would it be feasible to pave it for walking frame access?",
-      "How old is the roof, and when were the windows last replaced? Are there any guarantees or warranties?",
-      "Have there been any extensions, conversions or significant alterations to the property, and if so is there planning permission and building regulations sign-off?",
-      "Have there been any recent electrical works, and are there certificates? When was the ASHP installation certified?",
-      "Are there any known issues with damp, subsidence, or drainage? Some of the Airbnb reviews mention the property feels tired — what maintenance is outstanding?",
-      "Can we check water pressure in all the taps and flush all the toilets? And can we see the main bathroom shower working?",
-      "What is the boiler/heating system age and service history? (We understand it is ASHP but want the installation date and last service.)",
-      "Are there any shared arrangements, rights of way, or access agreements with neighbours beyond the water easement — for example regarding the woodland or stables area?",
-      "Can you confirm exactly what land and outbuildings are included in the freehold title — the woodland, the stream, the stables, the gym building?",
-      "Have there been any disputes or problems with neighbours? We noticed there is a semi-detached element — how much noise transfer is there between the properties?",
-      "Is there any significant development planned nearby?",
-      "Which way do the main living rooms and bedrooms face? (We want to understand sun exposure.)",
-      "What are the vendor's best and worst points about the property — the things they will miss, and the things that have been a nuisance?"
+      "Ask Rebecca: Is the competing buyer (at £475k) likely to be able to proceed before we complete? How long have they been on the market without selling?",
+      "Get a quote directly from Dwr Cymru (Welsh Water) for rerouting the water/sewage connection direct: 0800 917 2652 or dwrcymru.com",
+      "Ask Rebecca/Rob: Can the council (City and County of Swansea) provide documentation for the solar installation done under the local government scheme?",
+      "Solicitor to confirm: freehold title consolidation — owner has bought leasehold segments, needs formal freehold sign-off as part of conveyancing.",
+      "Surveyor to assess: door between lounge and rest of house — quality of seal for smoke separation.",
+      "Check Ideal Heating warranty for ASHP Logic Air 10kW (serial 075066700000451, installed 04/2023) — contact Ideal Heating on 01482 498660.",
+      "Consider whether to offer above £450k asking price to reduce gazumping risk from £475k competing buyer."
     ],
     "red_flags": [
-      "Shower seriously faulty — multiple Airbnb guests report 'stuck on boiling hot', 'unusable', 'leaking through ceiling'. Must be resolved before occupation. Negotiate repair/price reduction.",
-      "No ground floor toilet or bathroom — guests confirm none. Significant issue for Mum's mobility.",
-      "Gym has no water/waste connection — £3k mains reroute + plumbing fit-out needed. Owner says gym equipment sale will cover conversion costs.",
-      "Gravel path to gym — paving needed for walking frame access (~£500-1,500).",
-      "Water easement currently informal — must be formalised as legal easement before exchange.",
-      "Property managed by UrbanPadz (Airbnb) — owner not living there. Multiple guests note 'tired', 'grubby', needs investment. Priced for quick sale.",
-      "Battery storage insufficient (~£3k to add full capacity).",
-      "Surface water flood risk medium (1-3.3%/yr) — insured at £500 excess via LV= (£1,413/yr). Not a blocker but factor into running costs."
+      "COMPETING OFFER: Owner has offer at original asking price £475k from buyer whose own property hasn't sold. Owner relisted at £450k. Risk of gazumping if that buyer proceeds.",
+      "Freehold title not yet complete — owner bought leasehold segments but hasn't formalised freehold. Must be resolved in conveyancing before exchange.",
+      "No building regs certificates — owner did renovation himself. Solar installation via local govt scheme — council may hold docs. Solicitor/surveyor must verify.",
+      "ASHP label says April 2023 — only 3 years old, not 10 as owner believed. Good news but check warranty (typically 5-7 years from Ideal Heating).",
+      "Water/sewage via neighbour — owner agrees rerouting sensible. Get direct quote from Dwr Cymru (Welsh Water) to verify £3k estimate.",
+      "Some cosmetic wear (loose beading, rising linoleum, loose light fitting) — nothing serious but factor into any offer negotiation.",
+      "Solar panels 10-11 years old — may need replacing in 10-15 years. Cheap now so not a major concern.",
+      "Bog Road is very narrow — potential issue for large removals vehicles.",
+      "Surface water flood risk medium (1-3.3%/yr) — insured at £500 excess, £1,413/yr (LV=). Not a blocker."
     ]
   },
   "89701968": {
