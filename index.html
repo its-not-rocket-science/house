@@ -2949,8 +2949,11 @@ document.addEventListener('keydown', e => {
   }
 });
 
-const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-  .replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+function esc(t) {
+  if (!t) return '';
+  return t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+}
 
 
 // ── SCORECARD ────────────────────────────────────────────────────────────────
