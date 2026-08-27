@@ -6185,5 +6185,138 @@
       "Drainage likely private — rural SA17",
       "225 min from UB7 — longest journey of all candidates"
     ]
+  },
+  "90989973": {
+    "ref": "90989973",
+    "overall_pct": 73,
+    "scores": [
+      {
+        "cat": "Annexe",
+        "label": "Annexe status",
+        "score": 3,
+        "note": "Fully self-contained 1-bed annexe with private entrance ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Annexe",
+        "label": "Independent entrance",
+        "score": 3,
+        "note": "Private entrance confirmed in listing ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Annexe",
+        "label": "Shower / wetroom",
+        "score": 3,
+        "note": "Walk-in shower en-suite in annexe confirmed ✓. Main bathroom also has walk-in shower cubicle.",
+        "resolved": true
+      },
+      {
+        "cat": "Annexe",
+        "label": "Kitchen",
+        "score": 3,
+        "note": "Annexe kitchen confirmed — gas hob, electric oven, dishwasher, fridge ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Annexe",
+        "label": "Planning / BC",
+        "score": 1,
+        "note": "No planning/BC info in listing — confirm with agent. Annexe appears purpose-built.",
+        "resolved": false
+      },
+      {
+        "cat": "Smoke",
+        "label": "Physical separation",
+        "score": 3,
+        "note": "Self-contained annexe with private entrance — fully separate ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Mobility",
+        "label": "Ground floor bedroom",
+        "score": 3,
+        "note": "Annexe bedroom is ground floor ✓. Main house: Bedroom 1 has French doors to garden — likely ground floor too.",
+        "resolved": true
+      },
+      {
+        "cat": "Mobility",
+        "label": "Walk-in shower",
+        "score": 3,
+        "note": "Walk-in shower in annexe en-suite ✓. Also in main bathroom.",
+        "resolved": true
+      },
+      {
+        "cat": "Heating",
+        "label": "Fuel type",
+        "score": 1,
+        "note": "Gas heating (Bertazzoni range, gas hob in annexe). Log burners. EPC D — no ASHP or heat pump. Higher running costs than heat pump properties.",
+        "resolved": true
+      },
+      {
+        "cat": "Heating",
+        "label": "Solar / Heat pump",
+        "score": 0,
+        "note": "No solar or heat pump mentioned. EPC D. Would benefit from ASHP installation.",
+        "resolved": true
+      },
+      {
+        "cat": "Drainage",
+        "label": "Drainage type",
+        "score": 3,
+        "note": "Mains water supply confirmed ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Risk",
+        "label": "Flood risk",
+        "score": 3,
+        "note": "Very low flood risk confirmed (NRW, SA3 1HD) — rivers, sea and surface water all <0.1%/yr ✓. Despite Loughor Estuary proximity.",
+        "resolved": true
+      },
+      {
+        "cat": "Risk",
+        "label": "Listed building",
+        "score": 3,
+        "note": "Not listed ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Transaction",
+        "label": "Chain",
+        "score": 0,
+        "note": "Chain status not mentioned in listing — confirm with agent.",
+        "resolved": false
+      },
+      {
+        "cat": "Transaction",
+        "label": "Budget headroom",
+        "score": 1,
+        "note": "£475k offers over — AT budget limit. Council Tax Band G adds ~£3,500/yr running costs. Gas heating adds further.",
+        "resolved": true
+      },
+      {
+        "cat": "Space",
+        "label": "Play room",
+        "score": 2,
+        "note": "3 beds in main + 1 in annexe. Lounge/diner large (22'1x11'0). Double garage could serve as play space.",
+        "resolved": true
+      }
+    ],
+    "questions": [
+      "Has the annexe got planning permission and building control approval? Does it have its own council tax band?",
+      "Is there an onward chain?",
+      "What is the drainage — mains or private (septic/treatment plant)?",
+      "What is the flood risk for the specific plot — the estuary/salt marsh proximity?",
+      "Is there broadband — speeds and provider at SA3 1HD?",
+      "Would the vendors consider fitting an ASHP given the EPC D rating and lack of heat pump?",
+      "Can we arrange a viewing — note we have an existing relationship with Rebecca Turner for Pantygyfelia."
+    ],
+    "red_flags": [
+      "Gas heating only — EPC D. No ASHP or solar. Higher running costs; budget for ASHP upgrade.",
+      "Council Tax Band G — approximately £3,500/yr, significantly higher than other properties in search.",
+      "£475k offers over — at absolute budget limit. Gas heating + Band G council tax add significant running costs.",
+      "Drainage unknown — likely private in this rural hamlet location."
+    ]
   }
 }

@@ -894,5 +894,27 @@
       "We would like to arrange a viewing — what dates are available?"
     ],
     "callStatus": "need-to-call"
+  },
+  {
+    "ref": "90989973",
+    "rank": 51,
+    "name": "Farthings, Landimore, Gower",
+    "agent": "The Anderson Group (Rebecca Turner)",
+    "phone": "01792 949889",
+    "email": "",
+    "contactFirstName": "Rebecca",
+    "contactFullName": "Rebecca Turner",
+    "questions": [
+      "Has the annexe got planning permission and building control approval? Does it have its own council tax band?",
+      "Is there an onward chain?",
+      "What is the drainage — mains or private (septic/treatment plant)?",
+      "What is the flood risk for the specific plot — the estuary/salt marsh proximity?",
+      "Is there broadband — speeds and provider at SA3 1HD?",
+      "Would the vendors consider fitting an ASHP given the EPC D rating and lack of heat pump?",
+      "Can we arrange a viewing — note we have an existing relationship with Rebecca Turner for Pantygyfelia."
+    ],
+    "callStatus": "need-to-call",
+    "annexe": "confirmed",
+    "price": "£475,000 offers over"
   }
 ]

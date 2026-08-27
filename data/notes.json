@@ -166,6 +166,10 @@
     },
     "170954642": {
       "date": "17/07/2026"
+    },
+    "90989973": {
+      "date": "27/08/2026",
+      "text": "Added 27/08/2026. Same agent as Pantygyfelia (Rebecca Turner, The Anderson Group).\nNote: contact via Rebecca directly — she already knows us.\nGower Peninsula location — 14 miles from Swansea city centre, 5 min from Whiteford Sands.\nNorth Gower is a Special Landscape Area — planning restrictions apply.\nCouncil Tax Band G is notably high — verify annual amount with Swansea Council.\n\nFLOOD RISK (NRW, SA3 1HD, 27/08/2026): Very low — rivers, sea, surface water all <0.1%/yr ✓\nWATER: Mains supply confirmed ✓"
     }
   },
   "visits": {},
@@ -203,7 +207,8 @@
     "unknown_rose_dean": "not-contacted",
     "91082217": "not-contacted",
     "90246999": "not-contacted",
-    "168485171": "not-contacted"
+    "168485171": "not-contacted",
+    "90989973": "not-contacted"
   },
   "agentStatusDate": {
     "87791562": "06/07/2026",
@@ -237,7 +242,8 @@
     "174472451": "17/07/2026",
     "174938813": "06/07/2026",
     "apex27_885144": "17/07/2026",
-    "unknown_rose_dean": "20/07/2026"
+    "unknown_rose_dean": "20/07/2026",
+    "90989973": "27/08/2026"
   },
   "agentEmail": {
     "87791562": "chloe@kingstons.biz",
@@ -281,7 +287,8 @@
     "unknown_rose_dean": "0161 711 2081",
     "91082217": "01202 786700",
     "90246999": "01202 710001",
-    "89061840": "01460 68222"
+    "89061840": "01460 68222",
+    "90989973": "01792 949889"
   },
   "statusOverrides": {
     "87890067": "not-proceeding",
@@ -310,7 +317,8 @@
     "170954642": "no_chain",
     "173348153": "park_home",
     "174286715": "no_chain",
-    "90246999": "no_chain"
+    "90246999": "no_chain",
+    "90989973": "unknown"
   },
   "callStatus": {},
   "scorecardOverrides": {},
