@@ -2254,36 +2254,6 @@
     "rank": 49
   },
   {
-    "ref": "91082217",
-    "name": "Wimborne Road, Bournemouth",
-    "price": 425000,
-    "price_display": "£425,000",
-    "location": "Bournemouth, Dorset",
-    "postcode": "BH11 9AU",
-    "cluster": "Bournemouth & Christchurch",
-    "agent": "Corbin & Co, Bournemouth",
-    "annexe": "potential",
-    "caveat": null,
-    "short_desc": "1800s character semi-detached, 3 bed, large corner plot. Detached brick garage with power/lighting — excellent annexe conversion potential STPP. Two wood-burning stoves, modernised kitchen and bathroom. Corbin & Co 01202 786700.",
-    "full_desc": "",
-    "status": "active",
-    "lat": 50.7591,
-    "lng": -1.8892,
-    "rightmove_url": "https://www.rightmove.co.uk/properties/91082217",
-    "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F91082217&propertyId=91082217",
-    "duplicate_refs": [],
-    "rank": 29,
-    "journeys": {
-      "london_car_mins": 115,
-      "london_rail_mins": 105,
-      "coast_car_mins": 5,
-      "coast_name": "Bournemouth Beach",
-      "hospital_car_mins": 8,
-      "hospital_name": "Royal Bournemouth Hospital",
-      "nearest_town": "Bournemouth (2mi)"
-    }
-  },
-  {
     "ref": "90989973",
     "rank": 10,
     "name": "Farthings, Landimore, Gower",
