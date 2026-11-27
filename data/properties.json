@@ -2374,57 +2374,57 @@
     "postcode": "SA8 3AN"
   },
   {
-    "ref": "173546681",
-    "name": "Kents Close, Chard",
-    "price": 460000,
-    "price_display": "£460,000",
-    "location": "Chard, Somerset",
-    "cluster": "Somerset West",
-    "agent": "Greenslade Taylor Hunt, Chard",
+    "ref": "90542934",
+    "name": "Avonvale Road, Trowbridge",
+    "price": 375000,
+    "price_display": "£375,000 OIEO",
+    "location": "Trowbridge, Wiltshire",
+    "cluster": "Wiltshire / Trowbridge",
+    "agent": "Strakers, Trowbridge",
     "annexe": "confirmed",
     "caveat": null,
-    "short_desc": "Property with confirmed self-contained attached annexe. Annexe has separate entrance, no internal access from main house, solid wall between — full smoke separation confirmed. Overhead shower in bath (not level access). Mains gas CH, mains drainage. Never flooded (<0.1%). Vendor looking to buy onwards but no property found yet. Price reduced to £460,000.",
-    "full_desc": "Property with confirmed self-contained attached annexe in Kents Close, Chard TA20. Annexe has own separate external entrance — cannot be accessed from main property. Solid wall between main living areas and annexe providing full smoke/air separation. Annexe shower: overhead shower within bath (not walk-in/level access). Mains gas central heating. Mains drainage. Flood risk <0.1%, never flooded. Vendor has onward chain but no specific property found yet. Price reduced from higher asking price to £460,000.",
+    "short_desc": "Detached 3-bed house (1,576 sq ft) with self-contained 1-bed ground floor annexe. Annexe: entrance vestibule, hall, sitting room, kitchen (built-in oven & hob), double bedroom with wardrobes, en-suite shower room. Gas CH, UPVC DG, mains services, freehold. Council Tax Band D. Private enclosed garden. Driveway parking. Close to Trowbridge town centre and new Integrated Care Centre. Bath 12 miles.",
+    "full_desc": "A deceptively spacious and well presented detached family house with self-contained annexe. Main house: entrance porch, hall, 20ft sitting room with feature fireplace, dining room/family room, kitchen with modern units, two double bedrooms (built-in wardrobes), one single bedroom, bathroom (jacuzzi bath), separate WC. Self-contained annexe: entrance vestibule, hall, sitting room, kitchen (built-in oven and hob), double bedroom (built-in wardrobes), en-suite shower room. Garden: paved patio, lawn, flower beds, summer house (with power), large shed/workshop. Store/workshop with power and lighting. Driveway parking for 2 cars. Gas fired central heating, UPVC double glazing, mains services, freehold. Council Tax Band D, EPC D. Avonvale Road is just off Seymour Road. Walking distance to new Integrated Care Centre, shops, station. Bath 12 miles (mainline station to London Paddington). £375,000 OIEO. Added 7 July 2026.",
     "status": "active",
-    "lat": 50.8731,
-    "lng": -2.9627,
-    "rightmove_url": "https://www.rightmove.co.uk/properties/173546681",
-    "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F173546681&propertyId=173546681",
+    "lat": 51.3195,
+    "lng": -2.2091,
+    "rightmove_url": "https://www.rightmove.co.uk/properties/90542934",
+    "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F90542934&propertyId=90542934",
     "duplicate_refs": [],
     "journeys": {
-      "london_car_mins": 160,
-      "london_rail_mins": 130,
-      "coast_car_mins": 22,
-      "coast_name": "Lyme Regis / Charmouth",
+      "london_car_mins": 105,
+      "london_rail_mins": 80,
+      "coast_car_mins": 55,
+      "coast_name": "Bournemouth / Weymouth",
       "hospital_car_mins": 12,
-      "hospital_name": "Chard Community Hospital / Yeovil District Hospital",
-      "nearest_town": "Chard (1 mi)"
+      "hospital_name": "RUH Bath / Great Western Hospital Swindon",
+      "nearest_town": "Trowbridge town centre (0.5 mi)"
     },
     "home_ed": {
-      "rating": "excellent",
-      "summary": "Somerset West cluster — one of the best home-ed communities in England. Taunton 14 miles.",
+      "rating": "good",
+      "summary": "Trowbridge has a Wiltshire home-ed network. Bath 12 miles gives access to a richer community.",
       "groups": [
         {
-          "name": "Taunton Home Education Group",
-          "contact": "tauntonhomeeducation@gmail.com",
-          "notes": "Regular meetings; art, cookery, drama, science"
+          "name": "North Wiltshire Home Educators",
+          "contact": "Via home-ed.info",
+          "notes": "Covers Trowbridge/Chippenham area"
         },
         {
-          "name": "Home Education SW",
-          "contact": "homeeducationsw.org.uk",
-          "notes": "Regional hub"
+          "name": "Bath Home Educators",
+          "contact": "Facebook / mailing list",
+          "notes": "~12 miles; very active"
         },
         {
-          "name": "Somerset Council EHE Team",
-          "contact": "eheteam@somerset.gov.uk",
-          "notes": "Supportive LEA"
+          "name": "Wiltshire Autism Hub",
+          "contact": "wsun.co.uk/wiltshire-autism-hub",
+          "notes": "County-wide ASD support"
         }
       ],
-      "asd_support": "Somerset Progressive School (West Hatch, Taunton). Strong neurodiversity awareness in Somerset community. Musgrove Park Hospital CAMHS (Taunton, 14 miles).",
-      "notes": "Chard is in the Somerset West home-ed cluster. Yeovil and Taunton groups accessible."
+      "asd_support": "Wiltshire Autism Hub. BSW Neurodevelopmental Pathway covers Trowbridge. RUH Bath 12 miles with CAMHS.",
+      "notes": "Trowbridge itself is functional; Bath proximity lifts the accessible provision considerably. Integrated Care Centre walking distance is a significant plus."
     },
-    "rank": 18,
-    "postcode": "TA20 1NN"
+    "rank": 17,
+    "postcode": "BA14 8EP"
   },
   {
     "ref": "174286715",
