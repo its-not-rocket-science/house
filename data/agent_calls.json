@@ -190,6 +190,25 @@
     "agentLine": "The Anderson Group, Swansea"
   },
   {
+    "ref": "90246999",
+    "rank": 8,
+    "name": "Ashley Road, Poole",
+    "agent": "Greys Estate and Letting Agents, Poole",
+    "phone": "01202 710001",
+    "email": "",
+    "contactFirstName": "",
+    "contactFullName": "",
+    "questions": [
+      "Does the annexe have its own kitchen or kitchenette?",
+      "Is the annexe shower a level-access wet room?",
+      "What is the heating fuel?",
+      "Has the annexe got planning permission and building control approval?",
+      "Is there an onward chain?",
+      "We would like to arrange a viewing — what dates are available?"
+    ],
+    "callStatus": "need-to-call"
+  },
+  {
     "ref": "173348153",
     "name": "Winterborne Stickland — 5-Bed Semi",
     "rank": 9,
@@ -387,6 +406,31 @@
     "agentLine": "Greenslade Taylor Hunt, Chard"
   },
   {
+    "ref": "91892733",
+    "name": "Millhams Close, Kinson — 5-Bed Det with Annexe",
+    "rank": 18,
+    "agent": "Avenue Estates, Bournemouth",
+    "email": "",
+    "phone": "",
+    "status": "not-contacted",
+    "callStatus": "",
+    "questions": [
+      "Does the annexe/secondary accommodation have its own completely independent external entrance door, separate from the main house front door?",
+      "What is the heating type for the main house and the annexe — gas boiler, oil, heat pump?",
+      "Is the shower in the annexe/secondary accommodation a walk-in level-access shower or does it have a step?",
+      "Has the annexe been granted planning permission and building control completion certificate, and does it have its own council tax band?",
+      "What is the broadband speed at the property (Ofcom postcode check)?",
+      "What are the drainage arrangements — mains or private?",
+      "Is there an onward chain?",
+      "We'd like to arrange a viewing — what dates are available?"
+    ],
+    "flags": "No independent external entrance — smoke separation concern",
+    "annexe": "potential",
+    "contactFirstName": "",
+    "contactFullName": "",
+    "agentLine": "Avenue Estates, Bournemouth"
+  },
+  {
     "ref": "167437883",
     "name": "Panteg Uchaf, Narberth",
     "rank": 19,
@@ -414,6 +458,30 @@
     "agentLine": "John Francis, Narberth"
   },
   {
+    "ref": "94952355",
+    "name": "St Ives Gardens, Meyrick Park — 5-Bed Townhouse",
+    "rank": 20,
+    "agent": "Mays Estate Agents, Poole",
+    "email": "",
+    "phone": "02038702409",
+    "status": "not-contacted",
+    "callStatus": "",
+    "questions": [
+      "Does the converted former garage have its own independent external entrance door, separate from the main house?",
+      "Has the garage conversion been approved under planning permission and building control — does it have a completion certificate?",
+      "Is the shower in the converted garage a walk-in/level-access shower?",
+      "What is the main heating type — gas boiler, heat pump?",
+      "What are the broadband speeds at the property?",
+      "Is there an onward chain?",
+      "We'd like to arrange a viewing — what dates are available?"
+    ],
+    "flags": "Former garage — not described as annexe; planning/BC unknown",
+    "annexe": "potential",
+    "contactFirstName": "",
+    "contactFullName": "",
+    "agentLine": "Mays Estate Agents, Poole"
+  },
+  {
     "ref": "88996269",
     "name": "Newtown Rd, Penperlleni, Monmouthshire",
     "rank": 22,
@@ -439,6 +507,30 @@
     "contactFirstName": "Max",
     "contactFullName": "Max",
     "agentLine": "Peter Alan, Cwmbran"
+  },
+  {
+    "ref": "145880918",
+    "name": "Southwood Ave, Christchurch — 5-Bed Chalet (Annexe Potential)",
+    "rank": 22,
+    "agent": "Winkworth, Highcliffe",
+    "email": "",
+    "phone": "",
+    "status": "not-contacted",
+    "callStatus": "",
+    "questions": [
+      "The listing mentions the detached garage as 'potential annexe accommodation' — has any planning permission or building control been obtained for this conversion?",
+      "What is the main heating system (gas boiler, oil, heat pump)?",
+      "Is there a walk-in/level-access shower anywhere on the ground floor of the main house?",
+      "What are the broadband speeds at the property?",
+      "What is the drainage type — mains or septic?",
+      "Is there an onward chain?",
+      "We'd like to arrange a viewing — what dates are available?"
+    ],
+    "flags": "No confirmed annexe — garage conversion potential only",
+    "annexe": "potential",
+    "contactFirstName": "",
+    "contactFullName": "",
+    "agentLine": "Winkworth, Highcliffe"
   },
   {
     "ref": "172773251",
@@ -559,6 +651,30 @@
     "contactFirstName": "",
     "contactFullName": "",
     "agentLine": "Vicary & Co, Bridport"
+  },
+  {
+    "ref": "95880693",
+    "name": "Ringwood Road, Poole — 5-Bed Chalet Bungalow",
+    "rank": 28,
+    "agent": "Greys Estate Agents, Poole",
+    "email": "",
+    "phone": "",
+    "status": "not-contacted",
+    "callStatus": "",
+    "questions": [
+      "Is there any potential for creating a self-contained annexe for a dependent relative — could the detached garage be converted, or is there scope to extend?",
+      "What are the internal dimensions of the detached garage?",
+      "Is there a walk-in/level-access shower anywhere on the ground floor?",
+      "What is the drainage type — mains or private?",
+      "What are the broadband speeds at the property?",
+      "Is there an onward chain?",
+      "We'd like to arrange a viewing — what dates are available?"
+    ],
+    "flags": "No annexe mentioned — garage potential entirely unconfirmed",
+    "annexe": null,
+    "contactFirstName": "",
+    "contactFullName": "",
+    "agentLine": "Greys Estate Agents, Poole"
   },
   {
     "ref": "88310844",
@@ -731,6 +847,29 @@
     "agentLine": "Appleby & Townend"
   },
   {
+    "ref": "95593278",
+    "name": "Rushton Crescent, Meyrick Park — 9-Bed (Two Flats)",
+    "rank": 35,
+    "agent": "Roberts, Bournemouth",
+    "email": "",
+    "phone": "",
+    "status": "not-contacted",
+    "callStatus": "",
+    "questions": [
+      "Has any pre-application planning advice been sought for reconversion to a single dwelling?",
+      "What is the structural and cosmetic condition of both flats — what works are needed?",
+      "What is the drainage type — mains or private?",
+      "What are the broadband speeds at the property?",
+      "Is there an onward chain?",
+      "We'd like to arrange a viewing — what dates are available?"
+    ],
+    "flags": "Two flats — not an annexe; reconversion needs planning consent",
+    "annexe": "potential",
+    "contactFirstName": "",
+    "contactFullName": "",
+    "agentLine": "Roberts, Bournemouth"
+  },
+  {
     "ref": "170605958",
     "name": "Brook St, Bampton, Devon",
     "rank": 36,
@@ -875,25 +1014,6 @@
       "Has the annexe got planning permission and building control sign-off?",
       "What are the vendors' expectations on price?"
     ]
-  },
-  {
-    "ref": "90246999",
-    "rank": 8,
-    "name": "Ashley Road, Poole",
-    "agent": "Greys Estate and Letting Agents, Poole",
-    "phone": "01202 710001",
-    "email": "",
-    "contactFirstName": "",
-    "contactFullName": "",
-    "questions": [
-      "Does the annexe have its own kitchen or kitchenette?",
-      "Is the annexe shower a level-access wet room?",
-      "What is the heating fuel?",
-      "Has the annexe got planning permission and building control approval?",
-      "Is there an onward chain?",
-      "We would like to arrange a viewing — what dates are available?"
-    ],
-    "callStatus": "need-to-call"
   },
   {
     "ref": "90989973",
