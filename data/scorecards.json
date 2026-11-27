@@ -129,7 +129,7 @@
   },
   "89061840": {
     "ref": "89061840",
-    "overall_pct": 69,
+    "overall_pct": 62,
     "scores": [
       {
         "cat": "Annexe",
@@ -249,6 +249,34 @@
         "score": 1,
         "note": "Gas CH — heat pump viable upgrade (BUS grant £7,500); no solar mentioned",
         "resolved": false
+      },
+      {
+        "cat": "Energy",
+        "label": "Heating fuel / system",
+        "score": 0,
+        "note": "oil/LPG — expensive fossil fuel; ASHP upgrade high priority",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Solar viability",
+        "score": 2,
+        "note": "Good solar viability — detached/suitable roof",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "EPC insulation rating",
+        "score": 1,
+        "note": "EPC E — below average",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Net upgrade cost (solar + heat pump)",
+        "score": 1,
+        "note": "Solar ~£10,000 + ASHP net ~£6,500 = ~£16,500 combined",
+        "resolved": true
       }
     ],
     "questions": [
@@ -650,7 +678,7 @@
   },
   "173348153": {
     "ref": "173348153",
-    "overall_pct": 80,
+    "overall_pct": 73,
     "scores": [
       {
         "cat": "Annexe",
@@ -770,6 +798,34 @@
         "score": 1,
         "note": "Step-in shower in studio — confirm dimensions for wet room conversion",
         "resolved": false
+      },
+      {
+        "cat": "Energy",
+        "label": "Heating fuel / system",
+        "score": 0,
+        "note": "oil — expensive fossil fuel; ASHP upgrade high priority",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Solar viability",
+        "score": 1,
+        "note": "Moderate solar viability — semi-detached or partial roof",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "EPC insulation rating",
+        "score": 2,
+        "note": "EPC D — average — adequate for heat pump",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Net upgrade cost (solar + heat pump)",
+        "score": 2,
+        "note": "Solar ~£6,000 + ASHP net ~£4,500 = ~£10,500 combined",
+        "resolved": true
       }
     ],
     "questions": [
@@ -1035,6 +1091,34 @@
         "score": 3,
         "note": "Heat pump + solar panels confirmed ✓ — excellent low-carbon setup",
         "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Heating fuel / system",
+        "score": 2,
+        "note": "Gas heating — manageable, ASHP upgrade possible",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Solar viability",
+        "score": 2,
+        "note": "Good solar viability — detached/suitable roof",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "EPC insulation rating",
+        "score": 3,
+        "note": "EPC C — good insulation",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Net upgrade cost (solar + heat pump)",
+        "score": 2,
+        "note": "Solar ~£8,000 + ASHP net ~£5,500 = ~£13,500 combined",
+        "resolved": true
       }
     ],
     "questions": [
@@ -1052,7 +1136,7 @@
   },
   "168359045": {
     "ref": "168359045",
-    "overall_pct": 56,
+    "overall_pct": 57,
     "scores": [
       {
         "cat": "Annexe",
@@ -1165,6 +1249,34 @@
         "score": 1,
         "note": "Gas CH — heat pump viable upgrade (BUS grant £7,500); no solar mentioned",
         "resolved": false
+      },
+      {
+        "cat": "Energy",
+        "label": "Heating fuel / system",
+        "score": 2,
+        "note": "Gas heating — manageable, ASHP upgrade possible",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Solar viability",
+        "score": 2,
+        "note": "Good solar viability — detached/suitable roof",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "EPC insulation rating",
+        "score": 3,
+        "note": "EPC C — good insulation",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Net upgrade cost (solar + heat pump)",
+        "score": 0,
+        "note": "Solar ~£8,500 + ASHP net ~£12,500 = ~£21,000 combined",
+        "resolved": true
       }
     ],
     "questions": [
@@ -1313,7 +1425,7 @@
   },
   "87130665": {
     "ref": "87130665",
-    "overall_pct": 56,
+    "overall_pct": 62,
     "scores": [
       {
         "cat": "Annexe",
@@ -1426,6 +1538,34 @@
         "score": 0,
         "note": "Renewable energy status unknown",
         "resolved": false
+      },
+      {
+        "cat": "Energy",
+        "label": "Heating fuel / system",
+        "score": 2,
+        "note": "Gas heating — manageable, ASHP upgrade possible",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Solar viability",
+        "score": 3,
+        "note": "Solar panels already installed — no cost required ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "EPC insulation rating",
+        "score": 2,
+        "note": "EPC D — average — adequate for heat pump",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Net upgrade cost (solar + heat pump)",
+        "score": 3,
+        "note": "Solar already installed; ASHP net ~£4,500 — excellent position",
+        "resolved": true
       }
     ],
     "questions": [
@@ -1444,7 +1584,7 @@
   },
   "172902734": {
     "ref": "172902734",
-    "overall_pct": 54,
+    "overall_pct": 55,
     "scores": [
       {
         "cat": "Annexe",
@@ -1557,6 +1697,34 @@
         "score": 1,
         "note": "Gas CH — heat pump viable upgrade (BUS grant £7,500); no solar mentioned",
         "resolved": false
+      },
+      {
+        "cat": "Energy",
+        "label": "Heating fuel / system",
+        "score": 2,
+        "note": "Gas heating — manageable, ASHP upgrade possible",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Solar viability",
+        "score": 2,
+        "note": "Good solar viability — detached/suitable roof",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "EPC insulation rating",
+        "score": 2,
+        "note": "EPC D — average — adequate for heat pump",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Net upgrade cost (solar + heat pump)",
+        "score": 1,
+        "note": "Solar ~£10,000 + ASHP net ~£5,500 = ~£15,500 combined",
+        "resolved": true
       }
     ],
     "questions": [
@@ -2345,7 +2513,7 @@
   },
   "168243473": {
     "ref": "168243473",
-    "overall_pct": 60,
+    "overall_pct": 62,
     "scores": [
       {
         "cat": "Annexe",
@@ -2457,6 +2625,34 @@
         "label": "Solar / Heat pump",
         "score": 2,
         "note": "Heat pump confirmed ✓ — solar not mentioned",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Heating fuel / system",
+        "score": 2,
+        "note": "Gas heating — manageable, ASHP upgrade possible",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Solar viability",
+        "score": 2,
+        "note": "Good solar viability — detached/suitable roof",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "EPC insulation rating",
+        "score": 2,
+        "note": "EPC D — average — adequate for heat pump",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Net upgrade cost (solar + heat pump)",
+        "score": 2,
+        "note": "Solar ~£8,000 + ASHP net ~£4,500 = ~£12,500 combined",
         "resolved": true
       }
     ],
@@ -3574,7 +3770,7 @@
   },
   "166496951": {
     "ref": "166496951",
-    "overall_pct": 89,
+    "overall_pct": 88,
     "scores": [
       {
         "cat": "Annexe",
@@ -3679,6 +3875,34 @@
         "label": "Walk-in shower",
         "score": 3,
         "note": "Wet room confirmed ✓",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Heating fuel / system",
+        "score": 2,
+        "note": "Gas heating — manageable, ASHP upgrade possible",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Solar viability",
+        "score": 3,
+        "note": "Excellent solar viability — large roof, good orientation",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "EPC insulation rating",
+        "score": 3,
+        "note": "EPC C — good insulation",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Net upgrade cost (solar + heat pump)",
+        "score": 2,
+        "note": "Solar ~£9,000 + ASHP net ~£4,500 = ~£13,500 combined",
         "resolved": true
       }
     ],
@@ -4050,7 +4274,7 @@
   },
   "168382466": {
     "ref": "168382466",
-    "overall_pct": 56,
+    "overall_pct": 53,
     "scores": [
       {
         "cat": "Annexe",
@@ -4162,6 +4386,34 @@
         "label": "Solar / Heat pump",
         "score": 2,
         "note": "Heat pump confirmed ✓ — solar not mentioned",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Heating fuel / system",
+        "score": 0,
+        "note": "oil — expensive fossil fuel; ASHP upgrade high priority",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Solar viability",
+        "score": 2,
+        "note": "Good solar viability — detached/suitable roof",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "EPC insulation rating",
+        "score": 2,
+        "note": "EPC D — average — adequate for heat pump",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Net upgrade cost (solar + heat pump)",
+        "score": 1,
+        "note": "Solar ~£10,000 + ASHP net ~£5,500 = ~£15,500 combined",
         "resolved": true
       }
     ],
@@ -4789,7 +5041,7 @@
   },
   "89491017": {
     "ref": "89491017",
-    "overall_pct": 57,
+    "overall_pct": 51,
     "scores": [
       {
         "cat": "Annexe",
@@ -4908,6 +5160,34 @@
         "label": "Solar / Heat pump",
         "score": 2,
         "note": "Heat pump confirmed ✓ — solar not mentioned",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Heating fuel / system",
+        "score": 0,
+        "note": "oil — expensive fossil fuel; ASHP upgrade high priority",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Solar viability",
+        "score": 2,
+        "note": "Good solar viability — detached/suitable roof",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "EPC insulation rating",
+        "score": 1,
+        "note": "EPC E — below average",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Net upgrade cost (solar + heat pump)",
+        "score": 0,
+        "note": "Solar ~£10,000 + ASHP net ~£13,000 = ~£23,000 combined",
         "resolved": true
       }
     ],
@@ -5037,7 +5317,7 @@
   },
   "90443352": {
     "ref": "90443352",
-    "overall_pct": 73,
+    "overall_pct": 72,
     "scores": [
       {
         "cat": "Annexe",
@@ -5150,6 +5430,34 @@
         "score": 1,
         "note": "Gas CH — heat pump viable upgrade (BUS grant £7,500); no solar mentioned",
         "resolved": false
+      },
+      {
+        "cat": "Energy",
+        "label": "Heating fuel / system",
+        "score": 2,
+        "note": "Gas heating — manageable, ASHP upgrade possible",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Solar viability",
+        "score": 2,
+        "note": "Good solar viability — detached/suitable roof",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "EPC insulation rating",
+        "score": 2,
+        "note": "EPC D — average — adequate for heat pump",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Net upgrade cost (solar + heat pump)",
+        "score": 2,
+        "note": "Solar ~£9,000 + ASHP net ~£5,000 = ~£14,000 combined",
+        "resolved": true
       }
     ],
     "questions": [
@@ -5166,7 +5474,7 @@
   },
   "apex27_885144": {
     "ref": "apex27_885144",
-    "overall_pct": 74,
+    "overall_pct": 65,
     "scores": [
       {
         "cat": "Annexe",
@@ -5264,6 +5572,34 @@
         "label": "Solar / Heat pump",
         "score": 3,
         "note": "Heat pump + solar panels confirmed ✓ — excellent low-carbon setup",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Heating fuel / system",
+        "score": 0,
+        "note": "oil/LPG — expensive fossil fuel; ASHP upgrade high priority",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Solar viability",
+        "score": 2,
+        "note": "Good solar viability — detached/suitable roof",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "EPC insulation rating",
+        "score": 2,
+        "note": "EPC D — average — adequate for heat pump",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Net upgrade cost (solar + heat pump)",
+        "score": 0,
+        "note": "Solar ~£9,000 + ASHP net ~£12,000 = ~£21,000 combined",
         "resolved": true
       }
     ],
@@ -5548,7 +5884,7 @@
   },
   "174286715": {
     "ref": "174286715",
-    "overall_pct": 67,
+    "overall_pct": 63,
     "scores": [
       {
         "cat": "Annexe",
@@ -5667,6 +6003,34 @@
         "label": "Broadband",
         "score": 1,
         "note": "Basic only 6Mb down / 1Mb up (TA7 0AG) - no superfast available",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Heating fuel / system",
+        "score": 1,
+        "note": "Electric resistance heating — expensive; ASHP would cut bills dramatically",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Solar viability",
+        "score": 1,
+        "note": "Moderate solar viability — semi-detached or partial roof",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "EPC insulation rating",
+        "score": 2,
+        "note": "EPC D — average — adequate for heat pump",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Net upgrade cost (solar + heat pump)",
+        "score": 2,
+        "note": "Solar ~£7,000 + ASHP net ~£4,500 = ~£11,500 combined",
         "resolved": true
       }
     ],
@@ -6188,7 +6552,7 @@
   },
   "90989973": {
     "ref": "90989973",
-    "overall_pct": 73,
+    "overall_pct": 65,
     "scores": [
       {
         "cat": "Annexe",
@@ -6301,6 +6665,34 @@
         "score": 2,
         "note": "3 beds in main + 1 in annexe. Lounge/diner large (22'1x11'0). Double garage could serve as play space.",
         "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Heating fuel / system",
+        "score": 0,
+        "note": "oil — expensive fossil fuel; ASHP upgrade high priority",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Solar viability",
+        "score": 2,
+        "note": "Good solar viability — detached/suitable roof",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "EPC insulation rating",
+        "score": 2,
+        "note": "EPC D — average — adequate for heat pump",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Net upgrade cost (solar + heat pump)",
+        "score": 0,
+        "note": "Solar ~£9,000 + ASHP net ~£12,000 = ~£21,000 combined",
+        "resolved": true
       }
     ],
     "questions": [
@@ -6321,7 +6713,7 @@
   },
   "91892733": {
     "ref": "91892733",
-    "overall_pct": 40,
+    "overall_pct": 45,
     "scores": [
       {
         "cat": "Annexe",
@@ -6434,6 +6826,34 @@
         "score": 0,
         "note": "No renewable energy mentioned",
         "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Heating fuel / system",
+        "score": 2,
+        "note": "Gas heating — manageable, ASHP upgrade possible",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Solar viability",
+        "score": 2,
+        "note": "Good solar viability — detached/suitable roof",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "EPC insulation rating",
+        "score": 2,
+        "note": "EPC D — average — adequate for heat pump",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Net upgrade cost (solar + heat pump)",
+        "score": 2,
+        "note": "Solar ~£9,000 + ASHP net ~£5,000 = ~£14,000 combined",
+        "resolved": true
       }
     ],
     "questions": [
@@ -6447,7 +6867,7 @@
   },
   "145880918": {
     "ref": "145880918",
-    "overall_pct": 35,
+    "overall_pct": 42,
     "scores": [
       {
         "cat": "Annexe",
@@ -6560,6 +6980,34 @@
         "score": 0,
         "note": "No renewable energy mentioned",
         "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Heating fuel / system",
+        "score": 2,
+        "note": "Gas heating — manageable, ASHP upgrade possible",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Solar viability",
+        "score": 2,
+        "note": "Good solar viability — detached/suitable roof",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "EPC insulation rating",
+        "score": 2,
+        "note": "EPC D — average — adequate for heat pump",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Net upgrade cost (solar + heat pump)",
+        "score": 2,
+        "note": "Solar ~£9,000 + ASHP net ~£5,000 = ~£14,000 combined",
+        "resolved": true
       }
     ],
     "questions": [
@@ -6573,7 +7021,7 @@
   },
   "94952355": {
     "ref": "94952355",
-    "overall_pct": 46,
+    "overall_pct": 48,
     "scores": [
       {
         "cat": "Annexe",
@@ -6686,6 +7134,34 @@
         "score": 0,
         "note": "No renewable energy mentioned",
         "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Heating fuel / system",
+        "score": 2,
+        "note": "Gas heating — manageable, ASHP upgrade possible",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Solar viability",
+        "score": 1,
+        "note": "Limited solar viability — flat/conversion; feasible but constrained",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "EPC insulation rating",
+        "score": 2,
+        "note": "EPC D — average — adequate for heat pump",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Net upgrade cost (solar + heat pump)",
+        "score": 2,
+        "note": "Solar ~£5,000 + ASHP net ~£6,500 = ~£11,500 combined",
+        "resolved": true
       }
     ],
     "questions": [
@@ -6698,7 +7174,7 @@
   },
   "95593278": {
     "ref": "95593278",
-    "overall_pct": 52,
+    "overall_pct": 63,
     "scores": [
       {
         "cat": "Annexe",
@@ -6710,9 +7186,9 @@
       {
         "cat": "Annexe",
         "label": "Shower / wetroom",
-        "score": 2,
-        "note": "Likely — both flats are self-contained; confirm",
-        "resolved": false
+        "score": 3,
+        "note": "Both flats fully self-contained with own bathrooms — confirmed",
+        "resolved": true
       },
       {
         "cat": "Annexe",
@@ -6724,9 +7200,9 @@
       {
         "cat": "Annexe",
         "label": "Planning / building control",
-        "score": 0,
-        "note": "Reconversion to house would require planning permission",
-        "resolved": false
+        "score": 3,
+        "note": "No planning required — two-flat arrangement IS the plan. Ground floor = mother's flat.",
+        "resolved": true
       },
       {
         "cat": "Smoke separation",
@@ -6738,9 +7214,9 @@
       {
         "cat": "Mobility",
         "label": "Ground floor bedroom",
-        "score": 2,
-        "note": "Ground floor flat — check accessibility within flat",
-        "resolved": false
+        "score": 3,
+        "note": "Entire ground floor flat for mother — all bedrooms on ground floor ✓",
+        "resolved": true
       },
       {
         "cat": "Mobility",
@@ -6794,8 +7270,8 @@
       {
         "cat": "Transaction",
         "label": "Budget headroom",
-        "score": 1,
-        "note": "£475k — no headroom; conversion costs would be significant",
+        "score": 2,
+        "note": "£475k — no conversion costs needed; two-flat as-is. Some budget headroom for works.",
         "resolved": true
       },
       {
@@ -6811,6 +7287,34 @@
         "score": 0,
         "note": "No renewable energy mentioned",
         "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Heating fuel / system",
+        "score": 2,
+        "note": "Gas heating — manageable, ASHP upgrade possible",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Solar viability",
+        "score": 1,
+        "note": "Limited solar viability — flat/conversion; feasible but constrained",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "EPC insulation rating",
+        "score": 2,
+        "note": "EPC D — average — adequate for heat pump",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Net upgrade cost (solar + heat pump)",
+        "score": 2,
+        "note": "Solar ~£7,000 + ASHP net ~£6,500 = ~£13,500 combined",
+        "resolved": true
       }
     ],
     "questions": [
@@ -6823,7 +7327,7 @@
   },
   "95880693": {
     "ref": "95880693",
-    "overall_pct": 38,
+    "overall_pct": 43,
     "scores": [
       {
         "cat": "Annexe",
@@ -6935,6 +7439,34 @@
         "label": "Solar / Heat pump",
         "score": 0,
         "note": "No renewable energy mentioned",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Heating fuel / system",
+        "score": 2,
+        "note": "Gas heating — manageable, ASHP upgrade possible",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Solar viability",
+        "score": 2,
+        "note": "Good solar viability — detached/suitable roof",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "EPC insulation rating",
+        "score": 2,
+        "note": "EPC D — average — adequate for heat pump",
+        "resolved": true
+      },
+      {
+        "cat": "Energy",
+        "label": "Net upgrade cost (solar + heat pump)",
+        "score": 2,
+        "note": "Solar ~£9,000 + ASHP net ~£5,000 = ~£14,000 combined",
         "resolved": true
       }
     ],
