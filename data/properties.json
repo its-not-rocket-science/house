@@ -2284,36 +2284,6 @@
     }
   },
   {
-    "ref": "168485171",
-    "name": "Broadlay, Ferryside",
-    "price": 450000,
-    "price_display": "£450,000 (offers in region of)",
-    "location": "Ferryside, Carmarthenshire",
-    "postcode": "SA17 5TQ",
-    "cluster": "South Wales",
-    "agent": "Yopa",
-    "annexe": "potential",
-    "caveat": "flood-check",
-    "short_desc": "Beautifully converted 4-bed former mill with outbuilding annexe (34m² living area + shower room). Underfloor heating. ½ mile from beach and train station. Carmarthen 10mi. Offers in region of £450k. Yopa.",
-    "full_desc": "Broadlay, Ferryside SA17. Converted former mill. Ground floor: lounge 7.2×4.2m, kitchen/dining 9.45×4.46m, utility, main bedroom 6.6×4.9m + en-suite, 4th bedroom/living room 4.8×3.4m. First floor: mezzanine/balcony 9.45×2.26m, bedroom 2 5.1×4.3m, bedroom 3 4.4×3.6m, Jack & Jill bathroom. Outbuilding: garage/workshop 9.57×6.31m (UFH, ripe for conversion), living area 7.33×4.7m, shower room 4.7×2.0m. UFH throughout. Ample parking. ½ mile from Ferryside beach and train station. Carmarthen ~10mi, Llanelli ~15mi.",
-    "status": "active",
-    "lat": 51.7423,
-    "lng": -4.3512,
-    "rightmove_url": "https://www.rightmove.co.uk/properties/168485171",
-    "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F168485171&propertyId=168485171",
-    "duplicate_refs": [],
-    "rank": 28,
-    "journeys": {
-      "london_car_mins": 225,
-      "london_rail_mins": 180,
-      "coast_car_mins": 1,
-      "coast_name": "Ferryside Beach (0.5mi)",
-      "hospital_car_mins": 25,
-      "hospital_name": "Glangwili Hospital, Carmarthen",
-      "nearest_town": "Carmarthen 10mi, Llanelli 15mi"
-    }
-  },
-  {
     "ref": "90989973",
     "rank": 10,
     "name": "Farthings, Landimore, Gower",
