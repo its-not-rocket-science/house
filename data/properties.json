@@ -2374,59 +2374,6 @@
     "postcode": "SA8 3AN"
   },
   {
-    "ref": "90542934",
-    "name": "Avonvale Road, Trowbridge",
-    "price": 375000,
-    "price_display": "£375,000 OIEO",
-    "location": "Trowbridge, Wiltshire",
-    "cluster": "Wiltshire / Trowbridge",
-    "agent": "Strakers, Trowbridge",
-    "annexe": "confirmed",
-    "caveat": null,
-    "short_desc": "Detached 3-bed house (1,576 sq ft) with self-contained 1-bed ground floor annexe. Annexe: entrance vestibule, hall, sitting room, kitchen (built-in oven & hob), double bedroom with wardrobes, en-suite shower room. Gas CH, UPVC DG, mains services, freehold. Council Tax Band D. Private enclosed garden. Driveway parking. Close to Trowbridge town centre and new Integrated Care Centre. Bath 12 miles.",
-    "full_desc": "A deceptively spacious and well presented detached family house with self-contained annexe. Main house: entrance porch, hall, 20ft sitting room with feature fireplace, dining room/family room, kitchen with modern units, two double bedrooms (built-in wardrobes), one single bedroom, bathroom (jacuzzi bath), separate WC. Self-contained annexe: entrance vestibule, hall, sitting room, kitchen (built-in oven and hob), double bedroom (built-in wardrobes), en-suite shower room. Garden: paved patio, lawn, flower beds, summer house (with power), large shed/workshop. Store/workshop with power and lighting. Driveway parking for 2 cars. Gas fired central heating, UPVC double glazing, mains services, freehold. Council Tax Band D, EPC D. Avonvale Road is just off Seymour Road. Walking distance to new Integrated Care Centre, shops, station. Bath 12 miles (mainline station to London Paddington). £375,000 OIEO. Added 7 July 2026.",
-    "status": "active",
-    "lat": 51.3195,
-    "lng": -2.2091,
-    "rightmove_url": "https://www.rightmove.co.uk/properties/90542934",
-    "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F90542934&propertyId=90542934",
-    "duplicate_refs": [],
-    "journeys": {
-      "london_car_mins": 105,
-      "london_rail_mins": 80,
-      "coast_car_mins": 55,
-      "coast_name": "Bournemouth / Weymouth",
-      "hospital_car_mins": 12,
-      "hospital_name": "RUH Bath / Great Western Hospital Swindon",
-      "nearest_town": "Trowbridge town centre (0.5 mi)"
-    },
-    "home_ed": {
-      "rating": "good",
-      "summary": "Trowbridge has a Wiltshire home-ed network. Bath 12 miles gives access to a richer community.",
-      "groups": [
-        {
-          "name": "North Wiltshire Home Educators",
-          "contact": "Via home-ed.info",
-          "notes": "Covers Trowbridge/Chippenham area"
-        },
-        {
-          "name": "Bath Home Educators",
-          "contact": "Facebook / mailing list",
-          "notes": "~12 miles; very active"
-        },
-        {
-          "name": "Wiltshire Autism Hub",
-          "contact": "wsun.co.uk/wiltshire-autism-hub",
-          "notes": "County-wide ASD support"
-        }
-      ],
-      "asd_support": "Wiltshire Autism Hub. BSW Neurodevelopmental Pathway covers Trowbridge. RUH Bath 12 miles with CAMHS.",
-      "notes": "Trowbridge itself is functional; Bath proximity lifts the accessible provision considerably. Integrated Care Centre walking distance is a significant plus."
-    },
-    "rank": 17,
-    "postcode": "BA14 8EP"
-  },
-  {
     "ref": "174286715",
     "name": "Goosegreen Cottages, Sutton Mallet",
     "price": 450000,
