@@ -1151,69 +1151,6 @@
     "postcode": "SA8 3AN"
   },
   {
-    "ref": "89415939",
-    "name": "Queens Hill Cres, Newport",
-    "rank": 40,
-    "price": 395000,
-    "price_display": "£395,000",
-    "location": "Newport, South Wales",
-    "cluster": "South Wales",
-    "agent": "Taylors Estate Agents, Newport",
-    "annexe": "potential",
-    "caveat": null,
-    "short_desc": "An exceptional opportunity to purchase this spacious and versatile three-storey semi-detached home, situated in a popular residential location on the west side of Newport.",
-    "rightmove_url": "https://www.rightmove.co.uk/properties/89415939",
-    "contact_url": "https://www.rightmove.co.uk/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F89415939&propertyId=89415939",
-    "lat": 51.5912,
-    "lng": -2.9834,
-    "status": "active",
-    "duplicate_refs": [],
-    "full_desc": "An exceptional opportunity to purchase this spacious and versatile three-storey semi-detached home, situated in a popular residential location on the west side of Newport.\nOffering generous accommodation throughout, this property is perfectly suited to modern family living and is particularly ideal for multi-generational occupancy or buyers seeking flexible space.\nThe ground floor comprises a welcoming entrance hallway, a bright and spacious lounge/dining room, a well-equipped fitted kitchen with breakfast bar, and a convenient cloakroom.\nTo the lower ground floor, the property truly excels, featuring a substantial games/entertainment and French doors leading to the rear deck, a separate family room, a second kitchen/utility area, and a shower room. This level offers excellent potential for self-contained living or annexe use.\nTo the first floor, there are four well-proportioned bedrooms and a beautifully presented modern family bathroom with both bath and separate shower.\nExternally, the property benefits from a driveway providing off-road parking and access to the integral garage. To the rear is a large tiered decked garden, ideal for entertaining and outdoor living.\nThe property is conveniently located within easy reach of Newport city centre, with excellent road links providing access to the M4, Cardiff, and Bristol, making it ideal for commuters.\nEarly viewing is highly recommended to appreciate the size and flexibility of accommodation on offer.\nCOUNCIL TAXA payment made to your local authority in order to pay for local services like schools, libraries, and refuse collection. The amount you pay depends on the value of the property.Read more about council Tax in our glossary page.\nPARKINGDetails of how and where vehicles can be parked, and any associated costs.Read more about parking in our glossary page.\nGARDENA property has access to an outdoor space, which could be private or shared.\nACCESSIBILITYHow a property has been adapted to meet the needs of vulnerable or disabled individuals.Read more about accessibility in our glossary page.\nAdd an important place to see how long it'd take to get there from our property listings.\nThese results are estimates and are only intended as a guide. Make sure you obtain accurate figures from your lender before committing to any mortgage. Your home may be repossessed if you do not keep up repayments on a mortgage.\nSince 1973 Taylors has been one of the trusted property advisor in Central, West Country, and South Wales region offering comprehensive property services. Backed by strong local knowledge, our teams are on hand to guide you through your property journey.\nEnsure you're up to date with our latest advice on how to avoid fraud or scams when looking for property online.\nDisclaimer - Property reference TNP260073. The information displayed about this property comprises a property advertisement. Rightmove.co.uk makes no warranty as to the accuracy or completeness of the advertisement or any linked or associated information, and Rightmove has no control over the content. This property advertisement does not constitute property particulars. The information is provided and maintained by Taylors Estate Agents, Newport. Please contact the selling agent or developer directly to obtain any information which may be available under the terms of The Energy Performance of Buildings (Certificates and Inspections) (England and Wales) Regulations 2007 or the Home Report if in relation to a residential property in Scotland.\n*This is the average speed from the provider with the fastest broadband package available at this postcode. The average speed displayed is based on the download speeds of at least 50% of customers at peak time (8pm to 10pm). Fibre/cable services at the postcode are subject to availability and may differ between properties within a postcode. Speeds can be affected by a range of technical and environmental factors. The speed at the property may be lower than that listed above. You can check the estimated speed and confirm availability to a property prior to purchasing on the broadband provider's website. Providers may increase charges. The information is provided and maintained by Decision Technologies Limited.\n**This is indicative only and based on a 2-person household with multiple devices and simultaneous usage. Broadband performance is affected by multiple factors including number of occupants and devices, simultaneous usage, router range etc. For more information speak to your broadband provider.\nSite map Help Cookies Safety and Security Terms of Use Privacy Policy New updates\nCopyright © 2000-2026 Rightmove Group Limited. All rights reserved. Rightmove prohibits the scraping of its content. You can find further details here.",
-    "home_ed": {
-      "rating": "good",
-      "summary": "Wales has its own home-ed legal framework. Integrated Autism Services across all Welsh health board areas.",
-      "groups": [
-        {
-          "name": "Neurodivergence Wales Home Ed group",
-          "contact": "neurodivergencewales.org",
-          "notes": "Holds multiple weekly sessions; ASDAN-registered centre for home educators; specifically supports ASD families"
-        },
-        {
-          "name": "Home Education South Wales",
-          "contact": "Facebook group",
-          "notes": "Broad network across South Wales"
-        },
-        {
-          "name": "Swansea Integrated Autism Service (IAS)",
-          "contact": "Via Swansea Bay UHB",
-          "notes": "Covers Swansea and Neath Port Talbot; diagnostic and support services"
-        },
-        {
-          "name": "NAS Swansea Branch",
-          "contact": "autism.org.uk/what-we-do/branches/nasswansea-branch",
-          "notes": "National Autistic Society local branch; community events"
-        },
-        {
-          "name": "NAS Neath & Swansea Centre",
-          "contact": "autism.org.uk",
-          "notes": "Community activities and support; excellent local resource"
-        }
-      ],
-      "asd_support": "Wales has the Integrated Autism Services model — a legal right to assessment and support for autistic people of all ages. Swansea Bay UHB covers Swansea and Neath Port Talbot. Welsh Government has strengthened ALN (Additional Learning Needs) frameworks. NAS presence in Swansea.",
-      "notes": "The Welsh IAS model is arguably better than English provision for ASD families. However, home-ed legal framework differs from England — Wales requires annual registration and monitoring by local authority."
-    },
-    "journeys": {
-      "london_car_mins": 170,
-      "london_rail_mins": 120,
-      "coast_car_mins": 20,
-      "coast_name": "Newport / Cardiff Bay",
-      "hospital_car_mins": 5,
-      "hospital_name": "Royal Gwent Hospital, Newport",
-      "nearest_town": "Newport (town)"
-    },
-    "postcode": "NP20 3QH"
-  },
-  {
     "ref": "170968559",
     "name": "South Newton, Salisbury — New Chalet",
     "rank": 21,
